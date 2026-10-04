@@ -1,0 +1,193 @@
+/* Laden Labs Console (LLC) — Kali-style terminal */
+
+#llc-toggle {
+  position: fixed; top: .85rem; left: .85rem; z-index: 13050;
+  display: inline-flex !important; align-items: center; gap: .4rem;
+  visibility: visible !important; opacity: 1 !important;
+  padding: .45rem .75rem; border-radius: 10px;
+  border: 1px solid rgba(0,255,157,.45);
+  background: rgba(5,7,10,.94); color: #00ff9d;
+  font-family: Orbitron, system-ui, sans-serif; font-size: .7rem; letter-spacing: .05em;
+  cursor: pointer; box-shadow: 0 0 22px rgba(0,255,157,.18);
+  backdrop-filter: blur(8px);
+}
+#llc-toggle:hover { background: rgba(0,255,157,.12); }
+#llc-toggle .glyph { font-family: 'JetBrains Mono', monospace; font-size: .9rem; }
+body.llc-open { overflow: hidden; }
+body.llc-fullpage #llc-toggle,
+body.llc-fullpage #llc-backdrop { display: none !important; }
+/* Desktop: leave room for fixed llc$ without shoving the whole bar */
+@media (min-width: 901px) {
+  body:not(.llc-fullpage) .nav-inner { padding-left: 6.5rem; }
+}
+@media (max-width: 900px) {
+  #llc-toggle {
+    top: .75rem; left: .75rem; bottom: auto;
+    padding: .45rem .65rem; border-radius: 10px;
+    box-shadow: 0 0 22px rgba(0,255,157,.18);
+  }
+  #llc-toggle .label { display: none; }
+  body:not(.llc-fullpage) .nav-inner { padding-left: 0 !important; }
+  /* App tabs own Console — hide floating llc$ so it doesn't overlap brand */
+  body.laden-mobile-app #llc-toggle { display: none !important; }
+  /* Taller phone console; covers bottom tabs while open (z-index already higher) */
+  body:not(.llc-fullpage) #llc-drawer {
+    height: min(78vh, 720px);
+  }
+  body:not(.llc-fullpage) #llc-drawer.llc-dock {
+    height: min(42vh, 420px);
+  }
+  #llc-drawer .llc-tools button {
+    min-height: 36px; min-width: 44px;
+    padding: .35rem .7rem; font-size: .75rem;
+  }
+  #llc-chips button {
+    min-height: 32px; padding: .35rem .55rem; font-size: .72rem;
+  }
+  #llc-drawer .llc-roll {
+    height: 16px;
+    touch-action: none;
+  }
+  /* Keep prompt visible above soft keyboard when focused */
+  body.llc-kb-open #llc-drawer {
+    padding-bottom: env(keyboard-inset-height, 0px);
+  }
+}
+#llc-backdrop {
+  position: fixed; inset: 0; z-index: 11800; background: rgba(0,0,0,.55);
+  opacity: 0; pointer-events: none; transition: opacity .25s;
+}
+#llc-backdrop.open { opacity: 1; pointer-events: auto; }
+
+/* Embedded LLC — bottom sheet, custom terminal (no OS chrome bar) */
+#llc-drawer {
+  position: fixed; left: 0; right: 0; bottom: 0; top: auto; z-index: 11900;
+  height: min(54vh, 600px);
+  transform: translateY(105%);
+  transition: transform .34s cubic-bezier(.2,.8,.2,1);
+  display: flex; flex-direction: column;
+  background: rgba(5, 10, 12, .92);
+  border: none;
+  border-top: 1px solid rgba(0,255,157,.28);
+  box-shadow: 0 -24px 64px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.04);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  overflow: hidden;
+  border-radius: 18px 18px 0 0;
+}
+#llc-drawer.open { transform: translateY(0); }
+#llc-drawer.llc-bottom { /* default */ }
+#llc-drawer.llc-dock {
+  height: min(34vh, 360px);
+}
+
+/* Drag handle — roll drawer height up/down */
+#llc-drawer .llc-roll {
+  flex-shrink: 0;
+  display: block;
+  height: 10px; margin: 0; padding: 0;
+  cursor: ns-resize; touch-action: none;
+  user-select: none; -webkit-user-select: none;
+  background: transparent; border: none;
+}
+#llc-drawer .llc-roll::before { content: none; display: none; }
+#llc-drawer.llc-rolling {
+  transition: none !important;
+  user-select: none;
+}
+#llc-drawer.llc-rolling,
+#llc-drawer.llc-rolling * { cursor: ns-resize !important; }
+
+
+/* Tiny controls — not a title bar */
+#llc-drawer .llc-tools {
+  display: flex; justify-content: flex-end; align-items: center; gap: .35rem;
+  padding: .15rem .65rem 0; flex-shrink: 0;
+  background: transparent; border: none;
+}
+#llc-drawer .llc-tools button {
+  font-family: 'JetBrains Mono', monospace; font-size: .68rem;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  color: rgba(200,214,229,.7);
+  border-radius: 8px; padding: .2rem .5rem; cursor: pointer;
+}
+#llc-drawer .llc-tools button:hover { color: #00ff9d; border-color: rgba(0,255,157,.35); }
+#llc-drawer .llc-tools button[data-act="close"] { color: rgba(255,107,122,.85); }
+#llc-drawer .llc-bar { display: none !important; }
+
+#llc-chips {
+  display:flex; flex-wrap:wrap; gap:.3rem; padding:.25rem .75rem .35rem;
+  border: none; background: transparent; flex-shrink:0;
+}
+#llc-chips button {
+  font-family: 'JetBrains Mono', monospace; font-size:.68rem;
+  padding:.22rem .45rem; border-radius:7px; cursor:pointer;
+  border:1px solid rgba(0,229,255,.2); background:rgba(0,229,255,.06); color:#7dd3fc;
+}
+#llc-chips button:hover { border-color:rgba(0,229,255,.5); background:rgba(0,229,255,.12); }
+
+/* Continuous terminal body: output + live prompt as one stream */
+#llc-body {
+  flex: 1; min-height: 0; display: flex; flex-direction: column;
+  background: transparent;
+}
+#llc-screen {
+  flex:1; overflow-y:auto; padding:.35rem .9rem .55rem;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size:.84rem; line-height:1.5; color:#c8d6e5;
+  white-space:pre-wrap; word-break:break-word;
+  background: transparent;
+  position: relative;
+}
+#llc-screen::after { display: none; }
+#llc-screen .out-cmd { color:#e6f1ff; }
+#llc-screen .out-cmd .path { color: #00ff9d; }
+#llc-screen .out-cmd .gt { color: #00ff9d; margin: 0 .15rem 0 .05rem; }
+#llc-screen .out-err { color:#f87171; }
+#llc-screen .out-dim { color:#94a3b8; }
+#llc-screen .out-ok { color:#38bdf8; }
+#llc-screen .out-warn { color:#fbbf24; }
+#llc-screen .ls-dir { color: #00e5ff; font-weight: 600; }
+#llc-screen .ls-file { color: #e6f1ff; }
+#llc-screen .ls-mode { color: #00c47a; }
+#llc-screen .ls-owner { color: #00e5ff; }
+#llc-screen .ls-group { color: #8b9bb4; }
+#llc-screen .ls-size { color: #94a3b8; }
+#llc-screen .ls-date { color: #94a3b8; }
+
+#llc-form {
+  display: grid; grid-template-columns: auto 1fr; gap: .15rem; align-items: baseline;
+  padding: 0; margin: .15rem 0 0;
+  border: none; background: transparent; width: 100%;
+  font: inherit; /* same JetBrains / size / line-height as #llc-screen */
+  color: inherit;
+}
+#llc-form .prompt {
+  font: inherit; user-select: none;
+  white-space: nowrap; color: #e6f1ff;
+}
+#llc-form .prompt .path { color: #00ff9d; }
+#llc-form .prompt .gt { color: #00ff9d; margin: 0 .15rem 0 .05rem; }
+#llc-in {
+  background: transparent; border: none; outline: none; color: #e6f1ff;
+  font: inherit; padding: 0; margin: 0; width: 100%;
+  caret-color: #00ff9d;
+}
+
+#laden-term-toggle, #laden-term-drawer, #laden-term-backdrop { display: none !important; }
+
+/* Full-page /terminal/ mount */
+.llc-fullpage-root {
+  min-height: 100vh; display:flex; flex-direction:column;
+  background: #0c121c; color:#c8d6e5;
+}
+.llc-fullpage-root #llc-drawer {
+  position: relative; transform: none !important; height: auto;
+  flex: 1; min-height: 100vh; border: none; box-shadow: none;
+  border-radius: 0; background: #05070a; backdrop-filter: none;
+}
+.llc-fullpage-root #llc-body { flex: 1; min-height: 50vh; }
+.llc-fullpage-root #llc-screen { min-height: 0; }
+.llc-fullpage-root .llc-tools { padding-top: .6rem; }
+

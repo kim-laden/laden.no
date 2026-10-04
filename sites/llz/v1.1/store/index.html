@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-base="..">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store — Laden AS v1.1</title>
+  <meta name="description" content="Laden AS member portal demo: forum, challenges, store.">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/llz/assets/llz-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../">
+      <div class="logo">L</div>
+      <div>Laden AS <span class="ver">v1.1</span></div>
+    </a>
+    <nav class="nav-links">
+      <a class="" href="../">Home</a>
+      <a class="" href="../forum/">Forum</a>
+      <a class="" href="../challenges/">Challenges</a>
+      <a class="active" href="../store/">Store</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-cyan" data-caleb>Talk to Caleb</a>
+      <a class="btn btn-ghost" href="https://laden.no/">Live site</a>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <div class="page-title">
+    <div class="eyebrow"><span class="pulse"></span> Merch desk · demo cart</div>
+    <h1>Store</h1>
+    <p>Gear for operators. Prices in NOK. Checkout is fake — nothing is charged.</p>
+  </div>
+  <div class="grid-3" id="products">
+    <div class="card">
+      <div class="product-art">hoodie</div>
+      <span class="tag store">APPAREL</span>
+      <h3>Laden Hoodie — Void Green</h3>
+      <p>Heavyweight, subtle mark, built for cold Oslo offices.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap">
+        <span class="price">749 NOK</span>
+        <button class="btn btn-primary" type="button" onclick="addToCart('hoodie','Laden Hoodie',749)">Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="product-art">tee</div>
+      <span class="tag store">APPAREL</span>
+      <h3>Tee — “Authorized Only”</h3>
+      <p>Soft black tee. Front print that keeps auditors calm.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap">
+        <span class="price">329 NOK</span>
+        <button class="btn btn-primary" type="button" onclick="addToCart('tee','Authorized Only Tee',329)">Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="product-art">🧢</div>
+      <span class="tag store">APPAREL</span>
+      <h3>Operator Cap</h3>
+      <p>Low-profile cap with embroidered L mark.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap">
+        <span class="price">249 NOK</span>
+        <button class="btn btn-primary" type="button" onclick="addToCart('cap','Operator Cap',249)">Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="product-art">✦</div>
+      <span class="tag store">GEAR</span>
+      <h3>Sticker Pack v1</h3>
+      <p>8 vinyl stickers: grid, claw, “scope first”, more.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap">
+        <span class="price">99 NOK</span>
+        <button class="btn btn-primary" type="button" onclick="addToCart('stickers','Sticker Pack v1',99)">Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="product-art">usb</div>
+      <span class="tag store">GEAR</span>
+      <h3>Decoy USB (joke)</h3>
+      <p>Looks spicy. Contains a README that says “get authorization.”</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap">
+        <span class="price">149 NOK</span>
+        <button class="btn btn-primary" type="button" onclick="addToCart('usb','Decoy USB',149)">Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="product-art">mug</div>
+      <span class="tag store">DESK</span>
+      <h3>Mug — Root Preferred</h3>
+      <p>Ceramic, dishwasher-safe, bad jokes included.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap">
+        <span class="price">199 NOK</span>
+        <button class="btn btn-primary" type="button" onclick="addToCart('mug','Root Preferred Mug',199)">Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="product-art">🎒</div>
+      <span class="tag store">GEAR</span>
+      <h3>Daypack — Scope</h3>
+      <p>Laptop sleeve + cable pocket. No loud logos.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap">
+        <span class="price">899 NOK</span>
+        <button class="btn btn-primary" type="button" onclick="addToCart('pack','Scope Daypack',899)">Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="product-art">🎟️</div>
+      <span class="tag store">DIGITAL</span>
+      <h3>Lab Pass — 30 days</h3>
+      <p>Demo voucher for future challenge seasons.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap">
+        <span class="price">449 NOK</span>
+        <button class="btn btn-primary" type="button" onclick="addToCart('pass','Lab Pass 30d',449)">Add</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="cart-bar" id="cart-box">
+  <h4>DEMO CART</h4>
+  <div class="cart-items" id="cart-items"></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.55rem">
+    <span class="mono" style="color:var(--muted);font-size:.8rem">Total</span>
+    <strong class="price" id="cart-total" style="font-size:1rem">0 NOK</strong>
+  </div>
+  <div style="display:flex;gap:.4rem">
+    <button class="btn btn-primary" style="flex:1" type="button" onclick="checkoutDemo()">Checkout</button>
+    <button class="btn btn-ghost" type="button" onclick="clearCart()">Clear</button>
+  </div>
+</div>
+<footer class="wrap footer">
+  <div>
+    <strong style="color:var(--text)">Laden AS</strong> · Oslo · Authorized security work only<br>
+    Demo portal v1.1 — not production auth / payments.
+  </div>
+  <div class="live-bar">
+    <span id="oslo-clock">--:--:--</span>
+    <span>·</span>
+    <span>Members online: <b id="member-count" style="color:var(--green)">128</b></span>
+  </div>
+</footer>
+<script src="../assets/app.js"></script>
+</body></html>

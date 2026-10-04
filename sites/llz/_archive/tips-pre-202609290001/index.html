@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" data-base="..">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLZ LabZocial — Laden Labs Community</title>
+  <meta name="description" content="LLZ LabZocial: Laden Labs Social — posts, reactions, friends, LabNewz, tips &amp; discussions. Ethical hacking HQ — Oslo flavoured.">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="community.css">
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg" alt="Laden Labs" width="36" height="36">
+      <div>Laden Labs</div>
+    </a>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/forum/">Forum</a>
+      <a href="/store/">Store</a>
+      <a href="/oracle/">Oracle</a>
+      <a href="/challenges/">Challenges</a>
+      <a href="/labs/">Lab Lounge</a>
+      <a class="active" href="/community/">Community</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="nav-cart">
+        <button type="button" class="btn-cart" id="cart-btn" aria-label="Cart">Cart <span class="cart-count" id="cart-count">0</span></button>
+        <div class="cart-pop" id="cart-pop">
+          <div class="cart-items" id="cart-items"></div>
+          <div class="cart-foot"><span class="muted">Total</span><strong class="price" id="cart-total">0 NOK</strong></div>
+          <div class="cart-actions">
+            <button class="btn btn-primary" type="button" onclick="checkoutDemo()">Checkout</button>
+            <button class="btn btn-ghost" type="button" onclick="clearCart()">Clear</button>
+          </div>
+        </div>
+      </div>
+      <a class="btn btn-cyan" href="/account/" id="nav-account">Login</a>
+      <a class="btn btn-primary" href="/labs/">Enter Labs</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div data-llt-ad="compact"></div>
+
+  <section class="community-hero">
+    <div>
+      <div class="eyebrow"><span class="pulse"></span> LLZ · LabZocial · ethical · Oslo</div>
+      <h1>LLZ LabZocial<br><em>social as hell.</em></h1>
+      <p class="lede">Laden Labs Social — short posts, emoji tapbacks, friends-first feed, LabNewz tabloid, tips, and tool boards. Guests read everything; members post, react, and friend for real.</p>
+    </div>
+    <aside class="community-status" aria-label="Community status">
+      <div class="row"><span>Channel</span><span><b>/community/</b></span></div>
+      <div class="row"><span>Stream</span><span><b>LLZ live</b></span></div>
+      <div class="row"><span>LabNewz</span><span><b>LLN live</b></span></div>
+      <div class="row" id="comm-user-state"><span>Session</span><span><b>○ …</b></span></div>
+    </aside>
+  </section>
+
+  <nav class="comm-tabs" role="tablist" aria-label="Community sections">
+    <button type="button" class="comm-tab active" data-tab="llz" role="tab">LLZ</button>
+    <button type="button" class="comm-tab" data-tab="friends" role="tab">Friends</button>
+    <button type="button" class="comm-tab" data-tab="labnewz" role="tab">LabNewz (LLN)</button>
+    <button type="button" class="comm-tab" data-tab="tips" role="tab">Tips &amp; tricks</button>
+    <button type="button" class="comm-tab" data-tab="discussions" role="tab">Discussions</button>
+  </nav>
+
+  <section id="panel-llz" class="comm-panel active" role="tabpanel">
+    <div class="section-head llz-head">
+      <div>
+        <h2>LLZ LabZocial</h2>
+        <p class="muted-line">Friends first · public posts too · 👍 🔥 💀 tapbacks</p>
+      </div>
+      <div class="llz-badge" title="Laden Labs Social">LLZ</div>
+    </div>
+
+    <form id="llz-compose" class="llz-compose">
+      <label class="mono tiny" for="llz-body">Drop a signal</label>
+      <textarea id="llz-body" maxlength="500" placeholder="Say something short. Ethical vibes only…" required></textarea>
+      <div class="row">
+        <button class="btn btn-primary" type="submit">Post to LLZ</button>
+        <span class="nudge" id="llz-nudge"></span>
+        <span class="mono tiny" id="llz-status"></span>
+      </div>
+    </form>
+
+    <div id="llz-stream" class="feed-stream"></div>
+  </section>
+
+  <section id="panel-friends" class="comm-panel" role="tabpanel">
+    <div class="section-head" style="margin-bottom:.85rem">
+      <div>
+        <h2>Friends</h2>
+        <p class="muted-line">Send / accept requests. Friends’ posts float to the top of LLZ.</p>
+      </div>
+    </div>
+    <div id="friends-gate" class="seed-note">Login to manage friends.</div>
+    <div id="friends-panel" class="friends-layout hidden">
+      <form id="friend-request-form" class="friend-request">
+        <label class="mono tiny" for="friend-username">Add by username</label>
+        <div class="row">
+          <input id="friend-username" type="text" maxlength="40" placeholder="packetfox" autocomplete="off" required>
+          <button class="btn btn-cyan" type="submit">Send request</button>
+        </div>
+        <span class="mono tiny" id="friend-req-status"></span>
+      </form>
+      <div class="friends-cols">
+        <div>
+          <h3 class="friends-h">Incoming</h3>
+          <div id="friends-incoming" class="friends-list"></div>
+        </div>
+        <div>
+          <h3 class="friends-h">Your crew</h3>
+          <div id="friends-accepted" class="friends-list"></div>
+        </div>
+        <div>
+          <h3 class="friends-h">Outgoing</h3>
+          <div id="friends-outgoing" class="friends-list"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="panel-labnewz" class="comm-panel" role="tabpanel">
+    <div class="lln-masthead">
+      <h2>LABNEWZ</h2>
+      <div class="edition">Laden Labs Tabloid · ethical edition · not stolen news</div>
+    </div>
+    <p class="seed-note">Witty, invented headlines with Oslo / Laden flavour. Fun only — no real breach reporting.</p>
+    <div id="lln-grid" class="lln-grid"></div>
+  </section>
+
+  <section id="panel-tips" class="comm-panel" role="tabpanel">
+    <div class="section-head" style="margin-bottom:.85rem">
+      <div>
+        <h2>Tips &amp; tricks</h2>
+        <p class="muted-line">Short practical cards — nmap, Burp, Wireshark, msfconsole, aircrack-ng, and friends.</p>
+      </div>
+    </div>
+    <div id="tips-grid" class="tips-grid"></div>
+  </section>
+
+  <section id="panel-discussions" class="comm-panel" role="tabpanel">
+    <div class="section-head" style="margin-bottom:.85rem">
+      <div>
+        <h2>Discussions</h2>
+        <p class="muted-line">Tool boards. Seeded threads + member posts (API). Guests can draft locally.</p>
+      </div>
+    </div>
+    <div class="disc-layout">
+      <div id="topic-list" class="topic-list" aria-label="Topics"></div>
+      <div class="disc-main">
+        <p class="seed-note" id="compose-who">…</p>
+        <form id="compose-form" class="disc-compose">
+          <label class="mono tiny" for="post-body">New post</label>
+          <textarea id="post-body" maxlength="2000" placeholder="Share a tip, ask a scoped question, keep it ethical…" required></textarea>
+          <div class="row">
+            <button class="btn btn-primary" type="submit">Post</button>
+            <span class="nudge" id="compose-nudge"></span>
+            <span class="mono tiny" id="compose-status"></span>
+          </div>
+        </form>
+        <div id="post-list" class="post-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="join-strip">
+    <div>
+      <strong style="color:var(--text)">Also on Discord</strong>
+      <p>Side channel for voice / spoilers-behind-tags. Primary hangout is LLZ LabZocial.</p>
+    </div>
+    <a class="btn btn-discord" href="https://discord.gg/BavZjwXp2" target="_blank" rel="noopener">Join Discord</a>
+  </aside>
+</main>
+
+<footer class="wrap footer">
+  <div>
+    <div class="brand-lockup" style="margin-bottom:.55rem">
+      <img class="footer-logo" src="/assets/products/logo.jpg" alt="Laden Labs">
+      <div>
+        <strong style="color:var(--text)">Laden Labs</strong>
+        <div class="muted" style="font-size:.8rem">Oslo · Authorized security work only</div>
+      </div>
+    </div>
+    LLZ LabZocial · LabNewz · tips · discussions — Discord is secondary.
+  </div>
+  <div class="live-bar">
+    <span>Tip: spoilers behind tags</span>
+    <span>·</span>
+    <span>demo</span>
+  </div>
+</footer>
+
+<script src="/assets/llt.js"></script>
+<link rel="stylesheet" href="/assets/avatars/avatars.css">
+<script src="/assets/avatars/avatars.js"></script>
+<script src="/assets/labcard.js"></script>
+<script src="/assets/app.js"></script>
+<script src="community.js"></script>
+<script src="/assets/llc.js" defer></script>
+</body>
+</html>

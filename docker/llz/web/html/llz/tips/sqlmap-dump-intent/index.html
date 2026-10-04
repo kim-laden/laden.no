@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dump with intent — Tips · Laden Labs</title>
+  <meta name="description" content="--tables / --columns before --dump. Know what you're extracting and why it is in scope.">
+  <link rel="stylesheet" href="/assets/styles.css?v=cta1">
+<script src="/assets/i18n.js"></script>
+<script src="/assets/i18n-content.js"></script>
+  <link rel="stylesheet" href="/labs/assets/room.css">
+  <link rel="stylesheet" href="/tips/assets/tip.css">
+  <link rel="canonical" href="https://laden.no/tips/sqlmap-dump-intent/">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/js/soundcloud-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="tip-page">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap room-main">
+
+  <nav class="room-crumb" aria-label="Breadcrumb">
+    <a href="/tips/"><span data-i18n="nav.tips">Tips</span></a>
+    <span class="sep">/</span>
+    <span class="mono">sqlmap-dump-intent</span>
+  </nav>
+
+  <section class="room-hero panel tip-hero">
+    <div class="room-hero-top">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> Operator tip · sqlmap</div>
+        <h1>Dump with intent</h1>
+        <p class="muted">--tables / --columns before --dump. Know what you're extracting and why it is in scope.</p>
+      </div>
+      <div class="room-tags">
+        <span class="tag hard">hard</span>
+        <span class="tag">sqli</span><span class="tag">sqlmap</span><span class="tag">scope</span>
+      </div>
+    </div>
+    <div class="room-meta mono">/sqlmap/ · /tips/sqlmap-dump-intent/</div>
+  </section>
+
+  <section class="room-learn panel tip-body">
+    <h2>Guide</h2>
+    
+<p><code>--dump</code> feels like winning. It is also how you exfiltrate an entire PII table you did not need for the finding. Enumerate with intent.</p>
+<h3>Why it matters</h3>
+<p>Good reports show you confirmed SQLi, identified the sensitive table, and extracted the minimum rows that prove impact. Dumping everything slows you down, bloats loot, and can violate scope even on a "vulnerable by design" app if PII rules apply.</p>
+<h3>How-to</h3>
+<pre class="mono tip-pre">sqlmap -u "…" --batch --dbs
+sqlmap -u "…" --batch -D appdb --tables
+sqlmap -u "…" --batch -D appdb -T users --columns
+sqlmap -u "…" --batch -D appdb -T users -C id,username --dump</pre>
+<ul>
+  <li>Prefer <code>--count</code> / few columns over full table dumps.</li>
+  <li>Scrub loot from shared machines when the lab ends.</li>
+  <li>In writeups: show the query path + one redacted row, not a CSV dump.</li>
+</ul>
+
+  </section>
+
+  <section class="panel tip-links">
+    <h2>Related labs</h2>
+    <div class="tip-link-row"><a class="tip-related" href="/labs/sqli-logic/">SQLi Logic</a><a class="tip-related" href="/labs/report-quality/">Report Quality</a><a class="tip-related" href="/labs/scope-first/">Scope First</a></div>
+    <h2 style="margin-top:1rem">Oracle queries</h2>
+    <div class="tip-link-row"><a class="tip-oracle" href="/oracle/?q=sqlmap%20dump%20specific%20columns">sqlmap dump specific columns</a><a class="tip-oracle" href="/oracle/?q=responsible%20disclosure%20data%20minimization">responsible disclosure data minimization</a><a class="tip-oracle" href="/oracle/?q=SQLi%20proof%20of%20concept%20minimal">SQLi proof of concept minimal</a></div>
+    <div class="tip-actions">
+      <button type="button" class="btn btn-cyan" id="tip-caleb" data-ask="How do I prove SQLi with sqlmap without dumping everything?">Ask Caleb</button>
+      <a class="btn btn-ghost" href="/tips/">All tips</a>
+      <a class="btn btn-ghost" href="/community/#tips">Community tips tab</a>
+      <a class="btn btn-primary" href="/oracle/">Open Oracle</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap footer">
+  <div>
+    <strong style="color:var(--text)">Laden Labs</strong>
+    <div class="muted" style="font-size:.8rem">Oslo · Authorized security work only · operator tips</div>
+  </div>
+  <div class="live-bar">
+    <span>Tips · ethical only</span>
+    <span>·</span>
+    <span>demo</span>
+  </div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+
+<script src="/assets/llt.js"></script>
+<script src="/assets/caleb.js?v=20261004-caleb16"></script>
+<link rel="stylesheet" href="/assets/avatars/avatars.css">
+<script src="/assets/avatars/avatars.js"></script>
+<script src="/assets/labcard.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/tips/assets/tip.js"></script>
+<script src="/assets/llc.js" defer></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

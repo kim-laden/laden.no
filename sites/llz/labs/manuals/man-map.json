@@ -1,0 +1,514 @@
+{
+  "tools": [
+    {
+      "slug": "pwd",
+      "group": "Filesystem",
+      "aliases": []
+    },
+    {
+      "slug": "ls",
+      "group": "Filesystem",
+      "aliases": []
+    },
+    {
+      "slug": "cd",
+      "group": "Filesystem",
+      "aliases": []
+    },
+    {
+      "slug": "cat",
+      "group": "Filesystem",
+      "aliases": []
+    },
+    {
+      "slug": "head",
+      "group": "Filesystem",
+      "aliases": []
+    },
+    {
+      "slug": "tail",
+      "group": "Filesystem",
+      "aliases": []
+    },
+    {
+      "slug": "tree",
+      "group": "Filesystem",
+      "aliases": []
+    },
+    {
+      "slug": "find",
+      "group": "Filesystem",
+      "aliases": []
+    },
+    {
+      "slug": "mkdir",
+      "group": "Filesystem",
+      "aliases": []
+    },
+    {
+      "slug": "touch",
+      "group": "Filesystem",
+      "aliases": []
+    },
+    {
+      "slug": "rm",
+      "group": "Filesystem",
+      "aliases": []
+    },
+    {
+      "slug": "rmdir",
+      "group": "Filesystem",
+      "aliases": []
+    },
+    {
+      "slug": "cp",
+      "group": "Filesystem",
+      "aliases": []
+    },
+    {
+      "slug": "mv",
+      "group": "Filesystem",
+      "aliases": []
+    },
+    {
+      "slug": "echo",
+      "group": "Filesystem",
+      "aliases": []
+    },
+    {
+      "slug": "grep",
+      "group": "Filesystem",
+      "aliases": []
+    },
+    {
+      "slug": "df",
+      "group": "Z Drive",
+      "aliases": [
+        "zquota",
+        "quota"
+      ]
+    },
+    {
+      "slug": "zshare",
+      "group": "Z Drive",
+      "aliases": []
+    },
+    {
+      "slug": "zunshare",
+      "group": "Z Drive",
+      "aliases": []
+    },
+    {
+      "slug": "ip",
+      "group": "Networks",
+      "aliases": []
+    },
+    {
+      "slug": "ifconfig",
+      "group": "Networks",
+      "aliases": []
+    },
+    {
+      "slug": "iwconfig",
+      "group": "Networks",
+      "aliases": []
+    },
+    {
+      "slug": "iw",
+      "group": "Networks",
+      "aliases": []
+    },
+    {
+      "slug": "labcrack-ng-airmon",
+      "group": "Networks",
+      "aliases": [
+        "airmon-ng",
+        "labmon"
+      ]
+    },
+    {
+      "slug": "labcrack-ng-airodump",
+      "group": "Networks",
+      "aliases": [
+        "airodump-ng",
+        "labdump"
+      ]
+    },
+    {
+      "slug": "labcrack-ng",
+      "group": "Networks",
+      "aliases": [
+        "aircrack-ng"
+      ]
+    },
+    {
+      "slug": "lmap",
+      "group": "Scanners",
+      "aliases": [
+        "nmap"
+      ]
+    },
+    {
+      "slug": "mzfconsole",
+      "group": "Scanners",
+      "aliases": [
+        "mzf",
+        "msfconsole"
+      ]
+    },
+    {
+      "slug": "curl",
+      "group": "Helpers",
+      "aliases": [
+        "wget"
+      ]
+    },
+    {
+      "slug": "wget",
+      "group": "Helpers",
+      "aliases": [
+        "curl"
+      ]
+    },
+    {
+      "slug": "base64",
+      "group": "Helpers",
+      "aliases": []
+    },
+    {
+      "slug": "rot13",
+      "group": "Helpers",
+      "aliases": []
+    },
+    {
+      "slug": "xxd",
+      "group": "Helpers",
+      "aliases": []
+    },
+    {
+      "slug": "jwt",
+      "group": "Helpers",
+      "aliases": []
+    },
+    {
+      "slug": "hashid",
+      "group": "Helpers",
+      "aliases": []
+    },
+    {
+      "slug": "md5",
+      "group": "Helpers",
+      "aliases": []
+    },
+    {
+      "slug": "sha1",
+      "group": "Helpers",
+      "aliases": []
+    },
+    {
+      "slug": "sha256",
+      "group": "Helpers",
+      "aliases": []
+    },
+    {
+      "slug": "labs",
+      "group": "Helpers",
+      "aliases": []
+    },
+    {
+      "slug": "open",
+      "group": "Helpers",
+      "aliases": []
+    },
+    {
+      "slug": "hint",
+      "group": "Helpers",
+      "aliases": []
+    },
+    {
+      "slug": "clear",
+      "group": "Session",
+      "aliases": []
+    },
+    {
+      "slug": "whoami",
+      "group": "Session",
+      "aliases": []
+    },
+    {
+      "slug": "id",
+      "group": "Session",
+      "aliases": []
+    },
+    {
+      "slug": "uname",
+      "group": "Session",
+      "aliases": []
+    },
+    {
+      "slug": "help",
+      "group": "Session",
+      "aliases": [
+        "?"
+      ]
+    },
+    {
+      "slug": "manuals",
+      "group": "Session",
+      "aliases": [
+        "man"
+      ]
+    }
+  ],
+  "map": {
+    "pwd": {
+      "syn": "Print the current working directory path.",
+      "group": "Filesystem"
+    },
+    "ls": {
+      "syn": "List directory entries (demo FS or Z Drive).",
+      "group": "Filesystem"
+    },
+    "cd": {
+      "syn": "Change the current working directory.",
+      "group": "Filesystem"
+    },
+    "cat": {
+      "syn": "Print an entire file to the console.",
+      "group": "Filesystem"
+    },
+    "head": {
+      "syn": "Print the first 10 lines of a file.",
+      "group": "Filesystem"
+    },
+    "tail": {
+      "syn": "Print the last 10 lines of a file.",
+      "group": "Filesystem"
+    },
+    "tree": {
+      "syn": "Print a recursive directory tree (demo FS only).",
+      "group": "Filesystem"
+    },
+    "find": {
+      "syn": "Recursively list all paths under a start directory.",
+      "group": "Filesystem"
+    },
+    "mkdir": {
+      "syn": "Create a directory on your Z Drive.",
+      "group": "Filesystem"
+    },
+    "touch": {
+      "syn": "Create an empty file on Z Drive (or leave existing content).",
+      "group": "Filesystem"
+    },
+    "rm": {
+      "syn": "Remove a file or directory on Z Drive.",
+      "group": "Filesystem"
+    },
+    "rmdir": {
+      "syn": "Remove an empty directory on Z Drive (non-recursive).",
+      "group": "Filesystem"
+    },
+    "cp": {
+      "syn": "Copy a file within Z Drive.",
+      "group": "Filesystem"
+    },
+    "mv": {
+      "syn": "Move or rename a path within Z Drive.",
+      "group": "Filesystem"
+    },
+    "echo": {
+      "syn": "Print text, or write/append to a Z Drive file with redirection.",
+      "group": "Filesystem"
+    },
+    "grep": {
+      "syn": "Filter file lines matching a case-insensitive regex pattern.",
+      "group": "Filesystem"
+    },
+    "df": {
+      "syn": "Show Z Drive (LabDrive) quota: used, free, and max.",
+      "group": "Z Drive"
+    },
+    "zquota": {
+      "syn": "Show Z Drive (LabDrive) quota: used, free, and max.",
+      "group": "Z Drive",
+      "primary": "df"
+    },
+    "quota": {
+      "syn": "Show Z Drive (LabDrive) quota: used, free, and max.",
+      "group": "Z Drive",
+      "primary": "df"
+    },
+    "zshare": {
+      "syn": "Share a Z Drive file into the Community pool.",
+      "group": "Z Drive"
+    },
+    "zunshare": {
+      "syn": "Remove a file from the Community share pool.",
+      "group": "Z Drive"
+    },
+    "ip": {
+      "syn": "Show fictional LLC interface addresses, links, or routes.",
+      "group": "Networks"
+    },
+    "ifconfig": {
+      "syn": "Friendly alias for the fictional address dump (`ip a`).",
+      "group": "Networks"
+    },
+    "iwconfig": {
+      "syn": "Show wireless (and non-wireless) interface status.",
+      "group": "Networks"
+    },
+    "iw": {
+      "syn": "List wifi phy / interface info (nl80211-flavored fiction).",
+      "group": "Networks"
+    },
+    "labcrack-ng-airmon": {
+      "syn": "Put the fictional Laden USB Wi‑Fi dongle into monitor mode.",
+      "group": "Networks"
+    },
+    "airmon-ng": {
+      "syn": "Put the fictional Laden USB Wi‑Fi dongle into monitor mode.",
+      "group": "Networks",
+      "primary": "labcrack-ng-airmon"
+    },
+    "labmon": {
+      "syn": "Put the fictional Laden USB Wi‑Fi dongle into monitor mode.",
+      "group": "Networks",
+      "primary": "labcrack-ng-airmon"
+    },
+    "labcrack-ng-airodump": {
+      "syn": "Scan nearby fictional APs (requires monitor mode).",
+      "group": "Networks"
+    },
+    "airodump-ng": {
+      "syn": "Scan nearby fictional APs (requires monitor mode).",
+      "group": "Networks",
+      "primary": "labcrack-ng-airodump"
+    },
+    "labdump": {
+      "syn": "Scan nearby fictional APs (requires monitor mode).",
+      "group": "Networks",
+      "primary": "labcrack-ng-airodump"
+    },
+    "labcrack-ng": {
+      "syn": "Educational WPA/WPA2 PSK cracker against demo .cap files.",
+      "group": "Networks"
+    },
+    "aircrack-ng": {
+      "syn": "Educational WPA/WPA2 PSK cracker against demo .cap files.",
+      "group": "Networks",
+      "primary": "labcrack-ng"
+    },
+    "lmap": {
+      "syn": "Laden Mapper — educational nmap-like scanner for fictional LLC nets only.",
+      "group": "Scanners"
+    },
+    "nmap": {
+      "syn": "Laden Mapper — educational nmap-like scanner for fictional LLC nets only.",
+      "group": "Scanners",
+      "primary": "lmap"
+    },
+    "mzfconsole": {
+      "syn": "Laden Metasploit-style framework REPL for fictional lab nets.",
+      "group": "Scanners"
+    },
+    "mzf": {
+      "syn": "Laden Metasploit-style framework REPL for fictional lab nets.",
+      "group": "Scanners",
+      "primary": "mzfconsole"
+    },
+    "msfconsole": {
+      "syn": "Laden Metasploit-style framework REPL for fictional lab nets.",
+      "group": "Scanners",
+      "primary": "mzfconsole"
+    },
+    "curl": {
+      "syn": "Alias of curl — same GET helper and scope lock.",
+      "group": "Helpers",
+      "primary": "wget"
+    },
+    "wget": {
+      "syn": "Alias of curl — same GET helper and scope lock.",
+      "group": "Helpers"
+    },
+    "base64": {
+      "syn": "Encode or decode Base64 from a string or file.",
+      "group": "Helpers"
+    },
+    "rot13": {
+      "syn": "Apply ROT13 to a string or file contents.",
+      "group": "Helpers"
+    },
+    "xxd": {
+      "syn": "Hex-dump a string or file (16-byte rows with ASCII gutter).",
+      "group": "Helpers"
+    },
+    "jwt": {
+      "syn": "Decode a JWT header/payload (no signature verify) from token or file.",
+      "group": "Helpers"
+    },
+    "hashid": {
+      "syn": "Guess common hash algorithm families from a digest string.",
+      "group": "Helpers"
+    },
+    "md5": {
+      "syn": "Compute MD5 of a string or file contents.",
+      "group": "Helpers"
+    },
+    "sha1": {
+      "syn": "Compute SHA-1 of a string or file contents.",
+      "group": "Helpers"
+    },
+    "sha256": {
+      "syn": "Compute SHA-256 of a string or file contents.",
+      "group": "Helpers"
+    },
+    "labs": {
+      "syn": "List lounge challenges (difficulty, points, slug, title).",
+      "group": "Helpers"
+    },
+    "open": {
+      "syn": "Navigate the browser to a lab room by slug.",
+      "group": "Helpers"
+    },
+    "hint": {
+      "syn": "Print the current lab hint, or a general LLC challenge cheat-sheet.",
+      "group": "Helpers"
+    },
+    "clear": {
+      "syn": "Clear the LLC console screen.",
+      "group": "Session"
+    },
+    "whoami": {
+      "syn": "Print the current LLC username.",
+      "group": "Session"
+    },
+    "id": {
+      "syn": "Print a demo uid/gid line for the current operator.",
+      "group": "Session"
+    },
+    "uname": {
+      "syn": "Print the fictional LLC kernel banner.",
+      "group": "Session"
+    },
+    "help": {
+      "syn": "Print the LLC command overview (filesystem, Z Drive, nets, helpers, session).",
+      "group": "Session"
+    },
+    "?": {
+      "syn": "Print the LLC command overview (filesystem, Z Drive, nets, helpers, session).",
+      "group": "Session",
+      "primary": "help"
+    },
+    "manuals": {
+      "syn": "Open or list the LLC manuals collection; man &lt;tool&gt; prints a short synopsis + URL.",
+      "group": "Session"
+    },
+    "man": {
+      "syn": "Open or list the LLC manuals collection; man &lt;tool&gt; prints a short synopsis + URL.",
+      "group": "Session",
+      "primary": "manuals"
+    }
+  }
+}

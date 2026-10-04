@@ -1,0 +1,19 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><title>Echo lab</title>
+<style>body{font-family:monospace;background:#05070a;color:#e6f1ff;padding:2rem}input{width:min(480px,90%);padding:.6rem;background:#0c1017;border:1px solid #1a2332;color:#e6f1ff}#out{margin-top:1rem;padding:1rem;border:1px solid #1a2332;border-radius:8px;min-height:3rem}</style></head>
+<body>
+<h1>Reflection lab</h1>
+<p>Echo is intentionally unsafe for teaching XSS class bugs. Stay on laden.no.</p>
+<input id=i placeholder="payload"><button onclick="go()">Echo</button>
+<div id=out></div>
+<script>
+function go(){
+  const v=document.getElementById('i').value;
+  const out=document.getElementById('out');
+  out.innerHTML=v;
+  if(/<script/i.test(v)&&/alert/i.test(v)){
+    out.innerHTML+='<p style=color:#00ff9d>flag: laden{reflect_then_report}</p>';
+  }
+}
+</script>
+<script src="/assets/llc.js" defer></script>
+</body></html>

@@ -1,0 +1,41 @@
+/* Full-page LLC session */
+html, body.term-page {
+  margin: 0; padding: 0;
+  background: #0b0c0e;
+  min-height: 100%;
+  color: #c8d6e5;
+}
+body.term-page .nav-inner { padding-left: 1rem !important; }
+.term-topnav {
+  display: flex; align-items: center; gap: 1rem;
+  padding: .55rem 1rem;
+  background: #12141a;
+  border-bottom: 1px solid rgba(0,255,157,.25);
+  position: sticky; top: 0; z-index: 50;
+}
+.term-topnav .brand {
+  display: inline-flex; align-items: center; gap: .5rem;
+  color: #e6f1ff; text-decoration: none;
+  font-family: Orbitron, system-ui, sans-serif; font-size: .85rem;
+}
+.term-topnav .brand-logo { border-radius: 6px; }
+.term-badge {
+  font-size: .72rem; color: #00ff9d;
+  border: 1px solid rgba(0,255,157,.35);
+  padding: .15rem .5rem; border-radius: 999px;
+}
+.term-topnav-links {
+  margin-left: auto; display: flex; gap: .85rem;
+  font-size: .78rem;
+}
+.term-topnav-links a { color: #8b9bb4; text-decoration: none; }
+.term-topnav-links a:hover { color: #00e5ff; }
+
+body.term-page.llc-fullpage #llc-drawer {
+  min-height: calc(100vh - 48px);
+}
+body.term-page #llc-screen {
+  min-height: calc(100vh - 200px);
+}
+/* hide site-wide LLC toggle padding on full terminal */
+body.term-page .nav-inner { padding-left: inherit !important; }

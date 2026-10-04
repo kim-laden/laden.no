@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLZ — Lab Lounge · Laden Lab'z</title>
+  <meta name="description" content="Lab Lounge — Hack + Code chapters. Pick a station, hunt in-scope, earn XP &amp; LLT.">
+  <link rel="stylesheet" href="/labs/assets/styles.css?v=cta1">
+  <link rel="stylesheet" href="/labs/assets/lounge-v11.css?v=cta1">
+  <script src="/assets/i18n.js"></script>
+  <script src="/assets/i18n-content.js"></script>
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/js/soundcloud-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="lab-lounge">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz9" alt="Laden Lab'z" width="64" height="64">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+      <a href="/messages/" id="nav-messages"><span data-i18n="nav.messages">Messages</span></a>
+    </nav>
+    <div class="nav-cta">
+      <div class="nav-cart">
+        <button type="button" class="btn-cart" id="cart-btn" aria-label="Cart" data-i18n-aria="nav.cart"><span data-i18n="nav.cart">Cart</span> <span class="cart-count" id="cart-count">0 NOK</span></button>
+        <div class="cart-pop" id="cart-pop">
+          <div class="cart-items" id="cart-items"></div>
+          <div class="cart-foot"><span class="muted"><span data-i18n="nav.total">Total</span></span><strong class="price" id="cart-total">0 NOK</strong></div>
+          <div class="cart-actions">
+            <button class="btn btn-primary" type="button" id="checkout-btn"><span data-i18n="nav.checkout">Checkout</span></button>
+            <button class="btn btn-ghost" type="button" id="clear-cart"><span data-i18n="nav.clear">Clear</span></button>
+          </div>
+        </div>
+      </div>
+      <a class="btn btn-cyan lounge-hint" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap" style="padding-top:1rem"><div data-llt-ad="compact"></div></div>
+
+<main class="wrap dash on" id="dash" style="display:block">
+  <div class="ambient-strip" aria-label="Lounge status">
+    <div class="ambient-item"><span class="pulse"></span> <span id="ambient-ops">open board · browse free</span></div>
+    <div class="ambient-item mono" id="ambient-clock">lounge · v1.1</div>
+    <div class="ambient-item"><span class="dot cyan"></span> 48 stations</div>
+    <div class="ambient-item"><span class="dot amber"></span> scope first · always</div>
+  </div>
+
+  <div class="lounge-hero">
+    <div class="panel terminal lounge-hero-main">
+      <div class="eyebrow"><span class="pulse"></span> LLZ · Laden Lab'z · authorized minds only</div>
+      <h1 class="lounge-title">Lab <em>Lounge</em> <span class="version-chip">v1.1 · Code <span class="version-divider" aria-hidden="true">⚡</span> Hack</span></h1>
+      <p class="lounge-greet" id="welcome">Browse all stations — login when a hack room asks for a badge</p>
+      <p class="lounge-lede">Two chapters: <strong style="color:var(--green)">Hack</strong> (live pentest rooms) and <strong style="color:var(--cyan)">Code</strong> (educational benches). Filter to your liking.</p>
+      <div class="stats">
+        <div class="stat"><b id="stat-total">48</b><span>Stations</span></div>
+        <div class="stat"><b id="stat-hack">24</b><span>Hack</span></div>
+        <div class="stat"><b id="stat-code">24</b><span>Code</span></div>
+        <div class="stat"><b id="stat-solved">0</b><span>Local clears</span></div>
+      </div>
+    </div>
+    <div class="panel lounge-feed">
+      <h3>Live wire</h3>
+      <div class="feed" id="activity-feed">
+        <div><strong>Chapter filter</strong><small>All · Hack · Code above the board</small></div>
+        <div><strong>Hack cards</strong><small>Open live rooms at /labs/&lt;slug&gt;/</small></div>
+        <div><strong>Code cards</strong><small>Benches under /labs/v1.1/code/</small></div>
+        <div><strong>Flags</strong><small>Hack via API · Code stays client-side</small></div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="panel zguide-feature" aria-label="Z Guide — the LLZ bible">
+    <div class="zguide-feature-inner">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> LLZ · the bible</div>
+        <h2 class="zguide-feature-title">Z Guide</h2>
+        <p class="muted zguide-feature-blurb">The Laden Lab'z handbook — alphabet soup, stations, LLC, Gear, Oracle, Community, Account, mobile chrome, ethics. Cooked down, not dumped.</p>
+      </div>
+      <div class="zguide-feature-actions">
+        <a class="btn btn-primary" href="/labs/z-guide/">Open the Z Guide →</a>
+        <a class="btn btn-ghost" href="/labs/z-guide/#z-toc">Jump to TOC</a>
+      </div>
+    </div>
+  </aside>
+
+
+  <div class="layout">
+    <aside class="side panel lounge-side">
+      <h3>Chapters</h3>
+      <div class="chapter-knobs" id="chapter-knobs">
+        <button type="button" class="knob active" data-chapter="all">All chapters</button>
+        <button type="button" class="knob" data-chapter="hack">Hack</button>
+        <button type="button" class="knob" data-chapter="code">Code</button>
+      </div>
+      <h3>Track knobs</h3>
+      <button type="button" class="knob active" data-track="all">All tracks</button>
+      <div id="track-list"></div>
+      <h3 style="margin-top:1rem">Links</h3>
+      <a class="booth-link" href="/labs/z-guide/">Z Guide</a>
+      <a class="booth-link" href="/labs/manuals/">Manuals</a>
+      <a class="booth-link" href="/account/">Account</a>
+    </aside>
+
+    <section class="lounge-board">
+      <div id="view-labs">
+        <div class="board-head">
+          <div>
+            <h3 class="board-title">Station board <span class="version-chip">v1.1</span></h3>
+            <p class="muted board-sub">48 stations · 24 hack · 24 code · dial chapter + track · <span class="mono">LLZ{…}</span></p>
+          </div>
+          <label class="lounge-search">
+            <span class="sr-only">Search stations</span>
+            <input id="chal-search" placeholder="Scan stations…" autocomplete="off">
+          </label>
+        </div>
+        <div class="chal-grid" id="chal-grid"></div>
+      </div>
+    <aside class="panel manuals-feature" aria-label="LLC Manuals">
+      <div class="manuals-feature-inner">
+        <div>
+          <div class="eyebrow"><span class="pulse"></span> LLC · console docs</div>
+          <h2 class="manuals-feature-title">LLC Manuals</h2>
+          <p class="muted manuals-feature-blurb">One guide per console tool — filesystem, Z Drive, fictional nets, scanners &amp; helpers. Type <code class="mono">manuals</code> in LLC.</p>
+        </div>
+        <div class="manuals-feature-actions">
+          <a class="btn btn-primary" href="/labs/manuals/">Browse manuals →</a>
+          <a class="btn btn-ghost" href="/labs/?llc=1">Open LLC</a>
+        </div>
+      </div>
+    </aside>
+    </section>
+
+
+    <aside class="rail panel lounge-rail">
+      <h3>Operator tips</h3>
+      <div class="feed" style="max-height:none">
+        <div><strong>Scope first</strong><small>Written permission beats curiosity.</small></div>
+        <div><strong>Hack chapter</strong><small>Live API rooms — badge at the door if needed.</small></div>
+        <div><strong>Code chapter</strong><small>Learn-in-process benches; local flags.</small></div>
+        <div><strong>PoC not pwn</strong><small>Stop at proof. Don't pivot without approval.</small></div>
+        <div><strong>Report clean</strong><small>Steps, impact, fix — earn trust.</small></div>
+      </div>
+      <a class="btn btn-cyan lounge-hint" id="caleb-btn-2" data-caleb style="width:100%;margin-top:.8rem" href="#caleb-labs">Ask Caleb</a>
+    </aside>
+  </div>
+</main>
+
+<footer class="wrap footer lounge-footer">
+  <div>
+    <div class="brand-lockup" style="margin-bottom:.55rem">
+      <img class="footer-logo" src="/assets/products/logo.jpg?v=llz9" alt="Laden Labs">
+      <div>
+        <strong style="color:var(--text)">Lab Lounge</strong>
+        <div class="muted" style="font-size:.8rem"><span data-i18n="footer.tagline">Oslo · Authorized security work only</span></div>
+      </div>
+    </div>
+    Stations · flags <span class="mono">LLZ{…}</span>
+  </div>
+  <div class="live-bar"></div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="/assets/featured.js"></script>
+<script src="/labs/assets/app-v11.js?v=cta1"></script>
+<script src="/assets/llt.js"></script>
+<link rel="stylesheet" href="/assets/avatars/avatars.css">
+<script src="/assets/avatars/avatars.js"></script>
+<script src="/assets/labcard.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/assets/caleb.js?v=20261004-caleb16"></script>
+<script src="/assets/llc.js" defer></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTTP POSTs only — Tips · Laden Labs</title>
+  <meta name="description" content="Display filter: http.request.method == &quot;POST&quot;. Combine with ip.addr== your lab target.">
+  <link rel="stylesheet" href="/assets/styles.css?v=cta1">
+<script src="/assets/i18n.js"></script>
+<script src="/assets/i18n-content.js"></script>
+  <link rel="stylesheet" href="/labs/assets/room.css">
+  <link rel="stylesheet" href="/tips/assets/tip.css">
+  <link rel="canonical" href="https://laden.no/tips/wireshark-http-posts/">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/llz/assets/llz-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="tip-page">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap room-main">
+
+  <nav class="room-crumb" aria-label="Breadcrumb">
+    <a href="/tips/"><span data-i18n="nav.tips">Tips</span></a>
+    <span class="sep">/</span>
+    <span class="mono">wireshark-http-posts</span>
+  </nav>
+
+  <section class="room-hero panel tip-hero">
+    <div class="room-hero-top">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> Operator tip · wireshark</div>
+        <h1>HTTP POSTs only</h1>
+        <p class="muted">Display filter: http.request.method == &quot;POST&quot;. Combine with ip.addr== your lab target.</p>
+      </div>
+      <div class="room-tags">
+        <span class="tag easy">easy</span>
+        <span class="tag">pcap</span><span class="tag">wireshark</span><span class="tag">filters</span>
+      </div>
+    </div>
+    <div class="room-meta mono">/wireshark/ · /tips/wireshark-http-posts/</div>
+  </section>
+
+  <section class="room-learn panel tip-body">
+    <h2>Guide</h2>
+    
+<p>A raw capture is a firehose. Display filters turn it into a story about the requests that usually carry credentials, forms, and API mutations.</p>
+<h3>Why it matters</h3>
+<p>Most interesting lab traffic is POST (or PUT/PATCH). Filtering to POSTs — and scoping to your target IP — cuts noise from CDN chatter, images, and keep-alives so you can find the auth form or the JSON body that matters.</p>
+<h3>How-to</h3>
+<pre class="mono tip-pre">http.request.method == "POST"
+http.request.method == "POST" && ip.addr == 10.10.10.50
+http.request.uri contains "login"</pre>
+<ul>
+  <li>Capture on the right interface (VPN/tun vs eth).</li>
+  <li>Remember HTTPS payloads stay opaque without keys — use this on cleartext lab HTTP or decrypt when you own the certs.</li>
+  <li>Export selected packets → Follow HTTP stream for the full conversation.</li>
+</ul>
+
+  </section>
+
+  <section class="panel tip-links">
+    <h2>Related labs</h2>
+    <div class="tip-link-row"><a class="tip-related" href="/labs/cookie-jar/">Cookie Jar</a><a class="tip-related" href="/labs/password-reset-poison/">Password Reset Poison</a><a class="tip-related" href="/labs/js-secrets/">JS Secrets</a></div>
+    <h2 style="margin-top:1rem">Oracle queries</h2>
+    <div class="tip-link-row"><a class="tip-oracle" href="/oracle/?q=wireshark%20http.request.method%20POST">wireshark http.request.method POST</a><a class="tip-oracle" href="/oracle/?q=wireshark%20display%20filter%20cheatsheet">wireshark display filter cheatsheet</a><a class="tip-oracle" href="/oracle/?q=pcap%20HTTP%20analysis%20lab">pcap HTTP analysis lab</a></div>
+    <div class="tip-actions">
+      <button type="button" class="btn btn-cyan" id="tip-caleb" data-ask="Give me useful Wireshark filters for HTTP lab traffic.">Ask Caleb</button>
+      <a class="btn btn-ghost" href="/tips/">All tips</a>
+      <a class="btn btn-ghost" href="/community/#tips">Community tips tab</a>
+      <a class="btn btn-primary" href="/oracle/">Open Oracle</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap footer">
+  <div>
+    <strong style="color:var(--text)">Laden Labs</strong>
+    <div class="muted" style="font-size:.8rem">Oslo · Authorized security work only · operator tips</div>
+  </div>
+  <div class="live-bar">
+    <span>Tips · ethical only</span>
+    <span>·</span>
+    <span>demo</span>
+  </div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+
+<script src="/assets/llt.js"></script>
+<script src="/assets/caleb.js?v=20261004-caleb16"></script>
+<link rel="stylesheet" href="/assets/avatars/avatars.css">
+<script src="/assets/avatars/avatars.js"></script>
+<script src="/assets/labcard.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/tips/assets/tip.js"></script>
+<script src="/assets/llc.js" defer></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

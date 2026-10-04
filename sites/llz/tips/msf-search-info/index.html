@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>search + info before exploit — Tips · Laden Labs</title>
+  <meta name="description" content="search type:exploit apache then info / show options. Set RHOSTS, check required options, then run. Labs love patience.">
+  <link rel="stylesheet" href="/assets/styles.css?v=cta1">
+<script src="/assets/i18n.js"></script>
+<script src="/assets/i18n-content.js"></script>
+  <link rel="stylesheet" href="/labs/assets/room.css">
+  <link rel="stylesheet" href="/tips/assets/tip.css">
+  <link rel="canonical" href="https://laden.no/tips/msf-search-info/">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/llz/assets/llz-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="tip-page">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap room-main">
+
+  <nav class="room-crumb" aria-label="Breadcrumb">
+    <a href="/tips/"><span data-i18n="nav.tips">Tips</span></a>
+    <span class="sep">/</span>
+    <span class="mono">msf-search-info</span>
+  </nav>
+
+  <section class="room-hero panel tip-hero">
+    <div class="room-hero-top">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> Operator tip · msfconsole</div>
+        <h1>search + info before exploit</h1>
+        <p class="muted">search type:exploit apache then info / show options. Set RHOSTS, check required options, then run. Labs love patience.</p>
+      </div>
+      <div class="room-tags">
+        <span class="tag med">med</span>
+        <span class="tag">metasploit</span><span class="tag">exploit</span><span class="tag">discipline</span>
+      </div>
+    </div>
+    <div class="room-meta mono">/msfconsole/ · /tips/msf-search-info/</div>
+  </section>
+
+  <section class="room-learn panel tip-body">
+    <h2>Guide</h2>
+    
+<p>Metasploit is a power tool. Blind <code>run</code> on the first search hit is how you crash a shared lab service or miss that the module needs a specific <code>TARGET</code> ID.</p>
+<h3>Why it matters</h3>
+<p>The professional loop is search → info → show options → set → check → run. Reading <code>info</code> tells you reliability, required options, and whether the module even matches your version.</p>
+<h3>How-to</h3>
+<pre class="mono tip-pre">search type:exploit apache
+use exploit/…/whatever
+info
+show options
+set RHOSTS 10.10.10.50
+set RPORT 8080
+check          # when supported
+run</pre>
+<ul>
+  <li>Prefer modules marked excellent/great when learning.</li>
+  <li>Never spray exploits across a range you do not own.</li>
+  <li>Log the module path + options in your notes for the report.</li>
+</ul>
+
+  </section>
+
+  <section class="panel tip-links">
+    <h2>Related labs</h2>
+    <div class="tip-link-row"><a class="tip-related" href="/labs/scope-first/">Scope First</a><a class="tip-related" href="/labs/cmd-metachar/">Cmd Metachar</a><a class="tip-related" href="/labs/report-quality/">Report Quality</a></div>
+    <h2 style="margin-top:1rem">Oracle queries</h2>
+    <div class="tip-link-row"><a class="tip-oracle" href="/oracle/?q=metasploit%20search%20info%20show%20options">metasploit search info show options</a><a class="tip-oracle" href="/oracle/?q=msfconsole%20workflow">msfconsole workflow</a><a class="tip-oracle" href="/oracle/?q=metasploit%20check%20method">metasploit check method</a></div>
+    <div class="tip-actions">
+      <button type="button" class="btn btn-cyan" id="tip-caleb" data-ask="Walk me through a safe msfconsole workflow before running an exploit.">Ask Caleb</button>
+      <a class="btn btn-ghost" href="/tips/">All tips</a>
+      <a class="btn btn-ghost" href="/community/#tips">Community tips tab</a>
+      <a class="btn btn-primary" href="/oracle/">Open Oracle</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap footer">
+  <div>
+    <strong style="color:var(--text)">Laden Labs</strong>
+    <div class="muted" style="font-size:.8rem">Oslo · Authorized security work only · operator tips</div>
+  </div>
+  <div class="live-bar">
+    <span>Tips · ethical only</span>
+    <span>·</span>
+    <span>demo</span>
+  </div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+
+<script src="/assets/llt.js"></script>
+<script src="/assets/caleb.js?v=20261004-caleb16"></script>
+<link rel="stylesheet" href="/assets/avatars/avatars.css">
+<script src="/assets/avatars/avatars.js"></script>
+<script src="/assets/labcard.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/tips/assets/tip.js"></script>
+<script src="/assets/llc.js" defer></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

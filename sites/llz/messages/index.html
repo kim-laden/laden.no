@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-base="..">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messages — Laden Labs</title>
+  <meta name="description" content="Direct messages — member DMs, LLA warnings, and LLT grants.">
+  <link rel="stylesheet" href="/assets/styles.css?v=cta1">
+<script src="/assets/i18n.js"></script>
+  <link rel="stylesheet" href="messages.css?v=sp2">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/llz/assets/llz-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="genre-messages">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+      <a class="active" href="/messages/" id="nav-messages"><span data-i18n="nav.messages">Messages</span></a>
+    </nav>
+    <div class="nav-cta">
+      <div class="nav-cart">
+        <button type="button" class="btn-cart" id="cart-btn" aria-label="Cart" data-i18n-aria="nav.cart"><span data-i18n="nav.cart">Cart</span> <span class="cart-count" id="cart-count">0 NOK</span></button>
+        <div class="cart-pop" id="cart-pop">
+          <div class="cart-items" id="cart-items"></div>
+          <div class="cart-foot"><span class="muted"><span data-i18n="nav.total">Total</span></span><strong class="price" id="cart-total">0 NOK</strong></div>
+          <div class="cart-actions">
+            <button class="btn btn-primary" type="button" onclick="checkoutDemo()"><span data-i18n="nav.checkout">Checkout</span></button>
+            <button class="btn btn-ghost" type="button" onclick="clearCart()"><span data-i18n="nav.clear">Clear</span></button>
+          </div>
+        </div>
+      </div>
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap msg-main">
+  <div id="msg-gate" class="msg-gate">
+    <div class="msg-gate-card">
+      <div class="eyebrow"><span class="pulse"></span> Direct channel</div>
+      <h1>Messages</h1>
+      <p class="muted"><span data-i18n="msg.gate">Login to read inbox, open threads, and DM any member.</span></p>
+      <a class="btn btn-primary" href="/account/">Go to account login</a>
+    </div>
+  </div>
+
+  <div id="msg-app" class="msg-app hidden">
+    <header class="msg-hero">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> DM · LLA signals · LLT grants</div>
+        <h1>Messages</h1>
+        <p class="muted">1:1 threads with members. Admin warnings and grants land here too.</p>
+      </div>
+      <button type="button" class="btn btn-cyan" id="msg-compose-toggle">New message</button>
+    </header>
+
+    <form id="msg-compose" class="msg-compose hidden">
+      <label class="mono tiny" for="msg-to">To (username)</label>
+      <input id="msg-to" name="to" maxlength="64" autocomplete="off" placeholder="username" list="msg-user-list" required>
+      <datalist id="msg-user-list"></datalist>
+      <label class="mono tiny" for="msg-body">Body</label>
+      <textarea id="msg-body" name="body" maxlength="2000" rows="3" placeholder="Say something…" required></textarea>
+      <div class="row">
+        <button class="btn btn-primary" type="submit">Send</button>
+        <button class="btn btn-ghost" type="button" id="msg-compose-cancel">Cancel</button>
+        <span class="mono tiny" id="msg-compose-status"></span>
+      </div>
+    </form>
+
+    <div class="msg-layout">
+      <aside class="msg-inbox" aria-label="Inbox">
+        <div class="msg-inbox-h">
+          <span>Inbox</span>
+          <button type="button" class="btn btn-ghost msg-tiny" id="msg-refresh">↻</button>
+        </div>
+        <div id="msg-thread-list" class="msg-thread-list">
+          <div class="muted mono" style="padding:.75rem">Loading…</div>
+        </div>
+      </aside>
+      <section class="msg-thread" aria-label="Conversation">
+        <div id="msg-thread-empty" class="msg-empty">
+          <p class="muted">Select a thread or start a new message.</p>
+        </div>
+        <div id="msg-thread-view" class="msg-thread-view hidden">
+          <header class="msg-thread-h">
+            <div>
+              <b id="msg-peer-name">@…</b>
+              <span class="muted mono tiny" id="msg-peer-sub"></span>
+            </div>
+          </header>
+          <div id="msg-bubbles" class="msg-bubbles"></div>
+          <form id="msg-reply" class="msg-reply">
+            <textarea id="msg-reply-body" maxlength="2000" rows="2" placeholder="Reply…" required></textarea>
+            <button class="btn btn-primary" type="submit">Send</button>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<script src="/assets/app.js?v=cta1"></script>
+<script src="/assets/labcard.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="messages.js"></script>
+<script src="/assets/legal.js" defer></script>
+<script src="/assets/llc.js" defer></script>
+</body>
+</html>

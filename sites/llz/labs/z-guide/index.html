@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Z Guide — Laden Lab'z</title>
+  <meta name="description" content="The LLZ bible — warm hacker-lounge guide to everything on laden.no: Lounge, stations, LLC, Gear, Oracle, Community, Account, and more.">
+  <link rel="stylesheet" href="/labs/assets/styles.css?v=cta1">
+  <link rel="stylesheet" href="/labs/z-guide/z-guide.css">
+  <script src="/assets/i18n.js"></script>
+  <link rel="canonical" href="https://laden.no/labs/z-guide/">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/llz/assets/llz-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="lab-lounge zguide-page">
+<header class="nav">  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+      <a href="/messages/" id="nav-messages"><span data-i18n="nav.messages">Messages</span></a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div></header>
+
+<main class="wrap zguide-main">
+  <nav class="room-crumb zguide-crumb" aria-label="Breadcrumb">
+    <a href="/labs/">Lounge</a>
+    <span class="sep">/</span>
+    <span>Z Guide</span>
+  </nav>
+
+  <section class="panel terminal zguide-hero">
+    <div class="eyebrow"><span class="pulse"></span> LLZ · the bible</div>
+    <h1 class="lounge-title">Z <em>Guide</em></h1>
+    <p class="lounge-lede">Welcome to the Lab Lounge handbook. Alphabet soup decoded, booths mapped, console unlocked, ethics intact. Read what you need, skip what you know — and when in doubt, ask Caleb <em>after</em> you read the booth.</p>
+    <div class="zguide-hero-actions">
+      <a class="btn btn-primary" href="#z-toc">Jump to TOC</a>
+      <a class="btn btn-cyan" href="/labs/">Back to Lounge</a>
+      <span class="zguide-badge">Authorized minds only</span>
+    </div>
+  </section>
+
+  <div class="zguide-layout">
+    <aside class="panel zguide-toc" id="z-toc" aria-label="Table of contents">
+      <h2>Contents</h2>
+      <nav>
+        <a href="#alphabet">Alphabet soup</a>
+        <a href="#getting-in">Getting in</a>
+        <a href="#homepage">Homepage</a>
+        <a href="#lounge">Lab Lounge</a>
+        <a href="#stations">24 stations</a>
+        <a href="#workflow">How to work a station</a>
+        <a href="#llc">LLC console</a>
+        <a href="#manuals">Manuals</a>
+        <a href="#community">Community</a>
+        <a href="#tips">Tips</a>
+        <a href="#oracle">Oracle (LLO)</a>
+        <a href="#gear">Gear (LLG)</a>
+        <a href="#messages">Messages</a>
+        <a href="#forum">Forum</a>
+        <a href="#account">Account</a>
+        <a href="#lld">LLD Developer</a>
+        <a href="#lla">LLA Admin</a>
+        <a href="#challenges">Challenges page</a>
+        <a href="#mobile">Mobile</a>
+        <a href="#caleb">Caleb</a>
+        <a href="#i18n">Language (EN/NO)</a>
+        <a href="#faq">Workarounds / FAQ</a>
+        <a href="#ethics">Ethics</a>
+      </nav>
+    </aside>
+
+    <div class="zguide-body">
+
+      <section class="panel zguide-sec" id="alphabet">
+        <h2><span class="sec-num">01</span>Alphabet soup</h2>
+        <p>We name things like a LAN party that got a business license. Here’s the decoder ring:</p>
+        <dl class="zguide-abbr">
+          <dt>LLZ</dt><dd><strong>LabZocial</strong> — the community brand — and the flag format <code>LLZ{…}</code> you submit at stations.</dd>
+          <dt>LLC</dt><dd><strong>Laden Lab Console</strong> — your private browser workstation (backtick to open).</dd>
+          <dt>LLO</dt><dd><strong>Oracle</strong> — GitHub-backed knowledge search at <a href="/oracle/">/oracle/</a>.</dd>
+          <dt>LLG</dt><dd><strong>Gear</strong> — merch + token desk at <a href="/gear/">/gear/</a> (alias <a href="/store/">/store/</a>).</dd>
+          <dt>LLT</dt><dd><strong>Laden Lab Tokens</strong> — 1 LLT = 1 NOK (demo economy for hints, skins, weekly drop).</dd>
+          <dt>LLA</dt><dd><strong>Admin console</strong> at <a href="/lla/">/lla/</a> — operators with admin only.</dd>
+          <dt>LLD</dt><dd><strong>Developer</strong> opt-in — arcade &amp; sandbox toys at <a href="/lld/">/lld/</a> after you tick the box on Account.</dd>
+          <dt>LLN</dt><dd><strong>LabNewz</strong> — news tab inside Community.</dd>
+        </dl>
+        <p><strong>Lab Lounge</strong> is the member den at <a href="/labs/">/labs/</a>. <strong>Laden Lab'z</strong> is the brand. Legal entity: <strong>Laden AS</strong>, Org.nr. <code>937 285 833</code>, Oslo.</p>
+      </section>
+
+      <section class="panel zguide-sec" id="getting-in">
+        <h2><span class="sec-num">02</span>Getting in</h2>
+        <p>Create an account, log in, register, or reset a password at <a href="/account/">/account/</a>.</p>
+        <div class="zguide-callout warn">
+          Use <strong>https://laden.no</strong>. Plain HTTP login fails on purpose — TLS or bust.
+        </div>
+        <ul>
+          <li><strong>Lab ID card</strong> — desktop: hover Login / your name. Mobile: tap when logged in.</li>
+          <li><strong>Session</strong> — token lives in <code>localStorage</code>. Clear site data = logout vibes.</li>
+          <li><strong>Guests</strong> — browse public pages; play 3 free stations (see Lounge). Members get the full board, forum, DMs, Gear spends, and LabZocial posting.</li>
+        </ul>
+      </section>
+
+      <section class="panel zguide-sec" id="homepage">
+        <h2><span class="sec-num">03</span>Homepage</h2>
+        <p>Public front door at <a href="/">/</a>: brand story, free-challenges rotator, Cart in the nav, and a loud CTA into the Lounge. Peek, then badge up.</p>
+      </section>
+
+      <section class="panel zguide-sec" id="lounge">
+        <h2><span class="sec-num">04</span>Lab Lounge <code>/labs/</code></h2>
+        <p>The member den. Soft neon, station board, track knobs, search, and views for forum / gear / leaderboard. Ambient strip keeps the room feeling live. Live wire shows recent ops. Manuals and (hello) this Z Guide get featured panels. Merch strip teases Gear. Booth rail jumps to Manuals + Z Guide. Ask Caleb when the trail goes cold.</p>
+        <p>Flags look like <code>LLZ{…}</code>. Guests can still play three free stations from <code>featured.js</code>:</p>
+        <ul>
+          <li><code>scope-first</code> — Scope First</li>
+          <li><code>robots-redux</code> — Robots Redux</li>
+          <li><code>reflect-101</code> — Reflection 101</li>
+        </ul>
+        <p>Everything else wants a badge. Claim one at Account, then come back for the full board.</p>
+      </section>
+
+      <section class="panel zguide-sec" id="stations">
+        <h2><span class="sec-num">05</span>All 24 challenge stations</h2>
+        <p>Grouped by track. Paths are <code>/labs/&lt;slug&gt;/</code>. Difficulty · points · one-line learn.</p>
+
+        <div class="zguide-track">gateway</div>
+        <div class="zguide-table-wrap"><table class="zguide-table">
+          <thead><tr><th>Slug</th><th>Title</th><th>Diff</th><th>Pts</th><th>You’ll learn</th></tr></thead>
+          <tbody>
+            <tr><td class="slug"><a href="/labs/scope-first/">scope-first</a></td><td>Scope First</td><td class="diff-easy">easy</td><td>25</td><td>Written permission beats curiosity — always start with scope.</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="zguide-track">recon</div>
+        <div class="zguide-table-wrap"><table class="zguide-table">
+          <thead><tr><th>Slug</th><th>Title</th><th>Diff</th><th>Pts</th><th>You’ll learn</th></tr></thead>
+          <tbody>
+            <tr><td class="slug"><a href="/labs/banner-grab-lite/">banner-grab-lite</a></td><td>Banner Whisper</td><td class="diff-easy">easy</td><td>40</td><td>Service banners leak version intel — listen before you poke.</td></tr>
+            <tr><td class="slug"><a href="/labs/robots-redux/">robots-redux</a></td><td>Robots Redux</td><td class="diff-easy">easy</td><td>50</td><td><code>robots.txt</code> is a map, not a wall.</td></tr>
+            <tr><td class="slug"><a href="/labs/hidden-dir/">hidden-dir</a></td><td>Hidden Directory</td><td class="diff-easy">easy</td><td>60</td><td>Directory discovery finds what nav forgot.</td></tr>
+            <tr><td class="slug"><a href="/labs/js-secrets/">js-secrets</a></td><td>JS Secret Sprawl</td><td class="diff-med">med</td><td>105</td><td>Client-side JS loves leaking keys — rotate what you find.</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="zguide-track">web</div>
+        <div class="zguide-table-wrap"><table class="zguide-table">
+          <thead><tr><th>Slug</th><th>Title</th><th>Diff</th><th>Pts</th><th>You’ll learn</th></tr></thead>
+          <tbody>
+            <tr><td class="slug"><a href="/labs/reflect-101/">reflect-101</a></td><td>Reflection 101</td><td class="diff-easy">easy</td><td>70</td><td>Reflected XSS basics — input comes back mean.</td></tr>
+            <tr><td class="slug"><a href="/labs/cookie-jar/">cookie-jar</a></td><td>Cookie Jar</td><td class="diff-easy">easy</td><td>55</td><td>Cookie flags &amp; trust boundaries matter.</td></tr>
+            <tr><td class="slug"><a href="/labs/csp-bypass-talk/">csp-bypass-talk</a></td><td>CSP Conversations</td><td class="diff-hard">hard</td><td>160</td><td>Content-Security-Policy is a dialogue, not a force field.</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="zguide-track">auth</div>
+        <div class="zguide-table-wrap"><table class="zguide-table">
+          <thead><tr><th>Slug</th><th>Title</th><th>Diff</th><th>Pts</th><th>You’ll learn</th></tr></thead>
+          <tbody>
+            <tr><td class="slug"><a href="/labs/jwt-none/">jwt-none</a></td><td>alg=none Nightmares</td><td class="diff-med">med</td><td>120</td><td>Never trust JWT <code>alg</code> from the client.</td></tr>
+            <tr><td class="slug"><a href="/labs/idor-desk/">idor-desk</a></td><td>IDOR Desk</td><td class="diff-med">med</td><td>110</td><td>Object IDs without authz checks = someone else’s desk.</td></tr>
+            <tr><td class="slug"><a href="/labs/password-reset-poison/">password-reset-poison</a></td><td>Host Header Trust</td><td class="diff-med">med</td><td>130</td><td>Host headers in reset links are poisonable.</td></tr>
+            <tr><td class="slug"><a href="/labs/rate-limit/">rate-limit</a></td><td>Rate Limit Reality</td><td class="diff-easy">easy</td><td>60</td><td>Throttles exist; bypasses teach why.</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="zguide-track">inject</div>
+        <div class="zguide-table-wrap"><table class="zguide-table">
+          <thead><tr><th>Slug</th><th>Title</th><th>Diff</th><th>Pts</th><th>You’ll learn</th></tr></thead>
+          <tbody>
+            <tr><td class="slug"><a href="/labs/sqli-logic/">sqli-logic</a></td><td>SQLi Logic Gate</td><td class="diff-med">med</td><td>140</td><td>Boolean / logic SQLi without fireworks.</td></tr>
+            <tr><td class="slug"><a href="/labs/cmd-metachar/">cmd-metachar</a></td><td>Metacharacters</td><td class="diff-med">med</td><td>125</td><td>Shell metacharacters turn “ping” into “oh no.”</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="zguide-track">crypto</div>
+        <div class="zguide-table-wrap"><table class="zguide-table">
+          <thead><tr><th>Slug</th><th>Title</th><th>Diff</th><th>Pts</th><th>You’ll learn</th></tr></thead>
+          <tbody>
+            <tr><td class="slug"><a href="/labs/b64-again/">b64-again</a></td><td>Encoding ≠ Encryption</td><td class="diff-easy">easy</td><td>50</td><td>Base64 is wrapping paper, not a vault.</td></tr>
+            <tr><td class="slug"><a href="/labs/rot-warm/">rot-warm</a></td><td>Caesar Warmup</td><td class="diff-easy">easy</td><td>45</td><td>ROT / Caesar — warm hands before harder crypto.</td></tr>
+            <tr><td class="slug"><a href="/labs/hash-id/">hash-id</a></td><td>Hash Identification</td><td class="diff-med">med</td><td>90</td><td>Name the digest before you crack the digest.</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="zguide-track">network</div>
+        <div class="zguide-table-wrap"><table class="zguide-table">
+          <thead><tr><th>Slug</th><th>Title</th><th>Diff</th><th>Pts</th><th>You’ll learn</th></tr></thead>
+          <tbody>
+            <tr><td class="slug"><a href="/labs/cors-wild/">cors-wild</a></td><td>CORS Wildcards</td><td class="diff-med">med</td><td>100</td><td>Wildcard CORS + credentials = bad party.</td></tr>
+            <tr><td class="slug"><a href="/labs/open-redirect/">open-redirect</a></td><td>Open Redirect</td><td class="diff-easy">easy</td><td>65</td><td>Unvalidated redirects phish with your domain’s trust.</td></tr>
+            <tr><td class="slug"><a href="/labs/tls-old/">tls-old</a></td><td>TLS Time Capsule</td><td class="diff-easy">easy</td><td>40</td><td>Old TLS / weak ciphers are museum pieces — find them.</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="zguide-track">cloud</div>
+        <div class="zguide-table-wrap"><table class="zguide-table">
+          <thead><tr><th>Slug</th><th>Title</th><th>Diff</th><th>Pts</th><th>You’ll learn</th></tr></thead>
+          <tbody>
+            <tr><td class="slug"><a href="/labs/ssrf-mind/">ssrf-mind</a></td><td>SSRF Mindset</td><td class="diff-hard">hard</td><td>180</td><td>Server-side fetches that trust user URLs go places.</td></tr>
+            <tr><td class="slug"><a href="/labs/path-traversal/">path-traversal</a></td><td>Traversal Taste</td><td class="diff-med">med</td><td>115</td><td><code>../</code> still works when paths aren’t normalized.</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="zguide-track">practice</div>
+        <div class="zguide-table-wrap"><table class="zguide-table">
+          <thead><tr><th>Slug</th><th>Title</th><th>Diff</th><th>Pts</th><th>You’ll learn</th></tr></thead>
+          <tbody>
+            <tr><td class="slug"><a href="/labs/report-quality/">report-quality</a></td><td>Report Like a Pro</td><td class="diff-easy">easy</td><td>35</td><td>Steps, impact, fix — reports that earn trust.</td></tr>
+            <tr><td class="slug"><a href="/labs/cvss-feel/">cvss-feel</a></td><td>CVSS Feel</td><td class="diff-med">med</td><td>80</td><td>Severity scoring that feels right, not theatrical.</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section class="panel zguide-sec" id="workflow">
+        <h2><span class="sec-num">06</span>How to work a station</h2>
+        <ol>
+          <li>Open a booth from the Lounge board (or <code>/labs/&lt;slug&gt;/</code>).</li>
+          <li>Read the brief — scope, goal, hints exist for a reason.</li>
+          <li>Hunt ethically inside the demo — don’t spray production, don’t pivot off-scope.</li>
+          <li>Submit the flag <code>LLZ{…}</code> for XP.</li>
+        </ol>
+        <p>These are teaching labs. PoC, not pwn. If you’re stuck, ask Caleb — after you’ve actually read the booth.</p>
+      </section>
+
+      <section class="panel zguide-sec" id="llc">
+        <h2><span class="sec-num">07</span>LLC console</h2>
+        <p>Your private workstation in the browser. Open it with:</p>
+        <ul>
+          <li><strong>Backtick</strong> <code>`</code> — works with Norwegian AltGr layouts too</li>
+          <li>Floating <code>llc$</code> control, or the bottom <strong>Console</strong> tab on mobile</li>
+          <li><a href="/labs/?llc=1">/labs/?llc=1</a> or <a href="/terminal/">/terminal/</a></li>
+        </ul>
+        <p>Prompt looks like <code>user@llc</code>. Home is <code>/z/labz/&lt;user&gt;</code> with Documents / Downloads. Sessions persist until you clear. Nets are <strong>fictional only</strong> (labnet <code>10.13.37.0/24</code> and friends) — never point scanners at the real internet.</p>
+        <h3>Command groups</h3>
+        <ul>
+          <li><strong>Filesystem</strong> — <code>pwd ls cd cat head tail tree find mkdir touch rm rmdir cp mv echo grep</code></li>
+          <li><strong>Z Drive</strong> — <code>df</code> / <code>zquota</code>, <code>zshare</code>, <code>zunshare</code></li>
+          <li><strong>Networks</strong> — <code>ip ifconfig iwconfig iw labcrack-ng*</code></li>
+          <li><strong>Scanners</strong> — <code>lmap</code>, <code>mzfconsole</code></li>
+          <li><strong>Helpers</strong> — <code>curl wget base64 rot13 xxd jwt hashid</code> (+ md5/sha*)</li>
+          <li><strong>Session</strong> — <code>help hint clear whoami id uname manuals</code></li>
+        </ul>
+        <p>Deep docs live at <a href="/labs/manuals/">/labs/manuals/</a>. In LLC, type <code>manuals</code> or <code>man &lt;tool&gt;</code>. Type <code>zguide</code> or <code>bible</code> for this page.</p>
+      </section>
+
+      <section class="panel zguide-sec" id="manuals">
+        <h2><span class="sec-num">08</span>Manuals</h2>
+        <p><a href="/labs/manuals/">/labs/manuals/</a> — one page per LLC tool, with filter chips (Filesystem, Z Drive, Networks, Scanners, Helpers, Session). Syntax matches the live console. Fiction-marked tools stay on lab nets.</p>
+      </section>
+
+      <section class="panel zguide-sec" id="community">
+        <h2><span class="sec-num">09</span>Community <code>/community/</code></h2>
+        <p>LLZ LabZocial feed, friends, and profiles at <code>/community/u/&lt;user&gt;/</code> and <code>/zocial/&lt;user&gt;/</code>. Tabs include <strong>LabNewz (LLN)</strong> and <strong>Tips</strong> (detail pages under <a href="/tips/">/tips/</a>). Guests can read; members post, react, and friend.</p>
+      </section>
+
+      <section class="panel zguide-sec" id="tips">
+        <h2><span class="sec-num">10</span>Tips (16)</h2>
+        <p>Short operator tips — tool workflows that keep labs honest. Path: <code>/tips/&lt;slug&gt;/</code>.</p>
+        <div class="zguide-grid-2">
+          <a class="zguide-chip-card" href="/tips/aircrack-own-ap/"><strong>aircrack-own-ap</strong><span>Own AP / own handshake</span></a>
+          <a class="zguide-chip-card" href="/tips/airmon-check-kill/"><strong>airmon-check-kill</strong><span>airmon-ng check kill</span></a>
+          <a class="zguide-chip-card" href="/tips/burp-logger/"><strong>burp-logger</strong><span>Logger++ / Logger tab</span></a>
+          <a class="zguide-chip-card" href="/tips/burp-match-replace/"><strong>burp-match-replace</strong><span>Match and replace</span></a>
+          <a class="zguide-chip-card" href="/tips/ffuf-filter-smart/"><strong>ffuf-filter-smart</strong><span>Filter smart</span></a>
+          <a class="zguide-chip-card" href="/tips/hashcat-mode-numbers/"><strong>hashcat-mode-numbers</strong><span>Mode numbers matter</span></a>
+          <a class="zguide-chip-card" href="/tips/hydra-throttle/"><strong>hydra-throttle</strong><span>Throttle or get banned</span></a>
+          <a class="zguide-chip-card" href="/tips/john-format-detection/"><strong>john-format-detection</strong><span>Format detection</span></a>
+          <a class="zguide-chip-card" href="/tips/msf-search-info/"><strong>msf-search-info</strong><span>search + info before exploit</span></a>
+          <a class="zguide-chip-card" href="/tips/msf-workspaces/"><strong>msf-workspaces</strong><span>Workspaces keep you honest</span></a>
+          <a class="zguide-chip-card" href="/tips/nmap-host-discovery/"><strong>nmap-host-discovery</strong><span>Host discovery first</span></a>
+          <a class="zguide-chip-card" href="/tips/nmap-scripts-versions/"><strong>nmap-scripts-versions</strong><span>Scripts + versions without -A</span></a>
+          <a class="zguide-chip-card" href="/tips/sqlmap-dump-intent/"><strong>sqlmap-dump-intent</strong><span>Dump with intent</span></a>
+          <a class="zguide-chip-card" href="/tips/sqlmap-level-risk/"><strong>sqlmap-level-risk</strong><span>Level/risk deliberately</span></a>
+          <a class="zguide-chip-card" href="/tips/wireshark-follow-stream/"><strong>wireshark-follow-stream</strong><span>Follow the stream</span></a>
+          <a class="zguide-chip-card" href="/tips/wireshark-http-posts/"><strong>wireshark-http-posts</strong><span>HTTP POSTs only</span></a>
+        </div>
+      </section>
+
+      <section class="panel zguide-sec" id="oracle">
+        <h2><span class="sec-num">11</span>Oracle (LLO) <code>/oracle/</code></h2>
+        <p>GitHub-backed knowledge search. Ask a question; Caleb interprets the hits into human. Great for “what’s the writeup pattern?” — not a substitute for opening the booth.</p>
+      </section>
+
+      <section class="panel zguide-sec" id="gear">
+        <h2><span class="sec-num">12</span>Gear (LLG) <code>/gear/</code></h2>
+        <p>Merch demo cart (alias <a href="/store/">/store/</a>). Spend LLT on hints, skins, and the weekly drop. Cart lives in the nav. Demo money — no real charges. 1 LLT = 1 NOK in the fiction.</p>
+      </section>
+
+      <section class="panel zguide-sec" id="messages">
+        <h2><span class="sec-num">13</span>Messages <code>/messages/</code></h2>
+        <p>Member DMs. LLA can drop warnings / tokens here. Login required — guests get the door, not the inbox.</p>
+      </section>
+
+      <section class="panel zguide-sec" id="forum">
+        <h2><span class="sec-num">14</span>Forum <code>/forum/</code></h2>
+        <p>Member forum — also available as a Lounge view. Talk shop, spoilers behind your brain, be excellent.</p>
+      </section>
+
+      <section class="panel zguide-sec" id="account">
+        <h2><span class="sec-num">15</span>Account <code>/account/</code></h2>
+        <p>Dashboard after login:</p>
+        <ul>
+          <li>Lab ID card, XP / LLT balances</li>
+          <li>Daily Caleb cheer</li>
+          <li>LabZocial profile editor (online / search / pentest prefs)</li>
+          <li>Avatar shop (~100 LLT), labcard skins (~10 LLT), title shop</li>
+          <li><strong>LLD opt-in</strong> checkbox + Save — unlocks Developer toys</li>
+          <li>Language toggle EN / NO (Account only — product names stay English; quotes stay original)</li>
+          <li>Logout · LLA entry if you’re admin</li>
+        </ul>
+      </section>
+
+      <section class="panel zguide-sec" id="lld">
+        <h2><span class="sec-num">16</span>LLD Developer <code>/lld/</code></h2>
+        <p>Hidden until you opt in on Account and Save. Then a Lounge CTA can show <code>dev.</code> Arcade with FuckFuckem / FPS game, plus manuals / sandbox links. Toys for builders — still fictional scope.</p>
+      </section>
+
+      <section class="panel zguide-sec" id="lla">
+        <h2><span class="sec-num">17</span>LLA Admin <code>/lla/</code></h2>
+        <p>Admin console for admins only. If you don’t have the badge, you don’t have the room. That’s the feature.</p>
+      </section>
+
+      <section class="panel zguide-sec" id="challenges">
+        <h2><span class="sec-num">18</span>Challenges page <code>/challenges/</code></h2>
+        <p>Public challenge listing and earn-LLT path. Marketing front for the same stations that live in the Lounge.</p>
+      </section>
+
+      <section class="panel zguide-sec" id="mobile">
+        <h2><span class="sec-num">19</span>Mobile (≤900px)</h2>
+        <p>App chrome with bottom tabs: <strong>Home · Lounge · Console · Community · More</strong>.</p>
+        <ul>
+          <li><strong>More</strong> sheet — Forum, Gear, Oracle, Challenges, Messages, Account, Tips, Z Guide…</li>
+          <li>Guest Login tap → Account</li>
+          <li>Member tap → Lab ID card</li>
+          <li>LLC drawer runs taller so you can actually type</li>
+        </ul>
+      </section>
+
+      <section class="panel zguide-sec" id="caleb">
+        <h2><span class="sec-num">20</span>Caleb</h2>
+        <p>Floating FAB mentor + Ask Caleb buttons around the site. He’s the lounge sage, not a spoilers bot and not a substitute for reading the booth. Ask after you’ve tried.</p>
+      </section>
+
+      <section class="panel zguide-sec" id="i18n">
+        <h2><span class="sec-num">21</span>Language (EN / NO)</h2>
+        <p>Toggle on Account. UI copy can flip; <strong>nav and product names stay English</strong>. Quotes and challenge prose stay in their original language. One brain, two labels.</p>
+      </section>
+
+      <section class="panel zguide-sec" id="faq">
+        <h2><span class="sec-num">22</span>Workarounds / FAQ</h2>
+        <div class="zguide-faq">
+          <details><summary>Login failed?</summary><p>Use <strong>https://laden.no</strong>. HTTP login is allergic to itself.</p></details>
+          <details><summary>Page looks haunted after a deploy?</summary><p>Hard-refresh (Ctrl/Cmd+Shift+R). Caches love old ghosts.</p></details>
+          <details><summary>Backtick won’t open LLC?</summary><p>Norwegian layouts: AltGr + the key that makes <code>`</code>. Or tap Console / floating llc$.</p></details>
+          <details><summary>Only three stations?</summary><p>You’re a guest. Badge up for the full board — free trio is scope-first, robots-redux, reflect-101.</p></details>
+          <details><summary>Where’s LLD / “dev.”?</summary><p>Account → LLD opt-in checkbox → Save. Then the Lounge CTA can appear.</p></details>
+          <details><summary>Lab ID card off-screen?</summary><p>Desktop: hover Login / your name. Mobile: tap Login / name when logged in.</p></details>
+          <details><summary>Z Drive full?</summary><p>Quota is real-ish (~10 MB fiction). Clean Downloads, unshare, try again.</p></details>
+          <details><summary>Can I scan the real internet from LLC?</summary><p>No. Fictional nets only. Pointing scanners at live hosts is how you leave the lounge the hard way.</p></details>
+          <details><summary>Golden rule?</summary><p>Scope first. Always. Written permission beats curiosity.</p></details>
+        </div>
+      </section>
+
+      <section class="panel zguide-sec" id="ethics">
+        <h2><span class="sec-num">23</span>Ethics closer</h2>
+        <div class="zguide-callout ethics">
+          <strong>Authorized minds only.</strong> Written permission. PoC not pwn. Stop at proof. Don’t pivot without approval. These booths teach bug classes — they are not a license to practice on strangers.<br><br>
+          Laden AS · Org.nr. 937 285 833 · Oslo
+        </div>
+        <p class="muted" style="margin-top:.85rem">You made it to the end of the bible. Now go open a booth — or type <code>manuals</code> in LLC and geek out responsibly.</p>
+        <div class="zguide-hero-actions" style="margin-top:1rem">
+          <a class="btn btn-primary" href="/labs/">Enter the Lounge</a>
+          <a class="btn btn-cyan" href="/labs/manuals/">LLC Manuals</a>
+          <a class="btn btn-ghost" href="#z-toc">Back to TOC</a>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<footer class="wrap footer lounge-footer zguide-footer">
+  <div>
+    <div class="brand-lockup" style="margin-bottom:.55rem">
+      <img class="footer-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Labs">
+      <div>
+        <strong style="color:var(--text)">Z Guide</strong>
+        <div class="muted" style="font-size:.8rem"><span data-i18n="footer.tagline">Oslo · Authorized security work only</span></div>
+      </div>
+    </div>
+    The LLZ bible · flags <span class="mono">LLZ{…}</span>
+  </div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+
+<script src="/assets/labcard.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/assets/llc.js" defer></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

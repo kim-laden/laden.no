@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-base="..">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forum — Laden AS</title>
+  <meta name="description" content="Laden AS member forum preview — writeups, OpSec, Oslo.">
+  <link rel="stylesheet" href="../assets/styles.css?v=cta1">
+<script src="/assets/i18n.js"></script>
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/js/soundcloud-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a class="active" href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+    </nav>
+    <div class="nav-cta">
+<div class="nav-cart">
+        <button type="button" class="btn-cart" id="cart-btn" aria-label="Cart" data-i18n-aria="nav.cart"><span data-i18n="nav.cart">Cart</span> <span class="cart-count" id="cart-count">0 NOK</span></button>
+        <div class="cart-pop" id="cart-pop">
+          <div class="cart-items" id="cart-items"></div>
+          <div class="cart-foot"><span class="muted"><span data-i18n="nav.total">Total</span></span><strong class="price" id="cart-total">0 NOK</strong></div>
+          <div class="cart-actions">
+            <button class="btn btn-primary" type="button" onclick="checkoutDemo()"><span data-i18n="nav.checkout">Checkout</span></button>
+            <button class="btn btn-ghost" type="button" onclick="clearCart()"><span data-i18n="nav.clear">Clear</span></button>
+          </div>
+        </div>
+      </div>
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div data-llt-ad="compact"></div>
+  <div class="page-title">
+    <div class="eyebrow"><span class="pulse"></span> <span data-i18n="forum.eyebrow">Members · demo threads · same cyber vibe</span></div>
+    <h1 data-i18n="forum.title">Forum</h1>
+    <p data-i18n="forum.lead">Talk shop, share writeups, plan Oslo hangs. Full API threads live inside Laden Labs after login.</p>
+  </div>
+
+  <div class="panel terminal" style="padding:0;overflow:hidden;margin-bottom:1.25rem">
+    <div class="thread">
+      <div class="votes"><b>42</b>replies</div>
+      <div>
+        <h3><a href="#">Welcome operators — introduce yourself</a></h3>
+        <div style="color:var(--muted);font-size:.9rem">Pinned · Rules, scope, and how we keep things authorized.</div>
+        <div class="badges"><span class="chip">pinned</span><span class="chip">meta</span></div>
+      </div>
+      <div class="mono" style="color:var(--muted);font-size:.75rem">caleb · 2h</div>
+    </div>
+    <div class="thread">
+      <div class="votes"><b>18</b>replies</div>
+      <div>
+        <h3><a href="#">Writeup: Easy Pickings first blood</a></h3>
+        <div style="color:var(--muted);font-size:.9rem">Spoiler-tagged path through the warm-up lab.</div>
+        <div class="badges"><span class="chip">writeup</span><span class="chip">web</span></div>
+      </div>
+      <div class="mono" style="color:var(--muted);font-size:.75rem">nyx · 5h</div>
+    </div>
+    <div class="thread">
+      <div class="votes"><b>9</b>replies</div>
+      <div>
+        <h3><a href="#">OpSec Lounge — VPN / lab hygiene</a></h3>
+        <div style="color:var(--muted);font-size:.9rem">What you run at home vs. what you run on client gear.</div>
+        <div class="badges"><span class="chip">opsec</span></div>
+      </div>
+      <div class="mono" style="color:var(--muted);font-size:.75rem">skugge · 1d</div>
+    </div>
+    <div class="thread">
+      <div class="votes"><b>27</b>replies</div>
+      <div>
+        <h3><a href="#">Oslo meetup — coffee + packet crafts</a></h3>
+        <div style="color:var(--muted);font-size:.9rem">Who’s in for a low-key Saturday?</div>
+        <div class="badges"><span class="chip">oslo</span><span class="chip">social</span></div>
+      </div>
+      <div class="mono" style="color:var(--muted);font-size:.75rem">øystein · 1d</div>
+    </div>
+    <div class="thread">
+      <div class="votes"><b>6</b>replies</div>
+      <div>
+        <h3><a href="#">Store drop feedback — hoodie sizing</a></h3>
+        <div style="color:var(--muted);font-size:.9rem">Merch desk wants your take before the real SKUs.</div>
+        <div class="badges"><span class="chip">store</span></div>
+      </div>
+      <div class="mono" style="color:var(--muted);font-size:.75rem">maven · 2d</div>
+    </div>
+    <div class="thread">
+      <div class="votes"><b>14</b>replies</div>
+      <div>
+        <h3><a href="#">JWT “none” alg — still biting teams in 2026?</a></h3>
+        <div style="color:var(--muted);font-size:.9rem">War stories + how we teach it in the hard lab.</div>
+        <div class="badges"><span class="chip">auth</span><span class="chip">labs</span></div>
+      </div>
+      <div class="mono" style="color:var(--muted);font-size:.75rem">payload · 3d</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="tag forum">CHANNELS</span>
+      <h3>Boards</h3>
+      <p>#general · #web · #network · #oslo · #marketplace · #help</p>
+      <div class="meta"><span>Demo labels</span></div>
+    </div>
+    <div class="card">
+      <span class="tag forum">CALEB LABS</span>
+      <h3>Need a mentor nudge?</h3>
+      <p>Open Caleb for hints while you hunt.</p>
+      <a class="btn btn-cyan" href="#caleb-labs" data-caleb style="margin-top:.4rem">Ask Caleb</a>
+    </div>
+  </div>
+</main>
+
+<footer class="wrap footer">
+  <div>
+    <div class="brand-lockup" style="margin-bottom:.55rem">
+      <img class="footer-logo" src="../assets/products/logo.jpg?v=llz7" alt="Laden Labs">
+      <div>
+        <strong style="color:var(--text)">Laden Labs</strong>
+        <div class="muted" style="font-size:.8rem">Oslo · Authorized only</div>
+      </div>
+    </div>
+    Demo · no real payments.
+  </div>
+  <div class="live-bar"><span id="oslo-clock">--:--:--</span></div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+<script src="/assets/llt.js"></script>
+<link rel="stylesheet" href="/assets/avatars/avatars.css">
+<script src="/assets/avatars/avatars.js"></script>
+<script src="/assets/labcard.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="../assets/app.js?v=cta1"></script>
+<script src="../assets/caleb.js?v=20261004-caleb16"></script>
+<script src="/assets/llc.js" defer></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

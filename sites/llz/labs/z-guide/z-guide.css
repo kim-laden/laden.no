@@ -1,0 +1,203 @@
+/* Z Guide — the LLZ bible */
+.zguide-page .zguide-main {
+  padding: 1.25rem 1.25rem 5rem;
+  max-width: 1180px;
+}
+.zguide-crumb {
+  display: flex; align-items: center; gap: .45rem;
+  font-size: .82rem; color: var(--muted); margin-bottom: 1rem; flex-wrap: wrap;
+}
+.zguide-crumb a { color: var(--cyan); }
+.zguide-crumb .sep { opacity: .5; }
+
+.zguide-hero .lounge-title {
+  font-family: Orbitron, sans-serif;
+  margin: .35rem 0 .6rem;
+  font-size: clamp(1.55rem, 3.5vw, 2.1rem);
+}
+.zguide-hero em { color: var(--cyan); font-style: normal; }
+.zguide-hero .lounge-lede { max-width: 46rem; margin: 0; line-height: 1.55; }
+.zguide-hero-actions {
+  display: flex; flex-wrap: wrap; gap: .55rem; align-items: center; margin-top: 1rem;
+}
+.zguide-badge {
+  font-family: 'JetBrains Mono', monospace; font-size: .72rem;
+  color: var(--amber); border: 1px solid rgba(255,176,32,.35);
+  background: rgba(255,176,32,.08); padding: .28rem .55rem; border-radius: 999px;
+}
+
+.zguide-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+  align-items: start;
+}
+
+.zguide-toc {
+  position: sticky; top: 76px;
+  max-height: calc(100vh - 96px);
+  overflow: auto;
+  padding: .85rem .9rem;
+  border-color: rgba(0,229,255,.28);
+  box-shadow: inset 0 0 0 1px rgba(0,229,255,.05), 0 0 20px rgba(0,229,255,.05);
+  scrollbar-width: thin;
+}
+.zguide-toc h2 {
+  font-family: Orbitron, sans-serif;
+  font-size: .78rem; letter-spacing: .08em;
+  color: var(--cyan); margin: 0 0 .65rem; text-transform: uppercase;
+}
+.zguide-toc nav { display: flex; flex-direction: column; gap: .18rem; }
+.zguide-toc a {
+  display: block;
+  font-size: .78rem; line-height: 1.35;
+  color: var(--muted); padding: .28rem .4rem; border-radius: 8px;
+  text-decoration: none;
+}
+.zguide-toc a:hover { color: var(--green); background: rgba(0,255,157,.06); }
+.zguide-toc a.toc-sub { padding-left: .85rem; font-size: .72rem; opacity: .9; }
+
+.zguide-body { min-width: 0; }
+.zguide-sec {
+  margin-bottom: 1.15rem;
+  scroll-margin-top: 84px;
+  border-color: rgba(0,255,157,.14);
+}
+.zguide-sec > h2 {
+  font-family: Orbitron, sans-serif;
+  font-size: 1.15rem; margin: 0 0 .65rem;
+  color: var(--green);
+}
+.zguide-sec > h2 .sec-num {
+  color: var(--cyan); font-family: 'JetBrains Mono', monospace;
+  font-size: .72rem; letter-spacing: .08em; margin-right: .45rem; opacity: .85;
+}
+.zguide-sec h3 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--cyan); margin: 1rem 0 .45rem;
+}
+.zguide-sec p { margin: 0 0 .7rem; line-height: 1.55; font-size: .95rem; }
+.zguide-sec p:last-child { margin-bottom: 0; }
+.zguide-sec ul, .zguide-sec ol {
+  margin: 0 0 .75rem; padding-left: 1.2rem;
+}
+.zguide-sec li { margin: .28rem 0; line-height: 1.45; font-size: .92rem; }
+.zguide-sec code, .zguide-sec .mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .84em; color: var(--cyan);
+}
+.zguide-sec a { color: var(--cyan); }
+.zguide-sec a:hover { color: var(--green); }
+
+.zguide-callout {
+  margin: .75rem 0;
+  padding: .7rem .85rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0,229,255,.28);
+  background: rgba(0,229,255,.06);
+  font-size: .88rem; line-height: 1.45;
+}
+.zguide-callout.warn {
+  border-color: rgba(255,176,32,.4);
+  background: rgba(255,176,32,.08);
+  color: var(--amber);
+}
+.zguide-callout.ethics {
+  border-color: rgba(0,255,157,.4);
+  background: rgba(0,255,157,.07);
+}
+
+.zguide-table-wrap { overflow-x: auto; margin: .55rem 0 .85rem; }
+.zguide-table {
+  width: 100%; border-collapse: collapse;
+  font-size: .82rem; min-width: 520px;
+}
+.zguide-table th, .zguide-table td {
+  text-align: left; padding: .45rem .55rem;
+  border-bottom: 1px solid rgba(26,35,50,.95);
+  vertical-align: top;
+}
+.zguide-table th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .68rem; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--muted); font-weight: 600;
+}
+.zguide-table td.slug { font-family: 'JetBrains Mono', monospace; color: var(--cyan); white-space: nowrap; }
+.zguide-table .diff-easy { color: var(--green); }
+.zguide-table .diff-med { color: var(--amber); }
+.zguide-table .diff-hard { color: var(--red); }
+.zguide-table tr:hover td { background: rgba(0,255,157,.03); }
+
+.zguide-track {
+  display: inline-flex; align-items: center; gap: .35rem;
+  font-family: 'JetBrains Mono', monospace; font-size: .68rem;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--green); margin: .85rem 0 .35rem;
+}
+.zguide-track::before {
+  content: ''; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--cyan); box-shadow: 0 0 8px rgba(0,229,255,.55);
+}
+
+.zguide-grid-2 {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: .65rem; margin: .5rem 0 .85rem;
+}
+.zguide-chip-card {
+  display: block; padding: .7rem .8rem; border-radius: 12px;
+  background: rgba(0,0,0,.22); border: 1px solid var(--border);
+  text-decoration: none; color: inherit;
+  transition: border-color .15s, box-shadow .15s;
+}
+.zguide-chip-card:hover {
+  border-color: rgba(0,229,255,.4);
+  box-shadow: 0 0 16px rgba(0,229,255,.08);
+  color: inherit;
+}
+.zguide-chip-card strong {
+  display: block; font-family: 'JetBrains Mono', monospace;
+  font-size: .82rem; color: var(--green); margin-bottom: .2rem;
+}
+.zguide-chip-card span { font-size: .8rem; color: var(--muted); line-height: 1.35; }
+
+.zguide-abbr {
+  display: grid; grid-template-columns: auto 1fr;
+  gap: .35rem .75rem; margin: .4rem 0 .8rem; font-size: .9rem;
+}
+.zguide-abbr dt {
+  font-family: 'JetBrains Mono', monospace; color: var(--green); font-weight: 700;
+}
+.zguide-abbr dd { margin: 0; color: var(--text); line-height: 1.4; }
+
+.zguide-faq details {
+  border: 1px solid var(--border); border-radius: 10px;
+  padding: .55rem .75rem; margin: .4rem 0; background: rgba(0,0,0,.18);
+}
+.zguide-faq summary {
+  cursor: pointer; font-family: 'JetBrains Mono', monospace;
+  font-size: .82rem; color: var(--cyan); list-style: none;
+}
+.zguide-faq summary::-webkit-details-marker { display: none; }
+.zguide-faq summary::before { content: '▸ '; color: var(--green); }
+.zguide-faq details[open] summary::before { content: '▾ '; }
+.zguide-faq details p { margin: .55rem 0 0; font-size: .88rem; }
+
+.zguide-footer { margin-top: 1.5rem; }
+
+@media (max-width: 900px) {
+  .zguide-layout { grid-template-columns: 1fr; }
+  .zguide-toc {
+    position: sticky; top: 64px; z-index: 20;
+    max-height: none; overflow: visible;
+  }
+  .zguide-toc nav {
+    display: flex; flex-direction: row; flex-wrap: wrap; gap: .3rem;
+  }
+  .zguide-toc a {
+    border: 1px solid var(--border); border-radius: 999px;
+    padding: .28rem .55rem; font-size: .72rem; background: rgba(0,0,0,.2);
+  }
+  .zguide-toc a.toc-sub { padding-left: .55rem; }
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQL String Concat — Code Lab · Laden Lab'z</title>
+  <meta name="description" content="Never build SQL with string concatenation of user input.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/labs/assets/room.css">
+  <link rel="stylesheet" href="/labs/v1.1/assets/demo.css">
+  <link rel="stylesheet" href="/labs/assets/lounge-v11.css">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/llz/assets/llz-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="lab-room" data-lab-slug="sql-string-concat" data-flag-hash="7211c74a1885a3d83a47eafc8f82805276ffe7c5700ac9a551e70e1608c2748f">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/labs/">Lounge</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="/labs/">Lounge</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap room-main" id="room-main">
+  <nav class="room-crumb" aria-label="Breadcrumb">
+    <a href="/labs/">Lounge</a>
+    <span class="sep">/</span>
+    <a href="/labs/?chapter=code">Code</a>
+    <span class="sep">/</span>
+    <span class="mono" id="crumb-slug">sql-string-concat</span>
+    <span class="version-chip">Code</span>
+  </nav>
+
+  <section class="room-hero panel" id="room-hero">
+    <div class="room-hero-top">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> Code chapter · educational bench</div>
+        <h1 id="room-title">SQL String Concat</h1>
+        <p class="muted" id="room-summary">Never build SQL with string concatenation of user input.</p>
+      </div>
+      <div class="room-tags" id="room-tags">
+        <span class="tag">code</span>
+        <span class="tag">secure-code</span>
+        <span class="tag med">MED</span>
+        <span class="tag">120 XP</span>
+      </div>
+    </div>
+    <div class="room-meta mono" id="room-meta">secure-code · med · 120 XP · local flag check</div>
+  </section>
+
+  <section class="room-learn panel" id="room-learn">
+    <h2>Learn</h2>
+    <p id="room-learn-body">Use parameterized queries / bind variables. Concatenation enables SQLi.</p>
+  </section>
+
+  <section class="room-work panel" id="room-work">
+    <div class="room-work-head">
+      <h2>Lab bench</h2>
+    </div>
+    <div class="chal-body" id="room-body"><p>Which is the safe approach?</p></div>
+    <div class="room-widget" id="room-widget" data-widget="quiz" data-cfg='{"options": [{"t": "\"SELECT * FROM u WHERE id=\" + userId", "ok": false}, {"t": "cursor.execute(\"SELECT * FROM u WHERE id=?\", (userId,))", "ok": true}, {"t": "eval(\"SELECT…\" + userId)", "ok": false}, {"t": "Replace quotes with empty string only", "ok": false}], "flag": "LLZ{use_bind_params}"}' aria-live="polite"></div>
+  </section>
+
+  <section class="room-submit panel" id="room-submit">
+    <h2>Submit flag</h2>
+    <p class="muted mono" id="room-hint" style="font-size:.8rem;margin-bottom:.6rem">Hint: Safe pattern uses placeholders like ? or $1.</p>
+    <div class="flag-row">
+      <input id="flag-in" class="mono" placeholder="LLZ{…}" autocomplete="off" spellcheck="false">
+      <button class="btn btn-primary" type="button" id="flag-go">Submit flag</button>
+    </div>
+    <div class="msg" id="flag-msg"></div>
+    <p class="demo-note">Flags checked in your browser · Code chapter · <span class="mono">LLZ{…}</span></p>
+  </section>
+</main>
+
+<footer class="wrap footer">
+  <div>
+    <strong style="color:var(--text)">Laden Lab'<span class="brand-z">z</span></strong>
+    <div class="muted" style="font-size:.8rem">Oslo · Code chapter · <span class="mono">LLZ{…}</span></div>
+  </div>
+  <div class="live-bar"></div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+
+<script src="/labs/v1.1/assets/code-room.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

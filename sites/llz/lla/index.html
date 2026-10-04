@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>LLA — Laden Labs Admin</title>
+  <link rel="stylesheet" href="/assets/styles.css?v=cta1">
+  <link rel="stylesheet" href="lla.css">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/llz/assets/llz-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="lla-body">
+<header class="lla-top">
+  <div class="lla-brand">
+    <span class="lla-glyph">◆</span>
+    <div>
+      <div class="lla-name">LLA</div>
+      <div class="lla-sub">Laden Labs Admin · ops console</div>
+    </div>
+  </div>
+  <div class="lla-meta">
+    <span class="lla-pill" id="lla-session">auth · …</span>
+    <span class="lla-pill" id="lla-health">gw · …</span>
+    <span class="lla-pill" id="lla-clock">--:--:--</span>
+    <a class="btn btn-ghost lla-tiny" href="/account/">Account</a>
+    <button type="button" class="btn btn-danger lla-tiny" id="lla-logout">Logout</button>
+  </div>
+</header>
+
+<div id="lla-gate" class="lla-gate hidden">
+  <div class="lla-gate-card">
+    <div class="eyebrow"><span class="pulse"></span> ACCESS DENIED / REQUIRED</div>
+    <h1>Operator clearance required</h1>
+    <p class="muted" id="lla-gate-msg">LLA is admin-only. Sign in with an ops account.</p>
+    <div class="lla-gate-actions">
+      <a class="btn btn-primary" href="/account/">Go to account login</a>
+      <button type="button" class="btn btn-cyan" id="lla-retry">Retry session</button>
+    </div>
+  </div>
+</div>
+
+<main id="lla-app" class="lla-app hidden">
+  <nav class="lla-tabs" role="tablist" aria-label="LLA sections">
+    <button type="button" class="lla-tab active" data-tab="overview">Overview</button>
+    <button type="button" class="lla-tab" data-tab="users">Users</button>
+    <button type="button" class="lla-tab" data-tab="economy">Economy</button>
+    <button type="button" class="lla-tab" data-tab="challenges">Challenges</button>
+    <button type="button" class="lla-tab" data-tab="lls">LLS</button>
+    <button type="button" class="lla-tab" data-tab="messages">Messages</button>
+    <button type="button" class="lla-tab" data-tab="control">Control</button>
+  </nav>
+
+  <section class="lla-panel active" id="panel-overview" data-panel="overview">
+    <div class="lla-grid stats-grid" id="lla-stats"></div>
+    <div class="lla-split">
+      <div class="lla-card">
+        <div class="lla-card-h">Live activity feed</div>
+        <div class="lla-feed" id="lla-feed"><div class="muted mono">polling…</div></div>
+      </div>
+      <div class="lla-card">
+        <div class="lla-card-h">Gateway / ops</div>
+        <pre class="lla-pre" id="lla-ops">…</pre>
+        <p class="muted mono tiny">Poll every 5s · read-only on this pane</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="lla-panel" id="panel-users" data-panel="users">
+    <div class="lla-toolbar">
+      <input type="search" id="users-q" class="lla-input" placeholder="Search user / email / Lab ID 969-…">
+      <button type="button" class="btn btn-cyan lla-tiny" id="users-refresh">Refresh</button>
+      <span class="muted mono" id="users-count"></span>
+    </div>
+    <div class="lla-table-wrap">
+      <table class="lla-table" id="users-table">
+        <thead>
+          <tr>
+            <th>Lab ID</th><th>User</th><th>Email</th><th>LLT</th><th>XP</th>
+            <th>Title</th><th>Last seen</th><th>Flags</th><th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="lla-panel" id="panel-economy" data-panel="economy">
+    <div class="lla-card">
+      <div class="lla-card-h">LLT adjust</div>
+      <form id="llt-form" class="lla-form">
+        <label>User id<input class="lla-input" name="user_id" required placeholder="numeric id"></label>
+        <label>Delta<input class="lla-input" name="delta" type="number" placeholder="+100 or -50"></label>
+        <label>Or set balance<input class="lla-input" name="balance" type="number" placeholder="absolute (optional)"></label>
+        <label>Reason<input class="lla-input" name="reason" required placeholder="grant / debit reason"></label>
+        <button class="btn btn-primary" type="submit">Apply ledger</button>
+      </form>
+      <p class="lla-msg" id="llt-msg" aria-live="polite"></p>
+    </div>
+    <div class="lla-card" style="margin-top:1rem">
+      <div class="lla-card-h">Recent LLT ledger (from activity)</div>
+      <div class="lla-feed" id="llt-feed"></div>
+    </div>
+  </section>
+
+  <section class="lla-panel" id="panel-challenges" data-panel="challenges">
+    <div class="lla-toolbar">
+      <button type="button" class="btn btn-cyan lla-tiny" id="chal-refresh">Refresh</button>
+    </div>
+    <div class="lla-table-wrap">
+      <table class="lla-table" id="chal-table">
+        <thead>
+          <tr><th>ID</th><th>Slug</th><th>Title</th><th>Track</th><th>Diff</th><th>Pts</th><th>Solves</th><th>Bump</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="lla-panel" id="panel-llz" data-panel="llz">
+    <div class="lla-toolbar">
+      <button type="button" class="btn btn-cyan lla-tiny" id="llz-refresh">Refresh posts</button>
+      <span class="muted mono">moderation · hide / delete</span>
+    </div>
+    <div id="llz-posts" class="lla-llz"></div>
+  </section>
+
+
+  <section class="lla-panel" id="panel-messages" data-panel="messages">
+    <div class="lla-split">
+      <div class="lla-card">
+        <div class="lla-card-h">Send admin / warning / grant + message</div>
+        <form id="dm-form" class="lla-form">
+          <label>To (username or id)<input class="lla-input" name="to" required placeholder="username or numeric id"></label>
+          <label>Kind
+            <select class="lla-input" name="kind" id="dm-kind">
+              <option value="admin">admin (message)</option>
+              <option value="warning">warning</option>
+              <option value="grant">grant (LLT + message)</option>
+            </select>
+          </label>
+          <label>Body<textarea class="lla-input lla-ta" name="body" rows="4" maxlength="2000" placeholder="Message body (optional for grant — auto-filled)"></textarea></label>
+          <label id="dm-delta-wrap">LLT delta (grant)<input class="lla-input" name="llt_delta" type="number" placeholder="+50 or -20"></label>
+          <label>Reason<input class="lla-input" name="reason" placeholder="optional audit reason"></label>
+          <button class="btn btn-primary" type="submit">Send via inbox</button>
+        </form>
+        <p class="lla-msg" id="dm-msg" aria-live="polite"></p>
+      </div>
+      <div class="lla-card">
+        <div class="lla-card-h">Ops audit · use only when needed</div>
+        <p class="muted mono tiny" style="margin:0 0 .65rem">Monitor all DMs. Opening a transcript is audited. Does not mark messages read for the member.</p>
+        <div class="lla-toolbar" style="margin:0 0 .65rem;flex-wrap:wrap;gap:.4rem">
+          <input type="search" id="dm-mon-q" class="lla-input" placeholder="Search body / user" style="min-width:10rem;flex:1">
+          <input type="text" id="dm-mon-user" class="lla-input" placeholder="Filter user" style="width:8rem">
+          <select id="dm-mon-kind" class="lla-input" style="width:7.5rem">
+            <option value="">all kinds</option>
+            <option value="user">user</option>
+            <option value="admin">admin</option>
+            <option value="warning">warning</option>
+            <option value="grant">grant</option>
+          </select>
+          <button type="button" class="btn btn-cyan lla-tiny" id="dm-mon-refresh">Refresh</button>
+        </div>
+        <div class="lla-feed" id="dm-mon-feed" style="max-height:22rem"><div class="muted mono">Load Messages tab…</div></div>
+        <div class="lla-card-h" style="margin-top:.85rem">Threads</div>
+        <div class="lla-feed" id="dm-mon-threads" style="max-height:14rem"><div class="muted mono">…</div></div>
+      </div>
+    </div>
+    <div class="lla-card hidden" id="dm-mon-transcript" style="margin-top:1rem">
+      <div class="lla-card-h" style="display:flex;justify-content:space-between;align-items:center;gap:.5rem">
+        <span>Thread transcript <span class="mono" id="dm-mon-tid"></span></span>
+        <button type="button" class="btn btn-ghost lla-tiny" id="dm-mon-close">Close</button>
+      </div>
+      <p class="muted mono tiny" id="dm-mon-parts"></p>
+      <div class="lla-feed" id="dm-mon-msgs" style="max-height:28rem"></div>
+    </div>
+  </section>
+
+  <section class="lla-panel" id="panel-control" data-panel="control">
+    <div class="lla-split">
+      <div class="lla-card">
+        <div class="lla-card-h">Broadcast system / LabNewz</div>
+        <form id="bcast-form" class="lla-form">
+          <label>Topic
+            <select class="lla-input" name="topic">
+              <option value="labnewz">labnewz</option>
+              <option value="llz">llz</option>
+              <option value="general">general</option>
+              <option value="feed">feed</option>
+            </select>
+          </label>
+          <label>Body<textarea class="lla-input lla-ta" name="body" rows="4" required maxlength="2000" placeholder="System signal…"></textarea></label>
+          <button class="btn btn-primary" type="submit">Broadcast</button>
+        </form>
+        <p class="lla-msg" id="bcast-msg"></p>
+      </div>
+      <div class="lla-card">
+        <div class="lla-card-h">User controls</div>
+        <form id="ctrl-form" class="lla-form">
+          <label>User id<input class="lla-input" name="user_id" required></label>
+          <label>Temp password<input class="lla-input" name="password" type="text" placeholder="min 8 chars" autocomplete="off"></label>
+          <div class="lla-form-row">
+            <button class="btn btn-cyan" type="button" id="ctrl-pw">Reset password</button>
+            <button class="btn btn-primary" type="button" id="ctrl-admin-on">Grant admin</button>
+            <button class="btn btn-ghost" type="button" id="ctrl-admin-off">Revoke admin</button>
+            <button class="btn btn-danger" type="button" id="ctrl-ban">Disable</button>
+            <button class="btn btn-ghost" type="button" id="ctrl-unban">Enable</button>
+          </div>
+        </form>
+        <p class="lla-msg" id="ctrl-msg"></p>
+      </div>
+    </div>
+    <div class="lla-card" style="margin-top:1rem">
+      <div class="lla-card-h">Restart (ops SSH only)</div>
+      <pre class="lla-pre" id="ctrl-restart">sudo systemctl restart laden-gateway</pre>
+      <p class="muted">Web UI will not restart systemd — too risky. Use SSH.</p>
+    </div>
+    <div class="lla-card" style="margin-top:1rem">
+      <div class="lla-card-h">Admin audit trail</div>
+      <div class="lla-feed" id="audit-feed"></div>
+    </div>
+  </section>
+</main>
+
+<div id="lla-toast" class="lla-toast hidden" role="status"></div>
+<script src="lla.js"></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

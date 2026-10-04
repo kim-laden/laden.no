@@ -1,0 +1,88 @@
+
+/* Laden Labs Console (LLC) — kali-lite slide-up */
+#llc-toggle {
+  position: fixed; top: .85rem; left: .85rem; z-index: 12000;
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .45rem .75rem; border-radius: 10px;
+  border: 1px solid rgba(0,255,157,.45);
+  background: rgba(5,7,10,.94); color: #00ff9d;
+  font-family: Orbitron, system-ui, sans-serif; font-size: .7rem; letter-spacing: .05em;
+  cursor: pointer; box-shadow: 0 0 22px rgba(0,255,157,.18);
+  backdrop-filter: blur(8px);
+}
+#llc-toggle:hover { background: rgba(0,255,157,.12); }
+#llc-toggle .glyph { font-family: JetBrains Mono, monospace; font-size: .9rem; }
+body.llc-open { overflow: hidden; }
+.nav-inner { padding-left: 7.8rem !important; }
+@media (max-width: 720px) {
+  .nav-inner { padding-left: 5.8rem !important; }
+  #llc-toggle .label { display: none; }
+}
+#llc-backdrop {
+  position: fixed; inset: 0; z-index: 11800; background: rgba(0,0,0,.4);
+  opacity: 0; pointer-events: none; transition: opacity .25s;
+}
+#llc-backdrop.open { opacity: 1; pointer-events: auto; }
+#llc-drawer {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 11900;
+  height: min(62vh, 560px);
+  transform: translateY(105%);
+  transition: transform .32s cubic-bezier(.2,.8,.2,1);
+  display: flex; flex-direction: column;
+  background: #05070a;
+  border-top: 1px solid rgba(0,255,157,.4);
+  box-shadow: 0 -14px 48px rgba(0,0,0,.6);
+}
+#llc-drawer.open { transform: translateY(0); }
+#llc-drawer .llc-bar {
+  display: flex; align-items: center; gap: .65rem;
+  padding: .5rem .9rem; flex-shrink: 0;
+  border-bottom: 1px solid #1a2332; background: #0a0e14;
+  font-size: .76rem; color: #8b9bb4;
+}
+#llc-drawer .llc-bar .dots { display:flex; gap:.35rem; }
+#llc-drawer .llc-bar .dots i { width:9px;height:9px;border-radius:50%;display:block;background:#ff5f56; }
+#llc-drawer .llc-bar .dots i:nth-child(2){background:#ffbd2e}
+#llc-drawer .llc-bar .dots i:nth-child(3){background:#27c93f}
+#llc-drawer .llc-bar .mono { flex:1; font-family: JetBrains Mono, monospace; }
+#llc-drawer .llc-bar button {
+  background:transparent;border:1px solid #1a2332;color:#8b9bb4;
+  border-radius:6px;padding:.2rem .5rem;cursor:pointer;font-size:.72rem;
+}
+#llc-drawer .llc-bar button:hover { color:#00ff9d; border-color:rgba(0,255,157,.4); }
+#llc-chips {
+  display:flex; flex-wrap:wrap; gap:.3rem; padding:.35rem .9rem;
+  border-bottom:1px solid #1a2332; background:#080c12; flex-shrink:0;
+}
+#llc-chips button {
+  font-family: JetBrains Mono, monospace; font-size:.68rem;
+  padding:.22rem .45rem; border-radius:5px; cursor:pointer;
+  border:1px solid #1a2332; background:#0a0e14; color:#00e5ff;
+}
+#llc-chips button:hover { border-color:rgba(0,229,255,.45); }
+#llc-screen {
+  flex:1; overflow-y:auto; padding:.7rem .9rem;
+  font-family: JetBrains Mono, ui-monospace, monospace;
+  font-size:.8rem; line-height:1.45; color:#c8d6e5;
+  white-space:pre-wrap; word-break:break-word;
+}
+#llc-screen .out-cmd { color:#00ff9d; }
+#llc-screen .out-err { color:#ff6b6b; }
+#llc-screen .out-dim { color:#8b9bb4; }
+#llc-screen .out-ok { color:#00e5ff; }
+#llc-form {
+  display:grid; grid-template-columns:auto 1fr; gap:.5rem; align-items:end;
+  padding:.55rem .9rem .75rem; border-top:1px solid #1a2332; background:#070a0f; flex-shrink:0;
+}
+#llc-form .prompt {
+  color:#00ff9d; font-size:.68rem; line-height:1.2;
+  font-family: JetBrains Mono, monospace; user-select:none;
+}
+#llc-in {
+  background:transparent; border:none; outline:none; color:#e6f1ff;
+  font-family: JetBrains Mono, monospace; font-size:.88rem; padding:.3rem 0; width:100%;
+}
+/* hide legacy toggle if lingering */
+#laden-term-toggle, #laden-term-drawer, #laden-term-backdrop { display: none !important; }
+
+

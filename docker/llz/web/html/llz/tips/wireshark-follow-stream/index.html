@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Follow the stream — Tips · Laden Labs</title>
+  <meta name="description" content="Right-click → Follow → TCP/HTTP Stream. Rebuild the conversation instead of squinting at frames.">
+  <link rel="stylesheet" href="/assets/styles.css?v=cta1">
+<script src="/assets/i18n.js"></script>
+<script src="/assets/i18n-content.js"></script>
+  <link rel="stylesheet" href="/labs/assets/room.css">
+  <link rel="stylesheet" href="/tips/assets/tip.css">
+  <link rel="canonical" href="https://laden.no/tips/wireshark-follow-stream/">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/js/soundcloud-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="tip-page">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap room-main">
+
+  <nav class="room-crumb" aria-label="Breadcrumb">
+    <a href="/tips/"><span data-i18n="nav.tips">Tips</span></a>
+    <span class="sep">/</span>
+    <span class="mono">wireshark-follow-stream</span>
+  </nav>
+
+  <section class="room-hero panel tip-hero">
+    <div class="room-hero-top">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> Operator tip · wireshark</div>
+        <h1>Follow the stream</h1>
+        <p class="muted">Right-click → Follow → TCP/HTTP Stream. Rebuild the conversation instead of squinting at frames.</p>
+      </div>
+      <div class="room-tags">
+        <span class="tag easy">easy</span>
+        <span class="tag">pcap</span><span class="tag">wireshark</span><span class="tag">tcp</span>
+      </div>
+    </div>
+    <div class="room-meta mono">/wireshark/ · /tips/wireshark-follow-stream/</div>
+  </section>
+
+  <section class="room-learn panel tip-body">
+    <h2>Guide</h2>
+    
+<p>Individual frames are packets. Applications speak conversations. Follow Stream rebuilds the client/server dialogue so you can read headers and bodies like a proxy history.</p>
+<h3>Why it matters</h3>
+<p>Squinting at hex in frame 847 while the POST body lives across multiple TCP segments is how operators miss flags in cleartext labs. Stream view is the human interface to the capture.</p>
+<h3>How-to</h3>
+<ol>
+  <li>Find any packet in the conversation (filter helps).</li>
+  <li>Right-click → Follow → TCP Stream (or HTTP Stream when decoded).</li>
+  <li>Toggle client/server colors; search inside the stream for <code>LLZ{</code>, cookies, or tokens.</li>
+  <li>Save the stream as ASCII for notes.</li>
+</ol>
+<pre class="mono tip-pre"># After Follow → HTTP Stream
+# Look for: Set-Cookie, Authorization, JSON bodies, redirects</pre>
+
+  </section>
+
+  <section class="panel tip-links">
+    <h2>Related labs</h2>
+    <div class="tip-link-row"><a class="tip-related" href="/labs/banner-grab-lite/">Banner Whisper</a><a class="tip-related" href="/labs/js-secrets/">JS Secrets</a><a class="tip-related" href="/labs/tls-old/">TLS Old</a></div>
+    <h2 style="margin-top:1rem">Oracle queries</h2>
+    <div class="tip-link-row"><a class="tip-oracle" href="/oracle/?q=wireshark%20follow%20tcp%20stream">wireshark follow tcp stream</a><a class="tip-oracle" href="/oracle/?q=wireshark%20follow%20HTTP%20stream">wireshark follow HTTP stream</a><a class="tip-oracle" href="/oracle/?q=pcap%20analysis%20tutorial">pcap analysis tutorial</a></div>
+    <div class="tip-actions">
+      <button type="button" class="btn btn-cyan" id="tip-caleb" data-ask="How do I use Follow TCP Stream in Wireshark on a lab capture?">Ask Caleb</button>
+      <a class="btn btn-ghost" href="/tips/">All tips</a>
+      <a class="btn btn-ghost" href="/community/#tips">Community tips tab</a>
+      <a class="btn btn-primary" href="/oracle/">Open Oracle</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap footer">
+  <div>
+    <strong style="color:var(--text)">Laden Labs</strong>
+    <div class="muted" style="font-size:.8rem">Oslo · Authorized security work only · operator tips</div>
+  </div>
+  <div class="live-bar">
+    <span>Tips · ethical only</span>
+    <span>·</span>
+    <span>demo</span>
+  </div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+
+<script src="/assets/llt.js"></script>
+<script src="/assets/caleb.js?v=20261004-caleb16"></script>
+<link rel="stylesheet" href="/assets/avatars/avatars.css">
+<script src="/assets/avatars/avatars.js"></script>
+<script src="/assets/labcard.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/tips/assets/tip.js"></script>
+<script src="/assets/llc.js" defer></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

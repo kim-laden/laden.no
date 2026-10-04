@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Idempotency Key — Code Lab · Laden Lab'z</title>
+  <meta name="description" content="Replay-safe writes with client keys.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/labs/assets/room.css">
+  <link rel="stylesheet" href="/labs/v1.1/assets/demo.css">
+  <link rel="stylesheet" href="/labs/assets/lounge-v11.css">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/llz/assets/llz-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="lab-room" data-lab-slug="idempotency-key" data-flag-hash="6e2abd7f560898116c9b8e83d9710e5d75f6791af2ab5e2fb13406730f217908">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/labs/">Lounge</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="/labs/">Lounge</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap room-main" id="room-main">
+  <nav class="room-crumb" aria-label="Breadcrumb">
+    <a href="/labs/">Lounge</a>
+    <span class="sep">/</span>
+    <a href="/labs/?chapter=code">Code</a>
+    <span class="sep">/</span>
+    <span class="mono" id="crumb-slug">idempotency-key</span>
+    <span class="version-chip">Code</span>
+  </nav>
+
+  <section class="room-hero panel" id="room-hero">
+    <div class="room-hero-top">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> Code chapter · educational bench</div>
+        <h1 id="room-title">Idempotency Key</h1>
+        <p class="muted" id="room-summary">Replay-safe writes with client keys.</p>
+      </div>
+      <div class="room-tags" id="room-tags">
+        <span class="tag">code</span>
+        <span class="tag">webdev</span>
+        <span class="tag easy">EASY</span>
+        <span class="tag">55 XP</span>
+      </div>
+    </div>
+    <div class="room-meta mono" id="room-meta">webdev · easy · 55 XP · local flag check</div>
+  </section>
+
+  <section class="room-learn panel" id="room-learn">
+    <h2>Learn</h2>
+    <p id="room-learn-body">Payment APIs accept Idempotency-Key so retries don&#x27;t double-charge. Server stores key → response.</p>
+  </section>
+
+  <section class="room-work panel" id="room-work">
+    <div class="room-work-head">
+      <h2>Lab bench</h2>
+    </div>
+    <div class="chal-body" id="room-body"><p>Client retries a charge with the same <span class="mono">Idempotency-Key</span>. Server should…</p></div>
+    <div class="room-widget" id="room-widget" data-widget="quiz" data-cfg='{"options": [{"t": "Charge twice", "ok": false}, {"t": "Return the original result without a second charge", "ok": true}, {"t": "Delete the user", "ok": false}, {"t": "Ignore the key always", "ok": false}], "flag": "LLZ{same_key_same_result}"}' aria-live="polite"></div>
+  </section>
+
+  <section class="room-submit panel" id="room-submit">
+    <h2>Submit flag</h2>
+    <p class="muted mono" id="room-hint" style="font-size:.8rem;margin-bottom:.6rem">Hint: Same key + same request should return the first result.</p>
+    <div class="flag-row">
+      <input id="flag-in" class="mono" placeholder="LLZ{…}" autocomplete="off" spellcheck="false">
+      <button class="btn btn-primary" type="button" id="flag-go">Submit flag</button>
+    </div>
+    <div class="msg" id="flag-msg"></div>
+    <p class="demo-note">Flags checked in your browser · Code chapter · <span class="mono">LLZ{…}</span></p>
+  </section>
+</main>
+
+<footer class="wrap footer">
+  <div>
+    <strong style="color:var(--text)">Laden Lab'<span class="brand-z">z</span></strong>
+    <div class="muted" style="font-size:.8rem">Oslo · Code chapter · <span class="mono">LLZ{…}</span></div>
+  </div>
+  <div class="live-bar"></div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+
+<script src="/labs/v1.1/assets/code-room.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

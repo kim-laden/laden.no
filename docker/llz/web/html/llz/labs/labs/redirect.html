@@ -1,0 +1,19 @@
+<!DOCTYPE html><html><head>
+  <script src="/assets/theme.js"></script><meta charset=utf-8><title>Redirect lab</title>
+<style>body{font-family:monospace;background:#05070a;color:#e6f1ff;padding:2rem}</style>  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/js/soundcloud-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body>
+<h1>Open redirect demo</h1>
+<p>This page would bounce to <code id=n></code> without an allowlist.</p>
+<p style="color:#00ff9d">Educational flag: LLZ{allowlist_redirects}</p>
+<p><a id=go href="#">Simulate continue</a> (stays here in demo)</p>
+<script>
+const next=new URLSearchParams(location.search).get('next')||'/';
+document.getElementById('n').textContent=next;
+document.getElementById('go').onclick=(e)=>{e.preventDefault();alert('Demo blocked external nav. In the wild, allowlist paths only.\nflag: LLZ{allowlist_redirects}');};
+</script>
+<script src="/assets/llc.js" defer></script>
+</body></html>

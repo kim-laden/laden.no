@@ -1,0 +1,146 @@
+[
+  {
+    "id": "tip-nmap-1",
+    "slug": "nmap-scripts-versions",
+    "tool": "nmap",
+    "title": "Scripts + versions without -A",
+    "body": "Prefer nmap -sC -sV -p- over blind -A. Faster feedback, less noise, same intel on most labs.",
+    "level": "easy",
+    "href": "/tips/nmap-scripts-versions/"
+  },
+  {
+    "id": "tip-nmap-2",
+    "slug": "nmap-host-discovery",
+    "tool": "nmap",
+    "title": "Host discovery first",
+    "body": "On a flat lab net: nmap -sn 10.10.0.0/24 then target live hosts. Skip -Pn until you know ICMP is blocked.",
+    "level": "easy",
+    "href": "/tips/nmap-host-discovery/"
+  },
+  {
+    "id": "tip-burp-1",
+    "slug": "burp-match-replace",
+    "tool": "burp",
+    "title": "Match and replace",
+    "body": "Proxy → Match and replace: auto-fix a header or cookie across Repeater/Intruder. Stop hand-editing the same byte 40 times.",
+    "level": "med",
+    "href": "/tips/burp-match-replace/"
+  },
+  {
+    "id": "tip-burp-2",
+    "slug": "burp-logger",
+    "tool": "burp",
+    "title": "Logger++ / Logger tab",
+    "body": "Keep a full history of proxied traffic. When a bug reproduces once, your scrollback is the writeup backbone.",
+    "level": "easy",
+    "href": "/tips/burp-logger/"
+  },
+  {
+    "id": "tip-ws-1",
+    "slug": "wireshark-http-posts",
+    "tool": "wireshark",
+    "title": "HTTP POSTs only",
+    "body": "Display filter: http.request.method == \"POST\". Combine with ip.addr== your lab target.",
+    "level": "easy",
+    "href": "/tips/wireshark-http-posts/"
+  },
+  {
+    "id": "tip-ws-2",
+    "slug": "wireshark-follow-stream",
+    "tool": "wireshark",
+    "title": "Follow the stream",
+    "body": "Right-click → Follow → TCP/HTTP Stream. Rebuild the conversation instead of squinting at frames.",
+    "level": "easy",
+    "href": "/tips/wireshark-follow-stream/"
+  },
+  {
+    "id": "tip-msf-1",
+    "slug": "msf-search-info",
+    "tool": "msfconsole",
+    "title": "search + info before exploit",
+    "body": "search type:exploit apache then info / show options. Set RHOSTS, check required options, then run. Labs love patience.",
+    "level": "med",
+    "href": "/tips/msf-search-info/"
+  },
+  {
+    "id": "tip-msf-2",
+    "slug": "msf-workspaces",
+    "tool": "msfconsole",
+    "title": "Workspaces keep you honest",
+    "body": "workspace -a lab-oslo isolates hosts/loot per engagement. Don't mix client A with Friday CTF notes.",
+    "level": "med",
+    "href": "/tips/msf-workspaces/"
+  },
+  {
+    "id": "tip-air-1",
+    "slug": "aircrack-own-ap",
+    "tool": "aircrack-ng",
+    "title": "Own AP / own handshake",
+    "body": "Capture and crack only networks you own or are contracted to test. Lab kit + isolated AP = education. Neighbour's SSID = crime.",
+    "level": "hard",
+    "href": "/tips/aircrack-own-ap/"
+  },
+  {
+    "id": "tip-air-2",
+    "slug": "airmon-check-kill",
+    "tool": "aircrack-ng",
+    "title": "airmon-ng check kill",
+    "body": "Kill NetworkManager interference before monitor mode. Remember to restart networking after the lab session.",
+    "level": "med",
+    "href": "/tips/airmon-check-kill/"
+  },
+  {
+    "id": "tip-hydra-1",
+    "slug": "hydra-throttle",
+    "tool": "hydra",
+    "title": "Throttle or get banned",
+    "body": "Use -t 4 and respect lockouts. Against production without written scope: don't. Against your lab: still be nice to the logs.",
+    "level": "med",
+    "href": "/tips/hydra-throttle/"
+  },
+  {
+    "id": "tip-sqlmap-1",
+    "slug": "sqlmap-level-risk",
+    "tool": "sqlmap",
+    "title": "Level/risk deliberately",
+    "body": "Start low: default level/risk, then climb. Add --tamper only when a WAF actually blocks. Always --batch in labs you own.",
+    "level": "med",
+    "href": "/tips/sqlmap-level-risk/"
+  },
+  {
+    "id": "tip-sqlmap-2",
+    "slug": "sqlmap-dump-intent",
+    "tool": "sqlmap",
+    "title": "Dump with intent",
+    "body": "--tables / --columns before --dump. Know what you're extracting and why it is in scope.",
+    "level": "hard",
+    "href": "/tips/sqlmap-dump-intent/"
+  },
+  {
+    "id": "tip-john-1",
+    "slug": "john-format-detection",
+    "tool": "john",
+    "title": "Format detection",
+    "body": "john --list=formats | rg -i sha then --format= explicitly. Wrong format = silent sadness.",
+    "level": "easy",
+    "href": "/tips/john-format-detection/"
+  },
+  {
+    "id": "tip-hashcat-1",
+    "slug": "hashcat-mode-numbers",
+    "tool": "hashcat",
+    "title": "Mode numbers matter",
+    "body": "Example: -m 1000 NTLM, -m 1800 sha512crypt. Check the example hashes wiki before burning GPU time.",
+    "level": "med",
+    "href": "/tips/hashcat-mode-numbers/"
+  },
+  {
+    "id": "tip-ffuf-1",
+    "slug": "ffuf-filter-smart",
+    "tool": "ffuf",
+    "title": "Filter smart",
+    "body": "ffuf -u URL/FUZZ -w wordlist -mc 200,204,301,302,403 -fs &lt;size&gt; to drop boring catch-all responses.",
+    "level": "med",
+    "href": "/tips/ffuf-filter-smart/"
+  }
+]

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-base="..">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forum — Laden AS v1.1</title>
+  <meta name="description" content="Laden AS member portal demo: forum, challenges, store.">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/js/soundcloud-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../">
+      <div class="logo">L</div>
+      <div>Laden AS <span class="ver">v1.1</span></div>
+    </a>
+    <nav class="nav-links">
+      <a class="" href="../">Home</a>
+      <a class="active" href="../forum/">Forum</a>
+      <a class="" href="../challenges/">Challenges</a>
+      <a class="" href="../store/">Store</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-cyan" data-caleb>Talk to Caleb</a>
+      <a class="btn btn-ghost" href="https://laden.no/">Live site</a>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <div class="page-title">
+    <div class="eyebrow"><span class="pulse"></span> Members · demo threads</div>
+    <h1>Forum</h1>
+    <p>Talk shop, share writeups, plan Oslo hangs. Accounts aren’t real yet — treat this as the vibe check.</p>
+  </div>
+
+  <div class="panel" style="padding:0;overflow:hidden;margin-bottom:1.25rem">
+    <div class="thread">
+      <div class="votes"><b>42</b>replies</div>
+      <div>
+        <h3><a href="#">Welcome operators — introduce yourself</a></h3>
+        <div style="color:var(--muted);font-size:.9rem">Pinned · Rules, scope, and how we keep things authorized.</div>
+        <div class="badges"><span class="chip">pinned</span><span class="chip">meta</span></div>
+      </div>
+      <div class="mono" style="color:var(--muted);font-size:.75rem">caleb · 2h</div>
+    </div>
+    <div class="thread">
+      <div class="votes"><b>18</b>replies</div>
+      <div>
+        <h3><a href="#">Writeup: Easy Pickings first blood</a></h3>
+        <div style="color:var(--muted);font-size:.9rem">Spoiler-tagged path through the warm-up lab.</div>
+        <div class="badges"><span class="chip">writeup</span><span class="chip">web</span></div>
+      </div>
+      <div class="mono" style="color:var(--muted);font-size:.75rem">nyx · 5h</div>
+    </div>
+    <div class="thread">
+      <div class="votes"><b>9</b>replies</div>
+      <div>
+        <h3><a href="#">OpSec Lounge — VPN / lab hygiene</a></h3>
+        <div style="color:var(--muted);font-size:.9rem">What you run at home vs. what you run on client gear.</div>
+        <div class="badges"><span class="chip">opsec</span></div>
+      </div>
+      <div class="mono" style="color:var(--muted);font-size:.75rem">skugge · 1d</div>
+    </div>
+    <div class="thread">
+      <div class="votes"><b>27</b>replies</div>
+      <div>
+        <h3><a href="#">Oslo meetup — coffee + packet crafts</a></h3>
+        <div style="color:var(--muted);font-size:.9rem">Who’s in for a low-key Saturday?</div>
+        <div class="badges"><span class="chip">oslo</span><span class="chip">social</span></div>
+      </div>
+      <div class="mono" style="color:var(--muted);font-size:.75rem">øystein · 1d</div>
+    </div>
+    <div class="thread">
+      <div class="votes"><b>6</b>replies</div>
+      <div>
+        <h3><a href="#">Store drop feedback — hoodie sizing</a></h3>
+        <div style="color:var(--muted);font-size:.9rem">Merch desk wants your take before the real SKUs.</div>
+        <div class="badges"><span class="chip">store</span></div>
+      </div>
+      <div class="mono" style="color:var(--muted);font-size:.75rem">maven · 2d</div>
+    </div>
+    <div class="thread">
+      <div class="votes"><b>14</b>replies</div>
+      <div>
+        <h3><a href="#">JWT “none” alg — still biting teams in 2026?</a></h3>
+        <div style="color:var(--muted);font-size:.9rem">War stories + how we teach it in the hard lab.</div>
+        <div class="badges"><span class="chip">auth</span><span class="chip">labs</span></div>
+      </div>
+      <div class="mono" style="color:var(--muted);font-size:.75rem">payload · 3d</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="tag forum">CHANNELS</span>
+      <h3>Boards</h3>
+      <p>#general · #web · #network · #oslo · #marketplace · #help</p>
+      <div class="meta"><span>Demo labels</span></div>
+    </div>
+    <div class="card">
+      <span class="tag forum">CALEB</span>
+      <h3>Need a human-ish handoff?</h3>
+      <p>Open Caleb for live chat while the real forum backend is still on the roadmap.</p>
+      <a class="btn btn-cyan" data-caleb style="margin-top:.4rem">Talk to Caleb</a>
+    </div>
+  </div>
+</main>
+<footer class="wrap footer">
+  <div>
+    <strong style="color:var(--text)">Laden AS</strong> · Oslo · Authorized security work only<br>
+    Demo portal v1.1 — not production auth / payments.
+  </div>
+  <div class="live-bar">
+    <span id="oslo-clock">--:--:--</span>
+    <span>·</span>
+    <span>Members online: <b id="member-count" style="color:var(--green)">128</b></span>
+  </div>
+</footer>
+<script src="../assets/app.js"></script>
+</body></html>

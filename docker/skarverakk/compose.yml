@@ -1,0 +1,21 @@
+name: skarverakk
+services:
+  web:
+    image: skarverakk-web:1
+    build: .
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:18082:80"
+    volumes:
+      - skarverakk_site:/usr/share/nginx/html:ro
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+volumes:
+  skarverakk_site:
+    external: true
+    name: skarverakk_site

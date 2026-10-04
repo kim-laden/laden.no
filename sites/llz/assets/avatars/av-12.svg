@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" class="av-svg" role="img" aria-label="Root Hoodie">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="1.2"/></filter>
+  </defs>
+  <rect width="96" height="96" rx="20" fill="#070b10"/>
+  <circle cx="48" cy="48" r="40" fill="#818cf8" opacity=".08" class="av-aura"/>
+  
+        <path class="av-head" d="M20 78 Q20 28 48 22 Q76 28 76 78 Z" fill="url(#g)"/>
+        <path d="M28 40 Q48 18 68 40 L68 50 Q48 36 28 50 Z" fill="#1e1b4b"/>
+        <ellipse class="av-eye av-eye-l" cx="38" cy="52" rx="5" ry="6" fill="#0f0a2a"/>
+        <ellipse class="av-eye av-eye-r" cx="58" cy="52" rx="5" ry="6" fill="#0f0a2a"/>
+        <circle cx="39.5" cy="50.5" r="1.5" fill="#818cf8"/><circle cx="59.5" cy="50.5" r="1.5" fill="#818cf8"/>
+        <path class="av-mouth" d="M40 66 Q48 70 56 66" stroke="#0f0a2a" stroke-width="2.2" fill="none"/>
+        <text x="48" y="82" text-anchor="middle" font-size="7" fill="#c084fc" font-family="monospace" font-weight="700">#</text>
+      
+</svg>

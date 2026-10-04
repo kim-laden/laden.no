@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" data-base="..">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenges — Laden AS v1.1</title>
+  <meta name="description" content="Laden AS member portal demo: forum, challenges, store.">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/js/soundcloud-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../">
+      <div class="logo">L</div>
+      <div>Laden AS <span class="ver">v1.1</span></div>
+    </a>
+    <nav class="nav-links">
+      <a class="" href="../">Home</a>
+      <a class="" href="../forum/">Forum</a>
+      <a class="active" href="../challenges/">Challenges</a>
+      <a class="" href="../store/">Store</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-cyan" data-caleb>Talk to Caleb</a>
+      <a class="btn btn-ghost" href="https://laden.no/">Live site</a>
+    </div>
+  </div>
+</header>
+<main class="wrap" data-page-marker>
+  <div class="page-title">
+    <div class="eyebrow"><span class="pulse"></span> Labs · THM-lite</div>
+    <h1>Challenges</h1>
+    <p>Small boxes you can finish in a coffee break. Flags stay in your browser — demo scoring only.</p>
+  </div>
+  <div class="chal-layout">
+    <div class="side-list" id="chal-list"></div>
+    <div class="panel" id="chal-panel" style="min-height:420px"></div>
+  </div>
+</main>
+<footer class="wrap footer">
+  <div>
+    <strong style="color:var(--text)">Laden AS</strong> · Oslo · Authorized security work only<br>
+    Demo portal v1.1 — not production auth / payments.
+  </div>
+  <div class="live-bar">
+    <span id="oslo-clock">--:--:--</span>
+    <span>·</span>
+    <span>Members online: <b id="member-count" style="color:var(--green)">128</b></span>
+  </div>
+</footer>
+<script>document.body.dataset.page='challenges';</script>
+<script src="../assets/app.js"></script>
+</body></html>

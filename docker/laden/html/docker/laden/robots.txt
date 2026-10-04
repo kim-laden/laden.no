@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ladenos.no/sitemap.xml
+
+# Private vaults — do not index
+User-agent: *
+Disallow: /llz/private/
+Disallow: /games/fuck-fuckem/
+Disallow: /llz/games/fuck-fuckem/

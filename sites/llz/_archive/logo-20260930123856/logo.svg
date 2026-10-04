@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="LLZ Laden Lab'z">
+  <title>LLZ — Laden Lab'z</title>
+  <defs>
+    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#66d8bd"/>
+      <stop offset="46%" stop-color="#00d98a"/>
+      <stop offset="100%" stop-color="#31c6d3"/>
+    </linearGradient>
+    <filter id="glow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feColorMatrix in="b" type="matrix" values="0 0 0 0 0  0 0 0 0 1  0 0 0 0 0.62  0 0 0 0.85 0" result="g"/>
+      <feMerge>
+        <feMergeNode in="g"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1024" height="1024" fill="#05070a"/>
+  <g fill="none" stroke="#00d98a" stroke-width="10" stroke-linecap="square" opacity="0.28">
+    <path d="M36 36H150M36 36V150M988 36H874M988 36V150M36 988H150M36 988V874M988 988H874M988 988V874"/>
+  </g>
+  <g filter="url(#glow)" fill="url(#neon)">
+    <rect x="64" y="48" width="132" height="928"/>
+    <rect x="64" y="840" width="896" height="136"/>
+    <rect x="276" y="48" width="132" height="652"/>
+    <rect x="276" y="568" width="604" height="132"/>
+    <path d="M450.0 536.0L450.0 425.6L784.7 144.3L450.0 144.3L450.0 36.0L950.0 36.0L950.0 146.4L615.3 427.7L950.0 427.7L950.0 536.0Z"/>
+    <circle cx="130" cy="48" r="15"/>
+    <circle cx="342" cy="48" r="15"/>
+    <circle cx="880" cy="634" r="13"/>
+    <circle cx="952" cy="908" r="18" fill="#b9e2df"/>
+  </g>
+</svg>

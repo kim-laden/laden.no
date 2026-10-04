@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /labs/targets/backup/
+# Operators: hidden notes are still public if linked.
+# flag: LLZ{robots_are_hints}

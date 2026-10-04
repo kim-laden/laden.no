@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQLi Logic Gate — Labs · Laden Labs</title>
+  <meta name="description" content="Boolean logic in login queries (conceptual).">
+  <link rel="stylesheet" href="/assets/styles.css?v=cta1">
+<script src="/assets/i18n.js"></script>
+<script src="/assets/i18n-content.js"></script>
+  <link rel="stylesheet" href="/labs/assets/room.css">
+  <link rel="canonical" href="https://laden.no/labs/sqli-logic/">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/js/soundcloud-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="lab-room" data-lab-slug="sqli-logic">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap room-main" id="room-main">
+  <nav class="room-crumb" aria-label="Breadcrumb" data-i18n-aria="labs.crumb">
+    <span class="sep">/</span>
+    <span class="mono" id="crumb-slug">sqli-logic</span>
+  </nav>
+
+  <div id="room-gate" class="room-gate hidden" aria-live="polite"></div>
+
+  <section class="room-hero panel" id="room-hero">
+    <div class="room-hero-top">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> <span data-i18n="labs.room.eyebrow">Lab room</span></div>
+        <h1 id="room-title">SQLi Logic Gate</h1>
+        <p class="muted" id="room-summary">Boolean logic in login queries (conceptual).</p>
+      </div>
+      <div class="room-tags" id="room-tags">
+        <span class="tag">inject</span>
+      </div>
+    </div>
+    <div class="room-meta mono" id="room-meta" data-i18n="room.loading">Loading…</div>
+  </section>
+
+  <section class="room-learn panel" id="room-learn">
+    <h2 data-i18n="room.learn">Learn</h2>
+    <p id="room-learn-body">…</p>
+  </section>
+
+  <section class="room-work panel" id="room-work">
+    <div class="room-work-head">
+      <h2 data-i18n="room.bench">Lab bench</h2>
+      <button type="button" class="btn btn-ghost" id="room-llc-btn" data-i18n="room.openLlc">Open LLC</button>
+    </div>
+    <div class="chal-body" id="room-body"></div>
+    <div class="room-widget" id="room-widget" aria-live="polite"></div>
+  </section>
+
+  <section class="room-submit panel" id="room-submit">
+    <h2 data-i18n="room.submit">Submit flag</h2>
+    <p class="muted mono" id="room-hint" style="font-size:.8rem;margin-bottom:.6rem"></p>
+    <div id="special-hint-box" class="learn" style="display:none"></div>
+    <div class="flag-row">
+      <input id="flag-in" class="mono" placeholder="LLZ{…}" autocomplete="off" spellcheck="false">
+      <button class="btn btn-primary" type="button" id="flag-go" data-i18n="room.submit">Submit flag</button>
+    </div>
+    <div class="flag-row" style="margin-top:.55rem">
+      <button class="btn btn-cyan" type="button" id="hint-buy" data-i18n="room.specialHint">Special hint</button>
+      <button class="btn btn-ghost" type="button" id="room-caleb" data-i18n="room.askCaleb">Ask Caleb</button>
+    </div>
+    <div class="msg" id="flag-msg"></div>
+  </section>
+</main>
+
+<footer class="wrap footer">
+  <div>
+    <strong style="color:var(--text)">Laden Labs</strong>
+    <div class="muted" style="font-size:.8rem">Oslo · Authorized security work only · <span class="mono">LLZ{…}</span></div>
+  </div>
+  <div class="live-bar"></div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+
+<script src="/assets/featured.js"></script>
+<script src="/assets/llt.js"></script>
+<script src="/challenges/llt-data.js"></script>
+<script src="/labs/assets/room.js"></script>
+<script src="/assets/caleb.js?v=20261004-caleb16"></script>
+<link rel="stylesheet" href="/assets/avatars/avatars.css">
+<script src="/assets/avatars/avatars.js"></script>
+<script src="/assets/labcard.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/assets/llc.js" defer></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

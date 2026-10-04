@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Throttle or get banned — Tips · Laden Labs</title>
+  <meta name="description" content="Use -t 4 and respect lockouts. Against production without written scope: don't. Against your lab: still be nice to the logs.">
+  <link rel="stylesheet" href="/assets/styles.css?v=cta1">
+<script src="/assets/i18n.js"></script>
+<script src="/assets/i18n-content.js"></script>
+  <link rel="stylesheet" href="/labs/assets/room.css">
+  <link rel="stylesheet" href="/tips/assets/tip.css">
+  <link rel="canonical" href="https://laden.no/tips/hydra-throttle/">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/js/soundcloud-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="tip-page">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap room-main">
+
+  <nav class="room-crumb" aria-label="Breadcrumb">
+    <a href="/tips/"><span data-i18n="nav.tips">Tips</span></a>
+    <span class="sep">/</span>
+    <span class="mono">hydra-throttle</span>
+  </nav>
+
+  <section class="room-hero panel tip-hero">
+    <div class="room-hero-top">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> Operator tip · hydra</div>
+        <h1>Throttle or get banned</h1>
+        <p class="muted">Use -t 4 and respect lockouts. Against production without written scope: don't. Against your lab: still be nice to the logs.</p>
+      </div>
+      <div class="room-tags">
+        <span class="tag med">med</span>
+        <span class="tag">bruteforce</span><span class="tag">hydra</span><span class="tag">rate-limit</span>
+      </div>
+    </div>
+    <div class="room-meta mono">/hydra/ · /tips/hydra-throttle/</div>
+  </section>
+
+  <section class="room-learn panel tip-body">
+    <h2>Guide</h2>
+    
+<p>Hydra can open hundreds of parallels. Labs and real apps will lock accounts, ban your IP, or trip WAF rules. Throttle is not optional politeness — it is how you stay in the experiment.</p>
+<h3>Why it matters</h3>
+<p>Rate limits exist to stop exactly this. On Laden, the rate-limit lab teaches the defensive side. As an attacker-in-lab, <code>-t 4</code> (or lower) keeps logs readable and mimics what a careful operator does under a signed SOW.</p>
+<h3>How-to</h3>
+<pre class="mono tip-pre"># Lab login form example (authorized targets only)
+hydra -l admin -P wordlist.txt TARGET http-post-form \
+  "/login:user=^USER^&pass=^PASS^:F=Invalid" -t 4 -V
+
+# SSH lab
+hydra -L users.txt -P rockyou.txt -t 4 ssh://TARGET</pre>
+<ul>
+  <li>Stop when you see lockouts — note it for the report instead of burning the account.</li>
+  <li>Production without written scope: do not run Hydra. Ever.</li>
+  <li>Prefer password sprays (few passwords, many users) over classic brute when simulating real ops — still only in scope.</li>
+</ul>
+
+  </section>
+
+  <section class="panel tip-links">
+    <h2>Related labs</h2>
+    <div class="tip-link-row"><a class="tip-related" href="/labs/rate-limit/">Rate Limit</a><a class="tip-related" href="/labs/scope-first/">Scope First</a><a class="tip-related" href="/labs/password-reset-poison/">Password Reset Poison</a></div>
+    <h2 style="margin-top:1rem">Oracle queries</h2>
+    <div class="tip-link-row"><a class="tip-oracle" href="/oracle/?q=hydra%20-t%20throttle">hydra -t throttle</a><a class="tip-oracle" href="/oracle/?q=password%20spraying%20vs%20bruteforce">password spraying vs bruteforce</a><a class="tip-oracle" href="/oracle/?q=account%20lockout%20testing">account lockout testing</a></div>
+    <div class="tip-actions">
+      <button type="button" class="btn btn-cyan" id="tip-caleb" data-ask="How should I throttle Hydra on a lab login?">Ask Caleb</button>
+      <a class="btn btn-ghost" href="/tips/">All tips</a>
+      <a class="btn btn-ghost" href="/community/#tips">Community tips tab</a>
+      <a class="btn btn-primary" href="/oracle/">Open Oracle</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap footer">
+  <div>
+    <strong style="color:var(--text)">Laden Labs</strong>
+    <div class="muted" style="font-size:.8rem">Oslo · Authorized security work only · operator tips</div>
+  </div>
+  <div class="live-bar">
+    <span>Tips · ethical only</span>
+    <span>·</span>
+    <span>demo</span>
+  </div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+
+<script src="/assets/llt.js"></script>
+<script src="/assets/caleb.js?v=20261004-caleb16"></script>
+<link rel="stylesheet" href="/assets/avatars/avatars.css">
+<script src="/assets/avatars/avatars.js"></script>
+<script src="/assets/labcard.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/tips/assets/tip.js"></script>
+<script src="/assets/llc.js" defer></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "count": 24,
+  "slugs": [
+    "scope-first",
+    "banner-grab-lite",
+    "robots-redux",
+    "hidden-dir",
+    "reflect-101",
+    "cookie-jar",
+    "b64-again",
+    "rot-warm",
+    "hash-id",
+    "jwt-none",
+    "idor-desk",
+    "password-reset-poison",
+    "sqli-logic",
+    "cmd-metachar",
+    "cors-wild",
+    "open-redirect",
+    "ssrf-mind",
+    "path-traversal",
+    "report-quality",
+    "cvss-feel",
+    "csp-bypass-talk",
+    "js-secrets",
+    "rate-limit",
+    "tls-old"
+  ]
+}

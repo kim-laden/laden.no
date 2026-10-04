@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" data-base="." data-i18n-meta="meta.home.desc">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n-title="meta.home.title">Laden AS — Hunt ethically</title>
+  <meta name="description" content="Laden AS public gateway for ethical hackers and bug hunters. Forum, Laden Labs, Gear (LLG), Caleb Labs mentor.">
+  <link rel="stylesheet" href="assets/styles.css?v=cta1">
+<script src="assets/i18n.js"></script>
+<script src="/assets/i18n-content.js"></script>
+  <script type="text/javascript">(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})('https://utt.impactcdn.com/P-A7874253-36fd-430d-8ff1-3e0daa18382b1.js','script','impactStat',document,window);impactStat('transformLinks');impactStat('trackImpression');</script>
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/llz/assets/llz-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="assets/products/logo.jpg?v=llz9" alt="Laden Lab'z" width="64" height="64">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a class="active" href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+      <a href="/messages/" id="nav-messages"><span data-i18n="nav.messages">Messages</span></a>
+    </nav>
+    <div class="nav-cta">
+<div class="nav-cart">
+        <button type="button" class="btn-cart" id="cart-btn" aria-label="Cart" data-i18n-aria="nav.cart"><span data-i18n="nav.cart">Cart</span> <span class="cart-count" id="cart-count">0 NOK</span></button>
+        <div class="cart-pop" id="cart-pop">
+          <div class="cart-items" id="cart-items"></div>
+          <div class="cart-foot"><span class="muted"><span data-i18n="nav.total">Total</span></span><strong class="price" id="cart-total">0 NOK</strong></div>
+          <div class="cart-actions">
+            <button class="btn btn-primary" type="button" onclick="checkoutDemo()"><span data-i18n="nav.checkout">Checkout</span></button>
+            <button class="btn btn-ghost" type="button" onclick="clearCart()"><span data-i18n="nav.clear">Clear</span></button>
+          </div>
+        </div>
+      </div>
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <img class="hero-logo" src="assets/products/logo.jpg?v=llz9" alt="Laden Labs">
+      <div class="eyebrow"><span class="pulse"></span> <span data-i18n="hero.eyebrow">Public gateway · learn in process · authorized only</span></div>
+      <h1 data-i18n-html="hero.title">Step on.<br><em>Hunt ethically.</em></h1>
+      <p class="lead" data-i18n="hero.lead">Hacker-ish HQ for ethical hackers and bug hunters. Practice in Laden Labs, talk shop on the forum, gear up in LLG — with Caleb as your mentor.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/labs/" data-i18n="hero.enter">Enter Laden Labs</a>
+        <a class="btn btn-cyan" href="#caleb-labs" data-caleb data-i18n="hero.ask">Ask Caleb</a>
+        <a class="btn btn-ghost" href="forum/" data-i18n="hero.forum">Browse forum</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>24</b><span data-i18n="stats.labs">Labs · JWT+DB</span></div>
+        <div class="stat"><b>12</b><span data-i18n="stats.threads">Forum threads</span></div>
+        <div class="stat"><b>8</b><span data-i18n="stats.gear">Gear drops</span></div>
+      </div>
+    </div>
+    <aside class="panel terminal">
+      <h3 data-i18n="feed.title">Live ops feed</h3>
+      <div class="feed" id="live-feed"></div>
+      <div class="live-bar" style="margin-top:.8rem;padding-top:.8rem;border-top:1px solid var(--border)">
+        <span id="oslo-clock">--:--:--</span>
+        <span>·</span>
+        <span data-i18n="feed.gateway">Gateway</span> <span style="color:var(--green)" data-i18n="feed.live">● live</span>
+        <span>·</span>
+        <span data-i18n="feed.caleb">Caleb ready</span>
+      </div>
+    </aside>
+  </section>
+
+  <section class="block">
+    <div class="section-head">
+      <div>
+        <h2 data-i18n="jump.title">Jump in</h2>
+        <p data-i18n="jump.lead">Three surfaces, one vibe — practice, talk, gear up.</p>
+      </div>
+    </div>
+    <div class="grid-3">
+      <a class="card" href="forum/" style="color:inherit">
+        <span class="tag forum">FORUM</span>
+        <h3 data-i18n="jump.forum.title">Member forum</h3>
+        <p data-i18n="jump.forum.body">OpSec lounge, web writeups, Oslo meetups, and ask-anything threads.</p>
+        <div class="meta"><span data-i18n="jump.forum.meta1">12 threads</span><span data-i18n="jump.forum.meta2">Preview</span></div>
+      </a>
+      <a class="card" href="/labs/" style="color:inherit">
+        <span class="tag labs">LADEN LABS</span>
+        <h3 data-i18n="jump.labs.title">Challenge board</h3>
+        <p data-i18n="jump.labs.body">24 packed labs with JWT auth + SQLite API. Tracks from recon to broken auth.</p>
+        <div class="meta"><span data-i18n="jump.labs.meta1">Easy → Hard</span><span>Flag: LLZ{…}</span></div>
+      </a>
+      <a class="card" href="/terminal/" style="color:inherit">
+        <span class="tag labs">TERMINAL</span>
+        <h3 data-i18n="jump.term.title">Laden Labs Console</h3>
+        <p data-i18n-html="jump.term.body">LLC — Kali-style console with fictional nets + <b>lmap</b>. Starts full-screen on top.</p>
+        <div class="meta"><span>lmap · FS</span><span>kali@llc</span></div>
+      </a>
+      <a class="card" href="gear/" style="color:inherit">
+        <span class="tag store">LLG</span>
+        <h3 data-i18n="jump.gear.title">Laden Labs Gear</h3>
+        <p data-i18n="jump.gear.body">Hoodies, stickers, caps, and joke USB drops. Cart is demo-only.</p>
+        <div class="meta"><span data-i18n="jump.gear.meta1">NOK pricing</span><span data-i18n="jump.gear.meta2">No real charge</span></div>
+      </a>
+    </div>
+  </section>
+
+  <div data-llt-ad></div>
+
+  <section class="block" id="challenges">
+    <div class="section-head">
+      <div>
+        <h2 data-i18n="chal.home.title">New challenges every week!</h2>
+        <p data-i18n-html="chal.home.lead">Three free rotators — earn <b>Laden Labs Tokens (LLT)</b>. <span class="mono">1 LLT = 1 NOK</span>.</p>
+      </div>
+      <a class="btn btn-ghost" href="/challenges/" data-i18n="chal.home.all">All free challenges →</a>
+    </div>
+    <div class="chal-filters" id="home-chal-filters">
+      <button type="button" class="active" data-track="all">All</button>
+    </div>
+    <div class="grid-3" id="home-chal-grid">
+      <p class="muted" data-i18n="chal.home.loading">Loading challenges…</p>
+    </div>
+  </section>
+
+  <section class="block store-strip">
+    <div class="section-head">
+      <div>
+        <h2 data-i18n="gear.strip.title">Gear strip · LLG</h2>
+        <p data-i18n="gear.strip.lead">Same vibe as the merch desk — demo cart, no charge.</p>
+      </div>
+      <a class="btn btn-ghost" href="gear/" data-i18n="gear.strip.all">Full gear →</a>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="product-art"><img src="assets/products/hoodie.jpg" alt="Laden Labs hoodie" loading="lazy"></div>
+        <span class="tag store">APPAREL</span>
+        <h3>Laden Hoodie — Void Green</h3>
+        <p>Heavyweight, subtle mark, cold Oslo offices.</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap;margin-top:auto">
+          <span class="price">749 NOK</span>
+          <button class="btn btn-primary" type="button" onclick="addToCart('hoodie','Laden Hoodie',749)" data-i18n="gear.add">Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="product-art"><img src="assets/products/stickers.jpg" alt="Laden Labs stickers" loading="lazy"></div>
+        <span class="tag store">GEAR</span>
+        <h3>Sticker Pack v1</h3>
+        <p>8 vinyl: grid, claw, “scope first”.</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap;margin-top:auto">
+          <span class="price">99 NOK</span>
+          <button class="btn btn-primary" type="button" onclick="addToCart('stickers','Sticker Pack v1',99)" data-i18n="gear.add">Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="product-art"><img src="assets/products/cap.jpg" alt="Laden Labs cap" loading="lazy"></div>
+        <span class="tag store">APPAREL</span>
+        <h3>Operator Cap</h3>
+        <p>Low-profile, embroidered L mark.</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap;margin-top:auto">
+          <span class="price">249 NOK</span>
+          <button class="btn btn-primary" type="button" onclick="addToCart('cap','Operator Cap',249)" data-i18n="gear.add">Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="product-art"><img src="assets/products/tee.jpg" alt="Laden Labs tee" loading="lazy"></div>
+        <span class="tag store">APPAREL</span>
+        <h3>Tee — “Authorized Only”</h3>
+        <p>Soft black tee. Auditors stay calm.</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap;margin-top:auto">
+          <span class="price">329 NOK</span>
+          <button class="btn btn-primary" type="button" onclick="addToCart('tee','Authorized Only Tee',329)" data-i18n="gear.add">Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="product-art"><img src="assets/products/usb.jpg" alt="Laden Labs usb" loading="lazy"></div>
+        <span class="tag store">GEAR</span>
+        <h3>Decoy USB (joke)</h3>
+        <p>Looks spicy. README says get authorization.</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap;margin-top:auto">
+          <span class="price">149 NOK</span>
+          <button class="btn btn-primary" type="button" onclick="addToCart('usb','Decoy USB',149)" data-i18n="gear.add">Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="product-art"><img src="assets/products/mug.jpg" alt="Laden Labs mug" loading="lazy"></div>
+        <span class="tag store">DESK</span>
+        <h3>Mug — Root Preferred</h3>
+        <p>Ceramic. Bad jokes included.</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap;margin-top:auto">
+          <span class="price">199 NOK</span>
+          <button class="btn btn-primary" type="button" onclick="addToCart('mug','Root Preferred Mug',199)" data-i18n="gear.add">Add</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block discord-compact" id="discord">
+    <div class="discord-card discord-card--sm">
+      <div class="discord-compact-copy">
+        <span class="tag discord">DISCORD</span>
+        <h2 data-i18n="discord.title">Community</h2>
+        <p data-i18n="discord.body">Writeups, Oslo hangs, gentle hints — spoilers tagged.</p>
+        <a class="btn btn-discord" href="https://discord.gg/BavZjwXp2" target="_blank" rel="noopener" data-i18n="discord.join">Join Discord</a>
+      </div>
+      <div class="discord-widget-slot" data-discord-slot data-discord-id=""></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap footer">
+  <div>
+    <div class="brand-lockup" style="margin-bottom:.55rem">
+      <img class="footer-logo" src="assets/products/logo.jpg?v=llz9" alt="Laden Labs">
+      <div>
+        <strong style="color:var(--text)">Laden Labs</strong>
+        <div class="muted" style="font-size:.8rem"><span data-i18n="footer.tagline">Oslo · Authorized security work only</span></div>
+      </div>
+    </div>
+    <span data-i18n="footer.demo">Demo portal — not production auth / payments. Flags: </span><span class="mono">LLZ{…}</span>
+  </div>
+  <div class="live-bar">
+    <span><span data-i18n="footer.members">Members online:</span> <b id="member-count" style="color:var(--green)">128</b></span>
+    <span>·</span>
+    <span>demo</span>
+  </div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+
+<script src="assets/llt.js"></script>
+<link rel="stylesheet" href="assets/avatars/avatars.css">
+<script src="assets/avatars/avatars.js"></script>
+<script src="assets/labcard.js"></script>
+<script src="assets/nav-mobile.js"></script>
+<script src="assets/featured.js"></script>
+<script src="assets/app.js?v=cta1"></script>
+<script src="assets/caleb.js?v=20261004-caleb16"></script>
+<script src="/assets/llc.js" defer></script>
+<script src="assets/legal.js" defer></script>
+</body>
+</html>

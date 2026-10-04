@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scripts + versions without -A — Tips · Laden Labs</title>
+  <meta name="description" content="Prefer nmap -sC -sV -p- over blind -A. Faster feedback, less noise, same intel on most labs.">
+  <link rel="stylesheet" href="/assets/styles.css?v=cta1">
+<script src="/assets/i18n.js"></script>
+<script src="/assets/i18n-content.js"></script>
+  <link rel="stylesheet" href="/labs/assets/room.css">
+  <link rel="stylesheet" href="/tips/assets/tip.css">
+  <link rel="canonical" href="https://laden.no/tips/nmap-scripts-versions/">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/llz/assets/llz-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="tip-page">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap room-main">
+
+  <nav class="room-crumb" aria-label="Breadcrumb">
+    <a href="/tips/"><span data-i18n="nav.tips">Tips</span></a>
+    <span class="sep">/</span>
+    <span class="mono">nmap-scripts-versions</span>
+  </nav>
+
+  <section class="room-hero panel tip-hero">
+    <div class="room-hero-top">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> Operator tip · nmap</div>
+        <h1>Scripts + versions without -A</h1>
+        <p class="muted">Prefer nmap -sC -sV -p- over blind -A. Faster feedback, less noise, same intel on most labs.</p>
+      </div>
+      <div class="room-tags">
+        <span class="tag easy">easy</span>
+        <span class="tag">recon</span><span class="tag">nmap</span><span class="tag">service-detect</span>
+      </div>
+    </div>
+    <div class="room-meta mono">/nmap/ · /tips/nmap-scripts-versions/</div>
+  </section>
+
+  <section class="room-learn panel tip-body">
+    <h2>Guide</h2>
+    
+<p>The classic muscle-memory move is <code>nmap -A</code>. It feels thorough — OS detect, traceroute, scripts, versions — but on a flat lab net it often wastes minutes and floods your scrollback with traceroute hops you will never use.</p>
+<h3>Why it matters</h3>
+<p>Default scripts (<code>-sC</code>) plus version probes (<code>-sV</code>) give you the same actionable intel as <code>-A</code> for almost every Laden lab: banners, HTTP titles, SSH versions, and a few NSE soft probes. You skip OS fingerprinting and traceroute noise until you actually need them.</p>
+<h3>How-to</h3>
+<pre class="mono tip-pre"># Full TCP port sweep with default scripts + versions
+nmap -sC -sV -p- -oA recon/host TARGET
+
+# Faster first pass (top ports) then deepen
+nmap -sC -sV --top-ports 1000 TARGET
+nmap -sC -sV -p- --open TARGET</pre>
+<ul>
+  <li>Save output with <code>-oA</code> so your writeup has a receipt.</li>
+  <li>Add <code>-T4</code> on your own lab VMs; drop to <code>-T3</code> if the target looks fragile.</li>
+  <li>Bring back <code>-O</code> or <code>--traceroute</code> only when a report asks for OS/pathing.</li>
+</ul>
+<h3>Examples</h3>
+<pre class="mono tip-pre">nmap -sC -sV -p- 10.10.10.50
+# Look for: http-title, ssh-hostkey, ssl-cert, ftp-anon</pre>
+<p>When a service looks interesting, follow up with a targeted script: <code>nmap --script http-enum -p 80 TARGET</code> — still no need for full <code>-A</code>.</p>
+
+  </section>
+
+  <section class="panel tip-links">
+    <h2>Related labs</h2>
+    <div class="tip-link-row"><a class="tip-related" href="/labs/banner-grab-lite/">Banner Whisper</a><a class="tip-related" href="/labs/robots-redux/">Robots Redux</a><a class="tip-related" href="/labs/tls-old/">TLS Old</a></div>
+    <h2 style="margin-top:1rem">Oracle queries</h2>
+    <div class="tip-link-row"><a class="tip-oracle" href="/oracle/?q=nmap%20service%20detection%20writeup">nmap service detection writeup</a><a class="tip-oracle" href="/oracle/?q=nmap%20-sC%20-sV%20vs%20-A">nmap -sC -sV vs -A</a><a class="tip-oracle" href="/oracle/?q=NSE%20http-enum">NSE http-enum</a></div>
+    <div class="tip-actions">
+      <button type="button" class="btn btn-cyan" id="tip-caleb" data-ask="When should I use nmap -A vs -sC -sV on a lab?">Ask Caleb</button>
+      <a class="btn btn-ghost" href="/tips/">All tips</a>
+      <a class="btn btn-ghost" href="/community/#tips">Community tips tab</a>
+      <a class="btn btn-primary" href="/oracle/">Open Oracle</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap footer">
+  <div>
+    <strong style="color:var(--text)">Laden Labs</strong>
+    <div class="muted" style="font-size:.8rem">Oslo · Authorized security work only · operator tips</div>
+  </div>
+  <div class="live-bar">
+    <span>Tips · ethical only</span>
+    <span>·</span>
+    <span>demo</span>
+  </div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+
+<script src="/assets/llt.js"></script>
+<script src="/assets/caleb.js?v=20261004-caleb16"></script>
+<link rel="stylesheet" href="/assets/avatars/avatars.css">
+<script src="/assets/avatars/avatars.js"></script>
+<script src="/assets/labcard.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/tips/assets/tip.js"></script>
+<script src="/assets/llc.js" defer></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

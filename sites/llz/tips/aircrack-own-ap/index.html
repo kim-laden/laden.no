@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Own AP / own handshake — Tips · Laden Labs</title>
+  <meta name="description" content="Capture and crack only networks you own or are contracted to test. Lab kit + isolated AP = education. Neighbour's SSID = crime.">
+  <link rel="stylesheet" href="/assets/styles.css?v=cta1">
+<script src="/assets/i18n.js"></script>
+<script src="/assets/i18n-content.js"></script>
+  <link rel="stylesheet" href="/labs/assets/room.css">
+  <link rel="stylesheet" href="/tips/assets/tip.css">
+  <link rel="canonical" href="https://laden.no/tips/aircrack-own-ap/">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/llz/assets/llz-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="tip-page">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap room-main">
+
+  <nav class="room-crumb" aria-label="Breadcrumb">
+    <a href="/tips/"><span data-i18n="nav.tips">Tips</span></a>
+    <span class="sep">/</span>
+    <span class="mono">aircrack-own-ap</span>
+  </nav>
+
+  <section class="room-hero panel tip-hero">
+    <div class="room-hero-top">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> Operator tip · aircrack-ng</div>
+        <h1>Own AP / own handshake</h1>
+        <p class="muted">Capture and crack only networks you own or are contracted to test. Lab kit + isolated AP = education. Neighbour's SSID = crime.</p>
+      </div>
+      <div class="room-tags">
+        <span class="tag hard">hard</span>
+        <span class="tag">wireless</span><span class="tag">aircrack-ng</span><span class="tag">ethics</span>
+      </div>
+    </div>
+    <div class="room-meta mono">/aircrack-ng/ · /tips/aircrack-own-ap/</div>
+  </section>
+
+  <section class="room-learn panel tip-body">
+    <h2>Guide</h2>
+    
+<p>Wireless cracking is fun in a lab and illegal on a random SSID. The tool does not know the difference — you do.</p>
+<h3>Why it matters</h3>
+<p>Scope is the whole game. Lab kits and isolated APs teach handshake capture, deauth (on your AP), and offline wordlist attacks without touching anyone else's network. Neighbour Wi-Fi, café hotspots, and "just for learning" on the subway are out of scope forever.</p>
+<h3>How-to (lab only)</h3>
+<ol>
+  <li>Use hardware you own + an AP you configured for the exercise.</li>
+  <li>Put the card in monitor mode on a clean channel.</li>
+  <li>Capture a WPA handshake from <em>your</em> client associating.</li>
+  <li>Crack offline with a wordlist you own (<code>aircrack-ng -w wordlist capture.cap</code>).</li>
+</ol>
+<pre class="mono tip-pre"># Conceptual lab flow (your AP only)
+airmon-ng start wlan0
+airodump-ng -c CH --bssid YOUR_AP -w labcap wlan0mon
+# associate your phone/laptop → capture handshake
+aircrack-ng -w rockyou.txt labcap-01.cap</pre>
+<p class="tip-warn"><strong>Ethics:</strong> No written authorization → no packets. Laden Community will not help you justify neighbour sniffing.</p>
+
+  </section>
+
+  <section class="panel tip-links">
+    <h2>Related labs</h2>
+    <div class="tip-link-row"><a class="tip-related" href="/labs/scope-first/">Scope First</a><a class="tip-related" href="/labs/report-quality/">Report Quality</a><a class="tip-related" href="/labs/cvss-feel/">CVSS Feel</a></div>
+    <h2 style="margin-top:1rem">Oracle queries</h2>
+    <div class="tip-link-row"><a class="tip-oracle" href="/oracle/?q=aircrack-ng%20lab%20handshake">aircrack-ng lab handshake</a><a class="tip-oracle" href="/oracle/?q=WPA%20handshake%20capture%20authorized">WPA handshake capture authorized</a><a class="tip-oracle" href="/oracle/?q=wireless%20security%20ethics">wireless security ethics</a></div>
+    <div class="tip-actions">
+      <button type="button" class="btn btn-cyan" id="tip-caleb" data-ask="What is the ethical way to practice aircrack-ng?">Ask Caleb</button>
+      <a class="btn btn-ghost" href="/tips/">All tips</a>
+      <a class="btn btn-ghost" href="/community/#tips">Community tips tab</a>
+      <a class="btn btn-primary" href="/oracle/">Open Oracle</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap footer">
+  <div>
+    <strong style="color:var(--text)">Laden Labs</strong>
+    <div class="muted" style="font-size:.8rem">Oslo · Authorized security work only · operator tips</div>
+  </div>
+  <div class="live-bar">
+    <span>Tips · ethical only</span>
+    <span>·</span>
+    <span>demo</span>
+  </div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+
+<script src="/assets/llt.js"></script>
+<script src="/assets/caleb.js?v=20261004-caleb16"></script>
+<link rel="stylesheet" href="/assets/avatars/avatars.css">
+<script src="/assets/avatars/avatars.js"></script>
+<script src="/assets/labcard.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/tips/assets/tip.js"></script>
+<script src="/assets/llc.js" defer></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

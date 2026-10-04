@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <title>LabZocial — Laden Labs</title>
+  <script>
+    (function () {
+      var m = location.pathname.match(/\/zocial\/([^\/]+)\/?/i);
+      var u = (m && m[1] && m[1].toLowerCase() !== 'index.html') ? m[1] : (new URLSearchParams(location.search).get('u') || '');
+      if (u) location.replace('/community/u/' + encodeURIComponent(u) + '/');
+      else location.replace('/community/');
+    })();
+  </script>
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/js/soundcloud-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body><p class="muted">Redirecting to LabZocial…</p></body>
+</html>

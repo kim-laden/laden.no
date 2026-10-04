@@ -1,0 +1,62 @@
+Laden AS demo — static deploy notes
+========================================
+Build output lives in this folder (dist/). Do NOT SSH from the builder —
+copy these paths onto the VPS yourself.
+
+Suggested VPS layout (nginx / Caddy)
+------------------------------------
+Public homepage + store + forum:
+  /var/www/laden/          ← contents of dist/ EXCEPT the labs/ folder
+    index.html
+    assets/
+    store/
+    forum/
+    DEPLOY.txt
+
+Laden Labs member area (served at /labs/):
+  /var/www/laden/labs/     ← contents of dist/labs/
+    index.html
+    assets/
+    labs/                  ← mini lab files (echo, idor, robots, …)
+
+API (already expected by labs JS):
+  /labs/api/*              ← reverse-proxy to the Laden gateway (ref-api/server.py)
+                             e.g. proxy_pass http://127.0.0.1:PORT/
+
+Copy commands (example)
+-----------------------
+  rsync -av --delete dist/index.html dist/assets dist/store dist/forum \
+    user@vps:/var/www/laden/
+
+  rsync -av --delete dist/labs/ user@vps:/var/www/laden/labs/
+
+Nginx sketch
+------------
+  location / {
+    root /var/www/laden;
+    try_files $uri $uri/ /index.html;
+  }
+  location /labs/ {
+    alias /var/www/laden/labs/;
+    try_files $uri $uri/ /labs/index.html;
+  }
+  location /labs/api/ {
+    proxy_pass http://127.0.0.1:8787/;   # adjust port
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+  }
+
+Config knobs
+------------
+  assets/caleb.js (and labs/assets/caleb.js):
+    DISCORD_SERVER_ID = ''     → set to enable widget iframe
+    DISCORD_INVITE = 'https://discord.gg/laden'
+
+Demo accounts (unchanged)
+-------------------------
+  operator / hunt-ethically
+  newbie   / learn-first
+  caleb    / openclaw-demo
+
+Flags format: LLZ{...}
+Caleb: mentor popup.

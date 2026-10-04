@@ -1,0 +1,14 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><title>Redirect lab</title>
+<style>body{font-family:monospace;background:#05070a;color:#e6f1ff;padding:2rem}</style></head>
+<body>
+<h1>Open redirect demo</h1>
+<p>This page would bounce to <code id=n></code> without an allowlist.</p>
+<p style="color:#00ff9d">Educational flag: laden{allowlist_redirects}</p>
+<p><a id=go href="#">Simulate continue</a> (stays here in demo)</p>
+<script>
+const next=new URLSearchParams(location.search).get('next')||'/';
+document.getElementById('n').textContent=next;
+document.getElementById('go').onclick=(e)=>{e.preventDefault();alert('Demo blocked external nav. In the wild, allowlist paths only.\nflag: laden{allowlist_redirects}');};
+</script>
+<script src="/assets/llc.js" defer></script>
+</body></html>

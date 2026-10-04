@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /v1.2/labs/backup/
+# Operators: hidden notes are still public if linked.
+# flag: laden{robots_are_hints}

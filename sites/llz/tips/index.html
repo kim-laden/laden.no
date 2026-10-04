@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tips &amp; tricks — Laden Labs</title>
+  <meta name="description" content="Operator guides: nmap, Burp, Wireshark, msfconsole, aircrack-ng, Hydra, sqlmap, john, hashcat, ffuf.">
+  <link rel="stylesheet" href="/assets/styles.css?v=cta1">
+<script src="/assets/i18n.js"></script>
+<script src="/assets/i18n-content.js"></script>
+  <link rel="stylesheet" href="/labs/assets/room.css">
+  <link rel="stylesheet" href="/tips/assets/tip.css">
+  <link rel="canonical" href="https://laden.no/tips/">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/llz/assets/llz-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="tip-page">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap room-main">
+
+  <nav class="room-crumb" aria-label="Breadcrumb">
+    <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+    <span class="sep">/</span>
+    <span class="mono">tips</span>
+  </nav>
+
+  <section class="room-hero panel tip-hero">
+    <div class="room-hero-top">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> <span data-i18n="tips.eyebrow">Operator guides</span></div>
+        <h1 data-i18n="tips.title">Tips &amp; tricks</h1>
+        <p class="muted" data-i18n="tips.lead">Full writeups grown from the Community tip cards — nmap, Burp, Wireshark, msfconsole, aircrack-ng, Hydra, sqlmap, john, hashcat, ffuf. Ethical / authorized targets only.</p>
+      </div>
+      <div class="room-tags"><span class="tag">16 guides</span></div>
+    </div>
+  </section>
+
+  <div class="tip-filters" id="tip-filters"><button type="button" class="topic-btn active" data-filter="all">all</button><button type="button" class="topic-btn" data-filter="aircrack-ng">#aircrack-ng</button><button type="button" class="topic-btn" data-filter="burp">#burp</button><button type="button" class="topic-btn" data-filter="ffuf">#ffuf</button><button type="button" class="topic-btn" data-filter="hashcat">#hashcat</button><button type="button" class="topic-btn" data-filter="hydra">#hydra</button><button type="button" class="topic-btn" data-filter="john">#john</button><button type="button" class="topic-btn" data-filter="msfconsole">#msfconsole</button><button type="button" class="topic-btn" data-filter="nmap">#nmap</button><button type="button" class="topic-btn" data-filter="sqlmap">#sqlmap</button><button type="button" class="topic-btn" data-filter="wireshark">#wireshark</button></div>
+  <div class="tips-grid tip-index-grid" id="tips-index">
+      <a class="tip-card tip-card-link" href="/tips/nmap-scripts-versions/">
+        <div class="tool">nmap · <span class="tag easy">easy</span></div>
+        <h3>Scripts + versions without -A</h3>
+        <p>Prefer nmap -sC -sV -p- over blind -A. Faster feedback, less noise, same intel on most labs.</p>
+        <span class="tip-open" data-i18n="tips.open">Open guide →</span>
+      </a>
+      <a class="tip-card tip-card-link" href="/tips/nmap-host-discovery/">
+        <div class="tool">nmap · <span class="tag easy">easy</span></div>
+        <h3>Host discovery first</h3>
+        <p>On a flat lab net: nmap -sn 10.10.0.0/24 then target live hosts. Skip -Pn until you know ICMP is blocked.</p>
+        <span class="tip-open" data-i18n="tips.open">Open guide →</span>
+      </a>
+      <a class="tip-card tip-card-link" href="/tips/burp-match-replace/">
+        <div class="tool">burp · <span class="tag med">med</span></div>
+        <h3>Match and replace</h3>
+        <p>Proxy → Match and replace: auto-fix a header or cookie across Repeater/Intruder. Stop hand-editing the same byte 40 times.</p>
+        <span class="tip-open" data-i18n="tips.open">Open guide →</span>
+      </a>
+      <a class="tip-card tip-card-link" href="/tips/burp-logger/">
+        <div class="tool">burp · <span class="tag easy">easy</span></div>
+        <h3>Logger++ / Logger tab</h3>
+        <p>Keep a full history of proxied traffic. When a bug reproduces once, your scrollback is the writeup backbone.</p>
+        <span class="tip-open" data-i18n="tips.open">Open guide →</span>
+      </a>
+      <a class="tip-card tip-card-link" href="/tips/wireshark-http-posts/">
+        <div class="tool">wireshark · <span class="tag easy">easy</span></div>
+        <h3>HTTP POSTs only</h3>
+        <p>Display filter: http.request.method == &quot;POST&quot;. Combine with ip.addr== your lab target.</p>
+        <span class="tip-open" data-i18n="tips.open">Open guide →</span>
+      </a>
+      <a class="tip-card tip-card-link" href="/tips/wireshark-follow-stream/">
+        <div class="tool">wireshark · <span class="tag easy">easy</span></div>
+        <h3>Follow the stream</h3>
+        <p>Right-click → Follow → TCP/HTTP Stream. Rebuild the conversation instead of squinting at frames.</p>
+        <span class="tip-open" data-i18n="tips.open">Open guide →</span>
+      </a>
+      <a class="tip-card tip-card-link" href="/tips/msf-search-info/">
+        <div class="tool">msfconsole · <span class="tag med">med</span></div>
+        <h3>search + info before exploit</h3>
+        <p>search type:exploit apache then info / show options. Set RHOSTS, check required options, then run. Labs love patience.</p>
+        <span class="tip-open" data-i18n="tips.open">Open guide →</span>
+      </a>
+      <a class="tip-card tip-card-link" href="/tips/msf-workspaces/">
+        <div class="tool">msfconsole · <span class="tag med">med</span></div>
+        <h3>Workspaces keep you honest</h3>
+        <p>workspace -a lab-oslo isolates hosts/loot per engagement. Don't mix client A with Friday CTF notes.</p>
+        <span class="tip-open" data-i18n="tips.open">Open guide →</span>
+      </a>
+      <a class="tip-card tip-card-link" href="/tips/aircrack-own-ap/">
+        <div class="tool">aircrack-ng · <span class="tag hard">hard</span></div>
+        <h3>Own AP / own handshake</h3>
+        <p>Capture and crack only networks you own or are contracted to test. Lab kit + isolated AP = education. Neighbour's SSID = crime.</p>
+        <span class="tip-open" data-i18n="tips.open">Open guide →</span>
+      </a>
+      <a class="tip-card tip-card-link" href="/tips/airmon-check-kill/">
+        <div class="tool">aircrack-ng · <span class="tag med">med</span></div>
+        <h3>airmon-ng check kill</h3>
+        <p>Kill NetworkManager interference before monitor mode. Remember to restart networking after the lab session.</p>
+        <span class="tip-open" data-i18n="tips.open">Open guide →</span>
+      </a>
+      <a class="tip-card tip-card-link" href="/tips/hydra-throttle/">
+        <div class="tool">hydra · <span class="tag med">med</span></div>
+        <h3>Throttle or get banned</h3>
+        <p>Use -t 4 and respect lockouts. Against production without written scope: don't. Against your lab: still be nice to the logs.</p>
+        <span class="tip-open" data-i18n="tips.open">Open guide →</span>
+      </a>
+      <a class="tip-card tip-card-link" href="/tips/sqlmap-level-risk/">
+        <div class="tool">sqlmap · <span class="tag med">med</span></div>
+        <h3>Level/risk deliberately</h3>
+        <p>Start low: default level/risk, then climb. Add --tamper only when a WAF actually blocks. Always --batch in labs you own.</p>
+        <span class="tip-open" data-i18n="tips.open">Open guide →</span>
+      </a>
+      <a class="tip-card tip-card-link" href="/tips/sqlmap-dump-intent/">
+        <div class="tool">sqlmap · <span class="tag hard">hard</span></div>
+        <h3>Dump with intent</h3>
+        <p>--tables / --columns before --dump. Know what you're extracting and why it is in scope.</p>
+        <span class="tip-open" data-i18n="tips.open">Open guide →</span>
+      </a>
+      <a class="tip-card tip-card-link" href="/tips/john-format-detection/">
+        <div class="tool">john · <span class="tag easy">easy</span></div>
+        <h3>Format detection</h3>
+        <p>john --list=formats | rg -i sha then --format= explicitly. Wrong format = silent sadness.</p>
+        <span class="tip-open" data-i18n="tips.open">Open guide →</span>
+      </a>
+      <a class="tip-card tip-card-link" href="/tips/hashcat-mode-numbers/">
+        <div class="tool">hashcat · <span class="tag med">med</span></div>
+        <h3>Mode numbers matter</h3>
+        <p>Example: -m 1000 NTLM, -m 1800 sha512crypt. Check the example hashes wiki before burning GPU time.</p>
+        <span class="tip-open" data-i18n="tips.open">Open guide →</span>
+      </a>
+      <a class="tip-card tip-card-link" href="/tips/ffuf-filter-smart/">
+        <div class="tool">ffuf · <span class="tag med">med</span></div>
+        <h3>Filter smart</h3>
+        <p>ffuf -u URL/FUZZ -w wordlist -mc 200,204,301,302,403 -fs &amp;lt;size&amp;gt; to drop boring catch-all responses.</p>
+        <span class="tip-open" data-i18n="tips.open">Open guide →</span>
+      </a></div>
+
+</main>
+
+<footer class="wrap footer">
+  <div>
+    <strong style="color:var(--text)">Laden Labs</strong>
+    <div class="muted" style="font-size:.8rem">Oslo · Authorized security work only · operator tips</div>
+  </div>
+  <div class="live-bar">
+    <span>Tips · ethical only</span>
+    <span>·</span>
+    <span>demo</span>
+  </div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+
+<script src="/assets/llt.js"></script>
+<script src="/assets/caleb.js?v=20261004-caleb16"></script>
+<link rel="stylesheet" href="/assets/avatars/avatars.css">
+<script src="/assets/avatars/avatars.js"></script>
+<script src="/assets/labcard.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/tips/assets/tip.js"></script>
+<script src="/assets/llc.js" defer></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

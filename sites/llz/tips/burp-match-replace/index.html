@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Match and replace — Tips · Laden Labs</title>
+  <meta name="description" content="Proxy → Match and replace: auto-fix a header or cookie across Repeater/Intruder. Stop hand-editing the same byte 40 times.">
+  <link rel="stylesheet" href="/assets/styles.css?v=cta1">
+<script src="/assets/i18n.js"></script>
+<script src="/assets/i18n-content.js"></script>
+  <link rel="stylesheet" href="/labs/assets/room.css">
+  <link rel="stylesheet" href="/tips/assets/tip.css">
+  <link rel="canonical" href="https://laden.no/tips/burp-match-replace/">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/llz/assets/llz-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="tip-page">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap room-main">
+
+  <nav class="room-crumb" aria-label="Breadcrumb">
+    <a href="/tips/"><span data-i18n="nav.tips">Tips</span></a>
+    <span class="sep">/</span>
+    <span class="mono">burp-match-replace</span>
+  </nav>
+
+  <section class="room-hero panel tip-hero">
+    <div class="room-hero-top">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> Operator tip · burp</div>
+        <h1>Match and replace</h1>
+        <p class="muted">Proxy → Match and replace: auto-fix a header or cookie across Repeater/Intruder. Stop hand-editing the same byte 40 times.</p>
+      </div>
+      <div class="room-tags">
+        <span class="tag med">med</span>
+        <span class="tag">proxy</span><span class="tag">burp</span><span class="tag">workflow</span>
+      </div>
+    </div>
+    <div class="room-meta mono">/burp/ · /tips/burp-match-replace/</div>
+  </section>
+
+  <section class="room-learn panel tip-body">
+    <h2>Guide</h2>
+    
+<p>When a lab forces a sticky header, role cookie, or stripped security header, editing every Repeater request by hand is how you lose an hour and introduce typos.</p>
+<h3>Why it matters</h3>
+<p>Match and replace runs on proxied traffic automatically. You set the rule once — Cookie values, <code>X-Original-URL</code>, User-Agent quirks, or stripping <code>If-None-Match</code> — and Repeater/Intruder inherit it. That is how you stay fast without corrupting the experiment.</p>
+<h3>How-to</h3>
+<ol>
+  <li>Proxy → Options (or Settings) → Match and replace.</li>
+  <li>Add a rule: match type Request header / Response header / Request body.</li>
+  <li>Example: match <code>^Cookie:.*$</code>, replace with your forged session cookie.</li>
+  <li>Toggle the rule off when you leave that lab so it does not poison the next engagement.</li>
+</ol>
+<pre class="mono tip-pre"># Mental model
+Request header match:  Cookie: SESSION=guest
+Replace:               Cookie: SESSION=admin_lab_token</pre>
+<ul>
+  <li>Keep rules named by lab (<code>idor-desk cookie</code>) so you know what to disable.</li>
+  <li>Pair with Logger so you can prove what the proxy actually sent.</li>
+</ul>
+
+  </section>
+
+  <section class="panel tip-links">
+    <h2>Related labs</h2>
+    <div class="tip-link-row"><a class="tip-related" href="/labs/cookie-jar/">Cookie Jar</a><a class="tip-related" href="/labs/idor-desk/">IDOR Desk</a><a class="tip-related" href="/labs/jwt-none/">JWT None</a></div>
+    <h2 style="margin-top:1rem">Oracle queries</h2>
+    <div class="tip-link-row"><a class="tip-oracle" href="/oracle/?q=Burp%20Suite%20match%20and%20replace">Burp Suite match and replace</a><a class="tip-oracle" href="/oracle/?q=Burp%20session%20handling%20rules">Burp session handling rules</a><a class="tip-oracle" href="/oracle/?q=IDOR%20cookie%20swap%20lab">IDOR cookie swap lab</a></div>
+    <div class="tip-actions">
+      <button type="button" class="btn btn-cyan" id="tip-caleb" data-ask="How do I use Burp match and replace for a lab cookie?">Ask Caleb</button>
+      <a class="btn btn-ghost" href="/tips/">All tips</a>
+      <a class="btn btn-ghost" href="/community/#tips">Community tips tab</a>
+      <a class="btn btn-primary" href="/oracle/">Open Oracle</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap footer">
+  <div>
+    <strong style="color:var(--text)">Laden Labs</strong>
+    <div class="muted" style="font-size:.8rem">Oslo · Authorized security work only · operator tips</div>
+  </div>
+  <div class="live-bar">
+    <span>Tips · ethical only</span>
+    <span>·</span>
+    <span>demo</span>
+  </div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+
+<script src="/assets/llt.js"></script>
+<script src="/assets/caleb.js?v=20261004-caleb16"></script>
+<link rel="stylesheet" href="/assets/avatars/avatars.css">
+<script src="/assets/avatars/avatars.js"></script>
+<script src="/assets/labcard.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/tips/assets/tip.js"></script>
+<script src="/assets/llc.js" defer></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Laden AS</title>
+  <meta name="description" content="Describe a problem or an idea. Laden AS replies within a couple of hours with a personal proposal. We are open 24/7.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#000000">
+  <link rel="canonical" href="https://laden.no/en/contact/">
+  <meta property="og:title" content="Contact — Laden AS">
+  <meta property="og:description" content="Describe a problem or an idea. Laden AS replies within a couple of hours with a personal proposal. We are open 24/7.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:url" content="https://laden.no/en/contact/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/images/laden-wordmark.png" as="image" type="image/png">
+  <link rel="stylesheet" href="/css/site.css?v=20261003-caleb-size">
+  <link rel="stylesheet" href="/css/reach-form.css?v=20261003-cream">
+  
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <script src="/js/soundcloud-player.js?v=20261003-mobkeep" defer></script>
+  <script src="/js/caleb-corner.js?v=20261003-mobkeep" defer></script>
+  <script src="/js/site.js?v=v11live" defer></script>
+</head>
+<body>
+  
+    <a class="skip" href="#innhold">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-bar">
+        <a class="brand-lockup" href="/en/" aria-label="Laden — BUILD YOUR DREAM">
+          <img class="brand-mark" src="/images/laden-wordmark.png" width="40" height="40" alt="Laden">
+          <span class="brand-slogan">BUILD YOUR DREAM</span>
+        </a>
+        <div class="language-switch" aria-label="Language">
+          <a href="/kontakt/" data-language="no">NO</a><span aria-hidden="true">/</span><a href="/en/contact/" data-language="en" aria-current="page">EN</a>
+        </div>
+        <input class="nav-check" type="checkbox" id="nav-toggle">
+        <label class="nav-toggle" for="nav-toggle" aria-controls="site-nav" aria-expanded="false">
+          <span class="when-closed">Menu</span>
+          <span class="when-open">Close</span>
+        </label>
+        <nav class="site-nav" id="site-nav" aria-label="Main menu">
+          <ul role="list">
+            <li><a href="/en/services/">Services</a></li><li><a href="/en/method/">Method</a></li><li><a href="/en/portfolio/">Portfolio</a></li><li><a href="/en/courses/">Courses</a></li><li><a href="/en/about/">About</a></li><li><a href="/en/contact/" aria-current="page">Contact</a></li>
+          </ul>
+          <a class="btn btn-primary" href="/en/contact/#skjema">Get a proposal</a>
+        </nav>
+      </div>
+    </header>
+    
+  <main id="innhold" tabindex="-1">
+    
+    <header class="page-head">
+      <div class="wrap">
+        <p class="eyebrow">Contact</p>
+        <h1>A problem or an idea is enough.</h1>
+        <p class="lede">Tell it like it is. We reply with a personal proposal — not a newsletter.</p>
+      </div>
+    </header>
+    <section class="section" id="skjema">
+      <div class="wrap cta-grid contact-layout">
+        <div class="form-card">
+      <form id="contact-form" data-form="contact" action="mailto:post@laden.no?subject=Proposal%20for%20Laden%20AS" method="post" enctype="text/plain" novalidate>
+        <div class="hp" aria-hidden="true">
+          <label for="contact-form-hp">Leave blank</label>
+          <input id="contact-form-hp" name="hp_field" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="form-grid">
+          
+      <div class="form-row">
+        <div class="field">
+      <label for="c-name">Name</label>
+      <input id="c-name" name="name" type="text" autocomplete="name" required maxlength="120" aria-describedby="c-name-error">
+      <p class="field-error" id="c-name-error" hidden></p>
+    </div>
+        <div class="field">
+      <label for="c-email">Email</label>
+      <input id="c-email" name="email" type="email" autocomplete="email" required maxlength="160" aria-describedby="c-email-error">
+      <p class="field-error" id="c-email-error" hidden></p>
+    </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+      <label for="c-phone">Phone <span class="opt">Optional</span></label>
+      <input id="c-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" aria-describedby="c-phone-error">
+      <p class="field-error" id="c-phone-error" hidden></p>
+    </div>
+        <div class="field">
+      <label for="c-audience">Business or personal <span class="opt">Optional</span></label>
+      <select id="c-audience" name="audience" aria-describedby="c-audience-error"><option value="">Not specified</option><option value="Business">Business</option><option value="Personal">Personal</option></select>
+      <p class="field-error" id="c-audience-error" hidden></p>
+    </div>
+      </div>
+      <div class="field">
+      <label for="c-kind">Type <span class="opt">Optional</span></label>
+      <select id="c-kind" name="kind" aria-describedby="c-kind-error"><option value="">Choose</option><option value="Web">Web</option><option value="App">App</option><option value="API">API</option><option value="Courses">Courses</option><option value="Talks">Talks</option><option value="Other">Other</option></select>
+      <p class="field-error" id="c-kind-error" hidden></p>
+    </div>
+      <div class="field">
+      <label for="c-message">Message</label>
+      <textarea id="c-message" name="message" rows="6" maxlength="2000" required placeholder="A concrete problem, or a rough idea" aria-describedby="c-message-error"></textarea>
+      <p class="field-error" id="c-message-error" hidden></p>
+    </div>
+    
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Ask for a personal proposal</button>
+          </div>
+        </div>
+      </form>
+      <div class="form-success" tabindex="-1" hidden>
+        <p class="success-lead">Thanks. We reply with a personal proposal, not a newsletter.</p>
+        <p class="success-note">Your email app will open with the message. Send it from there, or write directly to <a href="mailto:post@laden.no">post@laden.no</a>.</p>
+      </div>
+      <noscript><p class="caption">Without JavaScript, your email app opens directly.</p></noscript>
+    </div>
+        <aside class="aside-note">
+          <dl>
+            <div>
+              <dt>Email</dt>
+              <dd><a href="mailto:post@laden.no">post@laden.no</a></dd>
+            </div>
+            <div>
+              <dt>Phone</dt>
+              <dd><a href="tel:+4799449677">994 49 677</a></dd>
+            </div>
+            <div>
+              <dt>Address</dt>
+              <dd>Schweigaards gate 60 B<br>0656 Oslo</dd>
+            </div>
+            <div>
+              <dt>Reply time</dt>
+              <dd>Within a couple of hours. Open 24/7.</dd>
+            </div>
+          </dl>
+          <p>The proposal starts with your need — not a fixed package.</p>
+        </aside>
+      </div>
+    </section>
+    <div class="wrap reach-form">
+      <div data-reach-form="df384182-5807-4a11-a839-ad35d3d529f3"></div>
+    </div>
+    
+  </main>
+  
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="brand-lockup" href="/en/" aria-label="Laden — BUILD YOUR DREAM">
+              <img class="brand-mark" src="/images/laden-wordmark.png" width="40" height="40" alt="Laden">
+              <span class="brand-slogan">BUILD YOUR DREAM</span>
+            </a>
+            <p class="tagline">From first idea to a working system.</p>
+          </div>
+          <nav aria-label="Services in footer">
+            <h2>Services</h2>
+            <ul role="list">
+              <li><a href="/en/services/#systemutvikling">Software development</a></li>
+              <li><a href="/en/services/#design">Design and UX</a></li>
+              <li><a href="/en/services/#integrasjoner">Integrations</a></li>
+              <li><a href="/en/contact/#skjema">Proposal</a></li>
+            </ul>
+          </nav>
+          <nav aria-label="Courses in footer">
+            <h2>Courses</h2>
+            <ul role="list">
+              <li><a href="/en/courses/#opplaering">AI tool training</a></li>
+              <li><a href="/en/courses/#foredrag">Talks</a></li>
+              <li><a href="/en/courses/#opplegg">Ask for a course proposal</a></li>
+            </ul>
+          </nav>
+          <div>
+            <h2>Contact</h2>
+            <address>
+              <ul role="list">
+                <li><a class="mail" href="mailto:post@laden.no">post@laden.no</a></li>
+                <li><a href="tel:+4799449677">994 49 677</a></li>
+                <li>Schweigaards gate 60 B<br>0656 Oslo</li>
+                <li><a href="/en/contact/#skjema">Write to us</a></li>
+              </ul>
+            </address>
+          </div>
+        </div>
+        <div class="footer-base">
+          <p>© 2026 Laden AS</p>
+          <p>Company no. 937 285 833</p>
+          <p><a href="/en/privacy/">Privacy</a></p>
+        </div>
+      </div>
+    </footer>
+    
+<script src="/js/reach-form.js?v=20261003-cream"></script>
+<script src="https://cdn-reach.hostinger.com/js/embed.js"></script>
+</body>
+</html>

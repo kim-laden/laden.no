@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLC Manuals — Laden Labs</title>
+  <meta name="description" content="One guide per LLC console tool — filesystem, Z Drive, fictional nets, scanners, helpers.">
+  <link rel="stylesheet" href="/labs/assets/styles.css?v=cta1">
+  <link rel="stylesheet" href="/labs/manuals/manuals.css">
+  <script src="/assets/i18n.js"></script>
+  <link rel="canonical" href="https://laden.no/labs/manuals/">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/js/soundcloud-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="lab-lounge manuals-index">
+<header class="nav">  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+      <a href="/messages/" id="nav-messages"><span data-i18n="nav.messages">Messages</span></a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div></header>
+
+<main class="wrap manuals-main">
+  <nav class="room-crumb man-crumb" aria-label="Breadcrumb">
+    <a href="/labs/">Lounge</a>
+    <span class="sep">/</span>
+    <span>Manuals</span>
+  </nav>
+
+  <section class="panel terminal man-shelf-hero">
+    <div class="eyebrow"><span class="pulse"></span> LLZ · LLC tool shelf</div>
+    <h1 class="lounge-title">LLC <em>Manuals</em></h1>
+    <p class="lounge-lede">One guide per console tool. Syntax and examples match the live LLC workstation — fictional nets only where marked.</p>
+    <div class="man-shelf-actions">
+      <a class="btn btn-primary" href="/labs/?llc=1">Open LLC</a>
+      <a class="btn btn-cyan" href="/labs/">Back to Lounge</a>
+      <span class="muted mono man-count">47 tools</span>
+    </div>
+  </section>
+
+  <div class="man-toolbar panel">
+    <label class="man-search">
+      <span class="sr-only">Filter manuals</span>
+      <input id="man-filter" type="search" placeholder="Filter tools… lmap, zshare, jwt" autocomplete="off">
+    </label>
+    <div class="man-chips" id="man-chips" role="group" aria-label="Group filters">
+      <button type="button" class="man-chip-btn active" data-group="all">All</button>
+      <button type="button" class="man-chip-btn" data-group="Filesystem">Filesystem</button><button type="button" class="man-chip-btn" data-group="Z Drive">Z Drive</button><button type="button" class="man-chip-btn" data-group="Networks">Networks</button><button type="button" class="man-chip-btn" data-group="Scanners">Scanners</button><button type="button" class="man-chip-btn" data-group="Helpers">Helpers</button><button type="button" class="man-chip-btn" data-group="Session">Session</button>
+    </div>
+  </div>
+
+  <div id="man-shelf">
+    <section class="man-group" data-group-section="Filesystem">
+      <h2 class="man-group-title">Filesystem</h2>
+      <div class="man-grid"><a class="man-card" href="/labs/manuals/pwd/" data-group="Filesystem" data-name="pwd" data-aliases="" data-syn="Print the current working directory path.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">pwd</span>
+          
+        </div>
+        <p class="man-card-syn">Print the current working directory path.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/ls/" data-group="Filesystem" data-name="ls" data-aliases="" data-syn="List directory entries (demo FS or Z Drive).">
+        <div class="man-card-top">
+          <span class="man-card-name mono">ls</span>
+          
+        </div>
+        <p class="man-card-syn">List directory entries (demo FS or Z Drive).</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/cd/" data-group="Filesystem" data-name="cd" data-aliases="" data-syn="Change the current working directory.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">cd</span>
+          
+        </div>
+        <p class="man-card-syn">Change the current working directory.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/cat/" data-group="Filesystem" data-name="cat" data-aliases="" data-syn="Print an entire file to the console.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">cat</span>
+          
+        </div>
+        <p class="man-card-syn">Print an entire file to the console.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/head/" data-group="Filesystem" data-name="head" data-aliases="" data-syn="Print the first 10 lines of a file.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">head</span>
+          
+        </div>
+        <p class="man-card-syn">Print the first 10 lines of a file.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/tail/" data-group="Filesystem" data-name="tail" data-aliases="" data-syn="Print the last 10 lines of a file.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">tail</span>
+          
+        </div>
+        <p class="man-card-syn">Print the last 10 lines of a file.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/tree/" data-group="Filesystem" data-name="tree" data-aliases="" data-syn="Print a recursive directory tree (demo FS only).">
+        <div class="man-card-top">
+          <span class="man-card-name mono">tree</span>
+          
+        </div>
+        <p class="man-card-syn">Print a recursive directory tree (demo FS only).</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/find/" data-group="Filesystem" data-name="find" data-aliases="" data-syn="Recursively list all paths under a start directory.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">find</span>
+          
+        </div>
+        <p class="man-card-syn">Recursively list all paths under a start directory.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/mkdir/" data-group="Filesystem" data-name="mkdir" data-aliases="" data-syn="Create a directory on your Z Drive.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">mkdir</span>
+          
+        </div>
+        <p class="man-card-syn">Create a directory on your Z Drive.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/touch/" data-group="Filesystem" data-name="touch" data-aliases="" data-syn="Create an empty file on Z Drive (or leave existing content).">
+        <div class="man-card-top">
+          <span class="man-card-name mono">touch</span>
+          
+        </div>
+        <p class="man-card-syn">Create an empty file on Z Drive (or leave existing content).</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/rm/" data-group="Filesystem" data-name="rm" data-aliases="" data-syn="Remove a file or directory on Z Drive.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">rm</span>
+          
+        </div>
+        <p class="man-card-syn">Remove a file or directory on Z Drive.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/rmdir/" data-group="Filesystem" data-name="rmdir" data-aliases="" data-syn="Remove an empty directory on Z Drive (non-recursive).">
+        <div class="man-card-top">
+          <span class="man-card-name mono">rmdir</span>
+          
+        </div>
+        <p class="man-card-syn">Remove an empty directory on Z Drive (non-recursive).</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/cp/" data-group="Filesystem" data-name="cp" data-aliases="" data-syn="Copy a file within Z Drive.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">cp</span>
+          
+        </div>
+        <p class="man-card-syn">Copy a file within Z Drive.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/mv/" data-group="Filesystem" data-name="mv" data-aliases="" data-syn="Move or rename a path within Z Drive.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">mv</span>
+          
+        </div>
+        <p class="man-card-syn">Move or rename a path within Z Drive.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/echo/" data-group="Filesystem" data-name="echo" data-aliases="" data-syn="Print text, or write/append to a Z Drive file with redirection.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">echo</span>
+          
+        </div>
+        <p class="man-card-syn">Print text, or write/append to a Z Drive file with redirection.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/grep/" data-group="Filesystem" data-name="grep" data-aliases="" data-syn="Filter file lines matching a case-insensitive regex pattern.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">grep</span>
+          
+        </div>
+        <p class="man-card-syn">Filter file lines matching a case-insensitive regex pattern.</p>
+        
+      </a></div>
+    </section>
+<section class="man-group" data-group-section="Z Drive">
+      <h2 class="man-group-title">Z Drive</h2>
+      <div class="man-grid"><a class="man-card" href="/labs/manuals/df/" data-group="Z Drive" data-name="df" data-aliases="zquota quota" data-syn="Show Z Drive (LabDrive) quota: used, free, and max.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">df</span>
+          
+        </div>
+        <p class="man-card-syn">Show Z Drive (LabDrive) quota: used, free, and max.</p>
+        <div class="man-card-aliases"><code>zquota</code> <code>quota</code></div>
+      </a>
+<a class="man-card" href="/labs/manuals/zshare/" data-group="Z Drive" data-name="zshare" data-aliases="" data-syn="Share a Z Drive file into the Community pool.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">zshare</span>
+          
+        </div>
+        <p class="man-card-syn">Share a Z Drive file into the Community pool.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/zunshare/" data-group="Z Drive" data-name="zunshare" data-aliases="" data-syn="Remove a file from the Community share pool.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">zunshare</span>
+          
+        </div>
+        <p class="man-card-syn">Remove a file from the Community share pool.</p>
+        
+      </a></div>
+    </section>
+<section class="man-group" data-group-section="Networks">
+      <h2 class="man-group-title">Networks</h2>
+      <div class="man-grid"><a class="man-card" href="/labs/manuals/ip/" data-group="Networks" data-name="ip" data-aliases="" data-syn="Show fictional LLC interface addresses, links, or routes.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">ip</span>
+          <span class="tag man-tag-fic">fiction</span>
+        </div>
+        <p class="man-card-syn">Show fictional LLC interface addresses, links, or routes.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/ifconfig/" data-group="Networks" data-name="ifconfig" data-aliases="" data-syn="Friendly alias for the fictional address dump (`ip a`).">
+        <div class="man-card-top">
+          <span class="man-card-name mono">ifconfig</span>
+          <span class="tag man-tag-fic">fiction</span>
+        </div>
+        <p class="man-card-syn">Friendly alias for the fictional address dump (`ip a`).</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/iwconfig/" data-group="Networks" data-name="iwconfig" data-aliases="" data-syn="Show wireless (and non-wireless) interface status.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">iwconfig</span>
+          <span class="tag man-tag-fic">fiction</span>
+        </div>
+        <p class="man-card-syn">Show wireless (and non-wireless) interface status.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/iw/" data-group="Networks" data-name="iw" data-aliases="" data-syn="List wifi phy / interface info (nl80211-flavored fiction).">
+        <div class="man-card-top">
+          <span class="man-card-name mono">iw</span>
+          <span class="tag man-tag-fic">fiction</span>
+        </div>
+        <p class="man-card-syn">List wifi phy / interface info (nl80211-flavored fiction).</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/labcrack-ng-airmon/" data-group="Networks" data-name="labcrack-ng-airmon" data-aliases="airmon-ng labmon" data-syn="Put the fictional Laden USB Wi‑Fi dongle into monitor mode.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">labcrack-ng-airmon</span>
+          <span class="tag man-tag-fic">fiction</span>
+        </div>
+        <p class="man-card-syn">Put the fictional Laden USB Wi‑Fi dongle into monitor mode.</p>
+        <div class="man-card-aliases"><code>airmon-ng</code> <code>labmon</code></div>
+      </a>
+<a class="man-card" href="/labs/manuals/labcrack-ng-airodump/" data-group="Networks" data-name="labcrack-ng-airodump" data-aliases="airodump-ng labdump" data-syn="Scan nearby fictional APs (requires monitor mode).">
+        <div class="man-card-top">
+          <span class="man-card-name mono">labcrack-ng-airodump</span>
+          <span class="tag man-tag-fic">fiction</span>
+        </div>
+        <p class="man-card-syn">Scan nearby fictional APs (requires monitor mode).</p>
+        <div class="man-card-aliases"><code>airodump-ng</code> <code>labdump</code></div>
+      </a>
+<a class="man-card" href="/labs/manuals/labcrack-ng/" data-group="Networks" data-name="labcrack-ng" data-aliases="aircrack-ng" data-syn="Educational WPA/WPA2 PSK cracker against demo .cap files.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">labcrack-ng</span>
+          <span class="tag man-tag-fic">fiction</span>
+        </div>
+        <p class="man-card-syn">Educational WPA/WPA2 PSK cracker against demo .cap files.</p>
+        <div class="man-card-aliases"><code>aircrack-ng</code></div>
+      </a></div>
+    </section>
+<section class="man-group" data-group-section="Scanners">
+      <h2 class="man-group-title">Scanners</h2>
+      <div class="man-grid"><a class="man-card" href="/labs/manuals/lmap/" data-group="Scanners" data-name="lmap" data-aliases="nmap" data-syn="Laden Mapper — educational nmap-like scanner for fictional LLC nets only.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">lmap</span>
+          <span class="tag man-tag-fic">fiction</span>
+        </div>
+        <p class="man-card-syn">Laden Mapper — educational nmap-like scanner for fictional LLC nets only.</p>
+        <div class="man-card-aliases"><code>nmap</code></div>
+      </a>
+<a class="man-card" href="/labs/manuals/mzfconsole/" data-group="Scanners" data-name="mzfconsole" data-aliases="mzf msfconsole" data-syn="Laden Metasploit-style framework REPL for fictional lab nets.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">mzfconsole</span>
+          <span class="tag man-tag-fic">fiction</span>
+        </div>
+        <p class="man-card-syn">Laden Metasploit-style framework REPL for fictional lab nets.</p>
+        <div class="man-card-aliases"><code>mzf</code> <code>msfconsole</code></div>
+      </a></div>
+    </section>
+<section class="man-group" data-group-section="Helpers">
+      <h2 class="man-group-title">Helpers</h2>
+      <div class="man-grid"><a class="man-card" href="/labs/manuals/curl/" data-group="Helpers" data-name="curl" data-aliases="wget" data-syn="GET a same-origin / laden.no URL and print status + body (truncated).">
+        <div class="man-card-top">
+          <span class="man-card-name mono">curl</span>
+          
+        </div>
+        <p class="man-card-syn">GET a same-origin / laden.no URL and print status + body (truncated).</p>
+        <div class="man-card-aliases"><code>wget</code></div>
+      </a>
+<a class="man-card" href="/labs/manuals/wget/" data-group="Helpers" data-name="wget" data-aliases="curl" data-syn="Alias of curl — same GET helper and scope lock.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">wget</span>
+          
+        </div>
+        <p class="man-card-syn">Alias of curl — same GET helper and scope lock.</p>
+        <div class="man-card-aliases"><code>curl</code></div>
+      </a>
+<a class="man-card" href="/labs/manuals/base64/" data-group="Helpers" data-name="base64" data-aliases="" data-syn="Encode or decode Base64 from a string or file.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">base64</span>
+          
+        </div>
+        <p class="man-card-syn">Encode or decode Base64 from a string or file.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/rot13/" data-group="Helpers" data-name="rot13" data-aliases="" data-syn="Apply ROT13 to a string or file contents.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">rot13</span>
+          
+        </div>
+        <p class="man-card-syn">Apply ROT13 to a string or file contents.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/xxd/" data-group="Helpers" data-name="xxd" data-aliases="" data-syn="Hex-dump a string or file (16-byte rows with ASCII gutter).">
+        <div class="man-card-top">
+          <span class="man-card-name mono">xxd</span>
+          
+        </div>
+        <p class="man-card-syn">Hex-dump a string or file (16-byte rows with ASCII gutter).</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/jwt/" data-group="Helpers" data-name="jwt" data-aliases="" data-syn="Decode a JWT header/payload (no signature verify) from token or file.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">jwt</span>
+          
+        </div>
+        <p class="man-card-syn">Decode a JWT header/payload (no signature verify) from token or file.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/hashid/" data-group="Helpers" data-name="hashid" data-aliases="" data-syn="Guess common hash algorithm families from a digest string.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">hashid</span>
+          
+        </div>
+        <p class="man-card-syn">Guess common hash algorithm families from a digest string.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/md5/" data-group="Helpers" data-name="md5" data-aliases="" data-syn="Compute MD5 of a string or file contents.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">md5</span>
+          
+        </div>
+        <p class="man-card-syn">Compute MD5 of a string or file contents.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/sha1/" data-group="Helpers" data-name="sha1" data-aliases="" data-syn="Compute SHA-1 of a string or file contents.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">sha1</span>
+          
+        </div>
+        <p class="man-card-syn">Compute SHA-1 of a string or file contents.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/sha256/" data-group="Helpers" data-name="sha256" data-aliases="" data-syn="Compute SHA-256 of a string or file contents.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">sha256</span>
+          
+        </div>
+        <p class="man-card-syn">Compute SHA-256 of a string or file contents.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/labs/" data-group="Helpers" data-name="labs" data-aliases="" data-syn="List lounge challenges (difficulty, points, slug, title).">
+        <div class="man-card-top">
+          <span class="man-card-name mono">labs</span>
+          
+        </div>
+        <p class="man-card-syn">List lounge challenges (difficulty, points, slug, title).</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/open/" data-group="Helpers" data-name="open" data-aliases="" data-syn="Navigate the browser to a lab room by slug.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">open</span>
+          
+        </div>
+        <p class="man-card-syn">Navigate the browser to a lab room by slug.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/hint/" data-group="Helpers" data-name="hint" data-aliases="" data-syn="Print the current lab hint, or a general LLC challenge cheat-sheet.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">hint</span>
+          
+        </div>
+        <p class="man-card-syn">Print the current lab hint, or a general LLC challenge cheat-sheet.</p>
+        
+      </a></div>
+    </section>
+<section class="man-group" data-group-section="Session">
+      <h2 class="man-group-title">Session</h2>
+      <div class="man-grid"><a class="man-card" href="/labs/manuals/clear/" data-group="Session" data-name="clear" data-aliases="" data-syn="Clear the LLC console screen.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">clear</span>
+          
+        </div>
+        <p class="man-card-syn">Clear the LLC console screen.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/whoami/" data-group="Session" data-name="whoami" data-aliases="" data-syn="Print the current LLC username.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">whoami</span>
+          
+        </div>
+        <p class="man-card-syn">Print the current LLC username.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/id/" data-group="Session" data-name="id" data-aliases="" data-syn="Print a demo uid/gid line for the current operator.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">id</span>
+          
+        </div>
+        <p class="man-card-syn">Print a demo uid/gid line for the current operator.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/uname/" data-group="Session" data-name="uname" data-aliases="" data-syn="Print the fictional LLC kernel banner.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">uname</span>
+          
+        </div>
+        <p class="man-card-syn">Print the fictional LLC kernel banner.</p>
+        
+      </a>
+<a class="man-card" href="/labs/manuals/help/" data-group="Session" data-name="help" data-aliases="?" data-syn="Print the LLC command overview (filesystem, Z Drive, nets, helpers, session).">
+        <div class="man-card-top">
+          <span class="man-card-name mono">help</span>
+          
+        </div>
+        <p class="man-card-syn">Print the LLC command overview (filesystem, Z Drive, nets, helpers, session).</p>
+        <div class="man-card-aliases"><code>?</code></div>
+      </a>
+<a class="man-card" href="/labs/manuals/manuals/" data-group="Session" data-name="manuals" data-aliases="man" data-syn="Open or list the LLC manuals collection; man &amp;lt;tool&amp;gt; prints a short synopsis + URL.">
+        <div class="man-card-top">
+          <span class="man-card-name mono">manuals</span>
+          
+        </div>
+        <p class="man-card-syn">Open or list the LLC manuals collection; man &amp;lt;tool&amp;gt; prints a short synopsis + URL.</p>
+        <div class="man-card-aliases"><code>man</code></div>
+      </a></div>
+    </section>
+  </div>
+
+  <p class="muted man-empty hidden" id="man-empty">No tools match that filter.</p>
+</main>
+
+<footer class="wrap footer lounge-footer manuals-footer">
+  <div>
+    <div class="brand-lockup" style="margin-bottom:.55rem">
+      <img class="footer-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Labs">
+      <div>
+        <strong style="color:var(--text)">LLC Manuals</strong>
+        <div class="muted" style="font-size:.8rem"><span data-i18n="footer.tagline">Oslo · Authorized security work only</span></div>
+      </div>
+    </div>
+    Educational console docs · fictional lab nets only
+  </div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/assets/llc.js" defer></script>
+<script src="/assets/legal.js" defer></script>
+<script src="/labs/manuals/manuals.js"></script>
+</body>
+</html>

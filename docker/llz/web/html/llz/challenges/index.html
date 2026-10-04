@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenges — Laden Labs</title>
+  <meta name="description" content="New challenges every week! Earn Laden Labs Tokens (LLT), play the mini-game, spend on hints & weekly merch.">
+  <link rel="stylesheet" href="/assets/styles.css?v=cta1">
+<script src="/assets/i18n.js"></script>
+<script src="/assets/i18n-content.js"></script>
+  <link rel="stylesheet" href="/challenges/challenges.css?v=sp2b">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/js/soundcloud-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="challenges-page">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz9" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a class="active" href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+      <a href="/messages/" id="nav-messages"><span data-i18n="nav.messages">Messages</span></a>
+    </nav>
+    <div class="nav-cta">
+      <div class="nav-cart">
+        <button type="button" class="btn-cart" id="cart-btn" aria-label="Cart" data-i18n-aria="nav.cart"><span data-i18n="nav.cart">Cart</span> <span class="cart-count" id="cart-count">0 NOK</span></button>
+        <div class="cart-pop" id="cart-pop">
+          <div class="cart-items" id="cart-items"></div>
+          <div class="cart-foot"><span class="muted"><span data-i18n="nav.total">Total</span></span><strong class="price" id="cart-total">0 NOK</strong></div>
+          <div class="cart-actions">
+            <button class="btn btn-primary" type="button" onclick="checkoutDemo()"><span data-i18n="nav.checkout">Checkout</span></button>
+            <button class="btn btn-ghost" type="button" onclick="clearCart()"><span data-i18n="nav.clear">Clear</span></button>
+          </div>
+        </div>
+      </div>
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap chal-main">
+  <section class="chal-hero">
+    <div class="chal-hero-copy">
+      <div class="eyebrow"><span class="pulse"></span> <span data-i18n="chal.page.eyebrow">Fresh drops · every week</span></div>
+      <h1 data-i18n="chal.page.title">New challenges every week!</h1>
+      <p class="lead" id="chal-lead" data-i18n-html="chal.page.lead">Weekly <strong>Hack</strong> rotators + a <strong>Code</strong> trio on deck. Crack them, bank <strong>Laden Labs Tokens (LLT)</strong>, flex in the mini-game — then spend tokens on spicy hints or this week’s merch drop. <span class="mono">1 LLT = 1 NOK</span>. Want to keep your LLT? <a href="/account/">Create an account</a>.</p>
+      <div class="chal-hero-stats">
+        <div class="stat-pill"><span class="mono" id="stat-shown">—</span> live</div>
+        <div class="stat-pill">wallet · <span class="mono"><span data-llt-balance>100</span> LLT</span></div>
+        <div class="stat-pill">score · <span class="mono"><span data-llt-xp>—</span> XP</span></div>
+        <div class="stat-pill">starters get · <span class="mono">100 LLT</span></div>
+      </div>
+      <div class="chal-nick" id="chal-nick-wrap">
+        <label for="chal-nick" data-i18n="chal.nick">Session nickname</label>
+        <div class="chal-nick-row">
+          <input id="chal-nick" class="mono" type="text" maxlength="24" placeholder="pick a handle…" data-i18n-placeholder="chal.nick.ph" autocomplete="nickname" spellcheck="false">
+          <button type="button" class="btn btn-cyan" id="chal-nick-save" data-i18n="chal.nick.save">Save</button>
+          <button type="button" class="btn btn-ghost" id="chal-nick-clear" hidden data-i18n="chal.nick.clear">Clear</button>
+        </div>
+        <p class="chal-nick-hint muted" id="chal-nick-hint" data-i18n="chal.nick.hint">Guests only — stays in this browser tab. Caleb &amp; LLC will use it.</p>
+      </div>
+    </div>
+    <div class="chal-hero-orb" aria-hidden="true">
+      <div class="orb-ring"></div>
+      <div class="orb-core">LLT</div>
+    </div>
+  </section>
+
+  <section class="chal-hack-section" id="hack-challenges" aria-labelledby="hack-chal-heading">
+    <div class="chal-section-head">
+      <h2 class="chal-section-title" id="hack-chal-heading">Hack · this week</h2>
+      <p class="chal-section-lead muted">Pentest booths · free weekly rotators</p>
+    </div>
+    <div class="chal-layout">
+      <div class="grid-3 chal-spotlight-grid" id="chal-grid">
+        <p class="muted">Loading challenges…</p>
+      </div>
+      <aside class="chal-panel hidden" id="chal-panel" aria-live="polite"></aside>
+    </div>
+  </section>
+
+  <section class="chal-code-section" id="code-challenges" aria-labelledby="code-chal-heading">
+    <div class="chal-section-head">
+      <h2 class="chal-section-title code" id="code-chal-heading">Code · this week</h2>
+      <p class="chal-section-lead muted">Coding puzzles · not pentest booths</p>
+    </div>
+    <div class="grid-3 chal-spotlight-grid chal-code-grid" id="code-chal-grid">
+      <!-- filled by challenges.js -->
+    </div>
+  </section>
+
+
+  <section class="llt-game card" id="llt-game">
+    <div class="llt-game-head">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> <span data-i18n="chal.game.eyebrow">Mini-game · earn LLT</span></div>
+        <h2 data-i18n="chal.game.title">Tool Drop</h2>
+        <p class="muted">Read the job. Type the <b style="color:var(--green)">tool</b>. Double or nothing — <b>Normal</b> starts at <span class="mono">1 LLT</span>, <b>1337</b> at <span class="mono">5</span>; each hit doubles (cap 128). Bust resets; cash out anytime.</p>
+      </div>
+      <div class="llt-game-meta">
+        <div class="td-mode-toggle" role="group" aria-label="Tool Drop mode">
+          <button type="button" class="td-mode-btn is-active" id="game-mode-normal" aria-pressed="true">Normal · 1</button>
+          <button type="button" class="td-mode-btn" id="game-mode-1337" aria-pressed="false">1337 · 5</button>
+        </div>
+        <div class="llt-pill mono" id="game-stake">normal · next: 1 LLT</div>
+        <div class="llt-pill">Streak: <b class="mono" id="game-best">0</b></div>
+        <div class="llt-pill">Banked: <b class="mono" id="game-banked">0</b> LLT</div>
+        <button type="button" class="btn btn-ghost" id="game-cashout" hidden data-i18n="chal.game.cashout">Cash out</button>
+        <button type="button" class="btn btn-primary" id="game-start" data-i18n="chal.game.start">Start</button>
+      </div>
+    </div>
+    <div class="llt-game-stage" id="game-stage" aria-live="polite">
+      <p class="muted" id="game-msg">Hit Start — a job drops, you name the tool.</p>
+    </div>
+    <div class="llt-game-hud">
+      <span>Correct <b class="mono" id="game-score">0</b></span>
+      <span>Banked this session <b class="mono" id="game-pay">0</b> LLT</span>
+      <span class="muted mono" id="game-hint-line">aliases ok · normal 1→2→4… · 1337 5→10→20… · max 128/hit</span>
+    </div>
+  </section>
+
+  <div data-llt-ad="compact"></div>
+
+  <div class="chal-toolbar">
+    <div class="chal-filters" id="chal-filters" hidden></div>
+    <input class="chal-search mono" id="chal-search" type="search" placeholder="filter by title / track…" autocomplete="off" hidden>
+  </div>
+
+  <section class="chal-cta card" id="chal-cta">
+    <div>
+      <h3>Spend your LLT</h3>
+      <p class="muted">Special hints cost tokens. This week’s merch drop takes LLT at <span class="mono">1 LLT = 1 NOK</span>.</p>
+    </div>
+    <div class="chal-cta-actions">
+      <a class="btn btn-primary" href="/gear/#llt-week">Weekly LLT offer</a>
+      <a class="btn btn-ghost" href="/labs/">Full board in Labs</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap footer">
+  <div>
+    <div class="brand-lockup" style="margin-bottom:.55rem">
+      <img class="footer-logo" src="/assets/products/logo.jpg?v=llz9" alt="Laden Labs">
+      <div>
+        <strong style="color:var(--text)">Laden Labs</strong>
+        <div class="muted" style="font-size:.8rem">Oslo · Authorized only</div>
+      </div>
+    </div>
+    New challenges every week · LLT is demo currency (1 LLT = 1 NOK).
+  </div>
+  <div class="live-bar"><span id="oslo-clock">--:--:--</span></div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+
+<script src="/assets/featured.js"></script>
+<script src="/assets/llt.js"></script>
+<link rel="stylesheet" href="/assets/avatars/avatars.css">
+<script src="/assets/avatars/avatars.js"></script>
+<script src="/assets/labcard.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/challenges/llt-data.js"></script>
+<script src="/assets/app.js?v=cta1"></script>
+<script src="/challenges/challenges.js"></script>
+<script src="/assets/caleb.js?v=20261004-caleb16"></script>
+<script src="/assets/llc.js" defer></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

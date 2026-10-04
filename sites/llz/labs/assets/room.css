@@ -1,0 +1,179 @@
+/* Lab room — dedicated challenge page under /labs/<slug>/ */
+.lab-room .room-main { padding: 1.25rem 1.25rem 5rem; }
+.room-crumb {
+  display: flex; align-items: center; gap: .45rem;
+  font-size: .82rem; color: var(--muted); margin-bottom: 1rem;
+}
+.room-crumb .sep { opacity: .5; }
+.room-crumb a { color: var(--cyan); }
+.room-hero { margin-bottom: 1rem; }
+.room-hero-top {
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  align-items: flex-start;
+}
+.room-hero h1 {
+  font-family: Orbitron, sans-serif; font-size: clamp(1.35rem, 3vw, 1.85rem);
+  margin: .35rem 0 .4rem; color: var(--text);
+}
+.room-tags { display: flex; flex-wrap: wrap; gap: .35rem; justify-content: flex-end; }
+.room-meta { font-size: .78rem; color: var(--muted); margin-top: .75rem; }
+.room-learn, .room-work, .room-submit { margin-bottom: 1rem; }
+.room-learn h2, .room-work h2, .room-submit h2 {
+  font-family: Orbitron, sans-serif; font-size: 1rem; margin-bottom: .55rem; color: var(--text);
+}
+.room-work-head {
+  display: flex; justify-content: space-between; align-items: center; gap: .75rem; flex-wrap: wrap;
+  margin-bottom: .55rem;
+}
+.room-work-head h2 { margin: 0; }
+.chal-body { line-height: 1.55; }
+.chal-body pre, .chal-body .mono {
+  background: rgba(0,0,0,.35); border: 1px solid var(--border);
+  border-radius: 10px; padding: .75rem .9rem; overflow-x: auto; font-size: .82rem;
+}
+.chal-body a { color: var(--cyan); }
+.room-widget {
+  margin-top: 1rem; padding: 1rem;
+  border: 1px dashed rgba(0,255,157,.28); border-radius: 12px;
+  background: rgba(0,255,157,.03);
+}
+.room-widget h3 {
+  font-family: Orbitron, sans-serif; font-size: .88rem; color: var(--green);
+  margin: 0 0 .55rem;
+}
+.room-widget .widget-row { display: flex; gap: .5rem; flex-wrap: wrap; margin: .5rem 0; }
+.room-widget input, .room-widget textarea, .room-widget select {
+  background: #0a0e14; border: 1px solid var(--border); color: var(--text);
+  border-radius: 8px; padding: .55rem .7rem; font-family: JetBrains Mono, monospace;
+  font-size: .82rem; width: min(100%, 520px);
+}
+.room-widget textarea { min-height: 72px; width: 100%; }
+.room-widget .out {
+  margin-top: .55rem; padding: .65rem .75rem; border-radius: 8px;
+  background: #05070a; border: 1px solid var(--border);
+  font-family: JetBrains Mono, monospace; font-size: .8rem; white-space: pre-wrap;
+  color: var(--cyan);
+}
+.room-widget .check-list { list-style: none; display: grid; gap: .4rem; }
+.room-widget .check-list label {
+  display: flex; gap: .55rem; align-items: flex-start; cursor: pointer;
+  padding: .45rem .55rem; border-radius: 8px; border: 1px solid transparent;
+}
+.room-widget .check-list label:hover { border-color: var(--border); background: rgba(255,255,255,.02); }
+.room-widget .check-list input { width: auto; margin-top: .2rem; }
+.room-widget .quiz-opts { display: grid; gap: .4rem; }
+.room-widget .quiz-opts button {
+  text-align: left; padding: .55rem .7rem; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--border); background: #0a0e14; color: var(--text);
+  font-family: IBM Plex Sans, system-ui, sans-serif; font-size: .88rem;
+}
+.room-widget .quiz-opts button:hover { border-color: rgba(0,229,255,.45); color: var(--cyan); }
+.room-widget .quiz-opts button.is-good { border-color: rgba(0,255,157,.55); color: var(--green); }
+.room-widget .quiz-opts button.is-bad { border-color: rgba(255,77,109,.45); color: var(--red); }
+.room-widget iframe.lab-frame {
+  width: 100%; min-height: 280px; border: 1px solid var(--border);
+  border-radius: 10px; background: #05070a;
+}
+.room-widget .order-list { list-style: none; display: grid; gap: .35rem; }
+.room-widget .order-list li {
+  display: flex; align-items: center; gap: .5rem; padding: .5rem .65rem;
+  border: 1px solid var(--border); border-radius: 8px; background: #0a0e14;
+  cursor: grab; user-select: none;
+}
+.room-widget .order-list li .handle { color: var(--muted); font-family: JetBrains Mono, monospace; }
+.room-gate {
+  margin-bottom: 1rem; padding: 1rem 1.1rem; border-radius: 12px;
+  border: 1px solid rgba(255,176,32,.35);
+  background: rgba(255,176,32,.06);
+}
+.room-gate.locked {
+  border-color: rgba(0,229,255,.35); background: rgba(0,229,255,.05);
+}
+.flag-row { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }
+.flag-row input {
+  flex: 1; min-width: 200px; background: #0a0e14; border: 1px solid var(--border);
+  color: var(--text); border-radius: 8px; padding: .6rem .75rem;
+  font-family: JetBrains Mono, monospace; font-size: .9rem;
+}
+.msg { margin-top: .55rem; font-size: .88rem; }
+.msg.ok { color: var(--green); }
+.msg.bad { color: var(--red); }
+.learn {
+  margin: .6rem 0; padding: .7rem .85rem; border-radius: 10px;
+  background: rgba(0,229,255,.06); border: 1px solid rgba(0,229,255,.22);
+  font-size: .9rem;
+}
+.room-solved-banner {
+  display: inline-flex; align-items: center; gap: .35rem;
+  padding: .2rem .55rem; border-radius: 999px;
+  background: rgba(0,255,157,.15); color: var(--green);
+  font-family: JetBrains Mono, monospace; font-size: .72rem; font-weight: 700;
+}
+@media (max-width: 720px) {
+  .lab-room .room-main { padding-bottom: 6rem; }
+}
+
+
+/* Lounge-matched room chrome */
+.lab-room {
+  background:
+    radial-gradient(ellipse at 10% 0%, rgba(0,255,157,.05), transparent 40%),
+    radial-gradient(ellipse at 90% 5%, rgba(0,229,255,.04), transparent 36%),
+    var(--bg, #05070a);
+}
+.room-crumb a[href="/labs/"]::before {
+  content: '⌂ ';
+  opacity: .7;
+}
+.room-hero {
+  border: 1px solid rgba(0,255,157,.18);
+  border-radius: 14px;
+  padding: 1rem 1.05rem;
+  background:
+    linear-gradient(160deg, rgba(0,255,157,.05), transparent 45%),
+    linear-gradient(165deg, #0d1420, #080c12);
+  box-shadow: inset 0 0 0 1px rgba(0,255,157,.04), 0 0 28px rgba(0,255,157,.06);
+}
+.room-hero h1 {
+  text-shadow: 0 0 22px rgba(0,255,157,.2);
+}
+.room-work, .room-submit, .room-learn {
+  border-radius: 14px;
+}
+.room-widget {
+  border-style: solid;
+  box-shadow: inset 0 0 24px rgba(0,255,157,.03);
+}
+
+/* Genre chapter frames */
+.lab-room.chapter-hack .room-hero.panel,
+.lab-room.chapter-hack .room-learn.panel,
+.lab-room.chapter-hack .room-work.panel,
+.lab-room.chapter-hack .room-submit.panel {
+  border-color: rgba(var(--genre-hack-rgb, 0, 255, 157), .32);
+  box-shadow: 0 0 0 1px rgba(var(--genre-hack-rgb, 0, 255, 157), .07), 0 12px 32px rgba(0, 0, 0, .35);
+}
+.lab-room.chapter-hack .room-hero.panel {
+  background: linear-gradient(165deg, rgba(var(--genre-hack-rgb, 0, 255, 157), .09), var(--panel, #0c1017) 48%);
+}
+.lab-room.chapter-hack .eyebrow { color: var(--genre-hack, var(--green)); }
+.lab-room.chapter-hack .room-widget {
+  border-color: rgba(var(--genre-hack-rgb, 0, 255, 157), .32);
+  background: rgba(var(--genre-hack-rgb, 0, 255, 157), .03);
+}
+.lab-room.chapter-code .room-hero.panel,
+.lab-room.chapter-code .room-learn.panel,
+.lab-room.chapter-code .room-work.panel,
+.lab-room.chapter-code .room-submit.panel {
+  border-color: rgba(var(--genre-code-rgb, 0, 229, 255), .35);
+  box-shadow: 0 0 0 1px rgba(var(--genre-code-rgb, 0, 229, 255), .08), 0 12px 32px rgba(0, 0, 0, .35);
+}
+.lab-room.chapter-code .room-hero.panel {
+  background: linear-gradient(165deg, rgba(var(--genre-code-rgb, 0, 229, 255), .1), var(--panel, #0c1017) 48%);
+}
+.lab-room.chapter-code .eyebrow { color: var(--genre-code, var(--cyan)); }
+.lab-room.chapter-code .room-widget {
+  border-color: rgba(var(--genre-code-rgb, 0, 229, 255), .35);
+  background: rgba(var(--genre-code-rgb, 0, 229, 255), .04);
+}
+.lab-room.chapter-code .room-widget h3 { color: var(--genre-code, var(--cyan)); }

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timing Compare — Code Lab · Laden Lab'z</title>
+  <meta name="description" content="Early-exit string compare leaks secrets via timing.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/labs/assets/room.css">
+  <link rel="stylesheet" href="/labs/v1.1/assets/demo.css">
+  <link rel="stylesheet" href="/labs/assets/lounge-v11.css">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/js/soundcloud-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="lab-room" data-lab-slug="timing-compare" data-flag-hash="4bc4ea4fc1e7442a1c5cf7df325a6f052d7e64db06e003d92e281dbeb43f9274">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/labs/">Lounge</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="/labs/">Lounge</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap room-main" id="room-main">
+  <nav class="room-crumb" aria-label="Breadcrumb">
+    <a href="/labs/">Lounge</a>
+    <span class="sep">/</span>
+    <a href="/labs/?chapter=code">Code</a>
+    <span class="sep">/</span>
+    <span class="mono" id="crumb-slug">timing-compare</span>
+    <span class="version-chip">Code</span>
+  </nav>
+
+  <section class="room-hero panel" id="room-hero">
+    <div class="room-hero-top">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> Code chapter · educational bench</div>
+        <h1 id="room-title">Timing Compare</h1>
+        <p class="muted" id="room-summary">Early-exit string compare leaks secrets via timing.</p>
+      </div>
+      <div class="room-tags" id="room-tags">
+        <span class="tag">code</span>
+        <span class="tag">secure-code</span>
+        <span class="tag hard">HARD</span>
+        <span class="tag">145 XP</span>
+      </div>
+    </div>
+    <div class="room-meta mono" id="room-meta">secure-code · hard · 145 XP · local flag check</div>
+  </section>
+
+  <section class="room-learn panel" id="room-learn">
+    <h2>Learn</h2>
+    <p id="room-learn-body">Use constant-time comparison (hmac.compare_digest, crypto.timingSafeEqual) for tokens.</p>
+  </section>
+
+  <section class="room-work panel" id="room-work">
+    <div class="room-work-head">
+      <h2>Lab bench</h2>
+    </div>
+    <div class="chal-body" id="room-body"><p>Comparing API tokens — pick the right tool:</p></div>
+    <div class="room-widget" id="room-widget" data-widget="quiz" data-cfg='{"options": [{"t": "if (a === b) in a hot loop with early return per char", "ok": false}, {"t": "crypto.timingSafeEqual / hmac.compare_digest", "ok": true}, {"t": "a.includes(b)", "ok": false}, {"t": "JSON.stringify(a) == JSON.stringify(b)", "ok": false}], "flag": "LLZ{constant_time_compare}"}' aria-live="polite"></div>
+  </section>
+
+  <section class="room-submit panel" id="room-submit">
+    <h2>Submit flag</h2>
+    <p class="muted mono" id="room-hint" style="font-size:.8rem;margin-bottom:.6rem">Hint: Attackers measure response time per byte guess.</p>
+    <div class="flag-row">
+      <input id="flag-in" class="mono" placeholder="LLZ{…}" autocomplete="off" spellcheck="false">
+      <button class="btn btn-primary" type="button" id="flag-go">Submit flag</button>
+    </div>
+    <div class="msg" id="flag-msg"></div>
+    <p class="demo-note">Flags checked in your browser · Code chapter · <span class="mono">LLZ{…}</span></p>
+  </section>
+</main>
+
+<footer class="wrap footer">
+  <div>
+    <strong style="color:var(--text)">Laden Lab'<span class="brand-z">z</span></strong>
+    <div class="muted" style="font-size:.8rem">Oslo · Code chapter · <span class="mono">LLZ{…}</span></div>
+  </div>
+  <div class="live-bar"></div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+
+<script src="/labs/v1.1/assets/code-room.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

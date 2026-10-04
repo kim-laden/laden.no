@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laden Labs v1.2 — Ethical hacking gateway</title>
+  <meta name="description" content="Laden Labs — packed labs for ethical hackers. JWT auth, SQLite API, Caleb Labs mentor.">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="./">
+      <img class="brand-logo" src="/assets/products/logo.jpg" alt="Laden Labs" width="36" height="36">
+      <div>Laden Labs <span class="ver">v1.2</span></div>
+    </a>
+    <div class="nav-links" id="top-nav">
+      <a href="/account/" id="nav-account">Login</a>
+      <a href="/forum/">Forum</a>
+      <a href="/store/">Store</a>
+      <a href="/terminal/">LLC</a>
+    </div>
+    <div style="display:flex;gap:.45rem;align-items:center;flex-wrap:wrap">
+      <div class="nav-cart">
+        <button type="button" class="btn-cart" id="cart-btn" aria-label="Cart">Cart <span class="cart-count" id="cart-count">0</span></button>
+        <div class="cart-pop" id="cart-pop">
+          <div class="cart-items" id="cart-items"></div>
+          <div class="cart-foot"><span class="muted">Total</span><strong class="price" id="cart-total">0 NOK</strong></div>
+          <div class="cart-actions">
+            <button class="btn btn-primary" type="button" id="checkout-btn">Checkout</button>
+            <button class="btn btn-ghost" type="button" id="clear-cart">Clear</button>
+          </div>
+        </div>
+      </div>
+      <a class="btn btn-cyan" href="#caleb-labs" data-caleb id="caleb-btn">Caleb</a>
+      <a class="btn btn-ghost" href="/account/" id="nav-account-btn">Login</a>
+      <a class="btn btn-discord" href="https://discord.gg/BavZjwXp2" target="_blank" rel="noopener">Discord</a>
+      <button class="btn btn-danger hidden" id="logout-btn" type="button">Log out</button>
+    </div>
+  </div>
+</header>
+
+<section class="wrap gate" id="gate">
+  <div class="gate-card">
+    <div class="brand-lockup" style="margin-bottom:1rem">
+      <img class="hero-logo" src="/assets/products/logo.jpg" alt="Laden Labs" style="margin-bottom:0">
+      <div>
+        <div class="eyebrow" style="margin:0"><span class="pulse"></span> Laden Labs · ethical gateway · demo DB</div>
+        <h1 style="margin:.35rem 0 0">Step on. Learn in-scope.</h1>
+      </div>
+    </div>
+    <p>Packed labs for bug hunters and junior pentesters — hacker aesthetic, mentor energy. Flags check against the SQLite API. Ask <strong style="color:var(--cyan)">Caleb</strong> anytime (offline).</p>
+    <div id="auth-tabs" style="display:flex;gap:.4rem;margin-bottom:.4rem">
+      <button class="btn btn-primary" type="button" data-tab="login">Login</button>
+      <button class="btn btn-ghost" type="button" data-tab="register">Register</button>
+    </div>
+    <form id="login-form">
+      <label>Username</label>
+      <input name="username" autocomplete="username" value="operator" required>
+      <label>Password</label>
+      <input name="password" type="password" autocomplete="current-password" value="hunt-ethically" required>
+      <div style="margin-top:1rem;display:flex;gap:.5rem">
+        <button class="btn btn-primary" style="flex:1" type="submit">Enter Laden Labs</button>
+      </div>
+      <div class="err" id="auth-err"></div>
+    </form>
+    <form id="register-form" class="hidden">
+      <label>Username</label>
+      <input name="username" minlength="3" required>
+      <label>Display name</label>
+      <input name="display_name">
+      <label>Password (min 8)</label>
+      <input name="password" type="password" minlength="8" required>
+      <div style="margin-top:1rem"><button class="btn btn-primary" style="width:100%" type="submit">Create demo account</button></div>
+      <div class="err" id="reg-err"></div>
+    </form>
+    <div class="demo-accounts">
+      Demo logins:<br>
+      <code>operator</code> / <code>hunt-ethically</code><br>
+      <code>newbie</code> / <code>learn-first</code><br>
+      <code>caleb</code> / <code>openclaw-demo</code>
+    </div>
+  </div>
+</section>
+
+<main class="wrap dash" id="dash">
+  <div class="hero-strip">
+    <div class="panel terminal">
+      <div class="eyebrow"><span class="pulse"></span> Logged in · authorized minds only</div>
+      <h2 style="font-family:Orbitron,sans-serif;margin:.35rem 0 .4rem" id="welcome">Welcome</h2>
+      <p class="muted" style="max-width:40rem">This board is a <strong style="color:var(--text)">learning gateway</strong>: each challenge teaches a real bug class, then asks for a flag. Keep it ethical — only systems you own or have written permission to test.</p>
+      <div class="stats">
+        <div class="stat"><b id="stat-xp">0</b><span>XP</span></div>
+        <div class="stat"><b id="stat-solved">0</b><span>Solved</span></div>
+        <div class="stat"><b id="stat-total">0</b><span>Challenges</span></div>
+        <div class="stat"><b id="stat-role">member</b><span>Role</span></div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Live activity</h3>
+      <div class="feed" id="activity-feed"></div>
+    </div>
+  </div>
+
+  <div class="discord-inline panel" style="margin-bottom:1.1rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap;border-color:rgba(88,101,242,.35)">
+    <div class="discord-mark" style="width:40px;height:40px;border-radius:12px;background:var(--discord);display:grid;place-items:center;font-size:1.1rem;flex-shrink:0">✈</div>
+    <div style="flex:1;min-width:180px">
+      <strong>Discord community</strong>
+      <div class="muted" style="font-size:.85rem">Join operators · spoilers behind tags · invite <span class="mono">discord.gg/BavZjwXp2</span></div>
+    </div>
+    <a class="btn btn-discord" href="https://discord.gg/BavZjwXp2" target="_blank" rel="noopener">Join</a>
+    <a class="btn btn-cyan" href="#caleb-labs" data-caleb>Ask Caleb</a>
+  </div>
+
+  <div class="layout">
+    <aside class="side panel">
+      <h3>Tracks</h3>
+      <button type="button" class="active" data-track="all">All labs</button>
+      <div id="track-list"></div>
+      <h3 style="margin-top:1rem">Sections</h3>
+      <button type="button" data-view="labs" class="active">Challenge board</button>
+      <button type="button" data-view="forum">Forum</button>
+      <button type="button" data-view="store">Store</button>
+      <button type="button" data-view="leaders">Leaderboard</button>
+    </aside>
+
+    <section>
+      <div id="view-labs">
+        <div style="display:flex;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:.8rem;flex-wrap:wrap">
+          <div>
+            <h3 style="font-family:Orbitron,sans-serif;font-size:1.15rem;color:var(--text)">Challenge board</h3>
+            <p class="muted" style="font-size:.88rem">Filter by track · click a card · submit <span class="mono">laden{…}</span></p>
+          </div>
+          <input id="chal-search" placeholder="Search labs…" style="max-width:220px">
+        </div>
+        <div class="chal-grid" id="chal-grid"></div>
+        <div class="panel hidden" id="chal-detail" style="margin-top:1rem"></div>
+      </div>
+
+      <div id="view-forum" class="hidden">
+        <h3 style="font-family:Orbitron,sans-serif;margin-bottom:.8rem">Member forum</h3>
+        <div class="panel" id="forum-list"></div>
+      </div>
+
+      <div id="view-store" class="hidden">
+        <h3 style="font-family:Orbitron,sans-serif;margin-bottom:.8rem">Merch desk</h3>
+        <div class="chal-grid" id="store-grid"></div>
+      </div>
+
+      <div id="view-leaders" class="hidden">
+        <h3 style="font-family:Orbitron,sans-serif;margin-bottom:.8rem">Leaderboard</h3>
+        <div class="panel" id="leader-list"></div>
+      </div>
+    </section>
+
+    <aside class="rail panel">
+      <h3>Operator tips</h3>
+      <div class="feed" style="max-height:none">
+        <div><strong>Scope first</strong><small>Written permission beats curiosity.</small></div>
+        <div><strong>PoC not pwn</strong><small>Stop at proof. Don't pivot without approval.</small></div>
+        <div><strong>Report clean</strong><small>Steps, impact, fix — earn trust.</small></div>
+        <div><strong>Rotate leaks</strong><small>Secrets in JS are already burned.</small></div>
+        <div><strong>Defense invents</strong><small>Every lab ends with how to fix it.</small></div>
+      </div>
+      <a class="btn btn-cyan" id="caleb-btn-2" data-caleb style="width:100%;margin-top:.8rem" href="#caleb-labs">Ask Caleb</a>
+      <div style="margin-top:.9rem;padding-top:.8rem;border-top:1px solid var(--border)">
+        <h3>Discord</h3>
+        <p class="muted" style="font-size:.8rem;margin-bottom:.5rem">Community card · invite placeholder</p>
+        <a class="btn btn-discord" style="width:100%" href="https://discord.gg/BavZjwXp2" target="_blank" rel="noopener">discord.gg/BavZjwXp2</a>
+      </div>
+    </aside>
+  </div>
+</main>
+
+
+<footer class="wrap footer">
+  <div>
+    <div class="brand-lockup" style="margin-bottom:.55rem">
+      <img class="footer-logo" src="/assets/products/logo.jpg" alt="Laden Labs">
+      <div>
+        <strong style="color:var(--text)">Laden Labs</strong>
+        <div class="muted" style="font-size:.8rem">Oslo · Authorized security work only</div>
+      </div>
+    </div>
+    Demo labs · flags <span class="mono">laden{…}</span>
+  </div>
+  <div class="live-bar"><span>v1.2</span></div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="assets/app.js"></script>
+<script src="assets/caleb.js?v=20261004-caleb16"></script>
+<script src="/assets/llc.js" defer></script>
+<script>
+(function(){try{var t=localStorage.getItem('laden_v12_token');if(!t)return;var p=JSON.parse(atob(t.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));var u=p.usr||p.username;if(!u)return;document.querySelectorAll('#nav-account,#nav-account-btn').forEach(function(el){el.textContent=u;});}catch(e){}})();
+</script>
+</body>
+</html>

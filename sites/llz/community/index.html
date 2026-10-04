@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" data-base="..">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLZ LabZocial — Laden Labs Community</title>
+  <meta name="description" content="LLZ LabZocial — posts, reactions, friends, LabNewz, tips &amp; discussions. Ethical hacking HQ — Oslo flavoured.">
+  <link rel="stylesheet" href="/assets/styles.css?v=cta1">
+<script src="/assets/i18n.js"></script>
+  <link rel="stylesheet" href="community.css?v=sp2">
+  <link rel="stylesheet" href="/tips/assets/tip.css">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/llz/assets/llz-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="genre-social community-page">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a class="active" href="/community/"><span data-i18n="nav.community">Community</span></a>
+      <a href="/messages/" id="nav-messages"><span data-i18n="nav.messages">Messages</span></a>
+    </nav>
+    <div class="nav-cta">
+      <div class="nav-cart">
+        <button type="button" class="btn-cart" id="cart-btn" aria-label="Cart" data-i18n-aria="nav.cart"><span data-i18n="nav.cart">Cart</span> <span class="cart-count" id="cart-count">0 NOK</span></button>
+        <div class="cart-pop" id="cart-pop">
+          <div class="cart-items" id="cart-items"></div>
+          <div class="cart-foot"><span class="muted"><span data-i18n="nav.total">Total</span></span><strong class="price" id="cart-total">0 NOK</strong></div>
+          <div class="cart-actions">
+            <button class="btn btn-primary" type="button" onclick="checkoutDemo()"><span data-i18n="nav.checkout">Checkout</span></button>
+            <button class="btn btn-ghost" type="button" onclick="clearCart()"><span data-i18n="nav.clear">Clear</span></button>
+          </div>
+        </div>
+      </div>
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div data-llt-ad="compact"></div>
+
+  <section class="community-hero">
+    <div>
+      <div class="eyebrow"><span class="pulse"></span> <span data-i18n="comm.eyebrow">LLZ · LabZocial · ethical · Oslo</span></div>
+      <h1 data-i18n-html="comm.title">LLZ LabZocial<br><em>social as hell.</em></h1>
+      <p class="lede" data-i18n="comm.lead">LLZ LabZocial — short posts, emoji tapbacks, friends-first feed, LabNewz tabloid, tips, and tool boards. Guests read everything; members post, react, and friend for real.</p>
+    </div>
+    <aside class="community-status" aria-label="Community status" data-i18n-aria="comm.status">
+      <div class="row"><span>Channel</span><span><b>/community/</b></span></div>
+      <div class="row"><span>Stream</span><span><b>LLZ live</b></span></div>
+      <div class="row"><span>LabNewz</span><span><b>LLN live</b></span></div>
+      <div class="row" id="comm-user-state"><span>Session</span><span><b>○ …</b></span></div>
+    </aside>
+  </section>
+
+  <nav class="comm-tabs" role="tablist" aria-label="Community sections" data-i18n-aria="comm.tabs">
+    <button type="button" class="comm-tab active" data-tab="llz" role="tab">LLZ</button>
+    <button type="button" class="comm-tab" data-tab="friends" role="tab" data-i18n="comm.friends">Friends</button>
+    <button type="button" class="comm-tab" data-tab="labnewz" role="tab">LabNewz (LLN)</button>
+    <button type="button" class="comm-tab" data-tab="tips" role="tab" data-i18n="comm.tips">Tips &amp; tricks</button>
+    <button type="button" class="comm-tab" data-tab="discussions" role="tab" data-i18n="comm.discussions">Discussions</button>
+  </nav>
+
+  <section id="panel-llz" class="comm-panel active" role="tabpanel">
+    <div class="section-head llz-head">
+      <div>
+        <h2>LLZ LabZocial</h2>
+        <p class="muted-line">Friends first · profiles · online ops · 👍 🔥 💀 tapbacks</p>
+      </div>
+      <div class="llz-badge" title="LLZ LabZocial">LLZ</div>
+    </div>
+
+    <div class="llz-social-bar">
+      <form id="llz-search-form" class="llz-search" role="search">
+        <label class="mono tiny" for="llz-search-q">Find operators</label>
+        <div class="row">
+          <input id="llz-search-q" type="search" maxlength="64" placeholder="username or display name…" autocomplete="off">
+          <button class="btn btn-cyan" type="submit">Search</button>
+        </div>
+        <div id="llz-search-results" class="llz-search-results" hidden></div>
+      </form>
+      <aside class="llz-online" aria-label="Online operators">
+        <div class="llz-online-head">
+          <span class="presence on"></span>
+          <strong>Online</strong>
+          <span class="mono tiny" id="llz-online-count">—</span>
+        </div>
+        <div id="llz-online-list" class="llz-online-list">
+          <div class="muted-line" style="padding:.4rem;font-size:.8rem">Scanning presence…</div>
+        </div>
+      </aside>
+    </div>
+
+    <form id="llz-compose" class="llz-compose">
+      <label class="mono tiny" for="llz-body" data-i18n="comm.compose">Drop a signal</label>
+      <textarea id="llz-body" maxlength="500" placeholder="Say something short. Ethical vibes only…" data-i18n-placeholder="comm.compose.ph" required></textarea>
+      <div class="row">
+        <button class="btn btn-primary" type="submit" data-i18n="comm.post">Post to LLZ</button>
+        <span class="nudge" id="llz-nudge"></span>
+        <span class="mono tiny" id="llz-status"></span>
+      </div>
+    </form>
+
+    <div id="llz-stream" class="feed-stream"></div>
+  </section>
+
+  <section id="panel-friends" class="comm-panel" role="tabpanel">
+    <div class="section-head" style="margin-bottom:.85rem">
+      <div>
+        <h2>Friends</h2>
+        <p class="muted-line">Send / accept requests. Friends’ posts float to the top of LLZ.</p>
+      </div>
+    </div>
+    <div id="friends-gate" class="seed-note" data-i18n="comm.friendsGate">Login to manage friends.</div>
+    <div id="friends-panel" class="friends-layout hidden">
+      <p class="muted-line" style="margin:0 0 .5rem">Search the roster on <button type="button" class="linkish" data-goto-tab="llz">LLZ</button> or jump to a profile after you find them.</p>
+      <form id="friend-request-form" class="friend-request">
+        <label class="mono tiny" for="friend-username">Add by username</label>
+        <div class="row">
+          <input id="friend-username" type="text" maxlength="40" placeholder="packetfox" autocomplete="off" required>
+          <button class="btn btn-cyan" type="submit">Send request</button>
+        </div>
+        <span class="mono tiny" id="friend-req-status"></span>
+      </form>
+      <div class="friends-cols">
+        <div>
+          <h3 class="friends-h">Incoming</h3>
+          <div id="friends-incoming" class="friends-list"></div>
+        </div>
+        <div>
+          <h3 class="friends-h">Your crew</h3>
+          <div id="friends-accepted" class="friends-list"></div>
+        </div>
+        <div>
+          <h3 class="friends-h">Outgoing</h3>
+          <div id="friends-outgoing" class="friends-list"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="panel-labnewz" class="comm-panel" role="tabpanel">
+    <div class="lln-masthead">
+      <h2>LABNEWZ</h2>
+      <div class="edition">Laden Labs Tabloid · ethical edition · not stolen news</div>
+    </div>
+    <p class="seed-note">Witty, invented headlines with Oslo / Laden flavour. Fun only — no real breach reporting.</p>
+    <div id="lln-grid" class="lln-grid"></div>
+  </section>
+
+  <section id="panel-tips" class="comm-panel" role="tabpanel">
+    <div class="section-head" style="margin-bottom:.85rem">
+      <div>
+        <h2>Tips &amp; tricks</h2>
+        <p class="muted-line">Operator cards → full guides at <a href="/tips/" style="color:var(--cyan)">/tips/</a> — nmap, Burp, Wireshark, msfconsole, aircrack-ng, and friends.</p>
+      </div>
+    </div>
+    <div id="tips-grid" class="tips-grid"></div>
+  </section>
+
+  <section id="panel-discussions" class="comm-panel" role="tabpanel">
+    <div class="section-head" style="margin-bottom:.85rem">
+      <div>
+        <h2>Discussions</h2>
+        <p class="muted-line">Tool boards. Seeded threads + member posts (API). Guests can draft locally.</p>
+      </div>
+    </div>
+    <div class="disc-layout">
+      <div id="topic-list" class="topic-list" aria-label="Topics"></div>
+      <div class="disc-main">
+        <p class="seed-note" id="compose-who">…</p>
+        <form id="compose-form" class="disc-compose">
+          <label class="mono tiny" for="post-body">New post</label>
+          <textarea id="post-body" maxlength="2000" placeholder="Share a tip, ask a scoped question, keep it ethical…" required></textarea>
+          <div class="row">
+            <button class="btn btn-primary" type="submit">Post</button>
+            <span class="nudge" id="compose-nudge"></span>
+            <span class="mono tiny" id="compose-status"></span>
+          </div>
+        </form>
+        <div id="post-list" class="post-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="join-strip">
+    <div>
+      <strong style="color:var(--text)">Also on Discord</strong>
+      <p>Side channel for voice / spoilers-behind-tags. Primary hangout is LLZ LabZocial.</p>
+    </div>
+    <a class="btn btn-discord" href="https://discord.gg/BavZjwXp2" target="_blank" rel="noopener">Join Discord</a>
+  </aside>
+</main>
+
+<footer class="wrap footer">
+  <div>
+    <div class="brand-lockup" style="margin-bottom:.55rem">
+      <img class="footer-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Labs">
+      <div>
+        <strong style="color:var(--text)">Laden Labs</strong>
+        <div class="muted" style="font-size:.8rem"><span data-i18n="footer.tagline">Oslo · Authorized security work only</span></div>
+      </div>
+    </div>
+    LLZ LabZocial · LabNewz · tips · discussions — Discord is secondary.
+  </div>
+  <div class="live-bar">
+    <span>Tip: spoilers behind tags</span>
+    <span>·</span>
+    <span>demo</span>
+  </div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+
+<script src="/assets/llt.js"></script>
+<link rel="stylesheet" href="/assets/avatars/avatars.css">
+<script src="/assets/avatars/avatars.js"></script>
+<script src="/assets/labcard.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/assets/app.js?v=cta1"></script>
+<script src="community.js"></script>
+<script src="/assets/llc.js" defer></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

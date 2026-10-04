@@ -1,0 +1,19 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><title>IDOR desk</title>
+<style>body{font-family:monospace;background:#05070a;color:#e6f1ff;padding:2rem}a{color:#00e5ff}</style></head>
+<body>
+<h1>Ticket desk (demo)</h1>
+<p>You are user #3. Tickets 3 and 4 are yours. Try other ids.</p>
+<ul>
+<li><a href="?id=3">Ticket 3</a></li>
+<li><a href="?id=4">Ticket 4</a></li>
+<li><a href="?id=7">Ticket 7</a></li>
+</ul>
+<pre id=v></pre>
+<script>
+const tickets={3:{title:'My printer',body:'Help desk - public wifi printer.'},4:{title:'VPN access',body:'Please renew.'},7:{title:'SECRET',body:'Owner: CEO\nflag: laden{idor_check_authz}'}};
+const id=new URLSearchParams(location.search).get('id')||'3';
+const t=tickets[id]||{title:'Not found',body:'—'};
+document.getElementById('v').textContent='Ticket #'+id+'\n'+t.title+'\n'+t.body;
+</script>
+<script src="/assets/llc.js" defer></script>
+</body></html>

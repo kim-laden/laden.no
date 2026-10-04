@@ -1,0 +1,146 @@
+[
+  {
+    "id": "lln-001",
+    "title": "OSLO OPERATOR SPOTTED USING -sC -sV LIKE A GENTLEPERSON",
+    "lede": "Sources confirm a Laden Labs member defaulted to scripts+versions instead of blasting -A at the first ping. Caleb nodded once. The fjord approved.",
+    "tags": ["nmap", "oslo", "etiquette"],
+    "ts": "2026-09-28T08:14:00+02:00",
+    "byline": "LLN Desk"
+  },
+  {
+    "id": "lln-002",
+    "title": "JWT NONE-ALG RUMOUR: STILL A THING, STILL NOT YOUR LICENSE TO PWN",
+    "lede": "LabNewz reminds hunters: alg=none nightmares belong in /labs/jwt-none/, not in random SaaS. Authorized scopes only. Bring receipts, not drama.",
+    "tags": ["jwt", "auth", "scope"],
+    "ts": "2026-09-27T19:40:00+02:00",
+    "byline": "Auth Beat"
+  },
+  {
+    "id": "lln-003",
+    "title": "BURP REPEATER USER DISCOVERS MATCH-AND-REPLACE, LOCAL TIME STOPS",
+    "lede": "An anonymous junior reportedly spent three hours hand-editing cookies before finding the magic panel. Spoiler tags applied. Therapy not included.",
+    "tags": ["burp", "tips"],
+    "ts": "2026-09-27T14:05:00+02:00",
+    "byline": "Proxy Desk"
+  },
+  {
+    "id": "lln-004",
+    "title": "WIRESHARK FILTER OF THE WEEK: http.request.method == \"POST\"",
+    "lede": "Oslo packet craftsmen swear by it. Pair with tcp.port==443 and a strong coffee. Captures without consent still illegal — we checked, twice.",
+    "tags": ["wireshark", "filters"],
+    "ts": "2026-09-26T21:22:00+02:00",
+    "byline": "Packet Desk"
+  },
+  {
+    "id": "lln-005",
+    "title": "MSFCONSOLE HELPER TEXT READ IN FULL; INTERNET SURPRISED",
+    "lede": "A Laden Labs operator typed `help` before `exploit`. Metasploit did not explode. Ethics board awarded +5 XP and a knowing smirk.",
+    "tags": ["msfconsole", "ethics"],
+    "ts": "2026-09-26T11:00:00+02:00",
+    "byline": "Exploit Ethics"
+  },
+  {
+    "id": "lln-006",
+    "title": "AIRCRACK-NG LAB: WORDLIST HYGIENE BEATS BLIND HOPE",
+    "lede": "Breaking your own WPA handshake in a sandboxed lab is education. Breaking the café next door is a crime. LabNewz prints this weekly. Forever.",
+    "tags": ["aircrack-ng", "wifi", "law"],
+    "ts": "2026-09-25T16:48:00+02:00",
+    "byline": "RF Desk"
+  },
+  {
+    "id": "lln-007",
+    "title": "SQLMAP --BATCH USER FORGETS --TAMPER; DATABASE YAWNS",
+    "lede": "WAF shrugged. Hunter learned. Writeup incoming with spoilers behind tags. Remember: only dump what you're paid — and permitted — to dump.",
+    "tags": ["sqlmap", "sqli"],
+    "ts": "2026-09-25T09:30:00+02:00",
+    "byline": "DB Desk"
+  },
+  {
+    "id": "lln-008",
+    "title": "HYDRA RATE-LIMIT REALITY CHECK HITS HARD ON DEMO BOX",
+    "lede": "Credential stuffing cosplay against your own lab is fine. Against someone else's login page without a contract is how careers end. Softly.",
+    "tags": ["hydra", "bruteforce"],
+    "ts": "2026-09-24T22:10:00+02:00",
+    "byline": "Auth Beat"
+  },
+  {
+    "id": "lln-009",
+    "title": "LADEN STORE HOODIE SIZING THREAD REACHES CRITICAL MASS",
+    "lede": "Forum sources claim XL runs true. Merch desk listening. No zero-days found in cotton — only mild FOMO.",
+    "tags": ["store", "oslo", "merch"],
+    "ts": "2026-09-24T13:15:00+02:00",
+    "byline": "Lifestyle"
+  },
+  {
+    "id": "lln-010",
+    "title": "CALEB DROPS GENTLE HINT; CHAOS ERUPTS IN #CHALLENGES",
+    "lede": "The mentor said \"check the cookie flags.\" Three hunters pivoted correctly. One googled cookie recipes. Both outcomes respected.",
+    "tags": ["caleb", "labs"],
+    "ts": "2026-09-23T18:55:00+02:00",
+    "byline": "Mentor Desk"
+  },
+  {
+    "id": "lln-011",
+    "title": "NMAP -Pn ON LOCALHOST: PHILOSOPHERS DISAGREE",
+    "lede": "Does skipping host discovery on 127.0.0.1 count as OpSec theatre? LabNewz convened a panel of three cats. Inconclusive. Try -sn first.",
+    "tags": ["nmap", "philosophy"],
+    "ts": "2026-09-23T10:05:00+02:00",
+    "byline": "Scan Desk"
+  },
+  {
+    "id": "lln-012",
+    "title": "BUG BOUNTY CVSS INFLATION SHAMED IN LATE-NIGHT WRITEUP",
+    "lede": "Stored XSS in an admin panel is High, not \"I own the moon.\" Honesty packs more LLT than hype. Laden Challenges agrees.",
+    "tags": ["bounty", "cvss", "ethics"],
+    "ts": "2026-09-22T23:40:00+02:00",
+    "byline": "Report Desk"
+  },
+  {
+    "id": "lln-013",
+    "title": "OSLO SATURDAY PACKET CRAFTS: BRING LAPTOP, LEAVE EGO",
+    "lede": "Low-key hang confirmed. Topics: Wireshark display filters, Burp extensions, and which kebab survives a long debrief. Authorized vibes only.",
+    "tags": ["oslo", "meetup", "social"],
+    "ts": "2026-09-22T12:00:00+02:00",
+    "byline": "City Desk"
+  },
+  {
+    "id": "lln-014",
+    "title": "GOBUSTER WORDLIST DRAMA: COMMON.TXT VS REALITY",
+    "lede": "Junior found /admin on a lab box and whispered \"I'm in.\" Senior whispered \"you're in scope.\" Same adrenaline, better paperwork.",
+    "tags": ["gobuster", "recon"],
+    "ts": "2026-09-21T17:20:00+02:00",
+    "byline": "Recon Desk"
+  },
+  {
+    "id": "lln-015",
+    "title": "HASHCAT RULES FILE NAMED rockyou-adjacent; FANS CHEER",
+    "lede": "Offline cracking of hashes you own (or are contracted to test) remains peak sport. Live password spraying remains peak lawsuit.",
+    "tags": ["hashcat", "crypto"],
+    "ts": "2026-09-21T08:45:00+02:00",
+    "byline": "Crypto Desk"
+  },
+  {
+    "id": "lln-016",
+    "title": "IDOR DESK LAB CLEARED BY NEWBIE IN UNDER AN HOUR",
+    "lede": "Changing ?id=5→6 without authz checks: still a top bounty class. Changing it on production without permission: still a career class.",
+    "tags": ["idor", "labs", "web"],
+    "ts": "2026-09-20T15:30:00+02:00",
+    "byline": "Web Desk"
+  },
+  {
+    "id": "lln-017",
+    "title": "RESPONDER IN LAB VLAN: LLMNR CRIES, ETHICS SMILE",
+    "lede": "Poisoning your own lab network teaches detection. Poisoning the office guest Wi-Fi teaches HR your middle name. Choose wisely.",
+    "tags": ["responder", "ad", "lab"],
+    "ts": "2026-09-19T20:00:00+02:00",
+    "byline": "AD Desk"
+  },
+  {
+    "id": "lln-018",
+    "title": "LADEN LABS GATEWAY REPORTS ● LIVE; FJORD UNBOTHERED",
+    "lede": "Uptime green. Challenges online. Community page ships. Discord demoted to secondary hangout — the tabloid stays on-site now.",
+    "tags": ["meta", "laden", "ship"],
+    "ts": "2026-09-28T23:00:00+02:00",
+    "byline": "Front Page"
+  }
+]

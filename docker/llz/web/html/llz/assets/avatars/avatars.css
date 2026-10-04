@@ -1,0 +1,112 @@
+/* Laden member avatars — animated hacker characters */
+.laden-av{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:64px;height:64px;border-radius:16px;overflow:hidden;
+  flex-shrink:0;position:relative;background:#070b10;
+  box-shadow:0 0 0 2px rgba(0,255,157,.25);
+}
+.laden-av .av-bob{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  animation:av-bob 2.8s ease-in-out infinite;
+  transform-origin:50% 80%;
+}
+.laden-av .av-svg{width:100%;height:100%;display:block}
+.laden-av .av-aura{animation:av-pulse 2.4s ease-in-out infinite}
+.laden-av .av-glow{animation:av-glow 1.8s ease-in-out infinite}
+.laden-av .av-eye{transform-box:fill-box;transform-origin:center;animation:av-blink 4.2s ease-in-out infinite}
+.laden-av .av-eye-r{animation-delay:.08s}
+.laden-av .av-mouth{transform-box:fill-box;transform-origin:center;animation:av-smile 3.6s ease-in-out infinite}
+.laden-av .av-visor{animation:av-scan 2.2s linear infinite}
+.laden-av .av-glitch{animation:av-glitchx 1.6s steps(2) infinite}
+.laden-av .av-glitch2{animation:av-glitchx 1.1s steps(3) infinite reverse}
+.laden-av .av-wing{transform-box:fill-box;transform-origin:center;animation:av-flap 1.4s ease-in-out infinite}
+@keyframes av-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes av-blink{0%,42%,46%,100%{transform:scaleY(1)}44%{transform:scaleY(.08)}}
+@keyframes av-smile{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.08) translateY(0.5px)}}
+@keyframes av-pulse{0%,100%{opacity:.08;r:40}50%{opacity:.18}}
+@keyframes av-glow{0%,100%{opacity:.45}50%{opacity:.95}}
+@keyframes av-scan{0%{opacity:.5}50%{opacity:1}100%{opacity:.5}}
+@keyframes av-glitchx{0%,100%{transform:translate(0,0)}50%{transform:translate(2px,-1px)}}
+@keyframes av-flap{0%,100%{transform:rotate(0deg)}50%{transform:rotate(8deg)}}
+.laden-av.av-sm{width:40px;height:40px;border-radius:10px}
+.laden-av.av-lg{width:96px;height:96px;border-radius:22px}
+.laden-av-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:.75rem;margin:1rem 0}
+.laden-av-opt{
+  cursor:pointer;border-radius:14px;padding:.65rem;text-align:center;
+  border:1px solid rgba(230,241,255,.12);background:rgba(0,0,0,.25);
+  transition:border-color .15s,box-shadow .15s,transform .15s;color:inherit;font:inherit;
+}
+.laden-av-opt:hover{transform:translateY(-2px);border-color:rgba(0,255,157,.35)}
+.laden-av-opt.is-selected{border-color:rgba(0,255,157,.65);box-shadow:0 0 0 1px rgba(0,255,157,.25),0 8px 24px rgba(0,0,0,.35)}
+.laden-av-opt .laden-av{margin:0 auto .45rem;pointer-events:none}
+.laden-av-opt strong{display:block;font-size:.82rem;color:#e6f1ff}
+.laden-av-opt span{font-size:.68rem;color:rgba(230,241,255,.5);font-family:JetBrains Mono,monospace}
+.laden-av-actions{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-top:.35rem}
+.laden-av-msg{font-size:.82rem;min-height:1.2em;margin:.4rem 0 0}
+.labcard-avatar-slot{width:64px;height:64px;flex-shrink:0;border-radius:16px;overflow:hidden}
+.labcard-avatar-slot .laden-av{width:64px;height:64px;border-radius:16px}
+.labcard-avatar-slot img.labcard-avatar{width:64px;height:64px;border-radius:16px;object-fit:cover;display:block;
+  border:2px solid var(--lc-glow,rgba(0,255,157,.45));box-shadow:0 0 0 3px rgba(0,0,0,.35),0 0 18px color-mix(in srgb, var(--lc-accent,#00ff9d) 35%, transparent);
+  background:#0a1612}
+
+.laden-av.av-01{box-shadow:0 0 0 2px #00ff9d66,0 0 16px #00ff9d33}
+.laden-av.av-02{box-shadow:0 0 0 2px #fb923c66,0 0 16px #fb923c33}
+.laden-av.av-03{box-shadow:0 0 0 2px #a78bfa66,0 0 16px #a78bfa33}
+.laden-av.av-04{box-shadow:0 0 0 2px #f472b666,0 0 16px #f472b633}
+.laden-av.av-05{box-shadow:0 0 0 2px #94a3b866,0 0 16px #94a3b833}
+.laden-av.av-06{box-shadow:0 0 0 2px #86efac66,0 0 16px #86efac33}
+.laden-av.av-07{box-shadow:0 0 0 2px #64748b66,0 0 16px #64748b33}
+.laden-av.av-08{box-shadow:0 0 0 2px #22c55e66,0 0 16px #22c55e33}
+.laden-av.av-09{box-shadow:0 0 0 2px #f0abfc66,0 0 16px #f0abfc33}
+.laden-av.av-10{box-shadow:0 0 0 2px #38bdf866,0 0 16px #38bdf833}
+.laden-av.av-11{box-shadow:0 0 0 2px #34d39966,0 0 16px #34d39933}
+.laden-av.av-12{box-shadow:0 0 0 2px #818cf866,0 0 16px #818cf833}
+
+/* --- Caleb mentor open: terrified eyes looking down toward Caleb (bottom-right) --- */
+.laden-av .av-terrified{
+  position:absolute;inset:0;display:none;align-items:center;justify-content:center;
+  pointer-events:none;z-index:3;border-radius:inherit;overflow:hidden;
+  background:rgba(7,11,16,.15);
+}
+.laden-av .av-terrified svg{width:100%;height:100%;display:block}
+body.caleb-open .laden-av .av-bob{
+  animation:none !important;
+  transform:translateY(2px) scale(.92);
+  opacity:.35;filter:blur(.4px);
+  transition:opacity .2s,transform .2s,filter .2s;
+}
+body.caleb-open .laden-av .av-terrified{display:flex;animation:av-terror-pop .28s ease-out}
+body.caleb-open .laden-av{
+  box-shadow:0 0 0 2px rgba(255,107,122,.55),0 0 18px rgba(255,107,122,.35) !important;
+}
+body.caleb-open .laden-av .av-terror-pupil{animation:av-terror-dart 1.1s ease-in-out infinite}
+body.caleb-open .laden-av .av-terror-sweat{animation:av-sweat 1.4s ease-in-out infinite}
+@keyframes av-terror-pop{0%{transform:scale(.7);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes av-terror-dart{
+  0%,100%{transform:translate(3px,5px)}
+  40%{transform:translate(5px,6px)}
+  70%{transform:translate(2px,7px)}
+}
+@keyframes av-sweat{0%,100%{opacity:.2;transform:translateY(0)}50%{opacity:1;transform:translateY(3px)}}
+
+/* Initials fallback on labcard also gets scared face when Caleb open */
+body.caleb-open .labcard-avatar-slot img.labcard-avatar{opacity:0}
+body.caleb-open .labcard-avatar-slot.has-initials::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;
+  background:
+    radial-gradient(circle at 38% 42%, #fff 0 7px, transparent 8px),
+    radial-gradient(circle at 62% 42%, #fff 0 7px, transparent 8px),
+    radial-gradient(circle at 42% 48%, #111 0 3.5px, transparent 4px),
+    radial-gradient(circle at 66% 50%, #111 0 3.5px, transparent 4px),
+    radial-gradient(ellipse at 50% 72%, #111 0 2px, transparent 3px),
+    linear-gradient(145deg, hsl(0,70%,45%), hsl(20,80%,35%));
+  background-color:#1a0a0a;
+  box-shadow:inset 0 0 12px rgba(0,0,0,.4);
+  animation:av-terror-pop .28s ease-out;
+}
+.labcard-avatar-slot{position:relative}
+
+.laden-av-photo .av-bob{overflow:hidden;border-radius:16px}
+.laden-av-photo .av-photo{width:100%;height:100%;object-fit:cover;display:block;border-radius:16px}
+.laden-av-photo.av-sm .av-bob,.laden-av-photo.av-sm .av-photo{border-radius:12px}
+.laden-av-photo.av-lg .av-bob,.laden-av-photo.av-lg .av-photo{border-radius:20px}

@@ -1,0 +1,89 @@
+/* LLC Manuals shelf — lounge-matched */
+.manuals-main { padding: 1.25rem 1.25rem 4rem; max-width: 1100px; }
+.man-crumb { display:flex; align-items:center; gap:.45rem; font-size:.82rem; color:var(--muted); margin-bottom:1rem; flex-wrap:wrap; }
+.man-crumb a { color:var(--cyan); }
+.man-crumb .sep { opacity:.5; }
+.man-shelf-hero .lounge-title { font-family:Orbitron,sans-serif; margin:.35rem 0 .6rem; }
+.man-shelf-hero em { color:var(--green); font-style:normal; }
+.man-shelf-actions { display:flex; flex-wrap:wrap; gap:.55rem; align-items:center; margin-top:1rem; }
+.man-count { font-size:.78rem; }
+.man-toolbar { display:flex; flex-direction:column; gap:.75rem; margin:1rem 0 1.25rem; }
+.man-search input {
+  width:100%; background:rgba(0,0,0,.25); border:1px solid var(--border); border-radius:10px;
+  color:var(--text); padding:.65rem .85rem; font-family:'JetBrains Mono',monospace; font-size:.85rem;
+}
+.man-search input:focus { outline:none; border-color:var(--green); }
+.man-chips { display:flex; flex-wrap:wrap; gap:.4rem; }
+.man-chip-btn {
+  font-family:'JetBrains Mono',monospace; font-size:.72rem; letter-spacing:.04em;
+  padding:.35rem .65rem; border-radius:999px; cursor:pointer;
+  background:rgba(255,255,255,.03); border:1px solid var(--border); color:var(--muted);
+}
+.man-chip-btn:hover { border-color:rgba(0,255,157,.4); color:var(--green); }
+.man-chip-btn.active { background:rgba(0,255,157,.12); border-color:rgba(0,255,157,.45); color:var(--green); }
+.man-group { margin-bottom:1.75rem; }
+.man-group-title {
+  font-family:'JetBrains Mono',monospace; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--muted); margin:0 0 .7rem;
+}
+.man-grid {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:.7rem;
+}
+.man-card {
+  display:block; padding:.85rem .95rem; border-radius:12px;
+  background:var(--panel); border:1px solid var(--border);
+  transition:border-color .15s, box-shadow .15s, transform .15s;
+  color:inherit; text-decoration:none;
+}
+.man-card:hover {
+  border-color:rgba(0,255,157,.4); box-shadow:0 0 20px rgba(0,255,157,.08);
+  transform:translateY(-1px); color:inherit;
+}
+.man-card-top { display:flex; align-items:center; justify-content:space-between; gap:.5rem; margin-bottom:.35rem; }
+.man-card-name { color:var(--green); font-weight:700; font-size:.95rem; }
+.man-tag-fic { color:var(--amber); border-color:rgba(255,176,32,.35); background:rgba(255,176,32,.08); }
+.man-card-syn { font-size:.82rem; color:var(--muted); margin:0; line-height:1.4; }
+.man-card-aliases { margin-top:.45rem; display:flex; flex-wrap:wrap; gap:.3rem; }
+.man-card-aliases code { font-size:.68rem; color:var(--cyan); opacity:.85; }
+.man-empty { text-align:center; padding:2rem; }
+
+.man-hero { margin-bottom:1rem; }
+.man-title { font-family:Orbitron,sans-serif; font-size:1.55rem; margin:.35rem 0 .5rem; color:var(--green); }
+.man-syn { color:var(--muted); margin:0 0 .5rem; max-width:52rem; }
+.man-aliases { font-size:.82rem; color:var(--cyan); margin:.4rem 0 0; }
+.man-banner.fiction {
+  margin-top:.85rem; padding:.55rem .75rem; border-radius:8px;
+  border:1px solid rgba(255,176,32,.35); background:rgba(255,176,32,.08);
+  color:var(--amber); font-size:.8rem; font-family:'JetBrains Mono',monospace; line-height:1.45;
+}
+.man-section { margin-bottom:.85rem; }
+.man-section h2 {
+  font-family:'JetBrains Mono',monospace; font-size:.72rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--muted); margin:0 0 .65rem;
+}
+.man-code {
+  margin:0; padding:.85rem 1rem; overflow:auto;
+  background:rgba(0,0,0,.35); border:1px solid rgba(0,255,157,.15); border-radius:10px;
+  font-family:'JetBrains Mono',monospace; font-size:.8rem; line-height:1.55; color:var(--green);
+}
+.man-list { margin:.2rem 0 0; padding-left:1.15rem; }
+.man-list li { margin:.35rem 0; line-height:1.45; font-size:.9rem; }
+.man-list code { color:var(--cyan); font-size:.84em; }
+.man-seealso { display:flex; flex-wrap:wrap; gap:.4rem; }
+.man-chip {
+  display:inline-block; padding:.3rem .65rem; border-radius:999px;
+  border:1px solid rgba(0,229,255,.35); background:rgba(0,229,255,.08);
+  color:var(--cyan); font-family:'JetBrains Mono',monospace; font-size:.75rem;
+}
+.man-chip:hover { border-color:var(--green); color:var(--green); }
+.man-cta {
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem;
+  margin-top:1rem; border-color:rgba(0,255,157,.25);
+}
+.man-cta-actions { display:flex; flex-wrap:wrap; gap:.5rem; }
+.man-copy-hint { font-size:.78rem; margin:0 0 .5rem; }
+.manuals-footer { margin-top:2rem; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+@media (max-width:640px) {
+  .man-grid { grid-template-columns:1fr; }
+}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ldash — Portfolio — Laden AS</title>
+  <meta name="description" content="A personal ops dashboard in the laden.no language: apps, monitor, calendar, sticky notes and subscriptions — Ctrl+` and you are in. Result: Prototype ready for Mac, Windows and Linux.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#000000">
+  <link rel="canonical" href="https://laden.no/docker/laden/en/portfolio/dash/">
+  <meta property="og:title" content="Ldash — Portfolio — Laden AS">
+  <meta property="og:description" content="A personal ops dashboard in the laden.no language: apps, monitor, calendar, sticky notes and subscriptions — Ctrl+` and you are in. Result: Prototype ready for Mac, Windows and Linux.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:url" content="https://laden.no/docker/laden/en/portfolio/dash/">
+  <link rel="icon" href="/docker/laden/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/docker/laden/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docker/laden/images/laden-wordmark.png" as="image" type="image/png">
+  <link rel="stylesheet" href="/docker/laden/css/site.css?v=20261003-caleb-size">
+  
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <link rel="stylesheet" href="/docker/laden/css/soundcloud-player.css?v=20261003-mobkeep">
+  <script src="/docker/laden/js/soundcloud-player.js?v=20261003-mobkeep" defer></script>
+  <script src="/docker/laden/js/caleb-corner.js?v=20261003-mobkeep" defer></script>
+  <script src="/docker/laden/js/site.js?v=v11live" defer></script>
+</head>
+<body>
+  
+    <a class="skip" href="#innhold">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-bar">
+        <a class="brand-lockup" href="/docker/laden/en/" aria-label="Laden — BUILD YOUR DREAM">
+          <img class="brand-mark" src="/docker/laden/images/laden-wordmark.png" width="40" height="40" alt="Laden">
+          <span class="brand-slogan">BUILD YOUR DREAM</span>
+        </a>
+        <div class="language-switch" aria-label="Language">
+          <a href="/docker/laden/portefolje/dash/" data-language="no">NO</a><span aria-hidden="true">/</span><a href="/docker/laden/en/portfolio/dash/" data-language="en" aria-current="page">EN</a>
+        </div>
+        <input class="nav-check" type="checkbox" id="nav-toggle">
+        <label class="nav-toggle" for="nav-toggle" aria-controls="site-nav" aria-expanded="false">
+          <span class="when-closed">Menu</span>
+          <span class="when-open">Close</span>
+        </label>
+        <nav class="site-nav" id="site-nav" aria-label="Main menu">
+          <ul role="list">
+            <li><a href="/docker/laden/en/services/">Services</a></li><li><a href="/docker/laden/en/method/">Method</a></li><li><a href="/docker/laden/en/portfolio/" aria-current="page">Portfolio</a></li><li><a href="/docker/laden/en/courses/">Courses</a></li><li><a href="/docker/laden/en/about/">About</a></li><li><a href="/docker/laden/en/contact/">Contact</a></li>
+          </ul>
+          <a class="btn btn-primary" href="/docker/laden/en/contact/#skjema">Get a proposal</a>
+        </nav>
+      </div>
+    </header>
+    
+  <main id="innhold" tabindex="-1">
+    
+    <header class="page-head">
+      <div class="wrap">
+        <nav aria-label="You are here">
+          <ol class="crumbs" role="list">
+            <li><a href="/docker/laden/en/portfolio/">Portfolio</a></li>
+            <li aria-current="page">Ldash</li>
+          </ol>
+        </nav>
+        <p class="banner">Prototype · download</p>
+        <h1>Ldash</h1>
+        <p class="product-slogan">Everything you need</p>
+        <p class="lede">A personal ops dashboard in the laden.no language: apps, monitor, calendar, sticky notes and subscriptions — Ctrl+` and you are in.</p>
+              <section class="case-block">
+        
+        
+    <div class="shots">
+      <figure class="shot">
+        <div class="shot-frame"><img src="/docker/laden/images/dash/dash-desktop.png" width="1920" height="1080" loading="lazy" alt="Ldash ops dashboard prototype"><span>Download the prototype and run it locally.</span></div>
+        <figcaption>Download the prototype and run it locally.</figcaption>
+      </figure>
+    </div>
+        <h2>Surface</h2>
+    
+      </section>
+      
+      
+        <dl class="fact-row">
+          <div><dt>Type</dt><dd>Desktop app</dd></div>
+          <div><dt>Stack</dt><dd>JavaScript, Python, C#</dd></div>
+          <div><dt>Role</dt><dd>Product development</dd></div>
+        </dl>
+        
+      </div>
+    </header>
+    <div class="wrap case-wrap">
+      <section class="case-block">
+        <h2>Challenge</h2>
+        <div class="prose"><p>We wanted a light, hack-like dashboard that opens on a shortcut: your apps, host monitoring, calendar, sticky notes and subscription overview — without the heavy enterprise feel.</p></div>
+      </section>
+      <section class="case-block">
+        <h2>Move</h2>
+        <div class="prose"><p>Ldash is written in JavaScript. The same HTML page is the dashboard on every system, in the laden.no palette (void, hack-green, cyan). Widgets can be dragged in edit mode, size classes adapt, and Control gathers the settings. Python does the desktop work behind that page. Windows and Mac ship that host inside a C# window, Android is Kotlin, and the iPhone version is Swift.</p></div>
+      </section>
+      <section class="case-block">
+        <h2>Stack</h2>
+        <div class="prose"><p>The screen is written in JavaScript, in ordinary script files, with HTML and CSS. Titles use Orbitron. Python is the desktop host: it reads the machine, launches programs, and keeps the vault. On Linux that host opens a GTK 4 window with WebKit. Windows is a C# window on Microsoft WebView2, with a private Python runtime in the installer, so you do not install Python yourself. Mac is a C# window on the system WebKit, with a private Python 3.12 runtime. Android is written in Kotlin and shows the same JavaScript in the system WebView.</p></div>
+      </section>
+<section class="case-block" id="nedlastinger">
+        <h2>Download the prototype</h2>
+        <div class="case-downloads">
+          <h3>Mac · Windows · Linux · Android</h3>
+          <p>Unsigned test builds. On a Mac, if Gatekeeper asks, right-click the .pkg and choose Open. On Windows, if SmartScreen warns, choose More info and run it anyway. On Linux, unpack the .tar.gz and run sh linux/install.sh. On Android, allow install from this source.</p>
+          <div class="download-row"><a class="btn btn-primary" href="/downloads/dash/LadenOpsSetup.pkg">macOS v1.0 (.pkg)</a><a class="btn btn-secondary" href="/downloads/dash/LadenOpsSetup.exe">Windows v1.0 (.exe)</a><a class="btn btn-secondary" href="/downloads/dash/LadenOps-linux-x64.tar.gz">Linux v1.0 (.tar.gz)</a><a class="btn btn-secondary" href="/downloads/dash/LadenOps.apk">Android v1.0 (.apk)</a></div>
+        </div>
+      </section>
+        
+      <section class="case-block" id="iphone">
+        <h2>iPhone</h2>
+        <p class="mock-ios"><a href="#iphone">Mock iPhone</a> — Open source. Apple’s terms block a normal install. No .ipa.</p>
+        <div class="prose"><p>The iPhone app is written in Swift. It shows the same JavaScript dashboard in the system WebKit, built for the pocket. A narrow screen stacks the panels; at desktop width they stay in the grid. There is no global hotkey and no terminal. You leave with the Home gesture, and the vault title stays your callsign. A launcher that is a shell command does not run, and the phone does not list other apps or their windows. If no vault master is set, Unlock asks for Face ID or the device passcode — the text in that box is not checked. No install file. Apple's terms don't allow a normal sideload download, so the iPhone app is the open-source code instead — another point for open source. The Xcode project is ready; an .ipa is not.</p></div>
+      </section>
+      <section class="case-block">
+        <h2>Result</h2>
+        <div class="prose"><p>Download the prototype for Mac, Windows, Linux or Android. The builds are unsigned test packages — expect a warning the first time. That is the point: a fast way to feel the product. Linux is the .tar.gz: unpack it and run sh linux/install.sh.</p></div>
+      </section>
+    </div>
+    <section class="section page-cta">
+      <div class="wrap">
+        <h2>Start with a similar need</h2>
+        <p class="lede">Describe the problem. We reply with a personal proposal.</p>
+        <a class="btn btn-primary" href="/docker/laden/en/contact/#skjema">Start with the need</a>
+      </div>
+    </section>
+    
+  </main>
+  
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="brand-lockup" href="/docker/laden/en/" aria-label="Laden — BUILD YOUR DREAM">
+              <img class="brand-mark" src="/docker/laden/images/laden-wordmark.png" width="40" height="40" alt="Laden">
+              <span class="brand-slogan">BUILD YOUR DREAM</span>
+            </a>
+            <p class="tagline">From first idea to a working system.</p>
+          </div>
+          <nav aria-label="Services in footer">
+            <h2>Services</h2>
+            <ul role="list">
+              <li><a href="/docker/laden/en/services/#systemutvikling">Software development</a></li>
+              <li><a href="/docker/laden/en/services/#design">Design and UX</a></li>
+              <li><a href="/docker/laden/en/services/#integrasjoner">Integrations</a></li>
+              <li><a href="/docker/laden/en/contact/#skjema">Proposal</a></li>
+            </ul>
+          </nav>
+          <nav aria-label="Courses in footer">
+            <h2>Courses</h2>
+            <ul role="list">
+              <li><a href="/docker/laden/en/courses/#opplaering">AI tool training</a></li>
+              <li><a href="/docker/laden/en/courses/#foredrag">Talks</a></li>
+              <li><a href="/docker/laden/en/courses/#opplegg">Ask for a course proposal</a></li>
+            </ul>
+          </nav>
+          <div>
+            <h2>Contact</h2>
+            <address>
+              <ul role="list">
+                <li><a class="mail" href="mailto:post@laden.no">post@laden.no</a></li>
+                <li><a href="tel:+4799449677">994 49 677</a></li>
+                <li>Schweigaards gate 60 B<br>0656 Oslo</li>
+                <li><a href="/docker/laden/en/contact/#skjema">Write to us</a></li>
+              </ul>
+            </address>
+          </div>
+        </div>
+        <div class="footer-base">
+          <p>© 2026 Laden AS</p>
+          <p>Company no. 937 285 833</p>
+          <p><a href="/docker/laden/en/privacy/">Privacy</a></p>
+        </div>
+      </div>
+    </footer>
+    
+<script src="https://cdn-reach.hostinger.com/js/embed.js"></script>
+</body>
+</html>

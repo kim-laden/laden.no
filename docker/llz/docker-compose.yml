@@ -1,0 +1,45 @@
+name: labz-test
+
+services:
+  api:
+    build: ./api
+    image: labz-test-api:local
+    env_file:
+      - .env
+    environment:
+      LADEN_DB: /data/laden.db
+      LADEN_HOST: 0.0.0.0
+      LADEN_PORT: "18790"
+      LADEN_PUBLIC_PREFIX: /labs/api
+      LADEN_PUBLIC_SITE: http://127.0.0.1:18080
+      LADEN_MAIL_OUTBOX: /data/mail-outbox
+    volumes:
+      - labz_data:/data
+    restart: unless-stopped
+    networks:
+      - labz
+
+  web:
+    build: ./web
+    image: labz-test-web:local
+    depends_on:
+      - api
+    ports:
+      - "127.0.0.1:18080:8080"
+    volumes:
+      - ./web/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./web/player/soundcloud-player.js:/opt/docker-player/soundcloud-player.js:ro
+      - labz_www:/usr/share/nginx/html
+    restart: unless-stopped
+    networks:
+      - labz
+
+volumes:
+  labz_data:
+    name: labz_data
+  labz_www:
+    name: labz_www
+
+networks:
+  labz:
+    name: labz-test

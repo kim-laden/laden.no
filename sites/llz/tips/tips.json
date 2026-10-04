@@ -1,0 +1,530 @@
+[
+  {
+    "id": "tip-nmap-1",
+    "slug": "nmap-scripts-versions",
+    "tool": "nmap",
+    "title": "Scripts + versions without -A",
+    "level": "easy",
+    "tags": [
+      "recon",
+      "nmap",
+      "service-detect"
+    ],
+    "blurb": "Prefer nmap -sC -sV -p- over blind -A. Faster feedback, less noise, same intel on most labs.",
+    "related_labs": [
+      {
+        "slug": "banner-grab-lite",
+        "title": "Banner Whisper"
+      },
+      {
+        "slug": "robots-redux",
+        "title": "Robots Redux"
+      },
+      {
+        "slug": "tls-old",
+        "title": "TLS Old"
+      }
+    ],
+    "oracle_queries": [
+      "nmap service detection writeup",
+      "nmap -sC -sV vs -A",
+      "NSE http-enum"
+    ],
+    "caleb_ask": "When should I use nmap -A vs -sC -sV on a lab?"
+  },
+  {
+    "id": "tip-nmap-2",
+    "slug": "nmap-host-discovery",
+    "tool": "nmap",
+    "title": "Host discovery first",
+    "level": "easy",
+    "tags": [
+      "recon",
+      "nmap",
+      "discovery"
+    ],
+    "blurb": "On a flat lab net: nmap -sn 10.10.0.0/24 then target live hosts. Skip -Pn until you know ICMP is blocked.",
+    "related_labs": [
+      {
+        "slug": "scope-first",
+        "title": "Scope First"
+      },
+      {
+        "slug": "banner-grab-lite",
+        "title": "Banner Whisper"
+      },
+      {
+        "slug": "hidden-dir",
+        "title": "Hidden Dir"
+      }
+    ],
+    "oracle_queries": [
+      "nmap host discovery -sn",
+      "nmap -Pn when to use",
+      "network reconnaissance lab"
+    ],
+    "caleb_ask": "Should I use nmap -Pn on every lab host?"
+  },
+  {
+    "id": "tip-burp-1",
+    "slug": "burp-match-replace",
+    "tool": "burp",
+    "title": "Match and replace",
+    "level": "med",
+    "tags": [
+      "proxy",
+      "burp",
+      "workflow"
+    ],
+    "blurb": "Proxy → Match and replace: auto-fix a header or cookie across Repeater/Intruder. Stop hand-editing the same byte 40 times.",
+    "related_labs": [
+      {
+        "slug": "cookie-jar",
+        "title": "Cookie Jar"
+      },
+      {
+        "slug": "idor-desk",
+        "title": "IDOR Desk"
+      },
+      {
+        "slug": "jwt-none",
+        "title": "JWT None"
+      }
+    ],
+    "oracle_queries": [
+      "Burp Suite match and replace",
+      "Burp session handling rules",
+      "IDOR cookie swap lab"
+    ],
+    "caleb_ask": "How do I use Burp match and replace for a lab cookie?"
+  },
+  {
+    "id": "tip-burp-2",
+    "slug": "burp-logger",
+    "tool": "burp",
+    "title": "Logger++ / Logger tab",
+    "level": "easy",
+    "tags": [
+      "proxy",
+      "burp",
+      "writeup"
+    ],
+    "blurb": "Keep a full history of proxied traffic. When a bug reproduces once, your scrollback is the writeup backbone.",
+    "related_labs": [
+      {
+        "slug": "report-quality",
+        "title": "Report Quality"
+      },
+      {
+        "slug": "idor-desk",
+        "title": "IDOR Desk"
+      },
+      {
+        "slug": "reflect-101",
+        "title": "Reflect 101"
+      }
+    ],
+    "oracle_queries": [
+      "Burp Logger++",
+      "bug bounty evidence logging",
+      "HTTP request response writeup"
+    ],
+    "caleb_ask": "How should I capture evidence from Burp for a writeup?"
+  },
+  {
+    "id": "tip-ws-1",
+    "slug": "wireshark-http-posts",
+    "tool": "wireshark",
+    "title": "HTTP POSTs only",
+    "level": "easy",
+    "tags": [
+      "pcap",
+      "wireshark",
+      "filters"
+    ],
+    "blurb": "Display filter: http.request.method == \"POST\". Combine with ip.addr== your lab target.",
+    "related_labs": [
+      {
+        "slug": "cookie-jar",
+        "title": "Cookie Jar"
+      },
+      {
+        "slug": "password-reset-poison",
+        "title": "Password Reset Poison"
+      },
+      {
+        "slug": "js-secrets",
+        "title": "JS Secrets"
+      }
+    ],
+    "oracle_queries": [
+      "wireshark http.request.method POST",
+      "wireshark display filter cheatsheet",
+      "pcap HTTP analysis lab"
+    ],
+    "caleb_ask": "Give me useful Wireshark filters for HTTP lab traffic."
+  },
+  {
+    "id": "tip-ws-2",
+    "slug": "wireshark-follow-stream",
+    "tool": "wireshark",
+    "title": "Follow the stream",
+    "level": "easy",
+    "tags": [
+      "pcap",
+      "wireshark",
+      "tcp"
+    ],
+    "blurb": "Right-click → Follow → TCP/HTTP Stream. Rebuild the conversation instead of squinting at frames.",
+    "related_labs": [
+      {
+        "slug": "banner-grab-lite",
+        "title": "Banner Whisper"
+      },
+      {
+        "slug": "js-secrets",
+        "title": "JS Secrets"
+      },
+      {
+        "slug": "tls-old",
+        "title": "TLS Old"
+      }
+    ],
+    "oracle_queries": [
+      "wireshark follow tcp stream",
+      "wireshark follow HTTP stream",
+      "pcap analysis tutorial"
+    ],
+    "caleb_ask": "How do I use Follow TCP Stream in Wireshark on a lab capture?"
+  },
+  {
+    "id": "tip-msf-1",
+    "slug": "msf-search-info",
+    "tool": "msfconsole",
+    "title": "search + info before exploit",
+    "level": "med",
+    "tags": [
+      "metasploit",
+      "exploit",
+      "discipline"
+    ],
+    "blurb": "search type:exploit apache then info / show options. Set RHOSTS, check required options, then run. Labs love patience.",
+    "related_labs": [
+      {
+        "slug": "scope-first",
+        "title": "Scope First"
+      },
+      {
+        "slug": "cmd-metachar",
+        "title": "Cmd Metachar"
+      },
+      {
+        "slug": "report-quality",
+        "title": "Report Quality"
+      }
+    ],
+    "oracle_queries": [
+      "metasploit search info show options",
+      "msfconsole workflow",
+      "metasploit check method"
+    ],
+    "caleb_ask": "Walk me through a safe msfconsole workflow before running an exploit."
+  },
+  {
+    "id": "tip-msf-2",
+    "slug": "msf-workspaces",
+    "tool": "msfconsole",
+    "title": "Workspaces keep you honest",
+    "level": "med",
+    "tags": [
+      "metasploit",
+      "hygiene",
+      "notes"
+    ],
+    "blurb": "workspace -a lab-oslo isolates hosts/loot per engagement. Don't mix client A with Friday CTF notes.",
+    "related_labs": [
+      {
+        "slug": "scope-first",
+        "title": "Scope First"
+      },
+      {
+        "slug": "report-quality",
+        "title": "Report Quality"
+      },
+      {
+        "slug": "cvss-feel",
+        "title": "CVSS Feel"
+      }
+    ],
+    "oracle_queries": [
+      "metasploit workspace command",
+      "msfconsole db_nmap",
+      "engagement hygiene pentest"
+    ],
+    "caleb_ask": "How do Metasploit workspaces help keep lab notes clean?"
+  },
+  {
+    "id": "tip-air-1",
+    "slug": "aircrack-own-ap",
+    "tool": "aircrack-ng",
+    "title": "Own AP / own handshake",
+    "level": "hard",
+    "tags": [
+      "wireless",
+      "aircrack-ng",
+      "ethics"
+    ],
+    "blurb": "Capture and crack only networks you own or are contracted to test. Lab kit + isolated AP = education. Neighbour's SSID = crime.",
+    "related_labs": [
+      {
+        "slug": "scope-first",
+        "title": "Scope First"
+      },
+      {
+        "slug": "report-quality",
+        "title": "Report Quality"
+      },
+      {
+        "slug": "cvss-feel",
+        "title": "CVSS Feel"
+      }
+    ],
+    "oracle_queries": [
+      "aircrack-ng lab handshake",
+      "WPA handshake capture authorized",
+      "wireless security ethics"
+    ],
+    "caleb_ask": "What is the ethical way to practice aircrack-ng?"
+  },
+  {
+    "id": "tip-air-2",
+    "slug": "airmon-check-kill",
+    "tool": "aircrack-ng",
+    "title": "airmon-ng check kill",
+    "level": "med",
+    "tags": [
+      "wireless",
+      "aircrack-ng",
+      "linux"
+    ],
+    "blurb": "Kill NetworkManager interference before monitor mode. Remember to restart networking after the lab session.",
+    "related_labs": [
+      {
+        "slug": "scope-first",
+        "title": "Scope First"
+      },
+      {
+        "slug": "tls-old",
+        "title": "TLS Old"
+      },
+      {
+        "slug": "banner-grab-lite",
+        "title": "Banner Whisper"
+      }
+    ],
+    "oracle_queries": [
+      "airmon-ng check kill",
+      "NetworkManager monitor mode",
+      "restore NetworkManager after aircrack"
+    ],
+    "caleb_ask": "Why does airmon-ng check kill matter and how do I undo it?"
+  },
+  {
+    "id": "tip-hydra-1",
+    "slug": "hydra-throttle",
+    "tool": "hydra",
+    "title": "Throttle or get banned",
+    "level": "med",
+    "tags": [
+      "bruteforce",
+      "hydra",
+      "rate-limit"
+    ],
+    "blurb": "Use -t 4 and respect lockouts. Against production without written scope: don't. Against your lab: still be nice to the logs.",
+    "related_labs": [
+      {
+        "slug": "rate-limit",
+        "title": "Rate Limit"
+      },
+      {
+        "slug": "scope-first",
+        "title": "Scope First"
+      },
+      {
+        "slug": "password-reset-poison",
+        "title": "Password Reset Poison"
+      }
+    ],
+    "oracle_queries": [
+      "hydra -t throttle",
+      "password spraying vs bruteforce",
+      "account lockout testing"
+    ],
+    "caleb_ask": "How should I throttle Hydra on a lab login?"
+  },
+  {
+    "id": "tip-sqlmap-1",
+    "slug": "sqlmap-level-risk",
+    "tool": "sqlmap",
+    "title": "Level/risk deliberately",
+    "level": "med",
+    "tags": [
+      "sqli",
+      "sqlmap",
+      "waf"
+    ],
+    "blurb": "Start low: default level/risk, then climb. Add --tamper only when a WAF actually blocks. Always --batch in labs you own.",
+    "related_labs": [
+      {
+        "slug": "sqli-logic",
+        "title": "SQLi Logic"
+      },
+      {
+        "slug": "cookie-jar",
+        "title": "Cookie Jar"
+      },
+      {
+        "slug": "rate-limit",
+        "title": "Rate Limit"
+      }
+    ],
+    "oracle_queries": [
+      "sqlmap level risk explained",
+      "sqlmap tamper scripts",
+      "SQL injection lab writeup"
+    ],
+    "caleb_ask": "When should I raise sqlmap --level and --risk?"
+  },
+  {
+    "id": "tip-sqlmap-2",
+    "slug": "sqlmap-dump-intent",
+    "tool": "sqlmap",
+    "title": "Dump with intent",
+    "level": "hard",
+    "tags": [
+      "sqli",
+      "sqlmap",
+      "scope"
+    ],
+    "blurb": "--tables / --columns before --dump. Know what you're extracting and why it is in scope.",
+    "related_labs": [
+      {
+        "slug": "sqli-logic",
+        "title": "SQLi Logic"
+      },
+      {
+        "slug": "report-quality",
+        "title": "Report Quality"
+      },
+      {
+        "slug": "scope-first",
+        "title": "Scope First"
+      }
+    ],
+    "oracle_queries": [
+      "sqlmap dump specific columns",
+      "responsible disclosure data minimization",
+      "SQLi proof of concept minimal"
+    ],
+    "caleb_ask": "How do I prove SQLi with sqlmap without dumping everything?"
+  },
+  {
+    "id": "tip-john-1",
+    "slug": "john-format-detection",
+    "tool": "john",
+    "title": "Format detection",
+    "level": "easy",
+    "tags": [
+      "crypto",
+      "john",
+      "hashes"
+    ],
+    "blurb": "john --list=formats | rg -i sha then --format= explicitly. Wrong format = silent sadness.",
+    "related_labs": [
+      {
+        "slug": "hash-id",
+        "title": "Hash ID"
+      },
+      {
+        "slug": "b64-again",
+        "title": "B64 Again"
+      },
+      {
+        "slug": "js-secrets",
+        "title": "JS Secrets"
+      }
+    ],
+    "oracle_queries": [
+      "john the ripper --format",
+      "john --list=formats",
+      "hash identification SHA256"
+    ],
+    "caleb_ask": "How do I pick the right john --format for a hash?"
+  },
+  {
+    "id": "tip-hashcat-1",
+    "slug": "hashcat-mode-numbers",
+    "tool": "hashcat",
+    "title": "Mode numbers matter",
+    "level": "med",
+    "tags": [
+      "crypto",
+      "hashcat",
+      "gpu"
+    ],
+    "blurb": "Example: -m 1000 NTLM, -m 1800 sha512crypt. Check the example hashes wiki before burning GPU time.",
+    "related_labs": [
+      {
+        "slug": "hash-id",
+        "title": "Hash ID"
+      },
+      {
+        "slug": "b64-again",
+        "title": "B64 Again"
+      },
+      {
+        "slug": "js-secrets",
+        "title": "JS Secrets"
+      }
+    ],
+    "oracle_queries": [
+      "hashcat mode numbers",
+      "hashcat example hashes",
+      "NTLM hashcat -m 1000"
+    ],
+    "caleb_ask": "How do I find the right hashcat -m mode for my hash?"
+  },
+  {
+    "id": "tip-ffuf-1",
+    "slug": "ffuf-filter-smart",
+    "tool": "ffuf",
+    "title": "Filter smart",
+    "level": "med",
+    "tags": [
+      "content-discovery",
+      "ffuf",
+      "fuzzing"
+    ],
+    "blurb": "ffuf -u URL/FUZZ -w wordlist -mc 200,204,301,302,403 -fs &lt;size&gt; to drop boring catch-all responses.",
+    "related_labs": [
+      {
+        "slug": "hidden-dir",
+        "title": "Hidden Dir"
+      },
+      {
+        "slug": "robots-redux",
+        "title": "Robots Redux"
+      },
+      {
+        "slug": "js-secrets",
+        "title": "JS Secrets"
+      }
+    ],
+    "oracle_queries": [
+      "ffuf -fs filter size",
+      "ffuf content discovery",
+      "gobuster vs ffuf filtering"
+    ],
+    "caleb_ask": "How do I filter ffuf results when everything returns 200?"
+  }
+]

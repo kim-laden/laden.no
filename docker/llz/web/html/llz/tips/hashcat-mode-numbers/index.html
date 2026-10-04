@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mode numbers matter — Tips · Laden Labs</title>
+  <meta name="description" content="Example: -m 1000 NTLM, -m 1800 sha512crypt. Check the example hashes wiki before burning GPU time.">
+  <link rel="stylesheet" href="/assets/styles.css?v=cta1">
+<script src="/assets/i18n.js"></script>
+<script src="/assets/i18n-content.js"></script>
+  <link rel="stylesheet" href="/labs/assets/room.css">
+  <link rel="stylesheet" href="/tips/assets/tip.css">
+  <link rel="canonical" href="https://laden.no/tips/hashcat-mode-numbers/">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/js/soundcloud-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="tip-page">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap room-main">
+
+  <nav class="room-crumb" aria-label="Breadcrumb">
+    <a href="/tips/"><span data-i18n="nav.tips">Tips</span></a>
+    <span class="sep">/</span>
+    <span class="mono">hashcat-mode-numbers</span>
+  </nav>
+
+  <section class="room-hero panel tip-hero">
+    <div class="room-hero-top">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> Operator tip · hashcat</div>
+        <h1>Mode numbers matter</h1>
+        <p class="muted">Example: -m 1000 NTLM, -m 1800 sha512crypt. Check the example hashes wiki before burning GPU time.</p>
+      </div>
+      <div class="room-tags">
+        <span class="tag med">med</span>
+        <span class="tag">crypto</span><span class="tag">hashcat</span><span class="tag">gpu</span>
+      </div>
+    </div>
+    <div class="room-meta mono">/hashcat/ · /tips/hashcat-mode-numbers/</div>
+  </section>
+
+  <section class="room-learn panel tip-body">
+    <h2>Guide</h2>
+    
+<p>Hashcat modes are magic numbers. Wrong <code>-m</code> means wrong algorithm — your GPU will "work" and crack nothing.</p>
+<h3>Why it matters</h3>
+<p>The example hashes page (and <code>hashcat --help</code> / <code>-hh</code>) is canonical. Thirty seconds of mode confirmation beats thirty minutes of 0/0 status.</p>
+<h3>How-to</h3>
+<pre class="mono tip-pre"># Common lab modes
+# -m 0     MD5
+# -m 100   SHA1
+# -m 1000  NTLM
+# -m 1800  sha512crypt ($6$)
+# -m 3200  bcrypt
+
+hashcat -m 1000 -a 0 ntlm.txt rockyou.txt
+hashcat -m 1800 -a 0 shadow.hashes rockyou.txt --username</pre>
+<ul>
+  <li>Identify the hash → confirm mode → then attack.</li>
+  <li>Use <code>-a 0</code> dictionary first; rules (<code>-r</code>) before brutal mask burns.</li>
+  <li>Watch temperature/power on shared boxes; be a good lab citizen.</li>
+</ul>
+
+  </section>
+
+  <section class="panel tip-links">
+    <h2>Related labs</h2>
+    <div class="tip-link-row"><a class="tip-related" href="/labs/hash-id/">Hash ID</a><a class="tip-related" href="/labs/b64-again/">B64 Again</a><a class="tip-related" href="/labs/js-secrets/">JS Secrets</a></div>
+    <h2 style="margin-top:1rem">Oracle queries</h2>
+    <div class="tip-link-row"><a class="tip-oracle" href="/oracle/?q=hashcat%20mode%20numbers">hashcat mode numbers</a><a class="tip-oracle" href="/oracle/?q=hashcat%20example%20hashes">hashcat example hashes</a><a class="tip-oracle" href="/oracle/?q=NTLM%20hashcat%20-m%201000">NTLM hashcat -m 1000</a></div>
+    <div class="tip-actions">
+      <button type="button" class="btn btn-cyan" id="tip-caleb" data-ask="How do I find the right hashcat -m mode for my hash?">Ask Caleb</button>
+      <a class="btn btn-ghost" href="/tips/">All tips</a>
+      <a class="btn btn-ghost" href="/community/#tips">Community tips tab</a>
+      <a class="btn btn-primary" href="/oracle/">Open Oracle</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap footer">
+  <div>
+    <strong style="color:var(--text)">Laden Labs</strong>
+    <div class="muted" style="font-size:.8rem">Oslo · Authorized security work only · operator tips</div>
+  </div>
+  <div class="live-bar">
+    <span>Tips · ethical only</span>
+    <span>·</span>
+    <span>demo</span>
+  </div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+
+<script src="/assets/llt.js"></script>
+<script src="/assets/caleb.js?v=20261004-caleb16"></script>
+<link rel="stylesheet" href="/assets/avatars/avatars.css">
+<script src="/assets/avatars/avatars.js"></script>
+<script src="/assets/labcard.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/tips/assets/tip.js"></script>
+<script src="/assets/llc.js" defer></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

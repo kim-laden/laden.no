@@ -1,0 +1,230 @@
+/* FUCK FUCK'EM — Laden dark chrome */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@600;800&display=swap');
+
+:root {
+  --bg: #05070a;
+  --panel: #0c1017;
+  --green: #00ff9d;
+  --cyan: #00e5ff;
+  --red: #ff4d6d;
+  --text: #e6f1ff;
+  --muted: #8b9bb4;
+  --border: #1a2332;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.ffe-bar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  padding: .55rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background:
+    linear-gradient(180deg, rgba(0,255,157,.06), transparent),
+    var(--panel);
+  z-index: 10;
+}
+
+.ffe-bar .brand {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  min-width: 0;
+}
+
+.ffe-bar .brand img {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  image-rendering: pixelated;
+}
+
+.ffe-bar .brand h1 {
+  font-family: Orbitron, sans-serif;
+  font-size: .85rem;
+  letter-spacing: .04em;
+  color: #dc2840;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ffe-bar .brand span {
+  font: 600 .65rem/1 JetBrains Mono, monospace;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.ffe-bar .actions {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  flex-shrink: 0;
+}
+
+.ffe-bar a, .ffe-bar button {
+  font: 600 .72rem/1 JetBrains Mono, monospace;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  background: transparent;
+  border: 1px solid rgba(0,229,255,.28);
+  border-radius: 8px;
+  padding: .45rem .7rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color .15s, color .15s, background .15s;
+}
+
+.ffe-bar a:hover, .ffe-bar button:hover {
+  color: var(--green);
+  border-color: rgba(0,255,157,.45);
+  background: rgba(0,255,157,.06);
+}
+
+.ffe-stage {
+  flex: 1 1 auto;
+  display: grid;
+  place-items: center;
+  position: relative;
+  min-height: 0;
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(220,40,60,.08), transparent 55%),
+    #05070a;
+  padding: .75rem;
+}
+
+#game {
+  display: block;
+  width: min(960px, 100%);
+  height: auto;
+  max-height: calc(100vh - 64px);
+  aspect-ratio: 960 / 600;
+  background: #0a0610;
+  border: 1px solid rgba(220,40,60,.28);
+  border-radius: 10px;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.4),
+    0 18px 50px rgba(0,0,0,.45),
+    0 0 40px rgba(220,40,60,.08);
+  cursor: crosshair;
+  image-rendering: auto;
+  outline: none;
+}
+
+#game:focus { outline: none; }
+
+.ffe-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(5,7,10,.72);
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+.ffe-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ffe-overlay .card {
+  text-align: center;
+  padding: 1.25rem 1.5rem;
+  border-radius: 14px;
+  border: 1px solid rgba(0,229,255,.25);
+  background: linear-gradient(165deg, #101822, #0a0e14);
+  box-shadow: 0 18px 40px rgba(0,0,0,.4);
+  max-width: 360px;
+}
+
+.ffe-overlay .card h2 {
+  font-family: Orbitron, sans-serif;
+  font-size: 1rem;
+  color: var(--cyan);
+  margin-bottom: .4rem;
+}
+
+.ffe-overlay .card p {
+  color: var(--muted);
+  font-size: .88rem;
+  margin-bottom: .85rem;
+}
+
+.ffe-overlay .card button {
+  font: 700 .75rem/1 JetBrains Mono, monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #05100a;
+  background: var(--green);
+  border: none;
+  border-radius: 8px;
+  padding: .6rem 1rem;
+  cursor: pointer;
+}
+
+.ffe-gate {
+  position: absolute;
+  inset: 0;
+  display: none;
+  place-items: center;
+  background: rgba(5,7,10,.88);
+  z-index: 20;
+}
+
+.ffe-gate.show { display: grid; }
+
+.ffe-gate .card {
+  text-align: center;
+  padding: 1.5rem 1.6rem;
+  border-radius: 16px;
+  border: 1px solid rgba(0,255,157,.28);
+  background: linear-gradient(165deg, #101822, #0a0e14);
+  max-width: 380px;
+}
+
+.ffe-gate h2 {
+  font-family: Orbitron, sans-serif;
+  font-size: 1.1rem;
+  margin: .35rem 0 .5rem;
+}
+
+.ffe-gate p { color: var(--muted); font-size: .9rem; margin-bottom: 1rem; }
+
+.ffe-gate a {
+  display: inline-block;
+  font: 700 .75rem/1 JetBrains Mono, monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #05100a;
+  background: var(--green);
+  border-radius: 8px;
+  padding: .65rem 1.1rem;
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .ffe-bar .brand span { display: none; }
+  .ffe-bar .brand h1 { font-size: .72rem; }
+}

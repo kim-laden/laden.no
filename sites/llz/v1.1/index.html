@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-base=".">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member portal — Laden AS v1.1</title>
+  <meta name="description" content="Laden AS member portal demo: forum, challenges, store.">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/llz/assets/llz-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="./">
+      <div class="logo">L</div>
+      <div>Laden AS <span class="ver">v1.1</span></div>
+    </a>
+    <nav class="nav-links">
+      <a class="active" href="./">Home</a>
+      <a class="" href="forum/">Forum</a>
+      <a class="" href="challenges/">Challenges</a>
+      <a class="" href="store/">Store</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-cyan" data-caleb>Talk to Caleb</a>
+      <a class="btn btn-ghost" href="https://laden.no/">Live site</a>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <div class="eyebrow"><span class="pulse"></span> Portal demo · Authorized minds only</div>
+      <h1>Security ops,<br><em>member-first.</em></h1>
+      <p class="lead">Laden v1.1 is a living HQ for operators: forum threads, small THM-style labs, and a merch desk — with Caleb on standby.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="challenges/">Enter challenges</a>
+        <a class="btn btn-ghost" href="forum/">Browse forum</a>
+        <a class="btn btn-cyan" data-caleb>Open Caleb</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>6</b><span>Demo challenges</span></div>
+        <div class="stat"><b>12</b><span>Forum threads</span></div>
+        <div class="stat"><b>8</b><span>Store drops</span></div>
+      </div>
+    </div>
+    <aside class="panel">
+      <h3>Live ops feed</h3>
+      <div class="feed" id="live-feed"></div>
+      <div class="live-bar" style="margin-top:.8rem;padding-top:.8rem;border-top:1px solid var(--border)">
+        Gateway <span style="color:var(--green)">● live</span> · Caleb ready
+      </div>
+    </aside>
+  </section>
+
+  <section class="block">
+    <div class="section-head">
+      <div>
+        <h2>Jump in</h2>
+        <p>Three surfaces, one vibe — practice, talk, gear up.</p>
+      </div>
+    </div>
+    <div class="grid-3">
+      <a class="card" href="forum/" style="color:inherit">
+        <span class="tag forum">FORUM</span>
+        <h3>Member forum</h3>
+        <p>OpSec lounge, web writeups, Oslo meetups, and ask-anything threads.</p>
+        <div class="meta"><span>12 threads</span><span>Demo mode</span></div>
+      </a>
+      <a class="card" href="challenges/" style="color:inherit">
+        <span class="tag easy">LABS</span>
+        <h3>Challenge board</h3>
+        <p>Small TryHackMe-style boxes: recon, encoding, XSS taste, JWT fails.</p>
+        <div class="meta"><span>Easy → Hard</span><span>Local flag check</span></div>
+      </a>
+      <a class="card" href="store/" style="color:inherit">
+        <span class="tag store">STORE</span>
+        <h3>Merch & products</h3>
+        <p>Hoodies, stickers, caps, and joke USB drops. Cart is demo-only.</p>
+        <div class="meta"><span>NOK pricing</span><span>No real charge</span></div>
+      </a>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="section-head">
+      <div>
+        <h2>Featured challenges</h2>
+        <p>Quick wins to feel the board.</p>
+      </div>
+      <a class="btn btn-ghost" href="challenges/">All labs →</a>
+    </div>
+    <div class="grid-3">
+      <div class="card"><span class="tag easy">EASY · 50</span><h3>Easy Pickings</h3><p>HTML comment treasure hunt.</p><div class="meta"><span>Web</span></div></div>
+      <div class="card"><span class="tag med">MED · 100</span><h3>Not Encryption</h3><p>Base64 that looks scary until it isn’t.</p><div class="meta"><span>Crypto-lite</span></div></div>
+      <div class="card"><span class="tag hard">HARD · 200</span><h3>None of Your Business</h3><p>Broken JWT alg demo.</p><div class="meta"><span>Auth</span></div></div>
+    </div>
+  </section>
+</main>
+<footer class="wrap footer">
+  <div>
+    <strong style="color:var(--text)">Laden AS</strong> · Oslo · Authorized security work only<br>
+    Demo portal v1.1 — not production auth / payments.
+  </div>
+  <div class="live-bar">
+    <span id="oslo-clock">--:--:--</span>
+    <span>·</span>
+    <span>Members online: <b id="member-count" style="color:var(--green)">128</b></span>
+  </div>
+</footer>
+<script src="assets/app.js"></script>
+</body></html>

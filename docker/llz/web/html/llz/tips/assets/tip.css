@@ -1,0 +1,84 @@
+/* Tip pages — dedicated operator guides under /tips/<slug>/ */
+.tip-page .room-main { padding: 1.25rem 1.25rem 5rem; }
+.tip-hero h1 {
+  font-family: Orbitron, sans-serif;
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  margin: .35rem 0 .4rem; color: var(--text);
+}
+.tip-body h2, .tip-links h2 {
+  font-family: Orbitron, sans-serif; font-size: 1rem; margin: 0 0 .55rem; color: var(--text);
+}
+.tip-body h3 {
+  font-family: Orbitron, sans-serif; font-size: .92rem;
+  margin: 1.1rem 0 .4rem; color: var(--cyan);
+}
+.tip-body p, .tip-body li { color: var(--muted); line-height: 1.55; font-size: .92rem; }
+.tip-body ul, .tip-body ol { padding-left: 1.2rem; margin: .4rem 0 .8rem; }
+.tip-body code, .tip-pre code {
+  color: var(--green);
+  background: rgba(0,255,157,.06);
+  border: 1px solid rgba(0,255,157,.2);
+  border-radius: 4px; padding: .05rem .3rem;
+  font-family: JetBrains Mono, monospace; font-size: .84rem;
+}
+.tip-pre {
+  background: rgba(0,0,0,.35); border: 1px solid var(--border);
+  border-radius: 10px; padding: .75rem .9rem; overflow-x: auto;
+  font-size: .82rem; color: var(--cyan); line-height: 1.45; margin: .6rem 0 1rem;
+  font-family: JetBrains Mono, monospace; white-space: pre;
+}
+.tip-warn {
+  margin: .8rem 0; padding: .7rem .85rem; border-radius: 10px;
+  background: rgba(255,176,32,.06); border: 1px solid rgba(255,176,32,.28);
+  color: var(--text) !important;
+}
+.tip-link-row { display: flex; flex-wrap: wrap; gap: .45rem; }
+.tip-related, .tip-oracle {
+  display: inline-flex; align-items: center;
+  padding: .35rem .7rem; border-radius: 999px;
+  border: 1px solid var(--border); background: #0a0e14;
+  color: var(--cyan); font-family: JetBrains Mono, monospace; font-size: .75rem;
+  text-decoration: none;
+}
+.tip-related:hover, .tip-oracle:hover { border-color: rgba(0,229,255,.45); color: var(--text); }
+.tip-oracle { color: var(--green); }
+.tip-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem; }
+.tag.easy { color: var(--green); border-color: rgba(0,255,157,.35); }
+.tag.med { color: var(--amber, #ffb020); border-color: rgba(255,176,32,.35); }
+.tag.hard { color: var(--red, #ff4d6d); border-color: rgba(255,77,109,.35); }
+
+.tip-filters { display: flex; flex-wrap: wrap; gap: .35rem; margin: 0 0 1rem; }
+.tip-filters .topic-btn {
+  appearance: none; cursor: pointer;
+  background: transparent; color: var(--muted);
+  border: 1px solid var(--border); border-radius: 999px;
+  padding: .35rem .75rem; font-family: JetBrains Mono, monospace; font-size: .75rem;
+}
+.tip-filters .topic-btn.active, .tip-filters .topic-btn:hover {
+  color: #03140c; background: var(--green); border-color: var(--green);
+}
+
+.tips-grid, .tip-index-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: .85rem;
+}
+@media (max-width: 900px) { .tips-grid, .tip-index-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .tips-grid, .tip-index-grid { grid-template-columns: 1fr; } }
+
+.tip-card-link {
+  display: block; text-decoration: none; color: inherit;
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1rem;
+  transition: border-color .15s ease, transform .15s ease;
+}
+.tip-card-link:hover { border-color: rgba(0,229,255,.45); transform: translateY(-1px); }
+.tip-card-link .tool {
+  font-family: JetBrains Mono, monospace; font-size: .7rem;
+  color: var(--cyan); text-transform: uppercase; letter-spacing: .06em;
+}
+.tip-card-link h3 { font-size: .98rem; margin: .35rem 0 .45rem; color: var(--text); }
+.tip-card-link p { color: var(--muted); font-size: .88rem; margin: 0; }
+.tip-open {
+  display: inline-block; margin-top: .65rem;
+  font-family: JetBrains Mono, monospace; font-size: .72rem; color: var(--green);
+}
+.tip-card-link.is-hidden { display: none; }

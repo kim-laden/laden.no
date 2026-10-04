@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" data-base="..">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gear · LLG — Laden Labs Gear</title>
+  <meta name="description" content="Laden Labs Gear (LLG) — hoodies, stickers, demo cart.">
+  <link rel="stylesheet" href="../assets/styles.css?v=cta1">
+<script src="/assets/i18n.js"></script>
+
+<style id="genre-gear-frames">
+  body.genre-gear #products .card {
+    border-color: rgba(var(--genre-gear-rgb, 255, 209, 102), .45);
+    background: linear-gradient(165deg, rgba(var(--genre-gear-rgb, 255, 209, 102), .1), var(--panel) 50%);
+    box-shadow: 0 0 0 1px rgba(var(--genre-gear-rgb, 255, 209, 102), .1), 0 10px 28px rgba(0,0,0,.35);
+  }
+  body.genre-gear #products .card:hover {
+    border-color: rgba(var(--genre-gear-rgb, 255, 209, 102), .7);
+    box-shadow: 0 0 28px rgba(var(--genre-gear-rgb, 255, 209, 102), .16);
+  }
+  body.genre-gear .tag.store {
+    color: #1a1404;
+    background: linear-gradient(90deg, var(--genre-gear, #ffd166), #ffe6a8);
+    border-color: rgba(var(--genre-gear-rgb, 255, 209, 102), .45);
+  }
+  body.genre-gear #llt-week {
+    border-color: rgba(var(--genre-gear-rgb, 255, 209, 102), .5) !important;
+    background: linear-gradient(135deg, rgba(var(--genre-gear-rgb, 255, 209, 102), .12), rgba(0,229,255,.05)) !important;
+  }
+</style>
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/llz/assets/llz-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="genre-gear">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a class="active" href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+      <a href="/messages/" id="nav-messages"><span data-i18n="nav.messages">Messages</span></a>
+    </nav>
+    <div class="nav-cta">
+      <div class="nav-cart">
+        <button type="button" class="btn-cart" id="cart-btn" aria-label="Cart" data-i18n-aria="nav.cart"><span data-i18n="nav.cart">Cart</span> <span class="cart-count" id="cart-count">0 NOK</span></button>
+        <div class="cart-pop" id="cart-pop">
+          <div class="cart-items" id="cart-items"></div>
+          <div class="cart-foot"><span class="muted"><span data-i18n="nav.total">Total</span></span><strong class="price" id="cart-total">0 NOK</strong></div>
+          <div class="cart-actions">
+            <button class="btn btn-primary" type="button" onclick="checkoutDemo()"><span data-i18n="nav.checkout">Checkout</span></button>
+            <button class="btn btn-ghost" type="button" onclick="clearCart()"><span data-i18n="nav.clear">Clear</span></button>
+          </div>
+        </div>
+      </div>
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="page-title">
+    <div class="eyebrow"><span class="pulse"></span> <span data-i18n="gear.page.eyebrow">Laden Labs Gear · LLG · demo cart</span></div>
+    <h1>Gear <span class="mono" style="font-size:.55em;opacity:.7">LLG</span></h1>
+    <p data-i18n="gear.page.lead">Laden Labs Gear (LLG) for operators. Prices in NOK. Checkout is fake — nothing is charged.</p>
+  </div>
+  
+  <section class="card" id="llt-week" style="margin-bottom:1.25rem;border-color:rgba(0,255,157,.35);background:linear-gradient(135deg,rgba(0,255,157,.1),rgba(0,229,255,.05));">
+    <div class="eyebrow"><span class="pulse"></span> Weekly LLT drop · 1 LLT = 1 NOK</div>
+    <h2 style="font-family:Orbitron,sans-serif;margin:.35rem 0 .5rem">Laden Labs Token special</h2>
+    <p class="muted">One rotating merch offer you can pay with <b>Laden Labs Tokens</b> earned on Challenges. Demo checkout — nothing real is charged.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin-top:1rem">
+      <div class="product-art" style="width:120px;height:120px;border-radius:12px;overflow:hidden;border:1px solid var(--border)">
+        <img src="/assets/products/stickers.jpg" alt="Weekly LLT sticker" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      <div style="flex:1;min-width:200px">
+        <h3 id="llt-week-name">Weekly LLT Sticker Drop</h3>
+        <p class="muted" style="margin:.25rem 0 .5rem">This week’s special — spend the tokens you farmed hunting flags &amp; Tool Drop.</p>
+        <div style="display:flex;gap:.75rem;align-items:center;flex-wrap:wrap">
+          <span class="price mono" id="llt-week-price">49 LLT</span>
+          <span class="muted" style="font-size:.85rem">Your wallet: <b data-llt-balance>100</b> LLT</span>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" id="llt-week-buy">Buy with LLT</button>
+    </div>
+    <p class="msg" id="llt-week-msg" style="margin-top:.75rem"></p>
+  </section>
+  <div data-llt-ad="compact"></div>
+
+  <div class="grid-3" id="products">
+    <div class="card">
+      <div class="product-art"><img src="../assets/products/hoodie.jpg" alt="Laden Labs hoodie" loading="lazy"></div>
+      <span class="tag store">APPAREL</span>
+      <h3>Laden Hoodie — Void Green</h3>
+      <p>Heavyweight, subtle mark, built for cold Oslo offices.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap">
+        <span class="price">749 NOK</span>
+        <button class="btn btn-primary" type="button" onclick="addToCart('hoodie','Laden Hoodie',749)" data-i18n="gear.add">Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="product-art"><img src="../assets/products/tee.jpg" alt="Laden Labs tee" loading="lazy"></div>
+      <span class="tag store">APPAREL</span>
+      <h3>Tee — “Authorized Only”</h3>
+      <p>Soft black tee. Front print that keeps auditors calm.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap">
+        <span class="price">329 NOK</span>
+        <button class="btn btn-primary" type="button" onclick="addToCart('tee','Authorized Only Tee',329)" data-i18n="gear.add">Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="product-art"><img src="../assets/products/cap.jpg" alt="Laden Labs cap" loading="lazy"></div>
+      <span class="tag store">APPAREL</span>
+      <h3>Operator Cap</h3>
+      <p>Low-profile cap with embroidered L mark.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap">
+        <span class="price">249 NOK</span>
+        <button class="btn btn-primary" type="button" onclick="addToCart('cap','Operator Cap',249)" data-i18n="gear.add">Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="product-art"><img src="../assets/products/stickers.jpg" alt="Laden Labs stickers" loading="lazy"></div>
+      <span class="tag store">GEAR</span>
+      <h3>Sticker Pack v1</h3>
+      <p>8 vinyl stickers: grid, claw, “scope first”, more.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap">
+        <span class="price">99 NOK</span>
+        <button class="btn btn-primary" type="button" onclick="addToCart('stickers','Sticker Pack v1',99)" data-i18n="gear.add">Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="product-art"><img src="../assets/products/usb.jpg" alt="Laden Labs usb" loading="lazy"></div>
+      <span class="tag store">GEAR</span>
+      <h3>Decoy USB (joke)</h3>
+      <p>Looks spicy. Contains a README that says “get authorization.”</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap">
+        <span class="price">149 NOK</span>
+        <button class="btn btn-primary" type="button" onclick="addToCart('usb','Decoy USB',149)" data-i18n="gear.add">Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="product-art"><img src="../assets/products/mug.jpg" alt="Laden Labs mug" loading="lazy"></div>
+      <span class="tag store">DESK</span>
+      <h3>Mug — Root Preferred</h3>
+      <p>Ceramic, dishwasher-safe, bad jokes included.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap">
+        <span class="price">199 NOK</span>
+        <button class="btn btn-primary" type="button" onclick="addToCart('mug','Root Preferred Mug',199)" data-i18n="gear.add">Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="product-art"><img src="../assets/products/pack.jpg" alt="Laden Labs pack" loading="lazy"></div>
+      <span class="tag store">GEAR</span>
+      <h3>Daypack — Scope</h3>
+      <p>Laptop sleeve + cable pocket. No loud logos.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap">
+        <span class="price">899 NOK</span>
+        <button class="btn btn-primary" type="button" onclick="addToCart('pack','Scope Daypack',899)" data-i18n="gear.add">Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="product-art"><img src="../assets/products/pass.jpg" alt="Laden Labs pass" loading="lazy"></div>
+      <span class="tag store">DIGITAL</span>
+      <h3>Lab Pass — 30 days</h3>
+      <p>Demo voucher for future challenge seasons.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap">
+        <span class="price">449 NOK</span>
+        <button class="btn btn-primary" type="button" onclick="addToCart('pass','Lab Pass 30d',449)" data-i18n="gear.add">Add</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="wrap footer">
+  <div>
+    <div class="brand-lockup" style="margin-bottom:.55rem">
+      <img class="footer-logo" src="../assets/products/logo.jpg?v=llz7" alt="Laden Labs">
+      <div>
+        <strong style="color:var(--text)">Laden Labs</strong>
+        <div class="muted" style="font-size:.8rem">Oslo · Authorized only</div>
+      </div>
+    </div>
+    Demo · no real payments.
+  </div>
+  <div class="live-bar"><span id="oslo-clock">--:--:--</span></div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+<script src="/assets/llt.js"></script>
+<link rel="stylesheet" href="/assets/avatars/avatars.css">
+<script src="/assets/avatars/avatars.js"></script>
+<script src="/assets/labcard.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="../assets/app.js?v=cta1"></script>
+<script src="/assets/llt-store.js?v=cta1"></script>
+<script src="../assets/caleb.js?v=20261004-caleb16"></script>
+<script src="/assets/llc.js" defer></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

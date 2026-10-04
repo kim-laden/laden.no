@@ -1,0 +1,199 @@
+/* Lounge v1.1 — chapter filter + genre frames (Hack=green, Code=cyan) */
+.version-chip {
+  display: inline-block; font-size: .68rem; letter-spacing: .06em;
+  padding: .2rem .5rem; border-radius: 999px;
+  border: 1px solid rgba(var(--genre-code-rgb, 0, 229, 255), .35);
+  color: var(--genre-code, var(--cyan));
+  margin-left: .35rem; vertical-align: middle;
+}
+.version-divider {
+  display: inline-block;
+  margin: 0 .16em;
+  color: var(--amber, #ffb020);
+  font-size: .9em;
+  line-height: 1;
+  transform: translateY(.04em);
+}
+/* Lounge rhythm — keep the guide, board, and rails visually connected. */
+.lab-lounge .ambient-strip { margin-bottom: var(--section-gap, 1rem); }
+.lab-lounge .lounge-hero { gap: var(--gap, .75rem); margin-bottom: var(--section-gap, 1rem); }
+.lab-lounge .zguide-feature { margin-top: .65rem; padding: .75rem .9rem; }
+.lab-lounge .zguide-feature-inner { gap: .75rem; }
+.lab-lounge .layout { gap: var(--grid-gap, 1rem); }
+.lab-lounge .board-head { margin-bottom: var(--head-gap, 1rem); }
+.chapter-knobs { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: var(--head-gap, 1rem); }
+.chapter-knobs .knob { flex: 1 1 auto; min-width: 5.5rem; }
+.chapter-knobs .knob.active {
+  border-color: rgba(230, 241, 255, .35);
+  color: var(--text);
+  box-shadow: 0 0 0 1px rgba(230, 241, 255, .1);
+}
+.chapter-knobs .knob[data-chapter="hack"].active {
+  border-color: rgba(var(--genre-hack-rgb, 0, 255, 157), .55);
+  color: var(--genre-hack, var(--green));
+  box-shadow: 0 0 0 1px rgba(var(--genre-hack-rgb, 0, 255, 157), .2);
+}
+.chapter-knobs .knob[data-chapter="code"].active {
+  border-color: rgba(var(--genre-code-rgb, 0, 229, 255), .55);
+  color: var(--genre-code, var(--cyan));
+  box-shadow: 0 0 0 1px rgba(var(--genre-code-rgb, 0, 229, 255), .2);
+}
+.station-chapter {
+  font-size: .65rem; text-transform: uppercase; letter-spacing: .08em;
+  padding: .15rem .4rem; border-radius: 999px;
+  border: 1px solid var(--border);
+}
+.station-chapter.hack {
+  color: var(--genre-hack, var(--green));
+  border-color: rgba(var(--genre-hack-rgb, 0, 255, 157), .45);
+  background: rgba(var(--genre-hack-rgb, 0, 255, 157), .08);
+}
+.station-chapter.code {
+  color: var(--genre-code, var(--cyan));
+  border-color: rgba(var(--genre-code-rgb, 0, 229, 255), .45);
+  background: rgba(var(--genre-code-rgb, 0, 229, 255), .08);
+}
+
+/* Station cards — chapter owns the frame */
+.card.station.chapter-hack {
+  --station-glow: var(--genre-hack, var(--green));
+  border-color: rgba(var(--genre-hack-rgb, 0, 255, 157), .45);
+  background:
+    linear-gradient(165deg, rgba(var(--genre-hack-rgb, 0, 255, 157), .12), rgba(18, 18, 28, .95) 42%, rgba(0, 120, 80, .1));
+  box-shadow:
+    0 0 0 1px rgba(var(--genre-hack-rgb, 0, 255, 157), .12),
+    0 8px 24px rgba(0, 0, 0, .35),
+    0 0 22px rgba(var(--genre-hack-rgb, 0, 255, 157), .1);
+}
+.card.station.chapter-hack:hover {
+  border-color: rgba(var(--genre-hack-rgb, 0, 255, 157), .75);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .05) inset,
+    0 14px 36px rgba(0, 0, 0, .45),
+    0 0 28px rgba(var(--genre-hack-rgb, 0, 255, 157), .18);
+}
+.card.station.chapter-hack::after {
+  background: linear-gradient(135deg, rgba(var(--genre-hack-rgb, 0, 255, 157), .08), transparent 42%);
+}
+.card.station.chapter-hack .station-foot .enter { color: var(--genre-hack, var(--green)); }
+
+.card.station.chapter-code {
+  --station-glow: var(--genre-code, var(--cyan));
+  border-color: rgba(var(--genre-code-rgb, 0, 229, 255), .5);
+  background:
+    linear-gradient(165deg, rgba(var(--genre-code-rgb, 0, 229, 255), .14), rgba(18, 18, 28, .95) 42%, rgba(80, 100, 255, .1));
+  box-shadow:
+    0 0 0 1px rgba(var(--genre-code-rgb, 0, 229, 255), .14),
+    0 8px 24px rgba(0, 0, 0, .35),
+    0 0 22px rgba(var(--genre-code-rgb, 0, 229, 255), .12);
+}
+.card.station.chapter-code:hover {
+  border-color: rgba(var(--genre-code-rgb, 0, 229, 255), .85);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .05) inset,
+    0 14px 36px rgba(0, 0, 0, .45),
+    0 0 28px rgba(var(--genre-code-rgb, 0, 229, 255), .2);
+}
+.card.station.chapter-code::after {
+  background: linear-gradient(135deg, rgba(var(--genre-code-rgb, 0, 229, 255), .1), transparent 42%);
+}
+.card.station.chapter-code .station-foot .enter { color: var(--genre-code, var(--cyan)); }
+
+.card.station.chapter-code.solved {
+  border-color: rgba(var(--genre-code-rgb, 0, 229, 255), .45);
+  background:
+    linear-gradient(160deg, rgba(var(--genre-code-rgb, 0, 229, 255), .1), transparent 50%),
+    linear-gradient(165deg, #0c141a, #0c1017);
+}
+.card.station.chapter-code.solved .station-stamp {
+  color: rgba(var(--genre-code-rgb, 0, 229, 255), .9);
+  border-color: rgba(var(--genre-code-rgb, 0, 229, 255), .55);
+  background: rgba(var(--genre-code-rgb, 0, 229, 255), .08);
+  box-shadow: 0 0 12px rgba(var(--genre-code-rgb, 0, 229, 255), .2);
+}
+
+/* Code room — cyan framing */
+.lab-room.chapter-code .version-chip,
+.lab-room.chapter-code .demo-pill {
+  display: inline-block; font-size: .68rem; letter-spacing: .06em;
+  padding: .2rem .5rem; border-radius: 999px;
+  border: 1px solid rgba(var(--genre-code-rgb, 0, 229, 255), .45);
+  color: var(--genre-code, var(--cyan));
+  margin-left: .35rem; vertical-align: middle;
+  background: rgba(var(--genre-code-rgb, 0, 229, 255), .08);
+}
+.lab-room.chapter-code .room-hero.panel,
+.lab-room.chapter-code .room-learn.panel,
+.lab-room.chapter-code .room-work.panel,
+.lab-room.chapter-code .room-submit.panel {
+  border-color: rgba(var(--genre-code-rgb, 0, 229, 255), .35);
+  box-shadow: 0 0 0 1px rgba(var(--genre-code-rgb, 0, 229, 255), .08), 0 12px 32px rgba(0, 0, 0, .35);
+}
+.lab-room.chapter-code .room-hero.panel {
+  background: linear-gradient(165deg, rgba(var(--genre-code-rgb, 0, 229, 255), .1), var(--panel) 48%);
+}
+.lab-room.chapter-code .eyebrow { color: var(--genre-code, var(--cyan)); }
+.lab-room.chapter-code .room-widget {
+  border-color: rgba(var(--genre-code-rgb, 0, 229, 255), .35);
+  background: rgba(var(--genre-code-rgb, 0, 229, 255), .04);
+}
+.lab-room.chapter-code .room-widget h3 { color: var(--genre-code, var(--cyan)); }
+.lab-room.chapter-code .flag-row input:focus {
+  border-color: rgba(var(--genre-code-rgb, 0, 229, 255), .55);
+  outline: none;
+  box-shadow: 0 0 0 1px rgba(var(--genre-code-rgb, 0, 229, 255), .2);
+}
+
+/* Hack room — green framing (lightweight) */
+.lab-room.chapter-hack .room-hero.panel,
+.lab-room.chapter-hack .room-learn.panel,
+.lab-room.chapter-hack .room-work.panel,
+.lab-room.chapter-hack .room-submit.panel {
+  border-color: rgba(var(--genre-hack-rgb, 0, 255, 157), .32);
+  box-shadow: 0 0 0 1px rgba(var(--genre-hack-rgb, 0, 255, 157), .07), 0 12px 32px rgba(0, 0, 0, .35);
+}
+.lab-room.chapter-hack .room-hero.panel {
+  background: linear-gradient(165deg, rgba(var(--genre-hack-rgb, 0, 255, 157), .09), var(--panel) 48%);
+}
+.lab-room.chapter-hack .eyebrow { color: var(--genre-hack, var(--green)); }
+.lab-room.chapter-hack .room-widget {
+  border-color: rgba(var(--genre-hack-rgb, 0, 255, 157), .32);
+  background: rgba(var(--genre-hack-rgb, 0, 255, 157), .03);
+}
+.lab-room.chapter-hack .version-chip,
+.lab-room.chapter-hack .demo-pill {
+  display: inline-block; font-size: .68rem; letter-spacing: .06em;
+  padding: .2rem .5rem; border-radius: 999px;
+  border: 1px solid rgba(var(--genre-hack-rgb, 0, 255, 157), .45);
+  color: var(--genre-hack, var(--green));
+  margin-left: .35rem; vertical-align: middle;
+  background: rgba(var(--genre-hack-rgb, 0, 255, 157), .08);
+}
+
+/* Fallback chips when chapter class not yet applied */
+.lab-room .demo-pill,
+.lab-room .version-chip {
+  display: inline-block; font-size: .68rem; letter-spacing: .06em;
+  padding: .2rem .5rem; border-radius: 999px;
+  border: 1px solid rgba(var(--genre-code-rgb, 0, 229, 255), .4);
+  color: var(--genre-code, var(--cyan));
+  margin-left: .35rem; vertical-align: middle;
+}
+
+/* Lounge hint CTAs — same soft Code/Hack blend as the account chip and Caleb FAB. */
+.lab-lounge .btn.lounge-hint {
+  --cta-blend: #9ee6c8;
+  --cta-blend-rgb: 158, 230, 200;
+  --cta-blend-ink: #e9fff6;
+  background: rgba(var(--cta-blend-rgb), .14);
+  color: var(--cta-blend) !important;
+  border-color: rgba(var(--cta-blend-rgb), .58);
+  box-shadow: 0 0 0 1px rgba(var(--cta-blend-rgb), .08), 0 0 16px rgba(var(--cta-blend-rgb), .12);
+}
+.lab-lounge .btn.lounge-hint:hover,
+.lab-lounge .btn.lounge-hint:focus-visible {
+  background: rgba(var(--cta-blend-rgb), .24);
+  color: var(--cta-blend-ink) !important;
+  border-color: rgba(var(--cta-blend-rgb), .88);
+  box-shadow: 0 0 0 1px rgba(var(--cta-blend-rgb), .16), 0 0 22px rgba(var(--cta-blend-rgb), .2);
+}

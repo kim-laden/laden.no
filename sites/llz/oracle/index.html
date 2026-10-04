@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLO — Laden Labs Oracle</title>
+  <meta name="description" content="Ask the Oracle. GitHub is the force behind the search for knowledge. Code, repos, issues — with Caleb as mentor.">
+  <link rel="stylesheet" href="/assets/styles.css?v=cta1">
+<script src="/assets/i18n.js"></script>
+  <link rel="stylesheet" href="/oracle/oracle.css?v=sp2">
+  <link rel="canonical" href="https://laden.no/oracle/">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/llz/assets/llz-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="oracle-page">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a class="active" href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+      <a href="/messages/" id="nav-messages"><span data-i18n="nav.messages">Messages</span></a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap oracle-main">
+  <section class="oracle-hero">
+    <div class="oracle-hero-copy">
+      <div class="eyebrow"><span class="pulse"></span> LLO · knowledge channel</div>
+      <h1 class="oracle-title">Ask the <em>Oracle</em></h1>
+      <p class="lead oracle-tagline" data-i18n="oracle.tagline">GitHub is the force behind the search for knowledge. Speak a query — the Oracle listens across code, repos, and issues. Caleb stands ready to interpret what returns.</p>
+      <div class="oracle-sigils" aria-hidden="true">
+        <span>◈</span><span>LLO</span><span>◈</span>
+      </div>
+    </div>
+    <div class="oracle-orb" aria-hidden="true">
+      <div class="orb-ring violet"></div>
+      <div class="orb-ring cyan"></div>
+      <div class="orb-core">LLO</div>
+    </div>
+  </section>
+
+  <section class="oracle-console panel" aria-label="Oracle search">
+    <form id="oracle-form" class="oracle-form" autocomplete="off">
+      <label class="oracle-label mono" for="oracle-q" data-i18n="oracle.label">consult · query</label>
+      <div class="oracle-row">
+        <input id="oracle-q" class="oracle-input mono" type="search" maxlength="256"
+               placeholder="e.g. XSS writeup, JWT none, laden labs…" data-i18n-placeholder="oracle.ph"
+               spellcheck="false" aria-label="Oracle query" data-i18n-aria="oracle.search">
+        <button type="submit" class="btn btn-primary oracle-ask" id="oracle-go" data-i18n="oracle.ask">Ask the Oracle</button>
+      </div>
+      <div class="oracle-seg" role="tablist" aria-label="Search type">
+        <button type="button" class="oracle-seg-btn active" data-type="code" role="tab" aria-selected="true" data-i18n="oracle.code">Code</button>
+        <button type="button" class="oracle-seg-btn" data-type="repositories" role="tab" aria-selected="false" data-i18n="oracle.repos">Repos</button>
+        <button type="button" class="oracle-seg-btn" data-type="issues" role="tab" aria-selected="false" data-i18n="oracle.issues">Issues</button>
+      </div>
+    </form>
+
+    <div class="oracle-suggest">
+      <span class="mono muted tiny">suggested invocations</span>
+      <div class="oracle-chips" id="oracle-chips">
+        <button type="button" class="oracle-chip" data-q="XSS writeup">XSS writeup</button>
+        <button type="button" class="oracle-chip" data-q="JWT none alg">JWT none</button>
+        <button type="button" class="oracle-chip" data-q="laden labs">laden labs</button>
+        <button type="button" class="oracle-chip" data-q="SSRF bypass">SSRF bypass</button>
+        <button type="button" class="oracle-chip" data-q="path traversal payload">path traversal</button>
+        <button type="button" class="oracle-chip" data-q="Content-Security-Policy bypass">CSP bypass</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="oracle-status mono" id="oracle-status" aria-live="polite">
+    The Oracle waits. Speak a query, or tap a suggestion.
+  </section>
+
+  <section class="oracle-results" id="oracle-results" aria-live="polite"></section>
+
+  <section class="oracle-mentor panel">
+    <div class="oracle-mentor-head">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> Mentor overlay</div>
+        <h2>Caleb on the channel</h2>
+        <p class="muted">GitHub returns the raw force. Caleb helps you read it — suggest better queries, interpret a hit, or answer hunting questions without leaving the Oracle.</p>
+      </div>
+      <div class="oracle-mentor-actions">
+        <button type="button" class="btn btn-cyan" id="oracle-caleb-open" data-caleb>Open Caleb</button>
+        <a class="btn btn-ghost" href="/terminal/" id="oracle-llc">Open LLC</a>
+      </div>
+    </div>
+    <div class="oracle-mentor-chips" id="oracle-caleb-chips">
+      <button type="button" class="oracle-chip caleb-chip" data-caleb-ask="How do I search GitHub for XSS writeups?">How to search XSS?</button>
+      <button type="button" class="oracle-chip caleb-chip" data-caleb-ask="Interpret these Oracle results for JWT none">Interpret JWT hits</button>
+      <button type="button" class="oracle-chip caleb-chip" data-caleb-ask="Suggest Oracle queries for bug hunting">Suggest queries</button>
+      <button type="button" class="oracle-chip caleb-chip" data-caleb-ask="What is LLO / the Oracle?">What is LLO?</button>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap footer">
+  <div>
+    <div class="brand-lockup" style="margin-bottom:.55rem">
+      <img class="footer-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Labs">
+      <div>
+        <strong style="color:var(--text)">Laden Labs Oracle · LLO</strong>
+        <div class="muted" style="font-size:.8rem">Oslo · GitHub-backed knowledge · Authorized hunting only</div>
+      </div>
+    </div>
+    <div class="muted" style="font-size:.8rem">
+      Need the console? <a href="/terminal/">Open LLC</a> · Lab rooms keep their LLC buttons.
+    </div>
+  </div>
+  <div class="live-bar"><span class="mono" id="oracle-clock">--:--:--</span></div>
+  <p class="site-legal">© 2026 Laden AS · Org.nr. 937 285 833</p>
+</footer>
+
+<script src="/assets/llt.js"></script>
+<link rel="stylesheet" href="/assets/avatars/avatars.css">
+<script src="/assets/avatars/avatars.js"></script>
+<script src="/assets/app.js?v=cta1"></script>
+<script src="/assets/labcard.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/assets/caleb.js?v=20261004-caleb16"></script>
+<script src="/oracle/oracle.js"></script>
+<script src="/assets/llc.js" defer></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

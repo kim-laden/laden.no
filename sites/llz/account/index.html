@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member dashboard — Laden Labs</title>
+  <meta name="description" content="Your Laden Labs member dashboard — progress, tips, and operator fuel.">
+  <link rel="stylesheet" href="/assets/styles.css?v=cta1">
+  <link rel="stylesheet" href="/community/community.css">
+<script src="/assets/i18n.js"></script>
+  <style>
+    .dash-grid { display:grid; grid-template-columns: 1.2fr .8fr; gap:1rem; margin-top:1rem; }
+    @media (max-width:900px){ .dash-grid { grid-template-columns:1fr; } }
+    .fact-card { border-left: 3px solid var(--cyan); padding-left:.85rem; margin:.75rem 0; }
+    .fact-card strong { color:var(--cyan); display:block; font-size:.78rem; letter-spacing:.04em; text-transform:uppercase; margin-bottom:.25rem; }
+    .tip-list { list-style:none; padding:0; margin:0; }
+    .tip-list li { padding:.55rem 0; border-bottom:1px solid var(--border); font-size:.9rem; color:var(--muted); }
+    .tip-list li:last-child { border-bottom:none; }
+    .tip-list b { color:var(--text); }
+    .progress-bar { height:8px; background:#0c1017; border-radius:999px; overflow:hidden; margin-top:.5rem; }
+    .progress-bar > i { display:block; height:100%; background:linear-gradient(90deg,#00ff9d,#00e5ff); width:0%; transition:width .4s; }
+
+    /* Member dashboard estetique */
+    .mdash {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, .75fr);
+      gap: 1rem;
+      margin-bottom: 1rem;
+      align-items: stretch;
+    }
+    @media (max-width:960px){ .mdash { grid-template-columns: 1fr; } }
+    .mdash-main {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0,255,157,.22);
+      border-radius: 22px;
+      padding: 1.35rem 1.4rem 1.25rem;
+      background:
+        radial-gradient(900px 280px at 0% -10%, rgba(0,255,157,.12), transparent 55%),
+        radial-gradient(700px 260px at 100% 0%, rgba(0,229,255,.08), transparent 50%),
+        linear-gradient(165deg, #0b1410, #070b10 55%, #0a1018);
+      box-shadow: 0 0 0 1px rgba(0,255,157,.04), 0 18px 50px rgba(0,0,0,.35);
+    }
+    .mdash-main::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,157,.015) 3px);
+      pointer-events: none; opacity: .5;
+    }
+    .mdash-head {
+      position: relative;
+      display: flex; flex-wrap: wrap; gap: 1rem;
+      justify-content: space-between; align-items: flex-start;
+      margin-bottom: 1.15rem;
+    }
+    .mdash-head h1 {
+      font-family: Orbitron, sans-serif;
+      font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+      margin: .25rem 0 .35rem; letter-spacing: .02em;
+    }
+    .mdash-ring {
+      width: 92px; height: 92px; flex-shrink: 0;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      background:
+        radial-gradient(circle at center, #0a1210 58%, transparent 59%),
+        conic-gradient(#00ff9d var(--mdash-pct, 0%), rgba(255,255,255,.08) 0);
+      box-shadow: 0 0 0 1px rgba(0,255,157,.25), 0 0 28px rgba(0,255,157,.12);
+    }
+    .mdash-ring strong {
+      font-family: Orbitron, sans-serif; font-size: 1.05rem; color: #00ff9d;
+      line-height: 1; display: block; text-align: center;
+    }
+    .mdash-ring span {
+      display: block; text-align: center;
+      font: 600 .58rem/1.2 JetBrains Mono, monospace;
+      color: rgba(230,241,255,.5); letter-spacing: .08em; text-transform: uppercase; margin-top: .2rem;
+    }
+    .mdash-metrics {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .65rem;
+    }
+    @media (max-width:720px){ .mdash-metrics { grid-template-columns: repeat(2, 1fr); } }
+    .mdash-metric {
+      border-radius: 16px;
+      padding: .85rem .9rem .75rem;
+      border: 1px solid rgba(0,255,157,.14);
+      background: linear-gradient(160deg, rgba(0,255,157,.06), rgba(0,0,0,.25));
+      min-height: 88px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      transition: border-color .15s, transform .15s;
+    }
+    .mdash-metric:hover { border-color: rgba(0,255,157,.35); transform: translateY(-1px); }
+    .mdash-metric .k {
+      font: 700 .65rem/1 JetBrains Mono, monospace;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(230,241,255,.45);
+    }
+    .mdash-metric .v {
+      font-family: Orbitron, sans-serif;
+      font-size: clamp(.95rem, 2vw, 1.25rem);
+      color: #e6f1ff; margin-top: .55rem;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .mdash-metric .v.accent { color: #00ff9d; }
+    .mdash-metric .v.cyan { color: #00e5ff; }
+    .mdash-metric.wide { grid-column: 1 / -1; min-height: 72px; }
+    .mdash-metric.wide .v { font-size: .95rem; font-family: JetBrains Mono, monospace; color: #00e5ff; }
+    .mdash-progress {
+      position: relative;
+      margin-top: 1rem;
+      padding: .85rem 1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(0,229,255,.14);
+      background: rgba(0,229,255,.04);
+    }
+    .mdash-progress .row {
+      display: flex; justify-content: space-between; align-items: baseline; gap: .75rem; margin-bottom: .45rem;
+    }
+    .mdash-progress .row b {
+      font: 700 .72rem/1 JetBrains Mono, monospace; letter-spacing: .12em;
+      text-transform: uppercase; color: rgba(230,241,255,.55);
+    }
+    .mdash-actions {
+      position: relative;
+      display: flex; flex-wrap: wrap; gap: .5rem;
+      margin-top: 1.1rem;
+    }
+    .mdash-side {
+      border-radius: 22px;
+      border: 1px solid rgba(0,229,255,.2);
+      padding: 1.25rem 1.2rem;
+      background:
+        radial-gradient(500px 200px at 100% 0%, rgba(0,229,255,.1), transparent 60%),
+        linear-gradient(165deg, #0a1218, #070b10);
+      display: flex; flex-direction: column;
+    }
+    .mdash-side .quote {
+      flex: 1;
+      font-style: normal; color: var(--muted);
+      border: 1px solid rgba(0,229,255,.15);
+      border-radius: 14px; padding: 1rem;
+      background: rgba(0,229,255,.04);
+      margin: .5rem 0 .85rem;
+    }
+    .mdash-side .caleb-cheer {
+      margin: 0 0 .7rem;
+      color: #e6f1ff;
+      font-size: .92rem;
+      line-height: 1.45;
+      font-weight: 500;
+    }
+    .mdash-side .caleb-tip {
+      margin: 0;
+      font-style: italic;
+      color: rgba(230,241,255,.62);
+      font-size: .84rem;
+      line-height: 1.4;
+    }
+    .mdash-side .caleb-attr {
+      display: block;
+      margin-top: .65rem;
+      font: 600 .72rem/1 JetBrains Mono, monospace;
+      letter-spacing: .08em;
+      color: rgba(0,229,255,.85);
+    }
+    #acct-info { max-width:none; }
+    .quote { font-style:italic; color:var(--muted); border:1px solid var(--border); border-radius:12px; padding:1rem; background:rgba(0,255,157,.03); }
+
+    /* Account-only language preference control */
+    .account-language {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      max-width: 720px; margin: 1rem auto 0; padding: .7rem .85rem;
+      border: 1px solid rgba(0,229,255,.18); border-radius: 12px;
+      background: linear-gradient(135deg, rgba(0,229,255,.05), rgba(0,255,157,.035));
+    }
+    .account-language-label {
+      color: var(--muted); font: 700 .72rem/1 JetBrains Mono, monospace;
+      letter-spacing: .12em; text-transform: uppercase;
+    }
+    @media (max-width: 520px) {
+      .account-language { margin-top: .75rem; }
+    }
+
+
+    /* LLD developer opt-in (account only) */
+    .acct-lld {
+      margin-top: 1rem;
+      border-radius: 16px;
+      border: 1px solid rgba(167,139,250,.28);
+      padding: 1.15rem 1.2rem;
+      background:
+        radial-gradient(500px 180px at 100% 0%, rgba(167,139,250,.12), transparent 60%),
+        linear-gradient(165deg, #120e1c, #0a0e14);
+    }
+    .acct-lld h3 { font-family: Orbitron, sans-serif; font-size: 1.05rem; margin: .35rem 0 .35rem; }
+    .acct-lld .lld-row {
+      display: flex; flex-wrap: wrap; gap: .65rem; align-items: center;
+      margin-top: .85rem;
+    }
+    .acct-lld .lld-toggle {
+      display: inline-flex; align-items: center; gap: .55rem;
+      font: 600 .78rem/1 JetBrains Mono, monospace;
+      letter-spacing: .04em; color: var(--text);
+      cursor: pointer; user-select: none;
+    }
+    .acct-lld .lld-toggle input {
+      width: 18px; height: 18px; accent-color: #a78bfa; cursor: pointer;
+    }
+    .acct-lld .lld-status {
+      font: 600 .72rem/1 JetBrains Mono, monospace;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: rgba(167,139,250,.85);
+    }
+    .acct-lld .lld-status.off { color: var(--muted); }
+    .acct-lld #acct-lld-save { padding: .38rem .9rem; font-size: .78rem; }
+    .acct-lld #acct-lld-msg.ok { color: var(--green); }
+    .acct-lld #acct-lld-msg.err { color: var(--red); }
+    .acct-zocial {
+      margin: 1rem 0;
+      border: 1px solid rgba(0,255,157,.22);
+      border-radius: 18px;
+      padding: 1.15rem 1.25rem;
+      background:
+        radial-gradient(700px 220px at 0% 0%, rgba(0,255,157,.1), transparent 55%),
+        linear-gradient(165deg, #0b1410, #070b10 60%, #0a1018);
+    }
+    .acct-zocial h3 { font-family: Orbitron, sans-serif; font-size: 1.05rem; margin: .35rem 0 .35rem; }
+    .acct-zocial .zform { display:grid; grid-template-columns: 1fr 1fr; gap: .75rem 1rem; margin-top: .85rem; }
+    @media (max-width:720px){ .acct-zocial .zform { grid-template-columns: 1fr; } }
+    .acct-zocial label { display:flex; flex-direction:column; gap:.3rem; font-size:.78rem; color:var(--muted); font-family:JetBrains Mono,monospace; }
+    .acct-zocial label.full { grid-column: 1 / -1; }
+    .acct-zocial input, .acct-zocial select, .acct-zocial textarea {
+      background: var(--bg2,#0c1017); border:1px solid var(--border); border-radius:10px;
+      color: var(--text); padding:.55rem .7rem; font-size:.9rem; font-family:inherit;
+    }
+    .acct-zocial textarea { min-height: 72px; resize: vertical; }
+    .acct-zocial .zactions { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin-top: .9rem; }
+    .acct-zocial #acct-zocial-msg.ok { color: var(--green); }
+    .acct-zocial #acct-zocial-msg.err { color: var(--red); }
+    .acct-zocial .zpreview { margin-top: 1rem; }
+
+
+    /* Auth gate */
+    .acct-shell {
+      min-height: calc(100vh - 8rem);
+      display: grid;
+      place-items: center;
+      padding: 1.5rem 0 2.5rem;
+    }
+    .acct-card {
+      width: min(420px, 100%);
+      padding: 1.6rem 1.45rem 1.35rem;
+      border-radius: 20px;
+      background:
+        radial-gradient(120% 80% at 10% -10%, rgba(0,255,157,.12), transparent 55%),
+        radial-gradient(100% 70% at 100% 0%, rgba(0,229,255,.1), transparent 50%),
+        linear-gradient(165deg, #101822, #0a0e14 60%);
+      border: 1px solid rgba(0,255,157,.28);
+      box-shadow: 0 0 0 1px rgba(0,255,157,.06), 0 24px 60px rgba(0,0,0,.55), 0 0 40px rgba(0,255,157,.08);
+    }
+    .acct-card h1 {
+      font-family: Orbitron, sans-serif;
+      font-size: 1.35rem;
+      margin: .35rem 0 .35rem;
+      letter-spacing: .02em;
+    }
+    .acct-card > .lead {
+      color: var(--muted);
+      font-size: .88rem;
+      line-height: 1.45;
+      margin: 0 0 1.1rem;
+    }
+    .acct-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .35rem;
+      margin-bottom: 1.1rem;
+      padding: .3rem;
+      border-radius: 999px;
+      background: rgba(0,0,0,.35);
+      border: 1px solid var(--border);
+    }
+    .acct-tabs button {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-size: .72rem;
+      font-family: 'JetBrains Mono', monospace;
+      padding: .55rem .35rem;
+      border-radius: 999px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .acct-tabs button:hover { color: var(--text); }
+    .acct-tabs button.active {
+      background: linear-gradient(90deg, #00ff9d, #7dffb8);
+      color: #04140c;
+      font-weight: 700;
+      box-shadow: 0 0 18px rgba(0,255,157,.25);
+    }
+    .acct-form { display: flex; flex-direction: column; gap: .85rem; }
+    .acct-form.hidden { display: none !important; }
+    .acct-field { display: flex; flex-direction: column; gap: .35rem; }
+    .acct-field label {
+      display: block;
+      font-size: .72rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      margin: 0;
+    }
+    .acct-field label .opt { text-transform: none; letter-spacing: 0; opacity: .7; }
+    .acct-field input {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      background: #070b10;
+      border: 1px solid rgba(255,255,255,.1);
+      color: var(--text);
+      border-radius: 12px;
+      padding: .85rem .95rem;
+      font: inherit;
+      font-size: .95rem;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .acct-field input:focus {
+      outline: none;
+      border-color: rgba(0,255,157,.55);
+      box-shadow: 0 0 0 3px rgba(0,255,157,.12);
+    }
+    .acct-field input::placeholder { color: #5a6570; }
+    .acct-actions { display: flex; flex-direction: column; gap: .55rem; margin-top: .25rem; }
+    .acct-actions .btn { width: 100%; justify-content: center; text-align: center; }
+    .acct-actions .btn-primary {
+      padding: .85rem 1rem;
+      font-weight: 700;
+      box-shadow: 0 0 24px rgba(0,255,157,.2);
+    }
+    .acct-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .5rem;
+      margin-top: .15rem;
+      font-size: .8rem;
+    }
+    .acct-meta a { color: var(--cyan); text-decoration: none; }
+    .acct-meta a:hover { text-decoration: underline; }
+    #acct-ok:empty { display: none; }
+    #acct-ok {
+      margin: 0 0 .85rem;
+      padding: .65rem .8rem;
+      border-radius: 10px;
+      background: rgba(0,229,255,.08);
+      border: 1px solid rgba(0,229,255,.25);
+      color: var(--cyan);
+      font-size: .85rem;
+    }
+    .acct-err:empty { display: none; }
+    .acct-err {
+      color: #ff8a8a;
+      font-size: .82rem;
+      margin: 0;
+    }
+    .acct-foot {
+      margin-top: 1.15rem;
+      padding-top: .9rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+      text-align: center;
+      font-size: .72rem;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      opacity: .65;
+    }
+
+    /* Titles shop */
+    .title-shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem;margin:1rem 0}
+    .title-shop-opt{
+      text-align:left;cursor:pointer;border-radius:14px;padding:.75rem .8rem;
+      border:1px solid rgba(230,241,255,.12);background:rgba(0,0,0,.25);
+      transition:border-color .15s,box-shadow .15s,transform .15s;color:inherit;font:inherit;
+    }
+    .title-shop-opt:hover{transform:translateY(-2px);border-color:rgba(0,229,255,.4)}
+    .title-shop-opt.is-owned{border-color:rgba(0,255,157,.35)}
+    .title-shop-opt.is-equipped{border-color:rgba(0,255,157,.7);box-shadow:0 0 0 1px rgba(0,255,157,.25),0 8px 24px rgba(0,0,0,.35)}
+    .title-shop-opt strong{display:block;font-size:.9rem;color:#e6f1ff;margin-bottom:.2rem}
+    .title-shop-opt .title-blurb{font-size:.72rem;color:rgba(230,241,255,.5);font-family:JetBrains Mono,monospace;display:block;margin-bottom:.45rem;min-height:2.2em}
+    .title-shop-opt .title-price{font-size:.78rem;font-family:JetBrains Mono,monospace;color:var(--cyan,#00e5ff)}
+    .title-shop-opt .title-badge{font-size:.65rem;letter-spacing:.06em;text-transform:uppercase;color:#00ff9d}
+    .title-shop-actions{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-top:.35rem}
+    .title-shop-msg{font-size:.82rem;min-height:1.2em;margin:.4rem 0 0}
+
+    /* Account identity card — balanced, full-width Lab ID presentation. */
+    .acct-labcard {
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid rgba(0,255,157,.18);
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(0,255,157,.045), rgba(0,229,255,.025));
+    }
+    .acct-labcard > .eyebrow { margin: 0 0 .7rem .15rem; }
+    .acct-labcard .labcard {
+      position: relative; top: auto; right: auto; width: 100%; padding: 0;
+      opacity: 1; visibility: visible; transform: none; pointer-events: auto; filter: none;
+    }
+    .acct-labcard .labcard::before { display: none; }
+    .acct-labcard .labcard-inner {
+      min-height: 400px;
+      padding: 1.5rem 1.6rem 1.25rem;
+      border-radius: 18px;
+    }
+    .acct-labcard .labcard-top { margin-bottom: 1.25rem; }
+    .acct-labcard .labcard-badge { font-size: .7rem; padding: .28rem .58rem; }
+    .acct-labcard .labcard-id { font-size: .9rem; }
+    .acct-labcard .labcard-foot { margin-top: 1.35rem; padding-top: .9rem; }
+    .acct-labcard .labcard-role { font-size: .72rem; }
+    @media (max-width:760px) {
+      .acct-labcard .labcard-inner { min-height: 0; }
+    }
+    @media (max-width:600px) {
+      .acct-labcard { padding: .7rem; }
+      .acct-labcard .labcard-inner { padding: 1.1rem; }
+    }
+  
+    /* Z Drive manager */
+    .zmgr {
+      margin-top: 1rem;
+      border: 1px solid rgba(0,229,255,.22);
+      border-radius: 16px;
+      background: linear-gradient(165deg, rgba(0,229,255,.06), rgba(5,10,12,.92));
+      box-shadow: 0 0 28px rgba(0,229,255,.06);
+      padding: 1rem 1.1rem 1.15rem;
+    }
+    .zmgr-head {
+      display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: .75rem;
+      margin-bottom: .75rem;
+    }
+    .zmgr-head h3 { font-family: Orbitron, sans-serif; font-size: 1.05rem; margin: .35rem 0 .2rem; color: #e6f1ff; }
+    .zmgr-quota {
+      min-width: 180px; flex: 1; max-width: 280px;
+    }
+    .zmgr-quota .bar {
+      height: 8px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; margin: .35rem 0;
+    }
+    .zmgr-quota .bar > i {
+      display: block; height: 100%; width: 0%;
+      background: linear-gradient(90deg, #00ff9d, #00e5ff);
+      transition: width .35s ease;
+    }
+    .zmgr-quota .meta {
+      font-family: JetBrains Mono, monospace; font-size: .72rem; color: #8b9bb4;
+      display: flex; justify-content: space-between; gap: .5rem;
+    }
+    .zmgr-path {
+      font-family: JetBrains Mono, monospace; font-size: .78rem; color: #00e5ff;
+      margin: 0 0 .5rem; word-break: break-all;
+    }
+    .zmgr-toolbar {
+      display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .55rem;
+    }
+    .zmgr-toolbar input[type="text"] {
+      flex: 1; min-width: 140px;
+      background: rgba(0,0,0,.35); border: 1px solid rgba(255,255,255,.12);
+      color: #e6f1ff; border-radius: 8px; padding: .4rem .55rem;
+      font-family: JetBrains Mono, monospace; font-size: .78rem;
+    }
+    .zmgr-list {
+      border: 1px solid rgba(255,255,255,.08); border-radius: 12px;
+      background: rgba(0,0,0,.28); max-height: 280px; overflow: auto;
+      font-family: JetBrains Mono, monospace; font-size: .78rem;
+    }
+    .zmgr-row {
+      display: grid; grid-template-columns: 1fr auto auto; gap: .5rem; align-items: center;
+      padding: .45rem .65rem; border-bottom: 1px solid rgba(255,255,255,.05);
+      cursor: default;
+    }
+    .zmgr-row:last-child { border-bottom: none; }
+    .zmgr-row:hover { background: rgba(0,255,157,.05); }
+    .zmgr-row .name { color: #e6f1ff; cursor: pointer; }
+    .zmgr-row .name.dir { color: #00e5ff; font-weight: 600; }
+    .zmgr-row .name.shared::after { content: ' ★'; color: #00ff9d; font-size: .7rem; }
+    .zmgr-row .sz { color: #8b9bb4; font-size: .7rem; }
+    .zmgr-row .acts { display: flex; gap: .25rem; }
+    .zmgr-row .acts button {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1);
+      color: #c8d6e5; border-radius: 6px; padding: .15rem .4rem; font-size: .68rem;
+      font-family: JetBrains Mono, monospace; cursor: pointer;
+    }
+    .zmgr-row .acts button:hover { border-color: rgba(0,255,157,.4); color: #00ff9d; }
+    .zmgr-row .acts button.danger:hover { border-color: rgba(255,107,122,.5); color: #ff6b7a; }
+    .zmgr-editor {
+      margin-top: .65rem; display: none;
+    }
+    .zmgr-editor.open { display: block; }
+    .zmgr-editor textarea {
+      width: 100%; min-height: 140px; box-sizing: border-box;
+      background: rgba(0,0,0,.4); border: 1px solid rgba(0,229,255,.25);
+      border-radius: 10px; color: #e6f1ff; padding: .6rem .7rem;
+      font-family: JetBrains Mono, monospace; font-size: .8rem; line-height: 1.45;
+      resize: vertical;
+    }
+    .zmgr-editor .row {
+      display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .45rem; align-items: center;
+    }
+    .zmgr-status { font-family: JetBrains Mono, monospace; font-size: .72rem; color: #8b9bb4; min-height: 1.1em; margin-top: .35rem; }
+    .zmgr-status.err { color: #f87171; }
+    .zmgr-status.ok { color: #00ff9d; }
+
+</style>
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/llz/assets/llz-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+      <a href="/messages/" id="nav-messages"><span data-i18n="nav.messages">Messages</span></a>
+    </nav>
+    <div class="nav-cta">
+      <div class="nav-cart">
+        <button type="button" class="btn-cart" id="cart-btn" aria-label="Cart" data-i18n-aria="nav.cart"><span data-i18n="nav.cart">Cart</span> <span class="cart-count" id="cart-count">0 NOK</span></button>
+        <div class="cart-pop" id="cart-pop">
+          <div class="cart-items" id="cart-items"></div>
+          <div class="cart-foot"><span class="muted"><span data-i18n="nav.total">Total</span></span><strong class="price" id="cart-total">0 NOK</strong></div>
+          <div class="cart-actions">
+            <button class="btn btn-primary" type="button" onclick="checkoutDemo()"><span data-i18n="nav.checkout">Checkout</span></button>
+            <button class="btn btn-ghost" type="button" onclick="clearCart()"><span data-i18n="nav.clear">Clear</span></button>
+          </div>
+        </div>
+      </div>
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div data-llt-ad="compact"></div>
+  <div class="account-language" aria-label="Language preference">
+    <span class="account-language-label" data-i18n="lang.label">Language</span>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="en" class="lang-btn">EN</button>
+      <button type="button" data-lang="no" class="lang-btn">NO</button>
+    </div>
+  </div>
+  <div class="acct-shell" id="acct-gate">
+    <div class="acct-card">
+      <div class="eyebrow"><span class="pulse"></span> Member access</div>
+      <h1>Your Laden account</h1>
+      <p class="lead">Sign in, create an account, or reset your password — same creds across Labs.</p>
+
+      <div class="acct-tabs" id="acct-tabs" role="tablist">
+        <button type="button" class="active" data-acct-tab="login" data-i18n="auth.login">Login</button>
+        <button type="button" data-acct-tab="register" data-i18n="auth.create">Create</button>
+        <button type="button" data-acct-tab="forgot" data-i18n="auth.forgotShort">Forgot</button>
+      </div>
+
+      <div id="acct-ok"></div>
+
+      <form id="acct-login" class="acct-form">
+        <div class="acct-field">
+          <label for="login-user">Username or email</label>
+          <input id="login-user" name="username" autocomplete="username" required placeholder="operator@laden.no">
+        </div>
+        <div class="acct-field">
+          <label for="login-pass" data-i18n="auth.password">Password</label>
+          <input id="login-pass" name="password" type="password" autocomplete="current-password" required placeholder="••••••••">
+        </div>
+        <div class="acct-actions">
+          <button class="btn btn-primary" type="submit" data-i18n="auth.login">Login</button>
+          <a class="btn btn-ghost" href="/labs/" data-i18n="auth.loungeInstead">Lounge instead</a>
+        </div>
+        <p class="acct-err" id="acct-err"></p>
+      </form>
+
+      <form id="acct-register" class="acct-form hidden">
+        <div class="acct-field">
+          <label for="reg-user">Username</label>
+          <input id="reg-user" name="username" minlength="3" maxlength="24" autocomplete="username" required placeholder="hunter">
+        </div>
+        <div class="acct-field">
+          <label for="reg-email" data-i18n="auth.email">Email</label>
+          <input id="reg-email" name="email" type="email" autocomplete="email" required placeholder="you@domain.com">
+        </div>
+        <div class="acct-field">
+          <label for="reg-display">Display name <span class="opt">(optional)</span></label>
+          <input id="reg-display" name="display_name" autocomplete="nickname" placeholder="Operator One">
+        </div>
+        <div class="acct-field">
+          <label for="reg-pass" data-i18n="auth.password">Password</label>
+          <input id="reg-pass" name="password" type="password" minlength="8" autocomplete="new-password" required placeholder="min 8 characters">
+        </div>
+        <div class="acct-actions">
+          <button class="btn btn-primary" type="submit">Create account</button>
+        </div>
+        <p class="acct-err" id="acct-reg-err"></p>
+      </form>
+
+      <form id="acct-forgot" class="acct-form hidden">
+        <div class="acct-field">
+          <label for="forgot-email" data-i18n="auth.email">Email</label>
+          <input id="forgot-email" name="email" type="email" autocomplete="email" required placeholder="you@domain.com">
+        </div>
+        <div class="acct-actions">
+          <button class="btn btn-primary" type="submit">Send reset link</button>
+        </div>
+        <p class="acct-err" id="acct-forgot-err"></p>
+      </form>
+
+      <form id="acct-reset" class="acct-form hidden">
+        <p class="lead" style="margin-bottom:0">Choose a new password for your account.</p>
+        <input type="hidden" name="token" id="acct-reset-token">
+        <div class="acct-field">
+          <label for="reset-pass">New password</label>
+          <input id="reset-pass" name="password" type="password" minlength="8" autocomplete="new-password" required placeholder="min 8 characters">
+        </div>
+        <div class="acct-actions">
+          <button class="btn btn-primary" type="submit">Update password</button>
+        </div>
+        <p class="acct-err" id="acct-reset-err"></p>
+      </form>
+
+      <div class="acct-foot">Laden Labs · authorized minds only</div>
+    </div>
+  </div>
+
+  <div class="hidden" id="acct-info" style="padding:1.5rem 0 3rem">
+
+    <section class="acct-labcard" id="acct-labcard" aria-labelledby="acct-labcard-heading">
+      <div class="eyebrow" id="acct-labcard-heading"><span class="pulse"></span> Account · Lab ID · synced</div>
+      <div id="acct-labcard-card" aria-label="Member Lab ID card"></div>
+    </section>
+
+    <section class="mdash" aria-label="Member dashboard">
+      <div class="mdash-main">
+        <div class="mdash-head">
+          <div>
+            <div class="eyebrow"><span class="pulse"></span> Member dashboard · authorized minds only</div>
+            <h1 id="acct-title">Welcome</h1>
+            <p class="muted" id="info-display" style="max-width:34rem;margin:0">Your personal ops board — track progress, skim tips, stay inspired. Hunt ethically.</p>
+          </div>
+          <div class="mdash-ring" id="mdash-ring" style="--mdash-pct:0%" title="Board progress">
+            <div>
+              <strong id="mdash-pct-label">0%</strong>
+              <span>cleared</span>
+            </div>
+          </div>
+        </div>
+        <div class="mdash-metrics">
+          <div class="mdash-metric"><span class="k">Operator</span><div class="v" id="info-user">—</div></div>
+          <div class="mdash-metric"><span class="k">XP</span><div class="v accent" id="info-xp">0</div></div>
+          <div class="mdash-metric"><span class="k">LLT</span><div class="v cyan" id="info-llt">100</div></div>
+          <div class="mdash-metric"><span class="k">Solved</span><div class="v accent" id="info-solved">0</div></div>
+          <div class="mdash-metric"><span class="k">Labs</span><div class="v" id="info-total">24</div></div>
+          <div class="mdash-metric"><span class="k">Role</span><div class="v cyan" id="info-role">—</div></div>
+          <div class="mdash-metric wide"><span class="k">Email</span><div class="v" id="info-email">—</div></div>
+        </div>
+        <div class="mdash-progress">
+          <div class="row">
+            <b>Board progress</b>
+            <span class="mono muted" style="font-size:.75rem" id="info-progress-label">0 / 24</span>
+          </div>
+          <div class="progress-bar"><i id="info-progress"></i></div>
+        </div>
+        <div class="mdash-actions">
+          <a class="btn btn-cyan" href="/messages/">Open Messages</a>
+          <a class="btn btn-primary" href="/labs/" data-i18n="auth.openLounge">Open Lab Lounge</a>
+          <a class="btn btn-cyan" href="#acct-zdrive">Z Drive</a>
+          <a class="btn btn-ghost" href="/challenges/">Public challenges</a>
+          <button class="btn btn-danger" type="button" id="acct-logout">Log out</button>
+        </div>
+      </div>
+      <aside class="mdash-side">
+        <div class="eyebrow"><span class="pulse"></span> <span data-i18n="auth.daily">Daily signal</span></div>
+        <h3 style="font-family:Orbitron,sans-serif;font-size:1.05rem;margin:.35rem 0 0">From Caleb</h3>
+        <div class="quote" id="daily-quote">Loading…</div>
+        <p class="muted" style="font-size:.8rem;margin:0 0 .75rem">Personal check-in · mentor mode · no spoilers unless you ask.</p>
+        <a class="btn btn-cyan" href="#caleb-labs" data-caleb>Ask Caleb</a>
+      </aside>
+    </section>
+
+
+
+
+
+
+
+    <div class="acct-lld" id="acct-lld">
+      <div class="eyebrow"><span class="pulse"></span> LLD · Laden Labs Developer</div>
+      <h3>Developer lane</h3>
+      <p class="muted" style="margin:0;max-width:40rem;font-size:.9rem">Opt in for LLD — tools, playgrounds, sandbox links, and the Arcade (including <b>FUCK FUCK'EM</b>). Not in main nav. Leave anytime.</p>
+      <div class="lld-row">
+        <label class="lld-toggle">
+          <input type="checkbox" id="acct-lld-optin" aria-describedby="acct-lld-status">
+          Join LLD · developer access
+        </label>
+        <button type="button" class="btn btn-primary btn-sm" id="acct-lld-save">Save</button>
+        <span class="lld-status off" id="acct-lld-status">Off</span>
+        <a class="btn btn-cyan hidden" id="acct-lld-open" href="/lld/">Open Developer (LLD)</a>
+      </div>
+      <p class="muted mono" id="acct-lld-msg" style="margin:.55rem 0 0;font-size:.75rem;min-height:1.1em"></p>
+    </div>
+
+    <div class="zmgr" id="acct-zdrive" hidden>
+      <div class="zmgr-head">
+        <div>
+          <div class="eyebrow"><span class="pulse"></span> Z Drive · LabDrive · private</div>
+          <h3>Your Z Drive</h3>
+          <p class="muted" style="margin:0;max-width:36rem;font-size:.88rem">10&nbsp;MB floating desk. LLC opens in <span class="mono">/z/labz/&lt;you&gt;</span> (Documents · Downloads). Other operators' homes are locked. Share a file to Community when you want.</p>
+        </div>
+        <div class="zmgr-quota" title="Floating quota — 10 MB max">
+          <div class="meta"><span id="zmgr-used">0 B</span><span id="zmgr-pct">0%</span></div>
+          <div class="bar"><i id="zmgr-bar" style="width:0%"></i></div>
+          <div class="meta"><span>free <b id="zmgr-free">10 MB</b></span><span>max 10 MB</span></div>
+        </div>
+      </div>
+      <p class="zmgr-path">Z:<span id="zmgr-cwd">/labz/…</span></p>
+      <div class="zmgr-toolbar">
+        <button type="button" class="btn btn-ghost" id="zmgr-up" title="Parent folder">↑ up</button>
+        <button type="button" class="btn btn-ghost" id="zmgr-refresh">refresh</button>
+        <input type="text" id="zmgr-newname" placeholder="name · folder or file.txt" maxlength="120" autocomplete="off">
+        <button type="button" class="btn btn-cyan" id="zmgr-mkdir">mkdir</button>
+        <button type="button" class="btn btn-ghost" id="zmgr-newfile">new file</button>
+        <a class="btn btn-primary" href="/terminal/" id="zmgr-llc">Open in LLC</a>
+      </div>
+      <div class="zmgr-list" id="zmgr-list" role="list"></div>
+      <div class="zmgr-editor" id="zmgr-editor">
+        <p class="muted mono" style="font-size:.75rem;margin:0 0 .35rem">Editing <b id="zmgr-edit-path">—</b></p>
+        <textarea id="zmgr-text" spellcheck="false"></textarea>
+        <div class="row">
+          <button type="button" class="btn btn-primary" id="zmgr-save" data-i18n="auth.save">Save</button>
+          <button type="button" class="btn btn-ghost" id="zmgr-share">Share to Community</button>
+          <button type="button" class="btn btn-ghost" id="zmgr-unshare">Unshare</button>
+          <button type="button" class="btn btn-danger" id="zmgr-delete">Delete</button>
+          <button type="button" class="btn btn-ghost" id="zmgr-close-edit">Close</button>
+        </div>
+      </div>
+      <p class="zmgr-status" id="zmgr-status"></p>
+    </div>
+
+    <div class="panel hidden" id="acct-lla" style="margin-top:1rem;border-color:rgba(0,255,157,.35);box-shadow:0 0 28px rgba(0,255,157,.08)">
+      <div class="eyebrow"><span class="pulse"></span> LLA · ops only</div>
+      <h3 style="font-family:Orbitron,sans-serif;font-size:1.05rem;margin:.35rem 0 .35rem">Laden Labs Admin</h3>
+      <p class="muted" style="margin:0 0 .75rem;max-width:40rem">God-mode monitor + control center. Presence, users, LLT economy, challenges, LLZ moderation, and audited ops actions.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:.5rem;align-items:center">
+        <a class="btn btn-primary" href="/lla/" id="acct-lla-link">Open LLA Control Center</a>
+        <span class="mono muted" style="font-size:.72rem">secret path · /lla/</span>
+      </div>
+    </div>
+
+
+    <div class="acct-zocial" id="acct-zocial">
+      <div class="eyebrow"><span class="pulse"></span> LLZ LabZocial · public profile</div>
+      <h3>LabZocial profile</h3>
+      <p class="muted" style="margin:0;max-width:42rem;font-size:.9rem">Fill your expanded social lab card — bio, favourite tool &amp; distro. Guests can read it at <span class="mono">/community/u/&lt;you&gt;/</span>.</p>
+      <form id="acct-zocial-form" class="zform">
+        <label class="full">About / bio
+          <textarea id="zocial-bio" maxlength="280" placeholder="Short ops bio — ethical vibes only…"></textarea>
+        </label>
+        <label>Favourite pentesting tool
+          <input id="zocial-tool" list="zocial-tool-presets" maxlength="64" placeholder="burp, nmap, metasploit…">
+          <datalist id="zocial-tool-presets">
+            <option value="burp"><option value="nmap"><option value="metasploit"><option value="wireshark">
+            <option value="sqlmap"><option value="ffuf"><option value="gobuster"><option value="hydra">
+            <option value="john"><option value="hashcat"><option value="aircrack-ng"><option value="other">
+          </datalist>
+        </label>
+        <label>Favourite Linux distro
+          <select id="zocial-distro">
+            <option value="">— select —</option>
+            <option value="kali">Kali</option>
+            <option value="parrot">Parrot</option>
+            <option value="arch">Arch</option>
+            <option value="ubuntu">Ubuntu</option>
+            <option value="debian">Debian</option>
+            <option value="fedora">Fedora</option>
+            <option value="other">Other</option>
+          </select>
+        </label>
+        <label>Role / title (optional)
+          <input id="zocial-role" maxlength="64" placeholder="Red team intern, bug bounty…">
+        </label>
+        <label>Location (city, optional)
+          <input id="zocial-location" maxlength="64" placeholder="Oslo">
+        </label>
+        <label>Favourite track
+          <select id="zocial-track">
+            <option value="">— select —</option>
+            <option value="web">Web</option>
+            <option value="recon">Recon</option>
+            <option value="network">Network</option>
+            <option value="wireless">Wireless</option>
+            <option value="crypto">Crypto</option>
+            <option value="forensics">Forensics</option>
+            <option value="osint">OSINT</option>
+            <option value="general">General</option>
+          </select>
+        </label>
+        <label class="full">Link (optional URL)
+          <input id="zocial-link" type="url" maxlength="200" placeholder="https://…">
+        </label>
+        <div class="zactions full" style="grid-column:1/-1">
+          <button type="submit" class="btn btn-primary" id="acct-zocial-save">Save LabZocial</button>
+          <a class="btn btn-cyan" id="acct-zocial-view" href="/community/">View public profile</a>
+          <span class="mono muted" id="acct-zocial-msg" style="font-size:.75rem;min-height:1.1em"></span>
+        </div>
+      </form>
+      <div class="zpreview">
+        <div class="eyebrow" style="margin-bottom:.55rem"><span class="pulse"></span> Preview · expanded social lab card</div>
+        <div id="acct-zocial-preview" class="zocial-card">
+          <div class="muted" style="font-size:.85rem">Save to refresh preview — or fill fields above.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="acct-friends" style="margin-top:1rem">
+      <div class="eyebrow"><span class="pulse"></span> LLZ LabZocial · friends</div>
+      <h3 style="font-family:Orbitron,sans-serif;font-size:1.05rem;margin:.35rem 0 .35rem">Your crew</h3>
+      <p class="muted" style="margin:0 0 .5rem;max-width:40rem">Friends float to the top of <b>LLZ</b>. Manage requests on Community.</p>
+      <p class="muted mono" style="font-size:.78rem;margin:.2rem 0 .5rem">Friends: <b id="acct-friend-count">—</b> · Incoming: <b id="acct-friend-incoming">—</b></p>
+      <div id="acct-friends-list" class="muted" style="font-size:.88rem;font-family:'JetBrains Mono',monospace"></div>
+      <div style="margin-top:.75rem">
+        <a class="btn btn-cyan" href="/community/">Open LLZ LabZocial</a>
+      </div>
+    </div>
+
+    <div class="panel" id="avatar-customize" style="margin-top:1rem">
+      <div class="eyebrow"><span class="pulse"></span> Member avatar · 12 characters</div>
+      <h3 style="font-family:Orbitron,sans-serif;font-size:1.05rem;margin:.35rem 0 .35rem">Hacker avatars</h3>
+      <p class="muted" style="margin:0 0 .25rem;max-width:40rem">Pick one animated operator face for your Lab ID. Each <b>new</b> avatar costs <b>100 LLT</b>. Re-selecting your current one is free. Guests keep initials.</p>
+      <p class="muted mono" style="font-size:.78rem;margin:.2rem 0 .5rem">Current: <b id="avatar-current">initials</b> · Cost: <b>100 LLT</b> · Balance: <b data-llt-balance id="avatar-bal">—</b></p>
+      <div class="laden-av-grid" id="avatar-grid" role="listbox" aria-label="Member avatars"></div>
+      <div class="laden-av-actions">
+        <button class="btn btn-primary" type="button" id="avatar-apply">Apply avatar · 100 LLT</button>
+        <button class="btn btn-ghost" type="button" id="avatar-clear" title="Back to initials (free if already initials)">Use initials</button>
+        <span class="muted" style="font-size:.8rem">Hover your name in the nav — and open Caleb for a surprise.</span>
+      </div>
+      <p class="laden-av-msg" id="avatar-msg" aria-live="polite"></p>
+    </div>
+
+
+    <div class="panel" id="title-shop" style="margin-top:1rem">
+      <div class="eyebrow"><span class="pulse"></span> Titles shop · LLT catalog</div>
+      <h3 style="font-family:Orbitron,sans-serif;font-size:1.05rem;margin:.35rem 0 .35rem">Operator titles</h3>
+      <p class="muted" style="margin:0 0 .25rem;max-width:40rem">Buy a fun ethical-hacker title with LLT, then <b>Equip</b> it on your Lab ID. Equipped title shows on the card; role stays secondary. Lab ID format <span class="mono">969-xxx</span>.</p>
+      <p class="muted mono" style="font-size:.78rem;margin:.2rem 0 .5rem">Equipped: <b id="title-current">none</b> · Lab ID: <b id="title-lab-id">—</b> · Balance: <b data-llt-balance id="title-bal">—</b></p>
+      <div class="title-shop-grid" id="title-shop-grid" role="listbox" aria-label="Title catalog"></div>
+      <div class="title-shop-actions">
+        <button class="btn btn-primary" type="button" id="title-buy">Buy selected</button>
+        <button class="btn btn-cyan" type="button" id="title-equip">Equip owned</button>
+        <button class="btn btn-ghost" type="button" id="title-clear">Clear title</button>
+        <span class="muted" style="font-size:.8rem">Hover your name in the nav to see it.</span>
+      </div>
+      <p class="title-shop-msg" id="title-shop-msg" aria-live="polite"></p>
+    </div>
+
+    <div class="panel" id="labcard-customize" style="margin-top:1rem">
+      <div class="eyebrow"><span class="pulse"></span> Customize Lab Card · members only</div>
+      <h3 style="font-family:Orbitron,sans-serif;font-size:1.05rem;margin:.35rem 0 .35rem">Lab ID skins</h3>
+      <p class="muted" style="margin:0 0 .25rem;max-width:40rem">Pick a look for your hover Lab ID. Each <b>new</b> skin apply costs <b>10 LLT</b>. Guests stay on the default pass — <a href="/account/">create an account</a> to unlock skins.</p>
+      <p class="muted mono" style="font-size:.78rem;margin:.2rem 0 .5rem">Current: <b id="labcard-current-skin">default</b> · Cost: <b>10 LLT</b> · Balance: <b data-llt-balance id="labcard-bal">—</b></p>
+      <div class="labcard-skin-grid" id="labcard-skin-grid" role="listbox" aria-label="Lab card skins"></div>
+      <div class="labcard-skin-actions">
+        <button class="btn btn-primary" type="button" id="labcard-apply">Apply skin · 10 LLT</button>
+        <span class="muted" style="font-size:.8rem">Hover your name in the nav to preview.</span>
+      </div>
+      <p class="labcard-skin-msg" id="labcard-skin-msg" aria-live="polite"></p>
+    </div>
+
+    <div class="dash-grid">
+      <div class="panel">
+        <h3 style="font-family:Orbitron,sans-serif;font-size:1.05rem;margin-bottom:.35rem">Mission brief</h3>
+        <p class="muted" style="margin-bottom:.9rem">Laden Labs is a step-on gateway for ethical hackers and bug hunters. Each lab teaches a real bug class, then asks for a <span class="mono">LLZ{…}</span> flag. Scope first. Report clean. Don’t be a menace.</p>
+        <ul class="tip-list">
+          <li><b>Start easy.</b> Scope First → Robots Redux → Encoding ≠ Encryption. Momentum beats heroics.</li>
+          <li><b>Use LLC.</b> Top-left console has curl, jwt decode, base64, hashes — only tools these labs need.</li>
+          <li><b>Write it down.</b> Good hunters leave notes. Future-you will thank present-you.</li>
+          <li><b>Discord exists.</b> Spoilers behind tags. Be kind. Be precise.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3 style="font-family:Orbitron,sans-serif;font-size:1.05rem;margin-bottom:.35rem">Fun facts</h3>
+        <div class="fact-card" id="fact-rotating">
+          <strong>Fun fact</strong>
+          <span id="fact-text">…</span>
+        </div>
+        <div class="fact-card">
+          <strong>Flag format</strong>
+          <span>All lab flags wrap as <span class="mono">LLZ{snake_case}</span>. Trim spaces before submit.</span>
+        </div>
+        <div class="fact-card">
+          <strong>Oslo vibe</strong>
+          <span>Laden AS is based in Oslo. Coffee optional. Written scope mandatory.</span>
+        </div>
+        <button class="btn btn-ghost" type="button" id="fact-next" style="margin-top:.4rem">Another fact →</button>
+      </div>
+    </div>
+
+    <div class="dash-grid" style="margin-top:1rem">
+      <div class="panel">
+        <h3 style="font-family:Orbitron,sans-serif;font-size:1.05rem;margin-bottom:.35rem">Track map</h3>
+        <p class="muted" style="font-size:.88rem;margin-bottom:.7rem">Twenty-four labs across gateway, recon, web, crypto, auth, inject, network, cloud, and practice.</p>
+        <div id="track-chips" style="display:flex;flex-wrap:wrap;gap:.4rem"></div>
+      </div>
+      <div class="panel">
+        <h3 style="font-family:Orbitron,sans-serif;font-size:1.05rem;margin-bottom:.35rem">Quick links</h3>
+        <div style="display:flex;flex-direction:column;gap:.45rem">
+          <a class="btn btn-ghost" href="/labs/?chal=scope-first">Open: Scope First</a>
+          <a class="btn btn-ghost" href="/forum/">Member forum</a>
+          <a class="btn btn-ghost" href="/gear/">Gear · LLG (demo cart)</a>
+          <a class="btn btn-discord" href="https://discord.gg/BavZjwXp2" target="_blank" rel="noopener">Discord</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<link rel="stylesheet" href="/assets/avatars/avatars.css">
+<script src="/assets/avatars/avatars.js"></script>
+<script src="/assets/caleb.js?v=20261004-caleb16"></script>
+<script src="/assets/llt.js"></script>
+<script src="/assets/app.js?v=cta1"></script>
+<script src="/assets/labcard.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/assets/account.js"></script>
+<script src="/assets/llc.js" defer></script>
+<script src="/assets/legal.js" defer></script>
+</body>
+</html>

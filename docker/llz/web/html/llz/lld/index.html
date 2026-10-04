@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/assets/theme.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLD — Laden Labs Developer</title>
+  <meta name="description" content="Laden Labs Developer — tools, playgrounds, sandbox experiments, and arcade drops for opted-in operators.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="/assets/styles.css?v=cta1">
+  <script src="/assets/i18n.js"></script>
+  <link rel="stylesheet" href="/lld/lld.css">
+  <link rel="canonical" href="https://laden.no/lld/">
+  <link rel="stylesheet" href="/css/soundcloud-player.css?v=20261003-mobkeep">
+  <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
+  <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
+  <script src="/js/soundcloud-player.js?v=20261004-caleb16" defer></script>
+</head>
+<body class="lld-page">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/assets/products/logo.jpg?v=llz7" alt="Laden Lab'z" width="32" height="32">
+      <div class="brand-text"><span class="brand-name">Laden Lab'<span class="brand-z">z</span></span><span class="brand-page"></span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span data-i18n="nav.home">Home</span></a>
+      <a href="/forum/"><span data-i18n="nav.forum">Forum</span></a>
+      <a href="/gear/"><span data-i18n="nav.gear">Gear</span></a>
+      <a href="/oracle/"><span data-i18n="nav.oracle">Oracle</span></a>
+      <a href="/challenges/"><span data-i18n="nav.challenges">Challenges</span></a>
+      <a href="/community/"><span data-i18n="nav.community">Community</span></a>
+      <a href="/messages/" id="nav-messages"><span data-i18n="nav.messages">Messages</span></a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-cyan" href="/account/" id="nav-account"><span data-i18n="nav.login">Login</span></a>
+      <a class="btn btn-primary btn-sm" href="/labs/"><span data-i18n="nav.lounge">Lounge</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="lld-gate" id="lld-gate" aria-live="polite">
+    <div class="card">
+      <div class="lld-badge"><span class="pulse"></span> LLD · gated</div>
+      <h2>Developer access required</h2>
+      <p>LLD is opt-in. Open your Account, join Laden Labs Developer, then return here.</p>
+      <a class="btn btn-primary" href="/account/#acct-lld">Join on Account</a>
+    </div>
+  </div>
+
+  <div id="lld-main">
+    <section class="lld-hero" aria-label="LLD hero">
+      <div>
+        <div class="lld-badge"><span class="pulse"></span> LLD · Laden Labs Developer</div>
+        <h1>Build in the <em>lab dark</em></h1>
+        <p class="lead">Tools, playgrounds, manuals, sandbox experiments, and arcade drops — for operators who opted into the developer lane. Keep it ethical. Keep it in scope.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:.5rem">
+          <a class="btn btn-primary" href="#lld-arcade">Arcade</a>
+          <a class="btn btn-cyan" href="#lld-tools">Tools</a>
+          <a class="btn btn-ghost" href="/account/">Account</a>
+        </div>
+      </div>
+      <div class="lld-hero-mark" aria-hidden="true"><span>LLD</span></div>
+    </section>
+
+    <section class="lld-section" id="lld-tools">
+      <div class="eyebrow"><span class="pulse"></span> Tools · playgrounds</div>
+      <h2>Operator toolkit</h2>
+      <div class="lld-grid">
+        <a class="lld-card" href="/terminal/">
+          <span class="k">Console</span>
+          <h3>LLC Terminal</h3>
+          <p>Browser console with curl, jwt decode, base64, hashes — the everyday lab desk.</p>
+          <span class="go">Open LLC →</span>
+        </a>
+        <a class="lld-card" href="/oracle/">
+          <span class="k">Search</span>
+          <h3>Oracle (LLO)</h3>
+          <p>Ask across code, repos, and issues. Caleb interprets what returns.</p>
+          <span class="go">Ask Oracle →</span>
+        </a>
+        <a class="lld-card" href="/labs/">
+          <span class="k">Labs</span>
+          <h3>Lab Lounge</h3>
+          <p>In-scope stations, XP &amp; LLT. Pick a bug class and hunt clean.</p>
+          <span class="go">Enter lounge →</span>
+        </a>
+        <a class="lld-card" href="/challenges/">
+          <span class="k">Public</span>
+          <h3>Challenges board</h3>
+          <p>Public challenge list — track map without the full lounge chrome.</p>
+          <span class="go">Browse →</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="lld-section" id="lld-docs">
+      <div class="eyebrow"><span class="pulse"></span> Docs · manuals</div>
+      <h2>Read before you run</h2>
+      <div class="lld-grid">
+        <a class="lld-card" href="/tips/">
+          <span class="k">Tips</span>
+          <h3>Operator tips</h3>
+          <p>Short briefs on scope, reporting, and lab hygiene.</p>
+          <span class="go">Tips →</span>
+        </a>
+        <a class="lld-card" href="/forum/">
+          <span class="k">Forum</span>
+          <h3>Member forum</h3>
+          <p>Ask, share writeups (no spoilers without tags), stay precise.</p>
+          <span class="go">Forum →</span>
+        </a>
+        <a class="lld-card" href="/gear/">
+          <span class="k">Gear</span>
+          <h3>LLG · Gear</h3>
+          <p>Demo storefront for hunting kits and merch vibes.</p>
+          <span class="go">Gear →</span>
+        </a>
+        <a class="lld-card" href="https://discord.gg/BavZjwXp2" target="_blank" rel="noopener">
+          <span class="k">Chat</span>
+          <h3>Discord</h3>
+          <p>Spoilers behind tags. Be kind. Be precise.</p>
+          <span class="go">Discord ↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="lld-section" id="lld-sandbox">
+      <div class="eyebrow"><span class="pulse"></span> Sandbox · experiments</div>
+      <h2>Scratch space</h2>
+      <div class="lld-grid">
+        <a class="lld-card" href="/account/#acct-zdrive">
+          <span class="k">Z Drive</span>
+          <h3>Private LabDrive</h3>
+          <p>10&nbsp;MB floating desk. Notes, drafts, share to Community when ready.</p>
+          <span class="go">Open Z Drive →</span>
+        </a>
+        <a class="lld-card" href="/community/">
+          <span class="k">Social</span>
+          <h3>LLZ LabZocial</h3>
+          <p>Friends, shared files, crew vibes — stay in the ethical lane.</p>
+          <span class="go">Community →</span>
+        </a>
+        <div class="lld-card" style="cursor:default">
+          <span class="k">Soon</span>
+          <h3>Canvas playgrounds</h3>
+          <p>More sandboxes land here — raycasters, parsers, tiny demos.</p>
+          <span class="go">Watch this space</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="lld-section" id="lld-arcade">
+      <div class="eyebrow"><span class="pulse"></span> Games · Arcade</div>
+      <h2>Operator downtime</h2>
+      <div class="lld-grid">
+        <a class="lld-card arcade" href="/games/fuck-fuckem/">
+          <img class="thumb" src="/games/fuck-fuckem/icon.png" alt="" width="44" height="44">
+          <span class="k">Arcade · FPS</span>
+          <h3>FUCK FUCK'EM</h3>
+          <p>Doom-like raycaster. Level 1: SEWER OF RAGE. Blast Duke creatures. Kill Mario &amp; Luigi.</p>
+          <span class="go">Play →</span>
+        </a>
+      </div>
+    </section>
+
+    <p class="lld-foot-note">LLD is account opt-in · not listed in main nav · leave anytime from Account</p>
+  </div>
+</main>
+
+<script src="/assets/app.js?v=cta1"></script>
+<script src="/assets/avatars/avatars.js"></script>
+<script src="/assets/labcard.js"></script>
+<script src="/assets/nav-mobile.js"></script>
+<script src="/lld/lld.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+[
+  {
+    "id": "tip-nmap-1",
+    "tool": "nmap",
+    "title": "Scripts + versions without -A",
+    "body": "Prefer <code>nmap -sC -sV -p-</code> over blind <code>-A</code>. Faster feedback, less noise, same intel on most labs.",
+    "level": "easy"
+  },
+  {
+    "id": "tip-nmap-2",
+    "tool": "nmap",
+    "title": "Host discovery first",
+    "body": "On a flat lab net: <code>nmap -sn 10.10.0.0/24</code> then target live hosts. Skip <code>-Pn</code> until you know ICMP is blocked.",
+    "level": "easy"
+  },
+  {
+    "id": "tip-burp-1",
+    "tool": "burp",
+    "title": "Match and replace",
+    "body": "Proxy → Match and replace: auto-fix a header or cookie across Repeater/Intruder. Stop hand-editing the same byte 40 times.",
+    "level": "med"
+  },
+  {
+    "id": "tip-burp-2",
+    "tool": "burp",
+    "title": "Logger++ / Logger tab",
+    "body": "Keep a full history of proxied traffic. When a bug reproduces once, your scrollback is the writeup backbone.",
+    "level": "easy"
+  },
+  {
+    "id": "tip-ws-1",
+    "tool": "wireshark",
+    "title": "HTTP POSTs only",
+    "body": "Display filter: <code>http.request.method == \"POST\"</code>. Combine with <code>ip.addr==</code> your lab target.",
+    "level": "easy"
+  },
+  {
+    "id": "tip-ws-2",
+    "tool": "wireshark",
+    "title": "Follow the stream",
+    "body": "Right-click → Follow → TCP/HTTP Stream. Rebuild the conversation instead of squinting at frames.",
+    "level": "easy"
+  },
+  {
+    "id": "tip-msf-1",
+    "tool": "msfconsole",
+    "title": "search + info before exploit",
+    "body": "<code>search type:exploit apache</code> then <code>info</code> / <code>show options</code>. Set RHOSTS, check required options, then run. Labs love patience.",
+    "level": "med"
+  },
+  {
+    "id": "tip-msf-2",
+    "tool": "msfconsole",
+    "title": "Workspaces keep you honest",
+    "body": "<code>workspace -a lab-oslo</code> isolates hosts/loot per engagement. Don't mix client A with Friday CTF notes.",
+    "level": "med"
+  },
+  {
+    "id": "tip-air-1",
+    "tool": "aircrack-ng",
+    "title": "Own AP / own handshake",
+    "body": "Capture and crack only networks you own or are contracted to test. Lab kit + isolated AP = education. Neighbour's SSID = crime.",
+    "level": "hard"
+  },
+  {
+    "id": "tip-air-2",
+    "tool": "aircrack-ng",
+    "title": "airmon-ng check kill",
+    "body": "Kill NetworkManager interference before monitor mode. Remember to restart networking after the lab session.",
+    "level": "med"
+  },
+  {
+    "id": "tip-hydra-1",
+    "tool": "hydra",
+    "title": "Throttle or get banned",
+    "body": "Use <code>-t 4</code> and respect lockouts. Against production without written scope: don't. Against your lab: still be nice to the logs.",
+    "level": "med"
+  },
+  {
+    "id": "tip-sqlmap-1",
+    "tool": "sqlmap",
+    "title": "Level/risk deliberately",
+    "body": "Start low: default level/risk, then climb. Add <code>--tamper</code> only when a WAF actually blocks. Always <code>--batch</code> in labs you own.",
+    "level": "med"
+  },
+  {
+    "id": "tip-sqlmap-2",
+    "tool": "sqlmap",
+    "title": "Dump with intent",
+    "body": "<code>--tables</code> / <code>--columns</code> before <code>--dump</code>. Know what you're extracting and why it is in scope.",
+    "level": "hard"
+  },
+  {
+    "id": "tip-john-1",
+    "tool": "john",
+    "title": "Format detection",
+    "body": "<code>john --list=formats | rg -i sha</code> then <code>--format=</code> explicitly. Wrong format = silent sadness.",
+    "level": "easy"
+  },
+  {
+    "id": "tip-hashcat-1",
+    "tool": "hashcat",
+    "title": "Mode numbers matter",
+    "body": "Example: <code>-m 1000</code> NTLM, <code>-m 1800</code> sha512crypt. Check the example hashes wiki before burning GPU time.",
+    "level": "med"
+  },
+  {
+    "id": "tip-ffuf-1",
+    "tool": "ffuf",
+    "title": "Filter smart",
+    "body": "<code>ffuf -u URL/FUZZ -w wordlist -mc 200,204,301,302,403 -fs &lt;size&gt;</code> to drop boring catch-all responses.",
+    "level": "med"
+  }
+]
