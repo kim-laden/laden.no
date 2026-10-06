@@ -118,6 +118,12 @@
   /* Visit-only mute. Never written to storage, so a reload starts audible.
      Volume stays in memory; unmute restores the level from before mute. */
   var userMuted = false;
+  /* Shared, persistent music choice for every laden.no property (same origin).
+     Read before any widget or autoplay parameter exists, so 'off' never plays. */
+  var MUSIC_KEY = 'laden-music';
+  function musicPref() { try { return localStorage.getItem(MUSIC_KEY); } catch (_) { return null; } }
+  function rememberMusic(on) { try { localStorage.setItem(MUSIC_KEY, on ? 'on' : 'off'); } catch (_) {} }
+  if (musicPref() === 'off') userMuted = true;
   var volumeBeforeMute = volume;
 
   function readState() {
@@ -192,7 +198,7 @@
     var params = new URLSearchParams({
       url: TRACK.url,
       color: isPapirGlider ? '8b5a3c' : (isLab ? '00ff9d' : '9ed9d3'),
-      auto_play: AUTOPLAY,
+      auto_play: AUTOPLAY && !userMuted,
       hide_related: 'true',
       show_comments: 'false',
       show_user: 'false',
@@ -263,6 +269,7 @@
     }
     if (userMuted) {
       userMuted = false;
+      rememberMusic(true);
       if (!(typeof volumeBeforeMute === 'number' && volumeBeforeMute > 0)) {
         volumeBeforeMute = startingVolume();
       }
@@ -279,7 +286,7 @@
     }
     volumeBeforeMute = volume > 0 ? volume : volumeBeforeMute;
     userMuted = true;
-    if (!widget) createWidget();
+    rememberMusic(false);
     applyAudibleVolume();
     setStatus('muted');
     updateUi();
@@ -303,6 +310,7 @@
       userHasInteracted = true;
       mutedAutoplay = false;
       userMuted = volume === 0;
+      rememberMusic(!userMuted);
       if (volume > 0) volumeBeforeMute = volume;
       stopAutoplayRetry();
       applyAudibleVolume();
@@ -380,7 +388,7 @@
       if (!widget || !widgetReady) return false;
       try {
         widget.load(TRACK.url, {
-          auto_play: AUTOPLAY,
+          auto_play: AUTOPLAY && !userMuted,
           hide_related: true,
           show_comments: false,
           show_user: false,
@@ -411,6 +419,7 @@
     userHasInteracted = true;
     mutedAutoplay = false;
     userMuted = false;
+    rememberMusic(true);
     volumeBeforeMute = volume;
     stopAutoplayRetry();
     state.enabled = true;
@@ -456,7 +465,7 @@
     }
     try {
       widget.load(TRACK.url, {
-        auto_play: AUTOPLAY,
+        auto_play: AUTOPLAY && !userMuted,
         hide_related: true,
         show_comments: false,
         show_user: false,
@@ -524,7 +533,10 @@
           try { widget.seekTo(state.position); } catch (_) {}
         }
         setStatus(state.enabled ? (isBusinessSite ? 'ready · resuming softly' : 'ready · starting softly') : 'ready');
-        if (state.enabled) beginAutoplay();
+        if (state.enabled && !userMuted) {
+          if (userHasInteracted) playWhenReady(true);
+          else beginAutoplay();
+        }
       });
       if (window.SC.Widget.Events.PLAY_PROGRESS) {
         widget.bind(window.SC.Widget.Events.PLAY_PROGRESS, function (data) {
@@ -596,6 +608,7 @@
       /* Legacy pause path kept unused by the UI. Mute is visit-only volume. */
       state.enabled = !state.enabled;
       saveState();
+      rememberMusic(state.enabled);
       updateUi();
       if (state.enabled) {
         createWidget();
@@ -663,6 +676,11 @@
       rakkyObs.observe(document.body, { childList: true, subtree: true });
     }
     updateUi();
+    if (userMuted) setStatus('muted');
+    /* Another tab turned music off: follow it here. */
+    window.addEventListener('storage', function (event) {
+      if (event.key === MUSIC_KEY && event.newValue === 'off' && !userMuted) toggleMute();
+    });
     /* Retry outside the icon too: autoplay policies commonly unlock on any
        first page gesture, not just a click on our control. */
     document.addEventListener('pointerdown', resumeOnGesture, { passive: true });
@@ -674,8 +692,8 @@
     function onForeground() {
       if (document.hidden) return;
       if (!state.enabled) return;
-      if (!widget) { createWidget(); return; }
       if (userMuted) return;
+      if (!widget) { createWidget(); return; }
       if (widgetReady) kickPlayback();
     }
     window.addEventListener('pageshow', onForeground);
@@ -693,7 +711,7 @@
         } catch (err) {}
       }, 1200);
     }
-    if (state.enabled) createWidget();
+    if (state.enabled && !userMuted) createWidget();
   }
 
   /* Standard Laden pattern: persistent player per property.
