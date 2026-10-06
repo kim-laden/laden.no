@@ -34,7 +34,7 @@
   border-color: rgba(158, 217, 211, .42);
   color: var(--on-coal-accent, #9ed9d3);
   background: rgba(20, 24, 22, .84);
-  box-shadow: 0 8px 22px rgba(20, 24, 22, .2), inset 0 1px 0 rgba(243, 248, 251, .08);
+  box-shadow: 0 8px 22px rgba(20, 24, 22, .2), inset 0 1px 0 rgba(250,238,216,.08);
 }
 .laden-sc-player--site .laden-sc-player__toggle.is-on {
   border-color: rgba(158, 217, 211, .78);
@@ -92,16 +92,22 @@
   outline-offset: 3px;
 }
 
-/* Business site: the corner belongs to Caleb. The iframe stays alive off-screen. */
-.laden-sc-player--in-caleb {
-  left: -9999px;
+/* Business site: the player lives inside Caleb. Keep the iframe alive, not as its own control. */
+#laden-caleb .laden-sc-player--in-caleb {
+  position: absolute;
+  left: 0;
   right: auto;
-  width: 34px;
-  height: 34px;
+  bottom: auto;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
   opacity: 0.02;
+  overflow: hidden;
   pointer-events: none;
+  z-index: 0;
 }
-.laden-sc-player--in-caleb .laden-sc-player__toggle { display: none; }
+#laden-caleb .laden-sc-player--in-caleb .laden-sc-player__toggle { display: none; }
 
 /* Phones: a 34px disc sitting on Skarverakk's Rockbot dock is too easy to miss,
    and a delayed click reads as mute doing nothing. 48px, and lift it off the dock. */
@@ -253,3 +259,21 @@
   pointer-events: none;
   speak: never;
 }
+
+/* Caleb is in the corner from the first paint. Same rules the script used to inject. */
+#laden-caleb{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:80;font:500 14px/1.35 Inter,sans-serif;color:#FAEED8}
+#laden-caleb .caleb-fab{min-height:32px;padding:0 11px;border:1px solid #FAEED8;background:#000;color:#FAEED8;cursor:pointer;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
+#laden-caleb .caleb-fab:hover,#laden-caleb .caleb-fab[aria-expanded="true"]{background:#FAEED8;color:#000}
+#laden-caleb .caleb-panel{position:absolute;right:0;bottom:48px;width:min(300px,calc(100vw - 32px));min-height:183px;background:#000;border:1px solid #FAEED8;padding:12px}
+#laden-caleb .caleb-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+#laden-caleb .caleb-x{background:transparent;color:#FAEED8;border:0;font-size:18px;cursor:pointer;line-height:1}
+#laden-caleb .caleb-log{min-height:2.6em;max-height:9.5em;overflow:auto;margin:0 0 8px;color:#cfcfcf;font-size:13px}
+#laden-caleb .caleb-log p{margin:0 0 4px}
+#laden-caleb .caleb-actions{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+#laden-caleb .caleb-actions button{border:1px solid #FAEED8;background:#000;color:#FAEED8;min-height:44px;min-width:44px;padding:0 12px;cursor:pointer;font-size:13px;letter-spacing:.03em;line-height:1;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+#laden-caleb .caleb-ask button{border:1px solid #FAEED8;background:#000;color:#FAEED8;height:22px;min-height:22px;padding:0 7px;cursor:pointer;font-size:11px;line-height:1}
+#laden-caleb .caleb-actions button:hover,#laden-caleb .caleb-ask button:hover{background:#FAEED8;color:#000}
+#laden-caleb .caleb-ask{display:flex;gap:6px}
+#laden-caleb .caleb-ask input{flex:1;min-width:0;width:0;height:22px;min-height:22px;background:#000;color:#FAEED8;border:1px solid #FAEED8;padding:0 7px;font-size:11px;line-height:1}
+#laden-caleb .caleb-x:hover{color:#000;background:#FAEED8}
+#laden-caleb .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
