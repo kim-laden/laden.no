@@ -1,0 +1,21 @@
+/* Laden's own newsletter sign-up (contact pages). No third-party widget. */
+.laden-signup { padding-bottom: 64px; }
+.laden-signup .form-card { max-width: 720px; border: 1px solid #FAEED8; background: #000; color: #FAEED8; }
+.laden-signup h2 { margin: 0 0 8px; color: #FAEED8; }
+.laden-signup .signup-lede { margin: 0 0 20px; color: #FAEED8; opacity: .8; }
+.laden-signup .signup-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+.laden-signup .signup-row .field { flex: 1 1 280px; margin: 0; }
+.laden-signup .signup-row .btn { min-height: 48px; }
+.laden-signup .signup-consent { display: flex; gap: 10px; align-items: flex-start; margin: 16px 0 0; font-size: .95rem; line-height: 1.45; color: #FAEED8; cursor: pointer; }
+.laden-signup .signup-consent input { width: 20px; height: 20px; min-height: 0; flex: none; margin: 2px 0 0; padding: 0; accent-color: #FAEED8; }
+.laden-signup .signup-consent a { color: #FAEED8; text-decoration: underline; }
+.laden-signup .signup-status { margin: 14px 0 0; min-height: 1.4em; color: #FAEED8; }
+.laden-signup .signup-status[data-state="error"] { border-left: 3px solid #FAEED8; padding-left: 10px; }
+.laden-signup .signup-status[data-state="ok"] { font-weight: 600; }
+.laden-signup .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+/* Stand-alone thanks page when JavaScript is off */
+.cc-body { background: #000; color: #FAEED8; }
+.cc-gate { min-height: 60vh; display: grid; place-items: center; }
+.cc-gate-form { width: min(420px, 92vw); display: grid; gap: 16px; border: 1px solid #FAEED8; padding: 32px; }
+.cc-gate-form h1 { font-size: 1.5rem; margin: 0; }
+.cc-msg { margin: 0; }

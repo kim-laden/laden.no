@@ -17,7 +17,6 @@
   <link rel="preload" href="/docker/laden/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/docker/laden/images/laden-wordmark.png" as="image" type="image/png">
   <link rel="stylesheet" href="/docker/laden/css/site.css?v=20261003-caleb-size">
-  <link rel="stylesheet" href="/docker/laden/css/reach-form.css?v=20261003-cream">
   
   <link rel="preconnect" href="https://w.soundcloud.com" crossorigin>
   <link rel="preconnect" href="https://api.soundcloud.com" crossorigin>
@@ -25,6 +24,7 @@
   <script src="/docker/laden/js/soundcloud-player.js?v=20261003-mobkeep" defer></script>
   <script src="/docker/laden/js/caleb-corner.js?v=20261003-mobkeep" defer></script>
   <script src="/docker/laden/js/site.js?v=v11live" defer></script>
+<link href="/docker/laden/css/signup.css?v=20261006-signup" rel="stylesheet"/>
 </head>
 <body>
   
@@ -140,9 +140,24 @@
         </aside>
       </div>
     </section>
-    <div class="wrap reach-form">
-      <div data-reach-form="df384182-5807-4a11-a839-ad35d3d529f3"></div>
-    </div>
+    <section aria-labelledby="signup-title" class="section laden-signup" id="stay-updated">
+<div class="wrap">
+<div class="form-card">
+<h2 id="signup-title">Hold meg oppdatert</h2>
+<p class="signup-lede">En kort melding fra Laden av og til, når vi lanserer noe nytt. Ingen spam. Meld deg av når du vil.</p>
+<form action="/newsletter/" data-laden-signup="" method="post">
+<input name="source" type="hidden" value="contact"/><input name="lang" type="hidden" value="nb"/>
+<div aria-hidden="true" class="hp"><label for="signup-website">La stå tomt</label><input autocomplete="off" id="signup-website" name="website" tabindex="-1" type="text"/></div>
+<div class="signup-row">
+<div class="field"><label for="signup-email">E-post</label><input autocomplete="email" id="signup-email" maxlength="254" name="email" placeholder="navn@eksempel.no" required="" type="email"/></div>
+<button class="btn btn-primary" type="submit">Meld meg på</button>
+</div>
+<label class="signup-consent"><input name="consent" required="" type="checkbox" value="yes"/><span>Jeg godtar at Laden AS lagrer e-postadressen min og sender meg oppdateringer av og til. Jeg kan melde meg av når som helst. Les <a href="/docker/laden/personvern/">personvernerklæringen</a>.</span></label>
+<p aria-live="polite" class="signup-status" role="status"></p>
+</form>
+</div>
+</div>
+</section>
     
   </main>
   
@@ -193,7 +208,6 @@
       </div>
     </footer>
     
-<script src="/docker/laden/js/reach-form.js?v=20261003-cream"></script>
-<script src="https://cdn-reach.hostinger.com/js/embed.js"></script>
+<script defer src="/docker/laden/js/signup.js?v=20261006-signup"></script>
 </body>
 </html>
